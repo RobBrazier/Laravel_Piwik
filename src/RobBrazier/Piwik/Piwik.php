@@ -221,9 +221,9 @@ class Piwik {
             $url = $this->get_piwik_url().'/index.php?module=API&method=UsersManager.getTokenAuth&userLogin='.$this->username.'&md5Password='.$this->password.'&format='.$this->check_format();
             if(!Session::has('apikey')) Session::put('apikey', $this->get_decoded($url));
             $this->apikey = Session::get('apikey');
-            return $this->apikey;
+            return $this->apikey->value;
         } else if(!empty($this->apikey)) {
-            return $this->apikey;
+            return $this->apikey->value;
         } else {
             echo '<strong style="color:red">You must enter your API Key or Username/Password combination to use this bundle!</strong><br/>';
         }
