@@ -14,7 +14,7 @@ Add `RobBrazier/Piwik` to `composer.json`:
 ```javascript
 {
     "require": {
-        "RobBrazier\Piwik": "2.0.*"
+        "RobBrazier\Piwik": "dev-master"
     }
 }
 ```
