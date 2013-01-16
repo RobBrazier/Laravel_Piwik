@@ -19,6 +19,26 @@ Add `RobBrazier/Piwik` to `composer.json`:
 }
 ```
 
+Add `'RobBrazier\Piwik\PiwikServiceProvider'` and `'Piwik' => 'RobBrazier\Piwik\Facades\Piwik'` to `app/config/app.php`
+
+```php
+'providers' = array(
+    ...
+    'RobBrazier\Piwik\PiwikServiceProvider',
+    ...
+);
+
+[...]
+
+'aliases' = array(
+    ...
+    'Piwik' => 'RobBrazier\Piwik\Facades\Piwik',
+    ...
+);
+```
+
+
+
 Update your packages with `composer update` or install with `composer install`.
 
 Then go to `vendor/robbrazier/piwik/src/config/config.php` and add your config settings such as server, username, password, apikey etc.
