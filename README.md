@@ -37,6 +37,8 @@ Add `'RobBrazier\Piwik\PiwikServiceProvider'` and `'Piwik' => 'RobBrazier\Piwik\
 );
 ```
 
+(or if you don't want to use an alias, you can do `App::make('piwik')` using the IoC Container, but using an alias is much easier!)
+
 
 
 Update your packages with `composer update` or install with `composer install`.
