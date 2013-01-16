@@ -21,6 +21,8 @@ Add `RobBrazier/Piwik` to `composer.json`:
 
 Update your packages with `composer update` or install with `composer install`.
 
+Then go to `vendor/robbrazier/piwik/src/config/config.php` and add your config settings such as server, username, password, apikey etc.
+
 ##Manual
 
 The Manual is still the same as version 1.0.x, and is at [http://robbrazier.com/portfolio/laravel-piwik](http://robbrazier.com/portfolio/laravel-piwik).
