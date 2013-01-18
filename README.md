@@ -37,9 +37,7 @@ Add `'RobBrazier\Piwik\PiwikServiceProvider'` and `'Piwik' => 'RobBrazier\Piwik\
 );
 ```
 
-(or if you don't want to use an alias, you can do `App::make('piwik')` using the IoC Container, but using an alias is much easier!)
-
-
+Then move the config file out of the package, so that it doesn't get replaced when you update, by doing `php artisan config:publish robbrazier/piwik`.
 
 Update your packages with `composer update` or install with `composer install`.
 
