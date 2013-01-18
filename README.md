@@ -41,7 +41,7 @@ Then move the config file out of the package, so that it doesn't get replaced wh
 
 Update your packages with `composer update` or install with `composer install`.
 
-Then go to `vendor/robbrazier/piwik/src/config/config.php` and add your config settings such as server, username, password, apikey etc.
+Then go to `app/config/packages/robbrazier/piwik/config.php` and add your config settings such as server, username, password, apikey etc.
 
 ##Manual
 
