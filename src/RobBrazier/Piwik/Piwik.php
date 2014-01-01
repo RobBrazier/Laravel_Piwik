@@ -223,7 +223,7 @@ class Piwik {
             $this->apikey = Session::get('apikey');
             return $this->apikey->value;
         } else if(!empty($this->apikey)) {
-            return $this->apikey->value;
+            return $this->apikey;
         } else {
             echo '<strong style="color:red">You must enter your API Key or Username/Password combination to use this bundle!</strong><br/>';
         }
