@@ -16,13 +16,13 @@ Arguments
 Example
 -------
 
-``Piwik::custom('SitesManager.getSitesIdFromSiteUrl', array('url'=>'http://example.com'), false, false, 'json');`` will return something like the following Array:
+``Piwik::custom('SitesManager.getSitesIdFromSiteUrl', array('url'=>'http://example.com'), false, false, 'json');`` will return something like the following Array::
 
-Array
-(
-    [0] => stdClass Object
-        (
-            [idsite] => 1
-        )
+	Array
+	(
+	    [0] => stdClass Object
+	        (
+	            [idsite] => 1
+	        )
 
-)
+	)
