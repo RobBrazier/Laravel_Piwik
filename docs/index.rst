@@ -9,6 +9,7 @@ Contents:
    	:maxdepth: 2
 	
 	installation
+	installation-l3
 	actions
 	downloads
 	keywords
