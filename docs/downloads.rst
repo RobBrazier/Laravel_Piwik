@@ -12,8 +12,7 @@ Arguments
 Example
 -------
 
-``Piwik::downloads('json');`` will return something like the following stdClass:
-::
+``Piwik::downloads('json');`` will return something like the following stdClass::
 	
 	stdClass Object
 	(
