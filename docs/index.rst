@@ -1,6 +1,8 @@
 Laravel-Piwik Documentation
 ===========================
 
+Laravel-Piwik is an Interface to Piwik's Analytics API for Laravel 4. The GitHub Repo is available `here <http://github.com/RobBrazier/Laravel_Piwik>`_
+
 Contents:
 
 .. toctree::
@@ -22,12 +24,3 @@ Contents:
 	seo_rank
 	version
 	custom
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
