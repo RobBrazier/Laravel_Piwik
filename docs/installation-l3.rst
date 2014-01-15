@@ -1,16 +1,21 @@
 Laravel 3 Installation
 ======================
 
-1. Install using Artisan, or download the zipball from GitHub
+Step 1
+------
+Install using Artisan, or download the zipball from GitHub
 ::
 
 	php artisan bundle:install piwik
 or
+
 ::
 
 	git clone https://github.com/RobBrazier/Laravel-Piwik.git piwik
 
-2. Add laravel-piwik to your bundles.php
+Step 2
+------
+Add laravel-piwik to your bundles.php
 ::
 
 	'piwik' => array('auto'=>true, 'handles'=>'piwik_install'),
