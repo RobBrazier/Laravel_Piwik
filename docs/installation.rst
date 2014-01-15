@@ -2,7 +2,7 @@ Installation
 ============
 
 To Install Laravel-Piwik using Composer, the Default method for Laravel, add ``RobBrazier\Piwik`` to ``composer.json``:
-.. code-block:: json
+:: json
 	{
 		"require": {
 			"RobBrazier\Piwik": "dev-master"
@@ -10,7 +10,7 @@ To Install Laravel-Piwik using Composer, the Default method for Laravel, add ``R
 	}
 
 Then, add ``'RobBrazier\Piwik\PiwikServiceProvider'`` and ``'Piwik' => 'RobBrazier\Piwik\Facades\Piwik'`` to ``app/config/app.php``:
-.. code-block:: php
+:: php
 	'providers' = array(
 		...
 		'RobBrazier\Piwik\PiwikServiceProvider',
@@ -26,7 +26,7 @@ Then, add ``'RobBrazier\Piwik\PiwikServiceProvider'`` and ``'Piwik' => 'RobBrazi
 	);
 
 Next, move the config out of the package, so that it doesn't get overwritten on each update:
-.. code-block:: shell
+:: shell
 	php artisan config:publish robbrazier/piwik
 
 Update your packages by running ``composer update``
