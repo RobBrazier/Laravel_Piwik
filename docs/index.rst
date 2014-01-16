@@ -1,7 +1,7 @@
 Laravel-Piwik Documentation
 ===========================
 
-Laravel-Piwik is an Interface to Piwik's Analytics API for Laravel 4. The GitHub Repo is available `here <http://github.com/RobBrazier/Laravel_Piwik>`_
+Laravel-Piwik is an Interface to Piwik's Analytics API for Laravel 4. The GitHub Repo is available `here <https://github.com/RobBrazier/Laravel_Piwik>`_
 
 Contents:
 

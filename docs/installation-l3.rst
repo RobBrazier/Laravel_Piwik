@@ -20,7 +20,7 @@ Add laravel-piwik to your bundles.php
 
 	'piwik' => array('auto'=>true, 'handles'=>'piwik_install'),
 
-and go to http://yourdomain.com/piwik_install
+and go to `http://yourdomain.com/piwik_install`
 
 This is a user-friendly way to fill out the config file, just because I thought that'd be nice :)
 
