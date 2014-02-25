@@ -7,7 +7,7 @@ To Install Laravel-Piwik using Composer, the Default method for Laravel, add ``R
 
 	{
 		"require": {
-			"RobBrazier\Piwik": "dev-master"
+			"RobBrazier/Piwik": "dev-master"
 		}
 	}
 
