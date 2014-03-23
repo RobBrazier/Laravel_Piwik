@@ -72,6 +72,35 @@ class Piwik {
      */
     private $period = '';
 
+    /**
+     * @var bool
+     */
+    private $constructed = false;
+
+
+    /**
+     * @param $piwik_url
+     * @param $site_id
+     * @param $apikey
+     * @param $username
+     * @param $password
+     * @param $format
+     * @param $period
+     */
+    public function __construct(array $args = array()) {
+        if(!empty($args)){
+            $this->piwik_url = $args['piwik_url'];
+            $this->site_id = $args['site_id'];
+            $this->apikey = $args['apikey'];
+            $this->username = $args['username'];
+            $this->password = $args['password'];
+            $this->format = $args['format'];
+            $this->period = $args['period'];
+            $this->constructed = true;
+        }
+
+    }
+
 // ====================================================================
 //
 // CHECKERS & GETTERS - Check the config file and retrieve the contents
@@ -87,7 +116,7 @@ class Piwik {
      */
 
     private function date() {
-        $this->period = Config::get('piwik::period');
+        $this->period = ($this->constructed) ? $this->period : Config::get('piwik::period');
         switch ($this->period) {
             case 'today':
                 return '&period=day&date=today';
@@ -178,7 +207,7 @@ class Piwik {
         if($override !== null) {
             $this->format = $override;
         } else {
-            $this->format = Config::get('piwik::format');
+            $this->format = ($this->constructed) ? $this->format : Config::get('piwik::format');
         }
         switch ($this->format) {
             case 'json':
@@ -220,7 +249,7 @@ class Piwik {
      */
 
     private function get_site_id($id = null) {
-        $this->site_id = Config::get('piwik::site_id');
+        $this->site_id = ($this->constructed) ? $this->site_id : Config::get('piwik::site_id');
         if(isset($id)){
             $this->site_id = $id;
             return $this->site_id;
@@ -238,9 +267,9 @@ class Piwik {
      */
     
     private function get_apikey() {
-        $this->apikey = Config::get('piwik::api_key');
-        $this->username = Config::get('piwik::username');
-        $this->password = md5(Config::get('piwik::password'));
+        $this->apikey = ($this->constructed) ? $this->apikey : Config::get('piwik::api_key');
+        $this->username = ($this->constructed) ? $this->username : Config::get('piwik::username');
+        $this->password = ($this->constructed) ? $this->password : md5(Config::get('piwik::password'));
 
         if(empty($this->apikey) && !empty($this->username) && !empty($this->password)){
             $url = $this->get_piwik_url().'/index.php?module=API&method=UsersManager.getTokenAuth&userLogin='.$this->username.'&md5Password='.$this->password.'&format='.$this->check_format();
@@ -263,7 +292,7 @@ class Piwik {
      */
     
     private function get_piwik_url() {
-        $this->piwik_url = Config::get('piwik::piwik_url');
+        $this->piwik_url = ($this->constructed) ? $this->piwik_url : Config::get('piwik::piwik_url');
         return $this->piwik_url;
     }
 
@@ -349,7 +378,7 @@ class Piwik {
      *
      * @access  public
      * @param   string  $format     Override string for the format of the API Query to be returned as
-     * @return  array
+     * @return  object
      */
     public function actions($format = null) {
         $url = $this->get_piwik_url().'/index.php?module=API&method=VisitsSummary.getActions&idSite='.$this->get_site_id().$this->date().'&format='.$this->check_format($format).'&token_auth='.$this->get_apikey();
@@ -406,6 +435,10 @@ class Piwik {
      * @return  array
      */
     public function last_visits_parsed($count, $format = null) {
+        if(in_array($format, array('xml', 'rss', 'html', 'original'))){
+            echo "Sorry, 'xml', 'rss', 'html' and 'original' are not yet supported.";
+            return false;
+        }
         $url = $this->get_piwik_url().'/index.php?module=API&method=Live.getLastVisitsDetails&idSite='.$this->get_site_id().$this->date().'&filter_limit='.$count.'&format='.$this->check_format($format).'&token_auth='.$this->get_apikey();
         $visits = $this->get_decoded($url, $format);
         
@@ -474,19 +507,19 @@ class Piwik {
                 break;
 
             case 'xml':
-                
+
                 break;
 
             case 'html':
-                
+
                 break;
                     
             case 'rss':
-                
+
                 break;
                 
             case 'original':
-                
+
                 break;
                     
             default:
@@ -616,16 +649,16 @@ class Piwik {
     public function tag() {
         $tag = 
 '<!-- Piwik -->
-<script type="text/javascript"> 
-var _paq = _paq || []; 
-(function(){ var u=(("https:" == document.location.protocol) ? "'.$this->to_https().'/" : "'.$this->to_http().'/"); 
-_paq.push([\'setSiteId\', '.$this->get_site_id().']); 
-_paq.push([\'setTrackerUrl\', u+\'piwik.php\']); 
-_paq.push([\'trackPageView\']); 
-_paq.push([\'enableLinkTracking\']); 
+<script type="text/javascript">
+var _paq = _paq || [];
+(function(){ var u=(("https:" == document.location.protocol) ? "'.$this->to_https().'/" : "'.$this->to_http().'/");
+_paq.push([\'setSiteId\', '.$this->get_site_id().']);
+_paq.push([\'setTrackerUrl\', u+\'piwik.php\']);
+_paq.push([\'trackPageView\']);
+_paq.push([\'enableLinkTracking\']);
 var d=document, g=d.createElement(\'script\'), s=d.getElementsByTagName(\'script\')[0]; g.type=\'text/javascript\'; g.defer=true; g.async=true; g.src=u+\'piwik.js\';
 s.parentNode.insertBefore(g,s); })();
-</script> 
+</script>
 <!-- End Piwik Code -->';
                 
         return $tag;
@@ -640,7 +673,7 @@ s.parentNode.insertBefore(g,s); })();
      * @return  array
      */
 
-    public function seo_rank($id = null, $format = 'json') { // PHP doesn't seem to work with this, so defaults to JSON
+    public function seo_rank($id, $format = 'json') { // PHP doesn't seem to work with this, so defaults to JSON
         $url = $this->get_piwik_url().'/index.php?module=API&method=SEO.getRank&url='.$this->url_from_id($id).'&format='.$this->check_format($format).'&token_auth='.$this->get_apikey();
         return $this->get_decoded($url, $format);
     }  

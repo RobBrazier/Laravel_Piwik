@@ -9,11 +9,8 @@ php:
 before_script:
 #  - curl -s http://getcomposer.org/installer | php
 #  - php composer.phar install --dev
-  - composer create-project laravel/laravel
-  - cd laravel
-  - composer require robbrazier/piwik:dev-master
-  - composer update
-  - cd vendor/robbrazier/piwik/RobBrazier/Piwik
+  - composer self-update
+
   - phpunit
 
 script: phpunit
