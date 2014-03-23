@@ -1,5 +1,7 @@
-Laravel-Piwik v2.0.0
+Laravel-Piwik v2.0.1
 ====================
+
+[![Build Status](https://travis-ci.org/RobBrazier/Laravel_Piwik.svg?branch=master)](https://travis-ci.org/RobBrazier/Laravel_Piwik)
 
 An Interface to Piwik's Analytics API for Laravel (Composer Package)
 

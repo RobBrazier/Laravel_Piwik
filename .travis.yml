@@ -7,10 +7,8 @@ php:
   - hhvm
 
 before_script:
-#  - curl -s http://getcomposer.org/installer | php
-#  - php composer.phar install --dev
-  - composer self-update
-
+  - curl -s http://getcomposer.org/installer | php
+  - php composer.phar install --dev
   - phpunit
 
 script: phpunit
