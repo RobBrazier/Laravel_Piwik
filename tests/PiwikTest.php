@@ -1,10 +1,8 @@
 <?php
 
 namespace tests;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Facade;
+
 use \RobBrazier\Piwik\Facades\Piwik;
-use Mockery as m;
 
 class PiwikTest extends \PHPUnit_Framework_TestCase {
 
@@ -17,7 +15,7 @@ class PiwikTest extends \PHPUnit_Framework_TestCase {
 
         parent::setUp();
 
-        $this->piwik = new \RobBrazier\Piwik\Piwik(array('piwik_url' => 'http://demo.piwik.org', 'site_id' => $this->site_id, 'apikey' => 'anonymous', 'username' => '', 'password' => '', 'format' => 'json', 'period' => 'yesterday'));
+        $this->piwik = new Piwik(array('piwik_url' => 'http://demo.piwik.org', 'site_id' => $this->site_id, 'apikey' => 'anonymous', 'username' => '', 'password' => '', 'format' => 'json', 'period' => 'yesterday'));
 
         $this->tag = <<<EOT
 <!-- Piwik -->
