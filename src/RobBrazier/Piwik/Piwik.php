@@ -28,7 +28,7 @@
  * @package    Libraries
  * @subpackage Libraries
  * @author     Rob Brazier <rob.brazier@me.com>
- * @copyright  2012 Rob Brazier.
+ * @copyright  2014 Rob Brazier.
  * @license    http://www.opensource.org/licenses/mit-license.php  MIT License
  * @version    2.0.0
  * @link       http://robbrazier.com
@@ -38,13 +38,38 @@ namespace RobBrazier\Piwik;
 use \Config;
 use \Session;
 
+/**
+ * Class Piwik
+ * @package RobBrazier\Piwik
+ */
 class Piwik {
+    /**
+     * @var string
+     */
     private $piwik_url = '';
+    /**
+     * @var string
+     */
     private $site_id = '';
+    /**
+     * @var string
+     */
     private $apikey = '';
+    /**
+     * @var string
+     */
     private $username = '';
+    /**
+     * @var string
+     */
     private $password = '';
+    /**
+     * @var string
+     */
     private $format = '';
+    /**
+     * @var string
+     */
     private $period = '';
 
 // ====================================================================
@@ -55,7 +80,7 @@ class Piwik {
     
     /**
      * date
-     * Read config for the period to make API querys about, and translate it into URL-friendly strings
+     * Read config for the period to make API queries about, and translate it into URL-friendly strings
      *
      * @access  private
      * @return  string
@@ -242,6 +267,10 @@ class Piwik {
         return $this->piwik_url;
     }
 
+    /**
+     * @param $url
+     * @return mixed
+     */
     private function _get($url) {
       $ch = curl_init();
       $timeout = 5;
@@ -628,8 +657,16 @@ s.parentNode.insertBefore(g,s); })();
     public function version($format = null) {
         $url = $this->get_piwik_url().'/index.php?module=API&method=API.getPiwikVersion&format='.$this->check_format($format).'&token_auth='.$this->get_apikey();
         return $this->get_decoded($url, $format);
-    }  
+    }
 
+    /**
+     * @param $method
+     * @param array $arguments
+     * @param bool $id
+     * @param bool $period
+     * @param null $format
+     * @return array
+     */
     public function custom($method, $arguments = array(), $id = false, $period = false, $format = null) {
         if($arguments == null){
             $arguments = array();
