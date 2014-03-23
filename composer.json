@@ -2,6 +2,7 @@
     "name": "robbrazier/piwik",
     "description": "Piwik Bundle for Laravel 4",
     "license": "MIT",
+    "version": "2.0.1",
     "keywords": ["laravel","piwik"],
     "authors": [
         {
