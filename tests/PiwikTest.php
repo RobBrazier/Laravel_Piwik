@@ -2,7 +2,7 @@
 
 namespace tests;
 
-use \RobBrazier\Piwik\Facades\Piwik;
+use \RobBrazier\Piwik\Piwik;
 
 class PiwikTest extends \PHPUnit_Framework_TestCase {
 
