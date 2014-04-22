@@ -712,7 +712,7 @@ s.parentNode.insertBefore(g,s); })();
             if($id){
                 $url .= '&idSite='.$this->get_site_id($id);
             }
-            if($period = true){
+            if($period === true){
                 $url .= $this->date();
             }
             $url .= '&format='.$this->check_format($format).'&token_auth='.$this->get_apikey();
