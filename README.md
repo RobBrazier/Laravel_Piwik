@@ -1,7 +1,8 @@
 Laravel-Piwik v2.0.1
 ====================
 
-[![Build Status](https://travis-ci.org/RobBrazier/Laravel_Piwik.svg?branch=master)](https://travis-ci.org/RobBrazier/Laravel_Piwik)
+[![Build Status](http://img.shields.io/travis/RobBrazier/Laravel_Piwik.svg?style=flat-square)](https://travis-ci.org/RobBrazier/Laravel_Piwik)
+[![Code Coverage](http://img.shields.io/coveralls/RobBrazier/Laravel_Piwik.svg?style=flat-square)](https://coveralls.io/r/RobBrazier/Laravel_Piwik)
 
 An Interface to Piwik's Analytics API for Laravel (Composer Package)
 
