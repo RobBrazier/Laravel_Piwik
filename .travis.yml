@@ -17,4 +17,5 @@ allow_failures:
 #  - php: hhvm
 
 after_script:
-  - php vendor/bin/coveralls
+  - phpunit --coverage-clover build/logs/clover.xml
+  - CODECLIMATE_REPO_TOKEN=bd7b0eb5f9614b481d951175ce15f1402d34c0976d41f730f5c36c2844c390fb ./vendor/bin/test-reporter
