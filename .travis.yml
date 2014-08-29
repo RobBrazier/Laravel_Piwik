@@ -4,7 +4,7 @@ php:
   - 5.4
   - 5.5
   - 5.6
-  # - hhvm
+#  - hhvm
 
 before_script:
   - curl -s http://getcomposer.org/installer | php
@@ -13,5 +13,8 @@ before_script:
 script: phpunit
 
 allow_failures:
- - php: 5.6
-# - php: hhvm
+  - php: 5.6
+#  - php: hhvm
+
+after_script:
+  - php vendor/bin/coveralls
