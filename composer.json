@@ -1,6 +1,6 @@
 {
     "name": "robbrazier/piwik",
-    "description": "Piwik Bundle for Laravel",
+    "description": "Piwik Package for Laravel",
     "license": "MIT",
     "version": "2.1.0",
     "keywords": ["laravel","piwik"],
