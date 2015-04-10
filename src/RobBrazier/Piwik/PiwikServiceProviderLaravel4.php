@@ -2,7 +2,7 @@
 
 use Illuminate\Support\ServiceProvider;
 
-class PiwikServiceProvider extends ServiceProvider {
+class PiwikServiceProviderLaravel4 extends ServiceProvider {
 
 	/**
 	 * Indicates if loading of the provider is deferred.
@@ -18,9 +18,7 @@ class PiwikServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->publishes([
-		    __DIR__.'/../../config/config.php' => config_path('piwik.php'),
-		]);
+		$this->package('robbrazier/piwik');
 	}
 
 	/**
@@ -30,8 +28,9 @@ class PiwikServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-        $this->app->bind('piwik', function() {
-        	return new Piwik;
+
+		$this->app['piwik'] = $this->app->share(function($app) {
+            return new Piwik;
         });
 	}
 
@@ -42,7 +41,7 @@ class PiwikServiceProvider extends ServiceProvider {
 	 */
 	public function provides()
 	{
-		return array('RobBrazier\Piwik\Piwik');
+		return array('piwik');
 	}
 
 }
