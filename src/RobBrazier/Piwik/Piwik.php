@@ -3,7 +3,7 @@
  * MIT License
  * ===========
  *
- * Copyright (c) 2012 Rob Brazier <rob.brazier@me.com>
+ * Copyright (c) 2015 Rob Brazier <rob.brazier@me.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -28,14 +28,13 @@
  * @package    Libraries
  * @subpackage Libraries
  * @author     Rob Brazier <rob.brazier@me.com>
- * @copyright  2014 Rob Brazier.
+ * @copyright  2015 Rob Brazier.
  * @license    http://www.opensource.org/licenses/mit-license.php  MIT License
- * @version    2.0.0
+ * @version    2.0.2
  * @link       http://robbrazier.com
  */
 
 namespace RobBrazier\Piwik;
-use \Config;
 use \Session;
 
 /**
@@ -116,7 +115,7 @@ class Piwik {
      */
 
     private function date() {
-        $this->period = ($this->constructed) ? $this->period : Config::get('piwik::period');
+        $this->period = ($this->constructed) ? $this->period : config('piwik.period');
         switch ($this->period) {
             case 'today':
                 return '&period=day&date=today';
@@ -207,7 +206,7 @@ class Piwik {
         if($override !== null) {
             $this->format = $override;
         } else {
-            $this->format = ($this->constructed) ? $this->format : Config::get('piwik::format');
+            $this->format = ($this->constructed) ? $this->format : config('piwik.format');
         }
         switch ($this->format) {
             case 'json':
@@ -249,7 +248,7 @@ class Piwik {
      */
 
     private function get_site_id($id = null) {
-        $this->site_id = ($this->constructed) ? $this->site_id : Config::get('piwik::site_id');
+        $this->site_id = ($this->constructed) ? $this->site_id : config('piwik.site_id');
         if(isset($id)){
             $this->site_id = $id;
             return $this->site_id;
@@ -267,9 +266,9 @@ class Piwik {
      */
     
     private function get_apikey() {
-        $this->apikey = ($this->constructed) ? $this->apikey : Config::get('piwik::api_key');
-        $this->username = ($this->constructed) ? $this->username : Config::get('piwik::username');
-        $this->password = ($this->constructed) ? $this->password : md5(Config::get('piwik::password'));
+        $this->apikey = ($this->constructed) ? $this->apikey : config('piwik.api_key');
+        $this->username = ($this->constructed) ? $this->username : config('piwik.username');
+        $this->password = ($this->constructed) ? $this->password : md5(config('piwik.password'));
 
         if(empty($this->apikey) && !empty($this->username) && !empty($this->password)){
             $url = $this->get_piwik_url().'/index.php?module=API&method=UsersManager.getTokenAuth&userLogin='.$this->username.'&md5Password='.$this->password.'&format='.$this->check_format();
@@ -292,7 +291,7 @@ class Piwik {
      */
     
     private function get_piwik_url() {
-        $this->piwik_url = ($this->constructed) ? $this->piwik_url : Config::get('piwik::piwik_url');
+        $this->piwik_url = ($this->constructed) ? $this->piwik_url : config('piwik.piwik_url');
         return $this->piwik_url;
     }
 
