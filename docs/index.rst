@@ -11,6 +11,7 @@ Contents:
 	installation
 	installation-l4
 	installation-l3
+	usage
 	actions
 	downloads
 	keywords
