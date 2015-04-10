@@ -1,24 +1,22 @@
-Laravel-Piwik v2.0.1
+Laravel-Piwik v2.0.2
 ====================
 
 [![Build Status](http://img.shields.io/travis/RobBrazier/Laravel_Piwik.svg?style=flat-square)](https://travis-ci.org/RobBrazier/Laravel_Piwik)
-[![Code Coverage](http://img.shields.io/codeclimate/coverage/github/RobBrazier/Laravel_Piwik.svg?style=flat-square)](https://codeclimate.com/github/RobBrazier/Laravel_Piwik)
-[![Code Climate](http://img.shields.io/codeclimate/github/RobBrazier/Laravel_Piwik.svg?style=flat-square)](https://codeclimate.com/github/RobBrazier/Laravel_Piwik)
+[![Packagist Version](https://img.shields.io/packagist/v/robbrazier/piwik.svg?style=flat-square)](https://packagist.org/packages/robbrazier/piwik)
+[![Packagist Total Downloads](https://img.shields.io/packagist/dt/robbrazier/piwik.svg?style=flat-square)](https://packagist.org/packages/robbrazier/piwik)
 
 An Interface to Piwik's Analytics API for Laravel (Composer Package)
 
-This is the Laravel 4 version of the Laravel-Piwik Bundle.
+This is the Laravel 4/5 version of the Laravel-Piwik Bundle.
 
-I have not yet figured out tests, they will be done some time in the future, but not at the moment :)
-
-##Installation
+##Laravel 5 Installation
 
 Add `RobBrazier/Piwik` to `composer.json`:
 
 ```javascript
 {
     "require": {
-        "RobBrazier/Piwik": "dev-master"
+        "RobBrazier/Piwik": "~2.0"
     }
 }
 ```
@@ -29,6 +27,42 @@ Add `'RobBrazier\Piwik\PiwikServiceProvider'` and `'Piwik' => 'RobBrazier\Piwik\
 'providers' = array(
     ...
     'RobBrazier\Piwik\PiwikServiceProvider',
+    ...
+);
+
+[...]
+
+'aliases' = array(
+    ...
+    'Piwik' => 'RobBrazier\Piwik\Facades\Piwik',
+    ...
+);
+```
+
+Then move the config file out of the package, so that it doesn't get replaced when you update, by doing `php artisan vendor:publish --provider="RobBrazier\Piwik\PiwikServiceProvider" --tag="config"`.
+
+Update your packages with `composer update` or install with `composer install`.
+
+Then go to `config/piwik.php` and add your config settings such as server, username, password, apikey etc.
+
+##Laravel 4 Installation
+
+Add `RobBrazier/Piwik` to `composer.json`:
+
+```javascript
+{
+    "require": {
+        "RobBrazier/Piwik": "~2.0"
+    }
+}
+```
+
+Add `'RobBrazier\Piwik\PiwikServiceProviderLaravel4'` and `'Piwik' => 'RobBrazier\Piwik\Facades\Piwik'` to `app/config/app.php`
+
+```php
+'providers' = array(
+    ...
+    'RobBrazier\Piwik\PiwikServiceProviderLaravel4',
     ...
 );
 
