@@ -9,6 +9,7 @@ Contents:
    	:maxdepth: 2
 	
 	installation
+	installation-l4
 	installation-l3
 	actions
 	downloads
