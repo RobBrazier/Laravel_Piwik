@@ -1,8 +1,8 @@
 {
     "name": "robbrazier/piwik",
-    "description": "Piwik Bundle for Laravel 4",
+    "description": "Piwik Bundle for Laravel 4/5",
     "license": "MIT",
-    "version": "2.0.1",
+    "version": "2.0.2",
     "keywords": ["laravel","piwik"],
     "authors": [
         {
@@ -15,8 +15,7 @@
         "illuminate/support": ">=4.0.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "3.7.*",
-        "codeclimate/php-test-reporter": "dev-master"
+        "phpunit/phpunit": "3.7.*"
     },
     "autoload": {
         "psr-0": {
