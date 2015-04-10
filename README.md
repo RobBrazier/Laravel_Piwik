@@ -1,4 +1,4 @@
-Laravel-Piwik v2.0.2
+Laravel-Piwik v2.1.0
 ====================
 
 [![Build Status](http://img.shields.io/travis/RobBrazier/Laravel_Piwik.svg?style=flat-square)](https://travis-ci.org/RobBrazier/Laravel_Piwik)
@@ -7,16 +7,16 @@ Laravel-Piwik v2.0.2
 
 An Interface to Piwik's Analytics API for Laravel (Composer Package)
 
-This is the Laravel 4/5 version of the Laravel-Piwik Bundle.
+This is the Laravel 5 version of the Laravel-Piwik Bundle.
 
-##Laravel 5 Installation
+##Installation
 
 Add `RobBrazier/Piwik` to `composer.json`:
 
 ```javascript
 {
     "require": {
-        "RobBrazier/Piwik": "~2.0"
+        "RobBrazier/Piwik": "~2.1"
     }
 }
 ```
@@ -44,42 +44,6 @@ Then move the config file out of the package, so that it doesn't get replaced wh
 Update your packages with `composer update` or install with `composer install`.
 
 Then go to `config/piwik.php` and add your config settings such as server, username, password, apikey etc.
-
-##Laravel 4 Installation
-
-Add `RobBrazier/Piwik` to `composer.json`:
-
-```javascript
-{
-    "require": {
-        "RobBrazier/Piwik": "~2.0"
-    }
-}
-```
-
-Add `'RobBrazier\Piwik\PiwikServiceProviderLaravel4'` and `'Piwik' => 'RobBrazier\Piwik\Facades\Piwik'` to `app/config/app.php`
-
-```php
-'providers' = array(
-    ...
-    'RobBrazier\Piwik\PiwikServiceProviderLaravel4',
-    ...
-);
-
-[...]
-
-'aliases' = array(
-    ...
-    'Piwik' => 'RobBrazier\Piwik\Facades\Piwik',
-    ...
-);
-```
-
-Then move the config file out of the package, so that it doesn't get replaced when you update, by doing `php artisan config:publish robbrazier/piwik`.
-
-Update your packages with `composer update` or install with `composer install`.
-
-Then go to `app/config/packages/robbrazier/piwik/config.php` and add your config settings such as server, username, password, apikey etc.
 
 ##Manual
 

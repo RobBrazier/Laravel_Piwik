@@ -13,11 +13,11 @@ To Install Laravel-Piwik using Composer, the Default method for Laravel, add ``R
 
 Step 2
 ------
-Then, add ``'RobBrazier\Piwik\PiwikServiceProviderLaravel4'`` and ``'Piwik' => 'RobBrazier\Piwik\Facades\Piwik'`` to ``app/config/app.php``::
+Then, add ``'RobBrazier\Piwik\PiwikServiceProvider'`` and ``'Piwik' => 'RobBrazier\Piwik\Facades\Piwik'`` to ``app/config/app.php``::
 
 	'providers' = array(
 		...
-		'RobBrazier\Piwik\PiwikServiceProviderLaravel4',
+		'RobBrazier\Piwik\PiwikServiceProvider',
 		...
 	);
 
