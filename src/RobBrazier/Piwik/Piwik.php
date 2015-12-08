@@ -449,7 +449,7 @@ class Piwik {
             case 'json':
                 $count = count($v->actionDetails) - 1; 
                 $page_link = $v->actionDetails[$count]->url;
-                $page_title = $v->actionDetails[$count]->pageTitle;
+                $page_title = isset($v->actionDetails[$count]->pageTitle) ? $v->actionDetails[$count]->pageTitle : null;
                 
                 // Get just the image names (API returns path to icons in piwik install)
                 $flag = explode('/', $v->countryFlag);
