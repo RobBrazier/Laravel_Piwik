@@ -1,5 +1,5 @@
 {
-    "name": "katzefudder/piwik",
+    "name": "robbrazier/piwik",
     "description": "Piwik Package for Laravel",
     "license": "MIT",
     "version": "2.1.0",
