@@ -51,13 +51,13 @@ EOT;
     public function testActionsHtml() {
         $document = new DOMDocument;
         $document->loadHTML($this->piwik->actions('html'));
-        $this->assertGreaterThan(0, $document->getElementsByTagName("td")[0]->nodeValue);
+        $this->assertGreaterThan(0, $document->getElementsByTagName("td")->item(0)->nodeValue);
     }
 
     public function testActionsOriginal() {
         $document = new DOMDocument;
         $document->loadHTML($this->piwik->actions('original'));
-        $this->assertGreaterThan(0, $document->getElementsByTagName("td")[0]->nodeValue);
+        $this->assertGreaterThan(0, $document->getElementsByTagName("td")->item(0)->nodeValue);
     }
 
     /**
@@ -406,13 +406,13 @@ EOT;
     public function testUniqueVisitorsHtml() {
         $document = new DOMDocument;
         $document->loadHTML($this->piwik->unique_visitors('html'));
-        $this->assertGreaterThan(0, $document->getElementsByTagName("td")[0]->nodeValue);
+        $this->assertGreaterThan(0, $document->getElementsByTagName("td")->item(0)->nodeValue);
     }
 
     public function testUniqueVisitorsOriginal() {
         $document = new DOMDocument;
         $document->loadHTML($this->piwik->unique_visitors('html'));
-        $this->assertGreaterThan(0, $document->getElementsByTagName("td")[0]->nodeValue);
+        $this->assertGreaterThan(0, $document->getElementsByTagName("td")->item(0)->nodeValue);
     }
 
     /**
@@ -433,13 +433,13 @@ EOT;
     public function testVisitsHtml() {
         $document = new DOMDocument;
         $document->loadHTML($this->piwik->visits('html'));
-        $this->assertGreaterThan(0, $document->getElementsByTagName("td")[0]->nodeValue);
+        $this->assertGreaterThan(0, $document->getElementsByTagName("td")->item(0)->nodeValue);
     }
 
     public function testVisitsOriginal() {
         $document = new DOMDocument;
         $document->loadHTML($this->piwik->visits('html'));
-        $this->assertGreaterThan(0, $document->getElementsByTagName("td")[0]->nodeValue);
+        $this->assertGreaterThan(0, $document->getElementsByTagName("td")->item(0)->nodeValue);
     }
 
     /**
