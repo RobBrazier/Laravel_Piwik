@@ -3,6 +3,7 @@
 namespace tests;
 
 use \RobBrazier\Piwik\Piwik;
+use \DOMDocument;
 
 class PiwikTest extends \PHPUnit_Framework_TestCase {
 
@@ -40,19 +41,23 @@ EOT;
      */
 
     public function testActionsJson() {
-        $this->assertEquals(gettype($this->piwik->actions('json')), 'object');
+        $this->assertObjectHasAttribute("value", $this->piwik->actions('json'));
     }
 
     public function testActionsPhp() {
-        $this->assertEquals(gettype($this->piwik->actions('php')), 'double');
+        $this->assertGreaterThan(0, $this->piwik->actions('php'));
     }
 
     public function testActionsHtml() {
-        $this->assertEquals(gettype($this->piwik->actions('html')), 'string');
+        $document = new DOMDocument;
+        $document->loadHTML($this->piwik->actions('html'));
+        $this->assertGreaterThan(0, $document->getElementsByTagName("td")[0]->nodeValue);
     }
 
     public function testActionsOriginal() {
-        $this->assertEquals(gettype($this->piwik->actions('original')), 'string');
+        $document = new DOMDocument;
+        $document->loadHTML($this->piwik->actions('original'));
+        $this->assertGreaterThan(0, $document->getElementsByTagName("td")[0]->nodeValue);
     }
 
     /**
@@ -61,19 +66,43 @@ EOT;
      */
 
     public function testDownloadsJson() {
-        $this->assertEquals(gettype($this->piwik->downloads('json')), 'array');
+        $downloads = $this->piwik->downloads('json');
+        foreach($downloads as $d) {
+            $this->assertObjectHasAttribute("label", $d);
+            $this->assertObjectHasAttribute("nb_visits", $d);
+            $this->assertObjectHasAttribute("nb_hits", $d);
+            $this->assertObjectHasAttribute("sum_time_spent", $d);
+            $this->assertObjectHasAttribute("exit_nb_visits", $d);
+        }
     }
 
     public function testDownloadsPhp() {
-        $this->assertEquals(gettype($this->piwik->downloads('php')), 'array');
+        $downloads = $this->piwik->downloads('php');
+        foreach($downloads as $d) {
+            $this->assertArrayHasKey("label", $d);
+            $this->assertArrayHasKey("nb_visits", $d);
+            $this->assertArrayHasKey("nb_hits", $d);
+            $this->assertArrayHasKey("sum_time_spent", $d);
+            $this->assertArrayHasKey("exit_nb_visits", $d);
+        }
     }
 
     public function testDownloadsHtml() {
-        $this->assertEquals(gettype($this->piwik->downloads('html')), 'string');
+        $downloads = $this->piwik->downloads('html');
+        $document = new DOMDocument;
+        $document->loadHTML($downloads);
+        $headingsCount = $document->getElementsByTagName("th")->length;
+        $contentSize = $document->getElementsByTagName("td")->length;
+        $this->assertEquals(0, $contentSize % $headingsCount);
     }
 
     public function testDownloadsOriginal() {
-        $this->assertEquals(gettype($this->piwik->downloads('original')), 'string');
+        $downloads = $this->piwik->downloads('original');
+        $document = new DOMDocument;
+        $document->loadHTML($downloads);
+        $headingsCount = $document->getElementsByTagName("th")->length;
+        $contentSize = $document->getElementsByTagName("td")->length;
+        $this->assertEquals(0, $contentSize % $headingsCount);
     }
 
     /**
@@ -82,19 +111,55 @@ EOT;
      */
 
     public function testKeywordsJson() {
-        $this->assertEquals(gettype($this->piwik->keywords('json')), 'array');
+        $keywords = $this->piwik->keywords('json');
+        foreach($keywords as $d) {
+            $this->assertObjectHasAttribute("label", $d);
+            $this->assertObjectHasAttribute("nb_uniq_visitors", $d);
+            $this->assertObjectHasAttribute("nb_visits", $d);
+            $this->assertObjectHasAttribute("nb_actions", $d);
+            $this->assertObjectHasAttribute("nb_users", $d);
+            $this->assertObjectHasAttribute("max_actions", $d);
+            $this->assertObjectHasAttribute("sum_visit_length", $d);
+            $this->assertObjectHasAttribute("bounce_count", $d);
+            $this->assertObjectHasAttribute("nb_visits_converted", $d);
+            $this->assertObjectHasAttribute("segment", $d);
+            $this->assertObjectHasAttribute("idsubdatatable", $d);
+        }
     }
 
     public function testKeywordsPhp() {
-        $this->assertEquals(gettype($this->piwik->keywords('php')), 'array');
+        $keywords = $this->piwik->keywords('php');
+        foreach($keywords as $d) {
+            $this->assertArrayHasKey("label", $d);
+            $this->assertArrayHasKey("nb_uniq_visitors", $d);
+            $this->assertArrayHasKey("nb_visits", $d);
+            $this->assertArrayHasKey("nb_actions", $d);
+            $this->assertArrayHasKey("nb_users", $d);
+            $this->assertArrayHasKey("max_actions", $d);
+            $this->assertArrayHasKey("sum_visit_length", $d);
+            $this->assertArrayHasKey("bounce_count", $d);
+            $this->assertArrayHasKey("nb_visits_converted", $d);
+            $this->assertArrayHasKey("segment", $d);
+            $this->assertArrayHasKey("idsubdatatable", $d);
+        }
     }
 
     public function testKeywordsHtml() {
-        $this->assertEquals(gettype($this->piwik->keywords('html')), 'string');
+        $keywords = $this->piwik->keywords('html');
+        $document = new DOMDocument;
+        $document->loadHTML($keywords);
+        $headingsCount = $document->getElementsByTagName("th")->length;
+        $contentSize = $document->getElementsByTagName("td")->length;
+        $this->assertEquals(0, $contentSize % $headingsCount);
     }
 
     public function testKeywordsOriginal() {
-        $this->assertEquals(gettype($this->piwik->keywords('original')), 'string');
+        $keywords = $this->piwik->keywords('html');
+        $document = new DOMDocument;
+        $document->loadHTML($keywords);
+        $headingsCount = $document->getElementsByTagName("th")->length;
+        $contentSize = $document->getElementsByTagName("td")->length;
+        $this->assertEquals(0, $contentSize % $headingsCount);
     }
 
     /**
@@ -103,19 +168,39 @@ EOT;
      */
 
     public function testLastVisitsJson() {
-        $this->assertEquals(gettype($this->piwik->last_visits($this->last_visits_count, 'json')), 'array');
+        $lastVisits = $this->piwik->last_visits($this->last_visits_count, 'json');
+        foreach($lastVisits as $d) {
+            $this->assertObjectHasAttribute("idSite", $d);
+            $this->assertObjectHasAttribute("idVisit", $d);
+            $this->assertObjectHasAttribute("actionDetails", $d);   
+        }
     }
 
     public function testLastVisitsPhp() {
-        $this->assertEquals(gettype($this->piwik->last_visits($this->last_visits_count, 'php')), 'array');
+        $lastVisits = $this->piwik->last_visits($this->last_visits_count, 'php');
+        foreach($lastVisits as $d) {
+            $this->assertArrayHasKey("idSite", $d);
+            $this->assertArrayHasKey("idVisit", $d);
+            $this->assertArrayHasKey("actionDetails", $d);
+        }
     }
 
     public function testLastVisitsHtml() {
-        $this->assertEquals(gettype($this->piwik->last_visits($this->last_visits_count, 'html')), 'string');
+        $lastVisits = $this->piwik->last_visits($this->last_visits_count, 'html');
+        $document = new DOMDocument;
+        $document->loadHTML($lastVisits);
+        $headingsCount = $document->getElementsByTagName("th")->length;
+        $contentSize = $document->getElementsByTagName("td")->length;
+        $this->assertEquals(0, $contentSize % $headingsCount);
     }
 
     public function testLastVisitsOriginal() {
-        $this->assertEquals(gettype($this->piwik->last_visits($this->last_visits_count, 'original')), 'string');
+        $lastVisits = $this->piwik->last_visits($this->last_visits_count, 'original');
+        $document = new DOMDocument;
+        $document->loadHTML($lastVisits);
+        $headingsCount = $document->getElementsByTagName("th")->length;
+        $contentSize = $document->getElementsByTagName("td")->length;
+        $this->assertEquals(0, $contentSize % $headingsCount);
     }
 
     /**
@@ -124,21 +209,46 @@ EOT;
      */
 
     public function testLastVisitsParsedJson() {
-        $this->assertEquals(gettype($this->piwik->last_visits_parsed($this->last_visits_count, 'json')), 'array');
+        $lastVisitsParsed = $this->piwik->last_visits_parsed($this->last_visits_count, 'json');
+        foreach($lastVisitsParsed as $d) {
+            $this->assertArrayHasKey("time", $d);
+            $this->assertArrayHasKey("title", $d);
+            $this->assertArrayHasKey("link", $d);   
+            $this->assertArrayHasKey("ip_address", $d);   
+            $this->assertArrayHasKey("provider", $d);   
+            $this->assertArrayHasKey("country", $d);   
+            $this->assertArrayHasKey("country_icon", $d);   
+            $this->assertArrayHasKey("os", $d);   
+            $this->assertArrayHasKey("os_icon", $d);   
+            $this->assertArrayHasKey("browser", $d);   
+            $this->assertArrayHasKey("browser_icon", $d);     
+        }
     }
 
     public function testLastVisitsParsedPhp() {
-        $this->assertEquals(gettype($this->piwik->last_visits_parsed($this->last_visits_count, 'php')), 'array');
+        $lastVisitsParsed = $this->piwik->last_visits_parsed($this->last_visits_count, 'php');
+        foreach($lastVisitsParsed as $d) {
+            $this->assertArrayHasKey("time", $d);
+            $this->assertArrayHasKey("title", $d);
+            $this->assertArrayHasKey("link", $d);   
+            $this->assertArrayHasKey("ip_address", $d);   
+            $this->assertArrayHasKey("provider", $d);   
+            $this->assertArrayHasKey("country", $d);   
+            $this->assertArrayHasKey("country_icon", $d);   
+            $this->assertArrayHasKey("os", $d);   
+            $this->assertArrayHasKey("os_icon", $d);   
+            $this->assertArrayHasKey("browser", $d);   
+            $this->assertArrayHasKey("browser_icon", $d);   
+        }
     }
 
 //    public function testLastVisitsParsedHtml() {
 //        $this->assertEquals(gettype($this->piwik->last_visits_parsed($this->last_visits_count, 'html')), 'array');
-//        print_r($this->piwik->last_visits_parsed($this->last_visits_count, 'original'));
+
 //    }
 //
 //    public function testLastVisitsParsedOriginal() {
 //        $this->assertEquals(gettype($this->piwik->last_visits_parsed($this->last_visits_count, 'original')), 'array');
-//        print_r($this->piwik->last_visits_parsed($this->last_visits_count, 'original'));
 //    }
 
     /**
@@ -147,19 +257,43 @@ EOT;
      */
 
     public function testOutlinksJson() {
-        $this->assertEquals(gettype($this->piwik->outlinks('json')), 'array');
+        $outlinks = $this->piwik->outlinks('json');
+        foreach($outlinks as $d) {
+            $this->assertObjectHasAttribute("label", $d);
+            $this->assertObjectHasAttribute("nb_visits", $d);
+            $this->assertObjectHasAttribute("nb_hits", $d);   
+            $this->assertObjectHasAttribute("sum_time_spent", $d);   
+            $this->assertObjectHasAttribute("idsubdatatable", $d);   
+        }
     }
 
     public function testOutlinksPhp() {
-        $this->assertEquals(gettype($this->piwik->outlinks('php')), 'array');
+        $outlinks = $this->piwik->outlinks('php');
+        foreach($outlinks as $d) {
+            $this->assertArrayHasKey("label", $d);
+            $this->assertArrayHasKey("nb_visits", $d);
+            $this->assertArrayHasKey("nb_hits", $d);   
+            $this->assertArrayHasKey("sum_time_spent", $d);   
+            $this->assertArrayHasKey("idsubdatatable", $d);   
+        }
     }
 
     public function testOutlinksHtml() {
-        $this->assertEquals(gettype($this->piwik->outlinks('html')), 'string');
+        $outlinks = $this->piwik->outlinks('html');
+        $document = new DOMDocument;
+        $document->loadHTML($outlinks);
+        $headingsCount = $document->getElementsByTagName("th")->length;
+        $contentSize = $document->getElementsByTagName("td")->length;
+        $this->assertEquals(0, $contentSize % $headingsCount);
     }
 
     public function testOutlinksOriginal() {
-        $this->assertEquals(gettype($this->piwik->outlinks('original')), 'string');
+        $outlinks = $this->piwik->outlinks('original');
+        $document = new DOMDocument;
+        $document->loadHTML($outlinks);
+        $headingsCount = $document->getElementsByTagName("th")->length;
+        $contentSize = $document->getElementsByTagName("td")->length;
+        $this->assertEquals(0, $contentSize % $headingsCount);
     }
 
     /**
@@ -168,19 +302,43 @@ EOT;
      */
 
     public function testPageTitlesJson() {
-        $this->assertEquals(gettype($this->piwik->page_titles('json')), 'array');
+        $pageTitles = $this->piwik->page_titles('json');
+        foreach($pageTitles as $d) {
+            $this->assertObjectHasAttribute("label", $d);
+            $this->assertObjectHasAttribute("nb_visits", $d);  
+            $this->assertObjectHasAttribute("nb_hits", $d);   
+            $this->assertObjectHasAttribute("sum_time_spent", $d);    
+            $this->assertObjectHasAttribute("avg_time_generation", $d);    
+        }
     }
 
     public function testPageTitlesPhp() {
-        $this->assertEquals(gettype($this->piwik->page_titles('php')), 'array');
+        $pageTitles = $this->piwik->page_titles('php');
+        foreach($pageTitles as $d) {
+            $this->assertArrayHasKey("label", $d);
+            $this->assertArrayHasKey("nb_visits", $d);
+            $this->assertArrayHasKey("nb_hits", $d);   
+            $this->assertArrayHasKey("sum_time_spent", $d);    
+            $this->assertArrayHasKey("avg_time_generation", $d);    
+        }
     }
 
     public function testPageTitlesHtml() {
-        $this->assertEquals(gettype($this->piwik->page_titles('html')), 'string');
+        $pageTitles = $this->piwik->page_titles('html');
+        $document = new DOMDocument;
+        $document->loadHTML($pageTitles);
+        $headingsCount = $document->getElementsByTagName("th")->length;
+        $contentSize = $document->getElementsByTagName("td")->length;
+        $this->assertEquals(0, $contentSize % $headingsCount);
     }
 
     public function testPageTitlesOriginal() {
-        $this->assertEquals(gettype($this->piwik->page_titles('original')), 'string');
+        $pageTitles = $this->piwik->page_titles('original');
+        $document = new DOMDocument;
+        $document->loadHTML($pageTitles);
+        $headingsCount = $document->getElementsByTagName("th")->length;
+        $contentSize = $document->getElementsByTagName("td")->length;
+        $this->assertEquals(0, $contentSize % $headingsCount);
     }
 
     /**
@@ -189,19 +347,45 @@ EOT;
      */
 
     public function testSearchEnginesJson() {
-        $this->assertEquals(gettype($this->piwik->search_engines('json')), 'array');
+        $searchEngines = $this->piwik->search_engines('json');
+        foreach($searchEngines as $d) {
+            $this->assertObjectHasAttribute("label", $d);
+            $this->assertObjectHasAttribute("nb_uniq_visitors", $d);  
+            $this->assertObjectHasAttribute("nb_visits", $d);   
+            $this->assertObjectHasAttribute("url", $d);    
+            $this->assertObjectHasAttribute("logo", $d);    
+            $this->assertObjectHasAttribute("sum_visit_length", $d);    
+        }
     }
 
     public function testSearchEnginesPhp() {
-        $this->assertEquals(gettype($this->piwik->search_engines('php')), 'array');
+        $searchEngines = $this->piwik->search_engines('php');
+        foreach($searchEngines as $d) {
+            $this->assertArrayHasKey("label", $d);
+            $this->assertArrayHasKey("nb_uniq_visitors", $d);  
+            $this->assertArrayHasKey("nb_visits", $d);   
+            $this->assertArrayHasKey("url", $d);    
+            $this->assertArrayHasKey("logo", $d);    
+            $this->assertArrayHasKey("sum_visit_length", $d);    
+        }
     }
 
     public function testSearchEnginesHtml() {
-        $this->assertEquals(gettype($this->piwik->search_engines('html')), 'string');
+        $searchEngines = $this->piwik->search_engines('html');
+        $document = new DOMDocument;
+        $document->loadHTML($searchEngines);
+        $headingsCount = $document->getElementsByTagName("th")->length;
+        $contentSize = $document->getElementsByTagName("td")->length;
+        $this->assertEquals(0, $contentSize % $headingsCount);
     }
 
     public function testSearchEnginesOriginal() {
-        $this->assertEquals(gettype($this->piwik->search_engines('original')), 'string');
+        $searchEngines = $this->piwik->search_engines('original');
+        $document = new DOMDocument;
+        $document->loadHTML($searchEngines);
+        $headingsCount = $document->getElementsByTagName("th")->length;
+        $contentSize = $document->getElementsByTagName("td")->length;
+        $this->assertEquals(0, $contentSize % $headingsCount);
     }
 
     /**
@@ -210,19 +394,25 @@ EOT;
      */
 
     public function testUniqueVisitorsJson() {
-        $this->assertEquals(gettype($this->piwik->unique_visitors('json')), 'object');
+        $uniqueVisitors = $this->piwik->unique_visitors('json');
+        $this->assertGreaterThan(0, $uniqueVisitors->value);
     }
 
     public function testUniqueVisitorsPhp() {
-        $this->assertEquals(gettype($this->piwik->unique_visitors('php')), 'double');
+        $uniqueVisitors = $this->piwik->unique_visitors('php');
+        $this->assertGreaterThan(0, $uniqueVisitors);
     }
 
     public function testUniqueVisitorsHtml() {
-        $this->assertEquals(gettype($this->piwik->unique_visitors('html')), 'string');
+        $document = new DOMDocument;
+        $document->loadHTML($this->piwik->unique_visitors('html'));
+        $this->assertGreaterThan(0, $document->getElementsByTagName("td")[0]->nodeValue);
     }
 
     public function testUniqueVisitorsOriginal() {
-        $this->assertEquals(gettype($this->piwik->unique_visitors('original')), 'string');
+        $document = new DOMDocument;
+        $document->loadHTML($this->piwik->unique_visitors('html'));
+        $this->assertGreaterThan(0, $document->getElementsByTagName("td")[0]->nodeValue);
     }
 
     /**
@@ -231,19 +421,25 @@ EOT;
      */
 
     public function testVisitsJson() {
-        $this->assertEquals(gettype($this->piwik->visits('json')), 'object');
+        $visits = $this->piwik->visits('json');
+        $this->assertGreaterThan(0, $visits->value);
     }
 
     public function testVisitsPhp() {
-        $this->assertEquals(gettype($this->piwik->visits('php')), 'double');
+        $visits = $this->piwik->visits('php');
+        $this->assertGreaterThan(0, $visits);
     }
 
     public function testVisitsHtml() {
-        $this->assertEquals(gettype($this->piwik->visits('html')), 'string');
+        $document = new DOMDocument;
+        $document->loadHTML($this->piwik->visits('html'));
+        $this->assertGreaterThan(0, $document->getElementsByTagName("td")[0]->nodeValue);
     }
 
     public function testVisitsOriginal() {
-        $this->assertEquals(gettype($this->piwik->visits('original')), 'string');
+        $document = new DOMDocument;
+        $document->loadHTML($this->piwik->visits('html'));
+        $this->assertGreaterThan(0, $document->getElementsByTagName("td")[0]->nodeValue);
     }
 
     /**
@@ -252,19 +448,55 @@ EOT;
      */
 
     public function testWebsitesJson() {
-        $this->assertEquals(gettype($this->piwik->websites('json')), 'array');
+        $websites = $this->piwik->websites('json');
+        foreach($websites as $d) {
+            $this->assertObjectHasAttribute("label", $d);
+            $this->assertObjectHasAttribute("nb_uniq_visitors", $d);
+            $this->assertObjectHasAttribute("nb_visits", $d);
+            $this->assertObjectHasAttribute("nb_actions", $d);
+            $this->assertObjectHasAttribute("nb_users", $d);
+            $this->assertObjectHasAttribute("max_actions", $d);
+            $this->assertObjectHasAttribute("sum_visit_length", $d);
+            $this->assertObjectHasAttribute("bounce_count", $d);
+            $this->assertObjectHasAttribute("nb_visits_converted", $d);
+            $this->assertObjectHasAttribute("segment", $d);
+            $this->assertObjectHasAttribute("idsubdatatable", $d);
+        }
     }
 
     public function testWebsitesPhp() {
-        $this->assertEquals(gettype($this->piwik->websites('php')), 'array');
+        $websites = $this->piwik->websites('php');
+        foreach($websites as $d) {
+            $this->assertArrayHasKey("label", $d);
+            $this->assertArrayHasKey("nb_uniq_visitors", $d);
+            $this->assertArrayHasKey("nb_visits", $d);
+            $this->assertArrayHasKey("nb_actions", $d);
+            $this->assertArrayHasKey("nb_users", $d);
+            $this->assertArrayHasKey("max_actions", $d);
+            $this->assertArrayHasKey("sum_visit_length", $d);
+            $this->assertArrayHasKey("bounce_count", $d);
+            $this->assertArrayHasKey("nb_visits_converted", $d);
+            $this->assertArrayHasKey("segment", $d);
+            $this->assertArrayHasKey("idsubdatatable", $d);
+        }
     }
 
     public function testWebsitesHtml() {
-        $this->assertEquals(gettype($this->piwik->websites('html')), 'string');
+        $keywords = $this->piwik->websites('html');
+        $document = new DOMDocument;
+        $document->loadHTML($keywords);
+        $headingsCount = $document->getElementsByTagName("th")->length;
+        $contentSize = $document->getElementsByTagName("td")->length;
+        $this->assertEquals(0, $contentSize % $headingsCount);
     }
 
     public function testWebsitesOriginal() {
-        $this->assertEquals(gettype($this->piwik->websites('original')), 'string');
+        $keywords = $this->piwik->websites('original');
+        $document = new DOMDocument;
+        $document->loadHTML($keywords);
+        $headingsCount = $document->getElementsByTagName("th")->length;
+        $contentSize = $document->getElementsByTagName("td")->length;
+        $this->assertEquals(0, $contentSize % $headingsCount);
     }
 
     /**
@@ -272,7 +504,7 @@ EOT;
      */
 
     public function testTag() {
-        $this->assertEquals(json_encode($this->piwik->tag()), json_encode($this->tag));
+        $this->assertEquals($this->piwik->tag(), $this->tag);
     }
 
     /**
@@ -281,19 +513,47 @@ EOT;
      */
 
     public function testSeoRankJson() {
-        $this->assertEquals(gettype($this->piwik->seo_rank($this->site_id, 'json')), 'array');
+        $seoRank = $this->piwik->seo_rank($this->site_id, 'json');
+        foreach($seoRank as $d) {
+            $this->assertObjectHasAttribute("label", $d);
+            $this->assertObjectHasAttribute("id", $d);  
+            $this->assertObjectHasAttribute("rank", $d);   
+            $this->assertObjectHasAttribute("logo", $d);    
+            $this->assertObjectHasAttribute("logo_link", $d);    
+            $this->assertObjectHasAttribute("logo_tooltip", $d);    
+            $this->assertObjectHasAttribute("rank_suffix", $d);    
+        }
     }
 
     public function testSeoRankPhp() {
-        $this->assertEquals(gettype($this->piwik->seo_rank($this->site_id, 'php')), 'array');
+        $seoRank = $this->piwik->seo_rank($this->site_id, 'php');
+        foreach($seoRank as $d) {
+            $this->assertArrayHasKey("label", $d);
+            $this->assertArrayHasKey("id", $d);  
+            $this->assertArrayHasKey("rank", $d);   
+            $this->assertArrayHasKey("logo", $d);    
+            $this->assertArrayHasKey("logo_link", $d);    
+            $this->assertArrayHasKey("logo_tooltip", $d);    
+            $this->assertArrayHasKey("rank_suffix", $d);    
+        }
     }
 
     public function testSeoRankHtml() {
-        $this->assertEquals(gettype($this->piwik->seo_rank($this->site_id, 'html')), 'string');
+        $keywords = $this->piwik->seo_rank($this->site_id, 'html');
+        $document = new DOMDocument;
+        $document->loadHTML($keywords);
+        $headingsCount = $document->getElementsByTagName("th")->length;
+        $contentSize = $document->getElementsByTagName("td")->length;
+        $this->assertEquals(0, $contentSize % $headingsCount);
     }
 
     public function testSeoRankOriginal() {
-        $this->assertEquals(gettype($this->piwik->seo_rank($this->site_id, 'original')), 'string');
+        $keywords = $this->piwik->seo_rank($this->site_id, 'original');
+        $document = new DOMDocument;
+        $document->loadHTML($keywords);
+        $headingsCount = $document->getElementsByTagName("th")->length;
+        $contentSize = $document->getElementsByTagName("td")->length;
+        $this->assertEquals(0, $contentSize % $headingsCount);
     }
 
 
@@ -302,7 +562,8 @@ EOT;
      */
 
     public function testVersion() {
-        $this->assertEquals(gettype($this->piwik->version()->value), 'string');
+        $version = $this->piwik->version()->value;
+        $this->assertRegExp('/([0-9]+)\.([0-9]+)\.([0-9]+)(\-([a-zA-Z0-9]+))?/', $version);
     }
 
     /**
@@ -310,7 +571,8 @@ EOT;
      */
 
     public function testCustom() {
-        $this->assertEquals(gettype($this->piwik->custom('SitesManager.getSitesIdFromSiteUrl', array('url'=>'http://forum.piwik.org'), false, false, 'json')), 'array');
+        $custom = $this->piwik->custom('SitesManager.getSitesIdFromSiteUrl', array('url'=>'http://forum.piwik.org'), false, false, 'json');
+        $this->assertGreaterThan(0, $custom[0]->idsite);
     }
 
 }

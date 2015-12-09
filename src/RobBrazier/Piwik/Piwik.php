@@ -87,6 +87,7 @@ class Piwik {
      * @param $period
      */
     public function __construct(array $args = array()) {
+        date_default_timezone_set("UTC");
         if(!empty($args)){
             $this->piwik_url = $args['piwik_url'];
             $this->site_id = $args['site_id'];
@@ -449,7 +450,7 @@ class Piwik {
             case 'json':
                 $count = count($v->actionDetails) - 1; 
                 $page_link = $v->actionDetails[$count]->url;
-                $page_title = $v->actionDetails[$count]->pageTitle;
+                $page_title = isset($v->actionDetails[$count]->pageTitle) ? $v->actionDetails[$count]->pageTitle : null;
                 
                 // Get just the image names (API returns path to icons in piwik install)
                 $flag = explode('/', $v->countryFlag);
