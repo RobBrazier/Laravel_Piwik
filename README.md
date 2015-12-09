@@ -1,4 +1,4 @@
-Laravel-Piwik v2.1.0
+Laravel-Piwik v2.1.1
 ====================
 
 [![Build Status](http://img.shields.io/travis/RobBrazier/Laravel_Piwik.svg?style=flat-square)](https://travis-ci.org/RobBrazier/Laravel_Piwik)
