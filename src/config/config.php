@@ -35,7 +35,7 @@ return array(
     /*
      *  Period/Date range for results
      *  
-     *  Can be [today, yesterday, previous7, previous30, last7, last30, currentweek, currentmonth, currentyear]
+     *  Can be [today, yesterday, previous7, previous30, last7, last30, currentweek, currentmonth, currentyear] as well as a date range in the format of "yyyy-MM-dd,yyyy-MM-dd"
      *
      *  The default is 'yesterday'
      */
