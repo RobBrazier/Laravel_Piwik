@@ -47,4 +47,4 @@ Then go to `config/piwik.php` and add your config settings such as server, usern
 
 ##Manual
 
-The Manual is still the same as version 1.0.x, and is at [http://robbrazier.com/portfolio/laravel-piwik](http://robbrazier.com/portfolio/laravel-piwik).
+The Manual is still the same as version 1.0.x, and is at [http://robbrazier.com/projects/laravel-piwik](http://robbrazier.com/projects/laravel-piwik).
