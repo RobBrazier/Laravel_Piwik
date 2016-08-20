@@ -35,7 +35,8 @@
  */
 
 namespace RobBrazier\Piwik;
-use \Session;
+
+use Session;
 
 /**
  * Class Piwik
@@ -78,24 +79,18 @@ class Piwik {
 
 
     /**
-     * @param $piwik_url
-     * @param $site_id
-     * @param $apikey
-     * @param $username
-     * @param $password
-     * @param $format
-     * @param $period
+     * @param array $args
      */
     public function __construct(array $args = array()) {
         date_default_timezone_set("UTC");
         if(!empty($args)){
-            $this->piwik_url = $args['piwik_url'];
-            $this->site_id = $args['site_id'];
-            $this->apikey = $args['apikey'];
-            $this->username = $args['username'];
-            $this->password = $args['password'];
-            $this->format = $args['format'];
-            $this->period = $args['period'];
+            $this->piwik_url = @$args['piwik_url'];
+            $this->site_id = @$args['site_id'];
+            $this->apikey = @$args['apikey'];
+            $this->username = @$args['username'];
+            $this->password = @$args['password'];
+            $this->format = @$args['format'];
+            $this->period = @$args['period'];
             $this->constructed = true;
         }
 
@@ -117,47 +112,31 @@ class Piwik {
 
     private function date() {
         $this->period = ($this->constructed) ? $this->period : config('piwik.period');
-        switch ($this->period) {
-            case 'today':
-                return '&period=day&date=today';
-                break;
-            
-            case 'yesterday':
-                return '&period=day&date=yesterday';
-                break;
-            
-            case 'previous7':
-                return '&period=range&date=previous7';
-                break;
-            
-            case 'previous30':
-                return '&period=range&date=previous30';
-                break;
-            
-            case 'last7':
-                return '&period=range&date=last7';
-                break;
-            
-            case 'last30':
-                return '&period=range&date=last30';
-                break;
-            
-            case 'currentweek':
-                return '&period=week&date=today';
-                break;
-            
-            case 'currentmonth':
-                return '&period=month&date=today';
-                break;
-            
-            case 'currentyear':
-                return '&period=year&date=today';
-                break;
-            
-            default:
-                return '&period=day&date=yesterday';
-                break;
+        $date_regex = "/^[0-9]{4}\\-[0-9]{1,2}\\-[0-9]{1,2},[0-9]{4}\\-[0-9]{1,2}\\-[0-9]{1,2}$/";
+        $period_mapping = array(
+            "today" => "&period=day&date=today",
+            "yesterday" => "&period=day&date=yesterday",
+            "previous7" => "&period=range&date=previous7",
+            "previous30" => "&period=range&date=previous30",
+            "last7" => "&period=range&date=last7",
+            "last30" => "&period=range&date=last30",
+            "currentweek" => "&period=week&date=today",
+            "currentmonth" => "&period=month&date=today",
+            "currentyear" => "&period=year&date=today"
+        );
+        $period_keys = array_keys($period_mapping);
+        $default_period = $period_mapping["yesterday"];
+        $period = $default_period;
+        if (in_array($this->period, $period_keys)) {
+            $period = $period_mapping[$this->period];
+        } else {
+            $matches = array();
+            preg_match($date_regex, $this->period, $matches);
+            if (sizeof($matches) == 1) {
+                $period = "&period=range&date=" . $this->period;
+            }
         }
+        return $period;
     }
 
     /**
@@ -209,34 +188,13 @@ class Piwik {
         } else {
             $this->format = ($this->constructed) ? $this->format : config('piwik.format');
         }
-        switch ($this->format) {
-            case 'json':
-                return 'json';
-                break;
-            case 'php':
-                return 'php';
-                break;
-
-            case 'xml':
-                return 'xml';
-                break;
-                
-            case 'html':
-                return 'html';
-                break;
-                    
-            case 'rss':
-                return 'rss';
-                break;
-                
-            case 'original':
-                return 'original';
-                break;
-                    
-            default:
-                return 'json';
-                break;
+        $allowed_formats = array("json", "php", "xml", "html", "rss", "original");
+        $default_format = "json";
+        $format = $this->format;
+        if (!in_array($format, $allowed_formats)) {
+            $format = $default_format;
         }
+        return $format;
 
     }
 
@@ -245,7 +203,8 @@ class Piwik {
      * Allows access to site_id from all functions
      *
      * @access  private
-     * @return  string
+     * @param  string $id overridden site id
+     * @return string
      */
 
     private function get_site_id($id = null) {
@@ -272,8 +231,9 @@ class Piwik {
         $this->password = ($this->constructed) ? $this->password : md5(config('piwik.password'));
 
         if(empty($this->apikey) && !empty($this->username) && !empty($this->password)){
-            $url = $this->get_piwik_url().'/index.php?module=API&method=UsersManager.getTokenAuth&userLogin='.$this->username.'&md5Password='.$this->password.'&format='.$this->check_format();
-            if(!Session::has('apikey')) Session::put('apikey', $this->get_decoded($url));
+            $arguments = array("userLogin" => $this->username, "md5Password" => $this->password);
+            $apikey = $this->custom("UsersManager.getTokenAuth", $arguments, false, false, null);
+            if (!Session::has('apikey')) Session::put('apikey', $apikey);
             $this->apikey = Session::get('apikey');
             return $this->apikey->value;
         } else if(!empty($this->apikey)) {
@@ -316,11 +276,13 @@ class Piwik {
      * Decode the format to usable PHP arrays/objects
      *
      * @access  private
-     * @param   string  $url   URL to decode (declared within other functions)
-     * @return  array
+     * @param   string $url URL to decode (declared within other functions)
+     * @param   string $format
+     * @return array
      */
 
-    private function get_decoded($url, $format = null){
+    private function get_decoded($url, $format)
+    {
         switch ($this->check_format($format)) {
             case 'json':
                 return json_decode($this->_get($url));
@@ -362,8 +324,7 @@ class Piwik {
      */
 
     private function url_from_id($id = null) {
-        $url = $this->get_piwik_url().'/index.php?module=API&method=SitesManager.getSiteUrlsFromId&idSite='.$this->get_site_id($id).$this->date().'&format=php&token_auth='.$this->get_apikey();
-        return $this->get_decoded($url, 'php')[0][0];
+        return $this->custom("SitesManager.getSiteUrlsFromId", null, $id, true, "php")[0][0];
     }
 
 // ====================================================================
@@ -381,8 +342,7 @@ class Piwik {
      * @return  object
      */
     public function actions($format = null) {
-        $url = $this->get_piwik_url().'/index.php?module=API&method=VisitsSummary.getActions&idSite='.$this->get_site_id().$this->date().'&format='.$this->check_format($format).'&token_auth='.$this->get_apikey();
-        return $this->get_decoded($url, $format);
+        return $this->custom("VisitsSummary.getActions", null, true, true, $format);
     }
 
     /**
@@ -394,8 +354,7 @@ class Piwik {
      * @return  array
      */
     public function downloads($format = null) {
-        $url = $this->get_piwik_url().'/index.php?module=API&method=Actions.getDownloads&idSite='.$this->get_site_id().$this->date().'&format='.$this->check_format($format).'&token_auth='.$this->get_apikey();
-        return $this->get_decoded($url, $format);
+        return $this->custom("Actions.getDownloads", null, true, true, $format);
     }
     
     /**
@@ -407,8 +366,7 @@ class Piwik {
      * @return  array
      */
     public function keywords($format = null) {
-        $url = $this->get_piwik_url().'/index.php?module=API&method=Referers.getKeywords&idSite='.$this->get_site_id().$this->date().'&format='.$this->check_format($format).'&token_auth='.$this->get_apikey();
-        return $this->get_decoded($url, $format);
+        return $this->custom("Referers.getKeywords", null, true, true, $format);
     }
     
     /**
@@ -421,8 +379,8 @@ class Piwik {
      * @return  array
      */
     public function last_visits($count, $format = null) {
-        $url = $this->get_piwik_url().'/index.php?module=API&method=Live.getLastVisitsDetails&idSite='.$this->get_site_id().$this->date().'&filter_limit='.$count.'&format='.$this->check_format($format).'&token_auth='.$this->get_apikey();
-        return $this->get_decoded($url, $format);
+        $arguments = array("filter_limit" => $count);
+        return $this->custom("Live.getLastVisitsDetails", $arguments, true, true, $format);
     }
     
     /**
@@ -439,8 +397,8 @@ class Piwik {
             echo "Sorry, 'xml', 'rss', 'html' and 'original' are not yet supported.";
             return false;
         }
-        $url = $this->get_piwik_url().'/index.php?module=API&method=Live.getLastVisitsDetails&idSite='.$this->get_site_id().$this->date().'&filter_limit='.$count.'&format='.$this->check_format($format).'&token_auth='.$this->get_apikey();
-        $visits = $this->get_decoded($url, $format);
+        $arguments = array("filter_limit" => $count);
+        $visits = $this->custom("Live.getLastVisitsDetails", $arguments, true, true, $format);
         
         $data = array();
         foreach($visits as $v)
@@ -566,8 +524,7 @@ class Piwik {
      * @return  array
      */
     public function outlinks($format = null) {
-        $url = $this->get_piwik_url().'/index.php?module=API&method=Actions.getOutlinks&idSite='.$this->get_site_id().$this->date().'&format='.$this->check_format($format).'&token_auth='.$this->get_apikey();
-        return $this->get_decoded($url, $format);
+        return $this->custom("Actions.getOutlinks", null, true, true, $format);
     }
     
     /**
@@ -579,8 +536,7 @@ class Piwik {
      * @return  array
      */
     public function page_titles($format = null) {
-        $url = $this->get_piwik_url().'/index.php?module=API&method=Actions.getPageTitles&idSite='.$this->get_site_id().$this->date().'&format='.$this->check_format($format).'&token_auth='.$this->get_apikey();
-        return $this->get_decoded($url, $format);
+        return $this->custom("Actions.getPageTitles", null, true, true, $format);
     }
 
     /**
@@ -592,8 +548,7 @@ class Piwik {
      * @return  array
      */
     public function search_engines($format = null) {
-        $url = $this->get_piwik_url().'/index.php?module=API&method=Referers.getSearchEngines&idSite='.$this->get_site_id().$this->date().'&format='.$this->check_format($format).'&token_auth='.$this->get_apikey();
-        return $this->get_decoded($url, $format);
+        return $this->custom("Referers.getSearchEngines", null, true, true, $format);
     }
 
     /**
@@ -605,8 +560,7 @@ class Piwik {
      * @return  array
      */
     public function unique_visitors($format = null) {
-        $url = $this->get_piwik_url().'/index.php?module=API&method=VisitsSummary.getUniqueVisitors&idSite='.$this->get_site_id().$this->date().'&format='.$this->check_format($format).'&token_auth='.$this->get_apikey();
-        return $this->get_decoded($url, $format);
+        return $this->custom("VisitsSummary.getUniqueVisitors", null, true, true, $format);
     }
 
     /**
@@ -618,8 +572,7 @@ class Piwik {
      * @return  array
      */
     public function visits($format = null) {
-        $url = $this->get_piwik_url().'/index.php?module=API&method=VisitsSummary.getVisits&idSite='.$this->get_site_id().$this->date().'&format='.$this->check_format($format).'&token_auth='.$this->get_apikey();
-        return $this->get_decoded($url, $format);
+        return $this->custom("VisitsSummary.getVisits", null, true, true, $format);
     }
 
     /**
@@ -631,8 +584,7 @@ class Piwik {
      * @return  array
      */
     public function websites($format = null) {
-        $url = $this->get_piwik_url().'/index.php?module=API&method=Referers.getWebsites&idSite='.$this->get_site_id().$this->date().'&format='.$this->check_format($format).'&token_auth='.$this->get_apikey();
-        return $this->get_decoded($url, $format);
+        return $this->custom("Referers.getWebsites", null, true, true, $format);
     }
 
     /**
@@ -642,7 +594,6 @@ class Piwik {
      * Note: Works best when using PHP as the format
      * 
      * @access  public
-     * @param   string  $format     Override string for the format of the API Query to be returned as
      * @return  string
      */
 
@@ -669,13 +620,14 @@ s.parentNode.insertBefore(g,s); })();
      * Get SEO Rank for the website
      *
      * @access  public
-     * @param   string  $format     Override string for the format of the API Query to be returned as
-     * @return  array
+     * @param  $id
+     * @param   string $format Override string for the format of the API Query to be returned as
+     * @return array
      */
 
     public function seo_rank($id, $format = 'json') { // PHP doesn't seem to work with this, so defaults to JSON
-        $url = $this->get_piwik_url().'/index.php?module=API&method=SEO.getRank&url='.$this->url_from_id($id).'&format='.$this->check_format($format).'&token_auth='.$this->get_apikey();
-        return $this->get_decoded($url, $format);
+        $arguments = array("url" => $this->url_from_id($id));
+        return $this->custom("SEO.getRank", $arguments, false, false, $format);
     }  
 
     /**
@@ -688,19 +640,19 @@ s.parentNode.insertBefore(g,s); })();
      */
 
     public function version($format = null) {
-        $url = $this->get_piwik_url().'/index.php?module=API&method=API.getPiwikVersion&format='.$this->check_format($format).'&token_auth='.$this->get_apikey();
-        return $this->get_decoded($url, $format);
+        return $this->custom("API.getPiwikVersion", null, false, false, $format);
     }
 
     /**
      * @param $method
      * @param array $arguments
-     * @param bool $id
+     * @param mixed $id values can be true/false to add the default site id, or you can specify the id here
      * @param bool $period
-     * @param null $format
+     * @param string $format
      * @return array
      */
-    public function custom($method, $arguments = array(), $id = false, $period = false, $format = null) {
+    public function custom($method, $arguments, $id = false, $period = false, $format = null)
+    {
         if($arguments == null){
             $arguments = array();
         }
@@ -709,10 +661,14 @@ s.parentNode.insertBefore(g,s); })();
             foreach($arguments as $key=>$value){
                 $url .= '&'.$key.'='.$value;
             }
-            if($id){
-                $url .= '&idSite='.$this->get_site_id($id);
+            if ($id != null || (is_bool($id) && $id)) {
+                $override_id = null;
+                if (!is_bool($id)) {
+                    $override_id = $id;
+                }
+                $url .= "&idSite=" . $this->get_site_id($override_id);
             }
-            if($period === true){
+            if ($period) {
                 $url .= $this->date();
             }
             $url .= '&format='.$this->check_format($format).'&token_auth='.$this->get_apikey();

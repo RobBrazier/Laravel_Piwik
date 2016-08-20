@@ -2,21 +2,26 @@
 
 namespace tests;
 
-use \RobBrazier\Piwik\Piwik;
-use \DOMDocument;
+use DOMDocument;
+use RobBrazier\Piwik\Piwik;
 
 class PiwikTest extends \PHPUnit_Framework_TestCase {
 
     private $piwik;
     private $last_visits_count = 2;
+    private $piwik_url = "http://demo.piwik.org";
     private $site_id = 7;
+    private $apikey = "anonymous";
+    private $format = "json";
+    private $period = "yesterday";
     private $tag;
+
 
     public function setUp() {
 
         parent::setUp();
 
-        $this->piwik = new Piwik(array('piwik_url' => 'http://demo.piwik.org', 'site_id' => $this->site_id, 'apikey' => 'anonymous', 'username' => '', 'password' => '', 'format' => 'json', 'period' => 'yesterday'));
+        $this->piwik = new Piwik(array('piwik_url' => $this->piwik_url, 'site_id' => $this->site_id, 'apikey' => $this->apikey, 'format' => $this->format, 'period' => $this->period));
 
         $this->tag = <<<EOT
 <!-- Piwik -->
@@ -242,15 +247,6 @@ EOT;
         }
     }
 
-//    public function testLastVisitsParsedHtml() {
-//        $this->assertEquals(gettype($this->piwik->last_visits_parsed($this->last_visits_count, 'html')), 'array');
-
-//    }
-//
-//    public function testLastVisitsParsedOriginal() {
-//        $this->assertEquals(gettype($this->piwik->last_visits_parsed($this->last_visits_count, 'original')), 'array');
-//    }
-
     /**
      * Outlinks Tests
      * [json, php, html and original]
@@ -440,6 +436,19 @@ EOT;
         $document = new DOMDocument;
         $document->loadHTML($this->piwik->visits('html'));
         $this->assertGreaterThan(0, $document->getElementsByTagName("td")->item(0)->nodeValue);
+    }
+
+    public function testVisitsCustomDateRange()
+    {
+        $date = getdate();
+        $day = $date["mday"];
+        $month = $date["mon"];
+        $year = $date["year"];
+        $last_year = $year - 1;
+        $date_range = sprintf("%d-%d-%d,%d-%d-%d", $last_year, $month, $day, $year, $month, $day);
+        $this->piwik = new Piwik(array('piwik_url' => $this->piwik_url, 'site_id' => $this->site_id, 'apikey' => $this->apikey, 'format' => $this->format, 'period' => $date_range));
+        $visits = $this->piwik->visits('json');
+        $this->assertGreaterThan(0, $visits->value);
     }
 
     /**
