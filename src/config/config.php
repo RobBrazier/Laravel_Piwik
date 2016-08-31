@@ -47,4 +47,9 @@ return array(
      */
 
     'site_id'       => '1',
+
+    /*
+     * indicates if cURL Should verify the server certificate
+     */
+    'curlopt_ssl_verifypeer' => true,
 );
