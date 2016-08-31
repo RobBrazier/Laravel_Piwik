@@ -52,4 +52,9 @@ return array(
      * indicates if cURL Should verify the server certificate
      */
     'curlopt_ssl_verifypeer' => true,
+
+    /*
+     * indicates if cURL Should verify the host certificate
+     */
+    'curlopt_ssl_verifyhost' => true,
 );

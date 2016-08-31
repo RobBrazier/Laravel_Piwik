@@ -269,6 +269,7 @@ class Piwik {
 
       // Set config options
       curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, config('piwik.curlopt_ssl_verifypeer', true));
+      curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, config('piwik.curlopt_ssl_verifyhost', true));
 
       $data = curl_exec($ch);
       curl_close($ch);
