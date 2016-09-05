@@ -1,9 +1,9 @@
-<?php 
+<?php
 /**
  * MIT License
  * ===========
  *
- * Copyright (c) 2015 Rob Brazier <rob.brazier@me.com>
+ * Copyright (c) 2015 Rob Brazier
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -27,8 +27,8 @@
  * @category   Libraries
  * @package    Libraries
  * @subpackage Libraries
- * @author     Rob Brazier <rob.brazier@me.com>
- * @copyright  2015 Rob Brazier.
+ * @author     Rob Brazier
+ * @copyright  2016 Rob Brazier.
  * @license    http://www.opensource.org/licenses/mit-license.php  MIT License
  * @version    2.0.2
  * @link       http://robbrazier.com
@@ -36,7 +36,9 @@
 
 namespace RobBrazier\Piwik;
 
-use Session;
+use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Session;
 
 /**
  * Class Piwik
@@ -83,7 +85,7 @@ class Piwik {
      */
     public function __construct(array $args = array()) {
         date_default_timezone_set("UTC");
-        if(!empty($args)){
+        if (!empty($args)) {
             $this->piwik_url = @$args['piwik_url'];
             $this->site_id = @$args['site_id'];
             $this->apikey = @$args['apikey'];
@@ -101,7 +103,17 @@ class Piwik {
 // CHECKERS & GETTERS - Check the config file and retrieve the contents
 //
 // --------------------------------------------------------------------
-    
+
+
+    /**
+     * @param   $key string         configuration key
+     * @param   $default string     default value if null
+     * @return mixed
+     */
+    private function config($key, $default = null) {
+        return Config::get($key, $default);
+    }
+
     /**
      * date
      * Read config for the period to make API queries about, and translate it into URL-friendly strings
@@ -111,7 +123,7 @@ class Piwik {
      */
 
     private function date() {
-        $this->period = ($this->constructed) ? $this->period : config('piwik.period');
+        $this->period = ($this->constructed) ? $this->period : $this->config('piwik.period');
         $date_regex = "/^[0-9]{4}\\-[0-9]{1,2}\\-[0-9]{1,2},[0-9]{4}\\-[0-9]{1,2}\\-[0-9]{1,2}$/";
         $period_mapping = array(
             "today" => "&period=day&date=today",
@@ -148,12 +160,7 @@ class Piwik {
      */
 
     private function to_https() {
-        $url = $this->get_piwik_url();
-        if(preg_match('/http:/', $url)){
-            return str_replace('http', 'https', $url);
-        } else if(preg_match('/https:/', $url)){
-            return $url;
-        }
+        return $this->replace_url_scheme("http", "https");
     }
 
     /**
@@ -165,10 +172,23 @@ class Piwik {
      */
 
     private function to_http() {
+        return $this->replace_url_scheme("https", "http");
+    }
+
+    /**
+     * replace_url_schema
+     * Underlying method called by to_http and to_https
+     *
+     * @param   $search string        the value to search for
+     * @param   $replace string       the value to replace $search with
+     * @return  string
+     */
+
+    private function replace_url_scheme($search, $replace) {
         $url = $this->get_piwik_url();
-        if(preg_match('/https:/', $url)){
-            return str_replace('https', 'http', $url);
-        } else if(preg_match('/http:/', $url)){
+        if (preg_match('/' . $search . ':/', $url)) {
+            return str_replace($search, $replace, $url);
+        } else if (preg_match('/' . $replace . ':/', $url)) {
             return $url;
         }
     }
@@ -178,15 +198,15 @@ class Piwik {
      * Check the format as defined in config, and default to json if it is not on the list
      *
      * @access  private
-     * @param   string  $override     Override string for the format of the API Query to be returned as
+     * @param   $override string    Override string for the format of the API Query to be returned as
      * @return  string
      */
 
     private function check_format($override = null) {
-        if($override !== null) {
+        if ($override !== null) {
             $this->format = $override;
         } else {
-            $this->format = ($this->constructed) ? $this->format : config('piwik.format');
+            $this->format = ($this->constructed) ? $this->format : $this->config('piwik.format');
         }
         $allowed_formats = array("json", "php", "xml", "html", "rss", "original");
         $default_format = "json";
@@ -203,13 +223,13 @@ class Piwik {
      * Allows access to site_id from all functions
      *
      * @access  private
-     * @param  string $id overridden site id
-     * @return string
+     * @param   $id string          overridden site id
+     * @return  string
      */
 
     private function get_site_id($id = null) {
-        $this->site_id = ($this->constructed) ? $this->site_id : config('piwik.site_id');
-        if(isset($id)){
+        $this->site_id = ($this->constructed) ? $this->site_id : $this->config('piwik.site_id');
+        if (isset($id)) {
             $this->site_id = $id;
             return $this->site_id;
         } else {
@@ -219,24 +239,24 @@ class Piwik {
 
     /**
      * get_apikey
-     * Allows access to apikey from all functions
+     * Allows access to api key from all functions
      *
      * @access  private
      * @return  string
      */
-    
-    private function get_apikey() {
-        $this->apikey = ($this->constructed) ? $this->apikey : config('piwik.api_key');
-        $this->username = ($this->constructed) ? $this->username : config('piwik.username');
-        $this->password = ($this->constructed) ? $this->password : md5(config('piwik.password'));
 
-        if(empty($this->apikey) && !empty($this->username) && !empty($this->password)){
+    private function get_apikey() {
+        $this->apikey = ($this->constructed) ? $this->apikey : $this->config('piwik.api_key');
+        $this->username = ($this->constructed) ? $this->username : $this->config('piwik.username');
+        $this->password = ($this->constructed) ? $this->password : md5($this->config('piwik.password'));
+
+        if (empty($this->apikey) && !empty($this->username) && !empty($this->password)) {
             $arguments = array("userLogin" => $this->username, "md5Password" => $this->password);
             $apikey = $this->custom("UsersManager.getTokenAuth", $arguments, false, false, null);
             if (!Session::has('apikey')) Session::put('apikey', $apikey);
             $this->apikey = Session::get('apikey');
             return $this->apikey->value;
-        } else if(!empty($this->apikey)) {
+        } else if (!empty($this->apikey)) {
             return $this->apikey;
         } else {
             echo '<strong style="color:red">You must enter your API Key or Username/Password combination to use this bundle!</strong><br/>';
@@ -250,25 +270,25 @@ class Piwik {
      * @access  private
      * @return  string
      */
-    
+
     private function get_piwik_url() {
-        $this->piwik_url = ($this->constructed) ? $this->piwik_url : config('piwik.piwik_url');
+        $this->piwik_url = ($this->constructed) ? $this->piwik_url : $this->config('piwik.piwik_url');
         return $this->piwik_url;
     }
 
     /**
-     * @param $url
-     * @return mixed
+     * @param   $url string            the url to send a request to
+     * @return  string
      */
     private function _get($url) {
-      $ch = curl_init();
-      $timeout = 5;
-      curl_setopt($ch, CURLOPT_URL, $url);
-      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-      curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
-      $data = curl_exec($ch);
-      curl_close($ch);
-      return $data;
+        $client = new Client(array(
+            "timeout" => $this->config('piwik.curl_timeout', 5.0),
+            "verify" => $this->config('piwik.verify_peer', true),
+            "base_uri" => $this->get_piwik_url()
+        ));
+        $response = $client->get($url);
+        $body = $response->getBody();
+        return $body->getContents();
     }
 
     /**
@@ -276,41 +296,32 @@ class Piwik {
      * Decode the format to usable PHP arrays/objects
      *
      * @access  private
-     * @param   string $url URL to decode (declared within other functions)
-     * @param   string $format
-     * @return array
+     * @param   $url string         URL to decode (declared within other functions)
+     * @param   $format string
+     * @return  mixed
      */
 
-    private function get_decoded($url, $format)
-    {
+    private function get_decoded($url, $format) {
         switch ($this->check_format($format)) {
             case 'json':
                 return json_decode($this->_get($url));
-                break;
             case 'php':
                 return unserialize($this->_get($url));
-                break;
 
             case 'xml':
-                //$xml = unserialize(file_get_contents($url));
                 return 'Not Supported as of yet';
-                break;
 
             case 'html':
                 return $this->_get($url);
-                break;
-                    
+
             case 'rss':
                 return 'Not supported as of yet';
-                break;
-                
+
             case 'original':
-                return file_get_contents($url);
-                break;
-                    
+                return $this->_get($url);
+
             default:
-                return file_get_contents($url);
-                break;
+                return $this->_get($url);
         }
     }
 
@@ -319,7 +330,7 @@ class Piwik {
      * Fetches the URL from Site ID
      *
      * @access  private
-     * @param   string  $id   Override for ID, so you can specify one rather than fetching it from config
+     * @param   $id string          Override for ID, so you can specify one rather than fetching it from config
      * @return  string
      */
 
@@ -338,7 +349,7 @@ class Piwik {
      * Get actions (hits) for the specific time period
      *
      * @access  public
-     * @param   string  $format     Override string for the format of the API Query to be returned as
+     * @param   $format string      Override string for the format of the API Query to be returned as
      * @return  object
      */
     public function actions($format = null) {
@@ -350,167 +361,149 @@ class Piwik {
      * Get file downloads for the specific time period
      *
      * @access  public
-     * @param   string  $format     Override string for the format of the API Query to be returned as
+     * @param   $format string           Override string for the format of the API Query to be returned as
      * @return  array
      */
     public function downloads($format = null) {
         return $this->custom("Actions.getDownloads", null, true, true, $format);
     }
-    
+
     /**
      * keywords
      * Get search keywords for the specific time period
      *
      * @access  public
-     * @param   string  $format     Override string for the format of the API Query to be returned as
+     * @param   $format string           Override string for the format of the API Query to be returned as
      * @return  array
      */
     public function keywords($format = null) {
         return $this->custom("Referers.getKeywords", null, true, true, $format);
     }
-    
+
     /**
      * last_visits
      * Get information about last 10 visits (ip, time, country, pages, etc.)
      *
      * @access  public
-     * @param   int     $count      Limit the number of visits returned by $count
-     * @param   string  $format     Override string for the format of the API Query to be returned as
+     * @param   $count int          Limit the number of visits returned by $count
+     * @param   $format string      Override string for the format of the API Query to be returned as
      * @return  array
      */
     public function last_visits($count, $format = null) {
         $arguments = array("filter_limit" => $count);
         return $this->custom("Live.getLastVisitsDetails", $arguments, true, true, $format);
     }
-    
+
     /**
      * last_visits_parsed
      * Get information about last 10 visits (ip, time, country, pages, etc.) in a formatted array with GeoIP information if enabled
      *
      * @access  public
-     * @param   int     $count      Limit the number of visits returned by $count
-     * @param   string  $format     Override string for the format of the API Query to be returned as
+     * @param   $count int          Limit the number of visits returned by $count
+     * @param   $format string      Override string for the format of the API Query to be returned as
      * @return  array
      */
     public function last_visits_parsed($count, $format = null) {
-        if(in_array($format, array('xml', 'rss', 'html', 'original'))){
+        if (in_array($format, array('xml', 'rss', 'html', 'original'))) {
             echo "Sorry, 'xml', 'rss', 'html' and 'original' are not yet supported.";
             return false;
         }
         $arguments = array("filter_limit" => $count);
         $visits = $this->custom("Live.getLastVisitsDetails", $arguments, true, true, $format);
-        
+
         $data = array();
-        foreach($visits as $v)
-        {
+        foreach ($visits as $v) {
             // Get the last array element which has information of the last page the visitor accessed
             switch ($this->check_format($format)) {
-            case 'json':
-                $count = count($v->actionDetails) - 1; 
-                $page_link = $v->actionDetails[$count]->url;
-                $page_title = isset($v->actionDetails[$count]->pageTitle) ? $v->actionDetails[$count]->pageTitle : null;
-                
-                // Get just the image names (API returns path to icons in piwik install)
-                $flag = explode('/', $v->countryFlag);
-                $flag_icon = end($flag);
-                
-                $os = explode('/', $v->operatingSystemIcon);
-                $os_icon = end($os);
-                
-                $browser = explode('/', $v->browserIcon);
-                $browser_icon = end($browser);
-                
-                $data[] = array(
-                  'time' => date("M j Y, g:i a", $v->lastActionTimestamp),
-                  'title' => $page_title,
-                  'link' => $page_link,
-                  'ip_address' => $v->visitIp,
-                  'provider' => $v->provider,
-                  'country' => $v->country,
-                  'country_icon' => $flag_icon,
-                  'os' => $v->operatingSystem,
-                  'os_icon' => $os_icon,
-                  'browser' => $v->browserName,
-                  'browser_icon' => $browser_icon,
-                );
-                break;
-            case 'php':
-                $count = count($v['actionDetails']) - 1; 
-                $page_link = $v['actionDetails'][$count]['url'];
-                $page_title = $v['actionDetails'][$count]['pageTitle'];
-                
-                // Get just the image names (API returns path to icons in piwik install)
-                $flag = explode('/', $v['countryFlag']);
-                $flag_icon = end($flag);
-                
-                $os = explode('/', $v['operatingSystemIcon']);
-                $os_icon = end($os);
-                
-                $browser = explode('/', $v['browserIcon']);
-                $browser_icon = end($browser);
-                
-                $data[] = array(
-                  'time' => date("M j Y, g:i a", $v['lastActionTimestamp']),
-                  'title' => $page_title,
-                  'link' => $page_link,
-                  'ip_address' => $v['visitIp'],
-                  'provider' => $v['provider'],
-                  'country' => $v['country'],
-                  'country_icon' => $flag_icon,
-                  'os' => $v['operatingSystem'],
-                  'os_icon' => $os_icon,
-                  'browser' => $v['browserName'],
-                  'browser_icon' => $browser_icon,
-                );
-                break;
+                case 'json':
+                    $count = count($v->actionDetails) - 1;
+                    $page_link = $v->actionDetails[$count]->url;
+                    $page_title = isset($v->actionDetails[$count]->pageTitle) ? $v->actionDetails[$count]->pageTitle : null;
 
-            case 'xml':
+                    // Get just the image names (API returns path to icons in piwik install)
+                    $flag = explode('/', $v->countryFlag);
+                    $flag_icon = end($flag);
 
-                break;
+                    $os = explode('/', $v->operatingSystemIcon);
+                    $os_icon = end($os);
 
-            case 'html':
+                    $browser = explode('/', $v->browserIcon);
+                    $browser_icon = end($browser);
 
-                break;
-                    
-            case 'rss':
+                    $data[] = array(
+                        'time' => date("M j Y, g:i a", $v->lastActionTimestamp),
+                        'title' => $page_title,
+                        'link' => $page_link,
+                        'ip_address' => $v->visitIp,
+                        'provider' => $v->provider,
+                        'country' => $v->country,
+                        'country_icon' => $flag_icon,
+                        'os' => $v->operatingSystem,
+                        'os_icon' => $os_icon,
+                        'browser' => $v->browserName,
+                        'browser_icon' => $browser_icon,
+                    );
+                    break;
+                case 'php':
+                    $count = count($v['actionDetails']) - 1;
+                    $page_link = $v['actionDetails'][$count]['url'];
+                    $page_title = $v['actionDetails'][$count]['pageTitle'];
 
-                break;
-                
-            case 'original':
+                    // Get just the image names (API returns path to icons in piwik install)
+                    $flag = explode('/', $v['countryFlag']);
+                    $flag_icon = end($flag);
 
-                break;
-                    
-            default:
-                $count = count($v->actionDetails) - 1; 
-                $page_link = $v->actionDetails[$count]->url;
-                $page_title = $v->actionDetails[$count]->pageTitle;
-                
-                // Get just the image names (API returns path to icons in piwik install)
-                $flag = explode('/', $v->countryFlag);
-                $flag_icon = end($flag);
-                
-                $os = explode('/', $v->operatingSystemIcon);
-                $os_icon = end($os);
-                
-                $browser = explode('/', $v->browserIcon);
-                $browser_icon = end($browser);
-                
-                $data[] = array(
-                  'time' => date("M j Y, g:i a", $v->lastActionTimestamp),
-                  'title' => $page_title,
-                  'link' => $page_link,
-                  'ip_address' => $v->visitIp,
-                  'provider' => $v->provider,
-                  'country' => $v->country,
-                  'country_icon' => $flag_icon,
-                  'os' => $v->operatingSystem,
-                  'os_icon' => $os_icon,
-                  'browser' => $v->browserName,
-                  'browser_icon' => $browser_icon,
-                );
-                break;
+                    $os = explode('/', $v['operatingSystemIcon']);
+                    $os_icon = end($os);
+
+                    $browser = explode('/', $v['browserIcon']);
+                    $browser_icon = end($browser);
+
+                    $data[] = array(
+                        'time' => date("M j Y, g:i a", $v['lastActionTimestamp']),
+                        'title' => $page_title,
+                        'link' => $page_link,
+                        'ip_address' => $v['visitIp'],
+                        'provider' => $v['provider'],
+                        'country' => $v['country'],
+                        'country_icon' => $flag_icon,
+                        'os' => $v['operatingSystem'],
+                        'os_icon' => $os_icon,
+                        'browser' => $v['browserName'],
+                        'browser_icon' => $browser_icon,
+                    );
+                    break;
+                default:
+                    $count = count($v->actionDetails) - 1;
+                    $page_link = $v->actionDetails[$count]->url;
+                    $page_title = $v->actionDetails[$count]->pageTitle;
+
+                    // Get just the image names (API returns path to icons in piwik install)
+                    $flag = explode('/', $v->countryFlag);
+                    $flag_icon = end($flag);
+
+                    $os = explode('/', $v->operatingSystemIcon);
+                    $os_icon = end($os);
+
+                    $browser = explode('/', $v->browserIcon);
+                    $browser_icon = end($browser);
+
+                    $data[] = array(
+                        'time' => date("M j Y, g:i a", $v->lastActionTimestamp),
+                        'title' => $page_title,
+                        'link' => $page_link,
+                        'ip_address' => $v->visitIp,
+                        'provider' => $v->provider,
+                        'country' => $v->country,
+                        'country_icon' => $flag_icon,
+                        'os' => $v->operatingSystem,
+                        'os_icon' => $os_icon,
+                        'browser' => $v->browserName,
+                        'browser_icon' => $browser_icon,
+                    );
+                    break;
             }
-            
+
         }
         return $data;
     }
@@ -520,19 +513,19 @@ class Piwik {
      * Get outlinks for the specific time period
      *
      * @access  public
-     * @param   string  $format     Override string for the format of the API Query to be returned as
+     * @param   $format string      Override string for the format of the API Query to be returned as
      * @return  array
      */
     public function outlinks($format = null) {
         return $this->custom("Actions.getOutlinks", null, true, true, $format);
     }
-    
+
     /**
      * page_titles
      * Get page visit information for the specific time period
      *
      * @access  public
-     * @param   string  $format     Override string for the format of the API Query to be returned as
+     * @param   $format string      Override string for the format of the API Query to be returned as
      * @return  array
      */
     public function page_titles($format = null) {
@@ -544,7 +537,7 @@ class Piwik {
      * Get search engine referer information for the specific time period
      *
      * @access  public
-     * @param   string  $format     Override string for the format of the API Query to be returned as
+     * @param   $format string         Override string for the format of the API Query to be returned as
      * @return  array
      */
     public function search_engines($format = null) {
@@ -556,7 +549,7 @@ class Piwik {
      * Get unique visitors for the specific time period
      *
      * @access  public
-     * @param   string  $format     Override string for the format of the API Query to be returned as
+     * @param   $format string      Override string for the format of the API Query to be returned as
      * @return  array
      */
     public function unique_visitors($format = null) {
@@ -568,7 +561,7 @@ class Piwik {
      * Get all visits for the specific time period
      *
      * @access  public
-     * @param   string  $format     Override string for the format of the API Query to be returned as
+     * @param   $format string      Override string for the format of the API Query to be returned as
      * @return  array
      */
     public function visits($format = null) {
@@ -580,7 +573,7 @@ class Piwik {
      * Get refering websites (traffic sources) for the specific time period
      *
      * @access  public
-     * @param   string  $format     Override string for the format of the API Query to be returned as
+     * @param   $format string      Override string for the format of the API Query to be returned as
      * @return  array
      */
     public function websites($format = null) {
@@ -592,18 +585,18 @@ class Piwik {
      * Get javascript tag for use in tracking the website
      *
      * Note: Works best when using PHP as the format
-     * 
+     *
      * @access  public
      * @return  string
      */
 
     public function tag() {
-        $tag = 
-'<!-- Piwik -->
+        $tag =
+            '<!-- Piwik -->
 <script type="text/javascript">
 var _paq = _paq || [];
-(function(){ var u=(("https:" == document.location.protocol) ? "'.$this->to_https().'/" : "'.$this->to_http().'/");
-_paq.push([\'setSiteId\', '.$this->get_site_id().']);
+(function(){ var u=(("https:" == document.location.protocol) ? "' . $this->to_https() . '/" : "' . $this->to_http() . '/");
+_paq.push([\'setSiteId\', ' . $this->get_site_id() . ']);
 _paq.push([\'setTrackerUrl\', u+\'piwik.php\']);
 _paq.push([\'trackPageView\']);
 _paq.push([\'enableLinkTracking\']);
@@ -611,7 +604,7 @@ var d=document, g=d.createElement(\'script\'), s=d.getElementsByTagName(\'script
 s.parentNode.insertBefore(g,s); })();
 </script>
 <!-- End Piwik Code -->';
-                
+
         return $tag;
     }
 
@@ -620,23 +613,24 @@ s.parentNode.insertBefore(g,s); })();
      * Get SEO Rank for the website
      *
      * @access  public
-     * @param  $id
-     * @param   string $format Override string for the format of the API Query to be returned as
+     * @param   $id string          Override for ID, so you can specify one rather than fetching it from config
+     * @param   $format string      Override string for the format of the API Query to be returned as
      * @return array
      */
 
-    public function seo_rank($id, $format = 'json') { // PHP doesn't seem to work with this, so defaults to JSON
+    public function seo_rank($id, $format = 'json') {
+        // PHP doesn't seem to work with this, so defaults to JSON
         $arguments = array("url" => $this->url_from_id($id));
         return $this->custom("SEO.getRank", $arguments, false, false, $format);
-    }  
+    }
 
     /**
      * version
      * Get Version of the Piwik Server
      *
      * @access  public
-     * @param   string  $format     Override string for the format of the API Query to be returned as
-     * @return  array
+     * @param   $format string      Override string for the format of the API Query to be returned as
+     * @return  mixed
      */
 
     public function version($format = null) {
@@ -644,22 +638,21 @@ s.parentNode.insertBefore(g,s); })();
     }
 
     /**
-     * @param $method
-     * @param array $arguments
-     * @param mixed $id values can be true/false to add the default site id, or you can specify the id here
-     * @param bool $period
-     * @param string $format
-     * @return array
+     * @param $method string        The API method, as found in the Piwik API documentation
+     * @param $arguments array|null A multidimensional map of key => value for custom data to be added onto the url, e.g. ["test" => "foo"] ===> &test=foo
+     * @param $id mixed             values can be true/false to add the default site id, or you can specify the id here
+     * @param $period bool          boolean value to determine whether the time period is appended to the API url
+     * @param $format string        Override string for the format of the API Query to be returned as
+     * @return mixed
      */
-    public function custom($method, $arguments, $id = false, $period = false, $format = null)
-    {
-        if($arguments == null){
+    public function custom($method, $arguments, $id = false, $period = false, $format = null) {
+        if ($arguments == null) {
             $arguments = array();
         }
-        if(isset($method)){
-            $url = $this->get_piwik_url().'/index.php?module=API&method='.$method;
-            foreach($arguments as $key=>$value){
-                $url .= '&'.$key.'='.$value;
+        if (isset($method)) {
+            $url = 'index.php?module=API&method=' . $method;
+            foreach ($arguments as $key => $value) {
+                $url .= '&' . $key . '=' . $value;
             }
             if ($id != null || (is_bool($id) && $id)) {
                 $override_id = null;
@@ -671,9 +664,9 @@ s.parentNode.insertBefore(g,s); })();
             if ($period) {
                 $url .= $this->date();
             }
-            $url .= '&format='.$this->check_format($format).'&token_auth='.$this->get_apikey();
+            $url .= '&format=' . $this->check_format($format) . '&token_auth=' . $this->get_apikey();
             return $this->get_decoded($url, $format);
         }
     }
-  
+
 }

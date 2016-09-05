@@ -5,18 +5,12 @@ php:
   - 5.5
   - 5.6
   - 7.0
-#  - hhvm
 
 before_script:
-  - curl -s http://getcomposer.org/installer | php
-  - php composer.phar install --dev
+  - travis_retry composer self-update
+  - composer install --dev
 
 script: phpunit
 
 allow_failures:
   - php: 5.6
-#  - php: hhvm
-
-# after_script:
-  # - phpunit --coverage-clover build/logs/clover.xml
-  # - CODECLIMATE_REPO_TOKEN=bd7b0eb5f9614b481d951175ce15f1402d34c0976d41f730f5c36c2844c390fb ./vendor/bin/test-reporter

@@ -3,3 +3,4 @@ docs/_build/
 .idea
 vendor/
 composer.lock
+coverage.xml
