@@ -1,7 +1,9 @@
-Laravel-Piwik v2.1.2
+Laravel-Piwik v2.1.3
 ====================
 
 [![Build Status](http://img.shields.io/travis/RobBrazier/Laravel_Piwik.svg?style=flat-square)](https://travis-ci.org/RobBrazier/Laravel_Piwik)
+[![Scrutinizer](https://img.shields.io/scrutinizer/g/robbrazier/laravel_piwik.svg?style=flat-square)](https://scrutinizer-ci.com/g/RobBrazier/Laravel_Piwik/?branch=master)
+[![Scrutinizer Coverage](https://img.shields.io/scrutinizer/coverage/g/robbrazier/laravel_piwik.svg?style=flat-square)](https://scrutinizer-ci.com/g/RobBrazier/Laravel_Piwik/?branch=master)
 [![Packagist Version](https://img.shields.io/packagist/v/robbrazier/piwik.svg?style=flat-square)](https://packagist.org/packages/robbrazier/piwik)
 [![Packagist Total Downloads](https://img.shields.io/packagist/dt/robbrazier/piwik.svg?style=flat-square)](https://packagist.org/packages/robbrazier/piwik)
 

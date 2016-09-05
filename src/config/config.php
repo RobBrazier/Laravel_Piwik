@@ -47,4 +47,18 @@ return array(
      */
 
     'site_id'       => '1',
+
+    /*
+     * Indicates if cURL should verify the server certificate
+     * Can be boolean or a path to a custom SSL certificate on disk
+     */
+
+    'verify_peer' => true,
+
+    /*
+     * HTTP timeout to be used when såending requests to the Piwik server. Defaults to 5 (seconds)
+     */
+
+    'http_timeout' => 5.0,
+
 );
