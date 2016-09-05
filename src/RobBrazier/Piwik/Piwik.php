@@ -281,12 +281,12 @@ class Piwik {
      * @return  string
      */
     private function _get($url) {
-        $client = new Client();
-        $full_url = $this->get_piwik_url() . '/' . $url;
-        $response = $client->get($full_url, array(
+        $client = new Client(array(
             "timeout" => $this->config('piwik.curl_timeout', 5.0),
-            "verify" => $this->config('piwik.verify_peer', true)
+            "verify" => $this->config('piwik.verify_peer', true),
+            "base_uri" => $this->get_piwik_url()
         ));
+        $response = $client->get($url);
         $body = $response->getBody();
         return $body->getContents();
     }
