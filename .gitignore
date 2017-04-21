@@ -3,3 +3,5 @@ docs/_build/
 .idea
 vendor/
 coverage.xml
+*.iml
+*.phar
