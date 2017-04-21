@@ -1,0 +1,14 @@
+version: '2'
+services:
+  php55:
+    build:
+      context: .
+      dockerfile: ./ci/Dockerfile.5.5
+  php56:
+    build:
+      context: .
+      dockerfile: ./ci/Dockerfile.5.6
+  php70:
+    build:
+      context: .
+      dockerfile: ./ci/Dockerfile.7.0

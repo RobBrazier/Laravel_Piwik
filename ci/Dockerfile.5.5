@@ -1,0 +1,16 @@
+FROM php:5.5-alpine
+
+WORKDIR /usr/src/app
+
+ENV PHPUNIT_VERSION '4.8.35'
+
+COPY . .
+
+RUN chmod +x ./ci/scripts/*.sh
+RUN ./ci/scripts/setup.sh
+
+USER www-data
+
+RUN ./ci/scripts/install.sh
+
+CMD [ "sh", "./ci/scripts/test.sh" ]
