@@ -3,12 +3,32 @@ services:
   php55:
     build:
       context: .
-      dockerfile: ./ci/Dockerfile.5.5
+      dockerfile: ./ci/unit/Dockerfile.5.5
   php56:
     build:
       context: .
-      dockerfile: ./ci/Dockerfile.5.6
+      dockerfile: ./ci/unit/Dockerfile.5.6
   php70:
     build:
       context: .
-      dockerfile: ./ci/Dockerfile.7.0
+      dockerfile: ./ci/unit/Dockerfile.7.0
+  php71:
+    build:
+      context: .
+      dockerfile: ./ci/unit/Dockerfile.7.1
+  laravel51:
+    build:
+      context: .
+      dockerfile: ./ci/integration/Dockerfile.l5.1
+  laravel52:
+    build:
+      context: .
+      dockerfile: ./ci/integration/Dockerfile.l5.2
+  laravel53:
+    build:
+      context: .
+      dockerfile: ./ci/integration/Dockerfile.l5.3
+  laravel54:
+    build:
+      context: .
+      dockerfile: ./ci/integration/Dockerfile.l5.4
