@@ -15,10 +15,10 @@ This is the Laravel 5 version of the Laravel-Piwik Bundle.
 
 Add `RobBrazier/Piwik` to `composer.json`:
 
-```javascript
+```json
 {
     "require": {
-        "RobBrazier/Piwik": "~2.1"
+        "robbrazier/piwik": "~2.1"
     }
 }
 ```
