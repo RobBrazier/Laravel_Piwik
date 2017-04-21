@@ -2,8 +2,6 @@ FROM php:7.0-alpine
 
 WORKDIR /usr/src/app
 
-ENV PHPUNIT_VERSION '6.1.1'
-
 COPY . .
 
 RUN chmod +x ./ci/scripts/*.sh
