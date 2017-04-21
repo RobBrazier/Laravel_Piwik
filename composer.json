@@ -24,6 +24,5 @@
         "psr-0": {
             "RobBrazier\\Piwik": "src/"
         }
-    },
-    "minimum-stability": "dev"
+    }
 }
