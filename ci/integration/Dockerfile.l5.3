@@ -18,4 +18,4 @@ RUN ../ci/scripts/laravel.sh
 WORKDIR $APP_DIR/integration
 RUN $APP_DIR/../ci/scripts/integration.sh
 
-CMD $APP_DIR/../ci/scripts/integration-test.sh
+CMD ["/bin/bash", "../../ci/scripts/integration-test.sh"]
