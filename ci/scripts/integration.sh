@@ -1,8 +1,8 @@
 #!/bin/sh
-composer config repositories.local vcs ../plugin
+composer config repositories.piwik path ../plugin
 composer config minimum-stability dev
-sed -e 's/robbrazier\/piwik/robbrazier\/piwik-local/g' -i.bak ../plugin/composer.json
-composer require robbrazier/piwik-local:* --prefer-source
+composer update --prefer-source
+composer require robbrazier/piwik:dev-master --prefer-source
 sed -e 's/App\\Providers\\RouteServiceProvider::class,/App\\Providers\\RouteServiceProvider::class, RobBrazier\\Piwik\\PiwikServiceProvider::class/g' -i.bak config/app.php
 sed -e 's/Illuminate\\Support\\Facades\\View::class,/Illuminate\\Support\\Facades\\View::class, "Piwik" => RobBrazier\\Piwik\\Facades\\Piwik::class/g' -i.bak config/app.php
 filename="routes/web.php"
