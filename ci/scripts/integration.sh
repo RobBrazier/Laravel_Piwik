@@ -1,5 +1,5 @@
 #!/bin/sh
-composer config repositories.piwik '{"type": "path", "url": "../plugin", "options": { "symlink": true }}'
+composer config repositories.a path $APP_DIR/plugin
 composer config minimum-stability dev
 composer require robbrazier/piwik:dev-master --prefer-source
 sed -e 's/App\\Providers\\RouteServiceProvider::class,/App\\Providers\\RouteServiceProvider::class, RobBrazier\\Piwik\\PiwikServiceProvider::class/g' -i.bak config/app.php
