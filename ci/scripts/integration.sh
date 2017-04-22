@@ -1,7 +1,11 @@
 #!/bin/sh
-composer config repositories.a path $APP_DIR/plugin
-composer config minimum-stability dev
-composer require robbrazier/piwik:dev-master --prefer-source
+#composer config minimum-stability dev
+composer update
+contents="$(cat composer.json | jq '.repositories = [{"packagist.org": false}, {"type": "path", "url": "../plugin"}, {"type": "composer", "url": "https://packagist.org"}]')"
+echo "$contents" > composer.json
+#composer config repositories.a '{"packagist.org": false}'
+#composer config repositories.b path $APP_DIR/plugin
+composer require robbrazier/piwik:*
 sed -e 's/App\\Providers\\RouteServiceProvider::class,/App\\Providers\\RouteServiceProvider::class, RobBrazier\\Piwik\\PiwikServiceProvider::class/g' -i.bak config/app.php
 sed -e 's/Illuminate\\Support\\Facades\\View::class,/Illuminate\\Support\\Facades\\View::class, "Piwik" => RobBrazier\\Piwik\\Facades\\Piwik::class/g' -i.bak config/app.php
 filename="routes/web.php"
