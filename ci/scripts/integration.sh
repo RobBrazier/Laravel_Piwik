@@ -1,7 +1,6 @@
 #!/bin/sh
-composer config repositories.piwik path ../plugin
+composer config repositories.piwik '{"type": "path", "url": "../plugin", "options": { "symlink": true }}'
 composer config minimum-stability dev
-composer update --prefer-source
 composer require robbrazier/piwik:dev-master --prefer-source
 sed -e 's/App\\Providers\\RouteServiceProvider::class,/App\\Providers\\RouteServiceProvider::class, RobBrazier\\Piwik\\PiwikServiceProvider::class/g' -i.bak config/app.php
 sed -e 's/Illuminate\\Support\\Facades\\View::class,/Illuminate\\Support\\Facades\\View::class, "Piwik" => RobBrazier\\Piwik\\Facades\\Piwik::class/g' -i.bak config/app.php
