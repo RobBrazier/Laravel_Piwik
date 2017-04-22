@@ -2,3 +2,5 @@ Dockerfile*
 vendor
 docker-compose.yml
 .git
+.idea
+*.iml

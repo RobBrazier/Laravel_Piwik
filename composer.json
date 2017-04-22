@@ -13,7 +13,7 @@
     "require": {
         "php": ">=5.5.0",
         "guzzlehttp/guzzle": "6.2.1",
-        "illuminate/support": "5.1.41"
+        "illuminate/support": "~5.1"
     },
     "require-dev": {
         "phpunit/phpunit": "4.8.35",
