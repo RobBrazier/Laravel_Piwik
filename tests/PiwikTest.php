@@ -23,7 +23,7 @@ class PiwikTest extends \PHPUnit_Framework_TestCase {
 
         parent::setUp();
 
-        Config::shouldReceive("get", "piwik.curl_timeout")->andReturn(5.0);
+        Config::shouldReceive("get", "piwik.curl_timeout")->andReturn(10.0);
         Config::shouldReceive("get", "piwik.verify_peer")->andReturn(true);
 
         $this->piwik = new Piwik(array('piwik_url' => $this->piwik_url, 'site_id' => $this->site_id, 'apikey' => $this->apikey, 'format' => $this->format, 'period' => $this->period));
