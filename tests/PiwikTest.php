@@ -3,30 +3,36 @@
 namespace tests;
 
 use DOMDocument;
-use Illuminate\Support\Facades\Config;
-use Mockery;
+use Orchestra\Testbench\TestCase;
 use RobBrazier\Piwik\Piwik;
 
-class PiwikTest extends \PHPUnit_Framework_TestCase {
+class PiwikTest extends TestCase {
 
     private $piwik;
     private $last_visits_count = 2;
     private $piwik_url = "http://demo.piwik.org";
-    private $site_id = 7;
+    private $site_id = "7";
     private $apikey = "anonymous";
     private $format = "json";
-    private $period = "yesterday";
+    private $period = "last7";
+    private $curl_timeout = 10.0;
+    private $verify_peer = true;
     private $tag;
+
+    const PIWIK_URL = "piwik.piwik_url";
+    const SITE_ID = "piwik.site_id";
+    const API_KEY = "piwik.api_key";
+    const FORMAT = "piwik.format";
+    const PERIOD = "piwik.period";
+    const CURL_TIMEOUT = "piwik.curl_timeout";
+    const VERIFY_PEER = "piwik.verify_peer";
 
 
     public function setUp() {
 
         parent::setUp();
 
-        Config::shouldReceive("get", "piwik.curl_timeout")->andReturn(10.0);
-        Config::shouldReceive("get", "piwik.verify_peer")->andReturn(true);
-
-        $this->piwik = new Piwik(array('piwik_url' => $this->piwik_url, 'site_id' => $this->site_id, 'apikey' => $this->apikey, 'format' => $this->format, 'period' => $this->period));
+        $this->piwik = new Piwik();
 
         $this->tag = <<<EOT
 <!-- Piwik -->
@@ -43,6 +49,24 @@ s.parentNode.insertBefore(g,s); })();
 <!-- End Piwik Code -->
 EOT;
 
+    }
+
+    /**
+     * Define environment setup.
+     *
+     * @param  \Illuminate\Foundation\Application  $app
+     * @return void
+     */
+    protected function getEnvironmentSetUp($app)
+    {
+        // Setup default database to use sqlite :memory:
+        $app['config']->set(self::PIWIK_URL, $this->piwik_url);
+        $app['config']->set(self::SITE_ID, $this->site_id);
+        $app['config']->set(self::API_KEY, $this->apikey);
+        $app['config']->set(self::FORMAT, $this->format);
+        $app['config']->set(self::PERIOD, $this->period);
+        $app['config']->set(self::CURL_TIMEOUT, $this->curl_timeout);
+        $app['config']->set(self::VERIFY_PEER, $this->verify_peer);
     }
 
     /**
@@ -140,10 +164,8 @@ EOT;
         $keywords = $this->piwik->keywords('json');
         foreach ($keywords as $d) {
             $this->assertObjectHasAttribute("label", $d);
-            $this->assertObjectHasAttribute("nb_uniq_visitors", $d);
             $this->assertObjectHasAttribute("nb_visits", $d);
             $this->assertObjectHasAttribute("nb_actions", $d);
-            $this->assertObjectHasAttribute("nb_users", $d);
             $this->assertObjectHasAttribute("max_actions", $d);
             $this->assertObjectHasAttribute("sum_visit_length", $d);
             $this->assertObjectHasAttribute("bounce_count", $d);
@@ -160,10 +182,8 @@ EOT;
         $keywords = $this->piwik->keywords('php');
         foreach ($keywords as $d) {
             $this->assertArrayHasKey("label", $d);
-            $this->assertArrayHasKey("nb_uniq_visitors", $d);
             $this->assertArrayHasKey("nb_visits", $d);
             $this->assertArrayHasKey("nb_actions", $d);
-            $this->assertArrayHasKey("nb_users", $d);
             $this->assertArrayHasKey("max_actions", $d);
             $this->assertArrayHasKey("sum_visit_length", $d);
             $this->assertArrayHasKey("bounce_count", $d);
@@ -406,7 +426,6 @@ EOT;
         $searchEngines = $this->piwik->search_engines('json');
         foreach ($searchEngines as $d) {
             $this->assertObjectHasAttribute("label", $d);
-            $this->assertObjectHasAttribute("nb_uniq_visitors", $d);
             $this->assertObjectHasAttribute("nb_visits", $d);
             $this->assertObjectHasAttribute("url", $d);
             $this->assertObjectHasAttribute("logo", $d);
@@ -421,7 +440,6 @@ EOT;
         $searchEngines = $this->piwik->search_engines('php');
         foreach ($searchEngines as $d) {
             $this->assertArrayHasKey("label", $d);
-            $this->assertArrayHasKey("nb_uniq_visitors", $d);
             $this->assertArrayHasKey("nb_visits", $d);
             $this->assertArrayHasKey("url", $d);
             $this->assertArrayHasKey("logo", $d);
@@ -459,6 +477,7 @@ EOT;
      * @covers \RobBrazier\Piwik\Piwik::unique_visitors
      */
     public function testUniqueVisitorsJson() {
+        $this->app->config[self::PERIOD] = "yesterday";
         $uniqueVisitors = $this->piwik->unique_visitors('json');
         $this->assertGreaterThan(0, $uniqueVisitors->value);
     }
@@ -467,6 +486,7 @@ EOT;
      * @covers \RobBrazier\Piwik\Piwik::unique_visitors
      */
     public function testUniqueVisitorsPhp() {
+        $this->app->config[self::PERIOD] = "yesterday";
         $uniqueVisitors = $this->piwik->unique_visitors('php');
         $this->assertGreaterThan(0, $uniqueVisitors);
     }
@@ -475,6 +495,7 @@ EOT;
      * @covers \RobBrazier\Piwik\Piwik::unique_visitors
      */
     public function testUniqueVisitorsHtml() {
+        $this->app->config[self::PERIOD] = "yesterday";
         $document = new DOMDocument;
         $document->loadHTML($this->piwik->unique_visitors('html'));
         $this->assertGreaterThan(0, $document->getElementsByTagName("td")->item(0)->nodeValue);
@@ -484,6 +505,7 @@ EOT;
      * @covers \RobBrazier\Piwik\Piwik::unique_visitors
      */
     public function testUniqueVisitorsOriginal() {
+        $this->app->config[self::PERIOD] = "yesterday";
         $document = new DOMDocument;
         $document->loadHTML($this->piwik->unique_visitors('html'));
         $this->assertGreaterThan(0, $document->getElementsByTagName("td")->item(0)->nodeValue);
@@ -549,10 +571,8 @@ EOT;
         $websites = $this->piwik->websites('json');
         foreach ($websites as $d) {
             $this->assertObjectHasAttribute("label", $d);
-            $this->assertObjectHasAttribute("nb_uniq_visitors", $d);
             $this->assertObjectHasAttribute("nb_visits", $d);
             $this->assertObjectHasAttribute("nb_actions", $d);
-            $this->assertObjectHasAttribute("nb_users", $d);
             $this->assertObjectHasAttribute("max_actions", $d);
             $this->assertObjectHasAttribute("sum_visit_length", $d);
             $this->assertObjectHasAttribute("bounce_count", $d);
@@ -569,10 +589,8 @@ EOT;
         $websites = $this->piwik->websites('php');
         foreach ($websites as $d) {
             $this->assertArrayHasKey("label", $d);
-            $this->assertArrayHasKey("nb_uniq_visitors", $d);
             $this->assertArrayHasKey("nb_visits", $d);
             $this->assertArrayHasKey("nb_actions", $d);
-            $this->assertArrayHasKey("nb_users", $d);
             $this->assertArrayHasKey("max_actions", $d);
             $this->assertArrayHasKey("sum_visit_length", $d);
             $this->assertArrayHasKey("bounce_count", $d);

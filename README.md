@@ -1,7 +1,7 @@
 Laravel-Piwik v2.1.3
 ====================
 
-[![Build Status](https://semaphoreci.com/api/v1/brazier/laravel_piwik/branches/master/shields_badge.svg)](https://semaphoreci.com/brazier/laravel_piwik)
+[![Build Status](https://semaphoreci.com/api/v1/robbrazier/laravel_piwik/branches/master/shields_badge.svg)](https://semaphoreci.com/robbrazier/laravel_piwik)
 [![Scrutinizer](https://img.shields.io/scrutinizer/g/robbrazier/laravel_piwik.svg)](https://scrutinizer-ci.com/g/RobBrazier/Laravel_Piwik/?branch=master)
 [![Scrutinizer Coverage](https://img.shields.io/scrutinizer/coverage/g/robbrazier/laravel_piwik.svg)](https://scrutinizer-ci.com/g/RobBrazier/Laravel_Piwik/?branch=master)
 [![Packagist Version](https://img.shields.io/packagist/v/robbrazier/piwik.svg)](https://packagist.org/packages/robbrazier/piwik)
@@ -42,7 +42,7 @@ Add `'RobBrazier\Piwik\PiwikServiceProvider'` and `'Piwik' => 'RobBrazier\Piwik\
 );
 ```
 
-Then move the config file out of the package, so that it doesn't get replaced when you update, by doing `php artisan vendor:publish --provider="RobBrazier\Piwik\PiwikServiceProvider"`.
+Then move the config file out of the package, so that it doesn't get replaced when you update, by doing `php artisan vendor:publish --provider="RobBrazier\Piwik\PiwikServiceProvider" --tag="config"`.
 
 Update your packages with `composer update` or install with `composer install`.
 
