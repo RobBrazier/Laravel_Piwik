@@ -37,8 +37,6 @@
 namespace RobBrazier\Piwik;
 
 use GuzzleHttp\Client;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Session;
 
 /**
  * Class Piwik
@@ -106,15 +104,6 @@ class Piwik {
 
 
     /**
-     * @param   $key string         configuration key
-     * @param   $default string     default value if null
-     * @return mixed
-     */
-    private function config($key, $default = null) {
-        return Config::get($key, $default);
-    }
-
-    /**
      * date
      * Read config for the period to make API queries about, and translate it into URL-friendly strings
      *
@@ -123,7 +112,7 @@ class Piwik {
      */
 
     private function date() {
-        $this->period = ($this->constructed) ? $this->period : $this->config('piwik.period');
+        $this->period = ($this->constructed) ? $this->period : config('piwik.period');
         $date_regex = "/^[0-9]{4}\\-[0-9]{1,2}\\-[0-9]{1,2},[0-9]{4}\\-[0-9]{1,2}\\-[0-9]{1,2}$/";
         $period_mapping = array(
             "today" => "&period=day&date=today",
@@ -206,7 +195,7 @@ class Piwik {
         if ($override !== null) {
             $this->format = $override;
         } else {
-            $this->format = ($this->constructed) ? $this->format : $this->config('piwik.format');
+            $this->format = ($this->constructed) ? $this->format : config('piwik.format');
         }
         $allowed_formats = array("json", "php", "xml", "html", "rss", "original");
         $default_format = "json";
@@ -228,7 +217,7 @@ class Piwik {
      */
 
     private function get_site_id($id = null) {
-        $this->site_id = ($this->constructed) ? $this->site_id : $this->config('piwik.site_id');
+        $this->site_id = ($this->constructed) ? $this->site_id : config('piwik.site_id');
         if (isset($id)) {
             $this->site_id = $id;
             return $this->site_id;
@@ -246,9 +235,9 @@ class Piwik {
      */
 
     private function get_apikey() {
-        $this->apikey = ($this->constructed) ? $this->apikey : $this->config('piwik.api_key');
-        $this->username = ($this->constructed) ? $this->username : $this->config('piwik.username');
-        $this->password = ($this->constructed) ? $this->password : md5($this->config('piwik.password'));
+        $this->apikey = ($this->constructed) ? $this->apikey : config('piwik.api_key');
+        $this->username = ($this->constructed) ? $this->username : config('piwik.username');
+        $this->password = ($this->constructed) ? $this->password : md5(config('piwik.password'));
 
         if (empty($this->apikey) && !empty($this->username) && !empty($this->password)) {
             $arguments = array("userLogin" => $this->username, "md5Password" => $this->password);
@@ -272,7 +261,7 @@ class Piwik {
      */
 
     private function get_piwik_url() {
-        $this->piwik_url = ($this->constructed) ? $this->piwik_url : $this->config('piwik.piwik_url');
+        $this->piwik_url = ($this->constructed) ? $this->piwik_url : config('piwik.piwik_url');
         return $this->piwik_url;
     }
 
@@ -282,8 +271,8 @@ class Piwik {
      */
     private function _get($url) {
         $client = new Client(array(
-            "timeout" => $this->config('piwik.curl_timeout', 5.0),
-            "verify" => $this->config('piwik.verify_peer', true),
+            "timeout" => config('piwik.curl_timeout', 5.0),
+            "verify" => config('piwik.verify_peer', true),
             "base_uri" => $this->get_piwik_url()
         ));
         $response = $client->get($url);
