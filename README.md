@@ -12,7 +12,8 @@ An Interface to Piwik's Analytics API for Laravel (Composer Package)
 
 This is the Laravel 5 version of the Laravel-Piwik Bundle.
 
-##Installation
+Installation
+------------
 
 Add `RobBrazier/Piwik` to `composer.json`:
 
@@ -48,6 +49,7 @@ Update your packages with `composer update` or install with `composer install`.
 
 Then go to `config/piwik.php` and add your config settings such as server, username, password, apikey etc.
 
-##Manual
+Manual
+------
 
 The Manual is still the same as version 1.0.x, and is at [http://robbrazier.com/projects/laravel-piwik](http://robbrazier.com/projects/laravel-piwik).
