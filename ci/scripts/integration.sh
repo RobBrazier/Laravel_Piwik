@@ -1,5 +1,5 @@
 #!/bin/sh
-composer update --no-suggest --no-progress
+composer update --no-suggest --no-progress --no-dev
 contents="$(cat composer.json | jq '.repositories = [{"packagist.org": false}, {"type": "path", "url": "../plugin"}, {"type": "composer", "url": "https://packagist.org"}]')"
 echo "$contents" > composer.json
 composer require robbrazier/piwik:* --no-suggest --no-progress
