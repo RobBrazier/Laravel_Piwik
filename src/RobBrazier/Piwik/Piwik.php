@@ -167,20 +167,14 @@ class Piwik {
      */
 
     private function get_decoded($url, $format) {
-        $result = null;
+        $result = $this->request($url);
         switch ($this->getFormat($format)) {
             case 'json':
-                $result = json_decode($this->request($url));
+                $result = json_decode($result);
                 break;
             case 'php':
-                $result = unserialize($this->request($url));
+                $result = unserialize($result);
                 break;
-            case 'xml':
-            case 'rss':
-            case 'html':
-            case 'original':
-            default:
-                $result = $this->request($url);
         }
         return $result;
     }
@@ -259,6 +253,7 @@ class Piwik {
             // Get the last array element which has information of the last page the visitor accessed
             switch ($this->getFormat($format)) {
                 case 'json':
+                    // no break as the logic is the same as in the php case, but with an object to array conversion
                     $v = (array) $v;
                 case 'php':
                     $actionDetails = (array) array_get($v, 'actionDetails');
@@ -445,7 +440,6 @@ s.parentNode.insertBefore(g,s); })();
         $builder->setModule("API");
         $builder->setMethod($method);
         $builder->addAll($arguments);
-        $override_id = null;
         if ($id != null || (is_bool($id) && $id)) {
             $override_id = null;
             if (!is_bool($id)) {
