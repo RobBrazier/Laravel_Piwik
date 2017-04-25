@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b8a5b47a970b824de74ea8658def079b",
+    "content-hash": "99bfb62fdbde119e9330dd13b02363b5",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -183,41 +183,6 @@
                 "url"
             ],
             "time": "2017-03-20T17:10:46+00:00"
-        },
-        {
-            "name": "lightools/xml",
-            "version": "v1.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/lightools/xml.git",
-                "reference": "b4269bab9645eddc6731970f31b8e4aec30c57c3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/lightools/xml/zipball/b4269bab9645eddc6731970f31b8e4aec30c57c3",
-                "reference": "b4269bab9645eddc6731970f31b8e4aec30c57c3",
-                "shasum": ""
-            },
-            "require": {
-                "ext-dom": "*",
-                "php": ">=5.4"
-            },
-            "require-dev": {
-                "nette/tester": "1.*",
-                "php": ">=5.5"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Simple and safe parsing of XML and HTML sources.",
-            "time": "2017-02-05T11:52:42+00:00"
         },
         {
             "name": "psr/http-message",
