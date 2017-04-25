@@ -48,7 +48,6 @@ class QueryDates {
      * @return QueryDate
      */
     public function get($data) {
-        $result = null;
         if (array_has($this->map, $data)) {
             $result = array_get($this->map, $data);
         } else if (preg_match(self::DATE_REGEX, $data)) {
