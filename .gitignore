@@ -1,7 +1,8 @@
 .DS_Store
 docs/_build/
-.idea
+.idea/
 vendor/
+reports/
 coverage.xml
 *.iml
 *.phar

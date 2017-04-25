@@ -17,10 +17,14 @@
     </testsuites>
     <logging>
         <log type="coverage-clover" target="coverage.xml"/>
+        <log type="coverage-html" target="./reports/html"/>
     </logging>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">src</directory>
+            <exclude>
+                <directory suffix=".php">src/config</directory>
+            </exclude>
         </whitelist>
     </filter>
 </phpunit>

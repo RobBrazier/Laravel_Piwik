@@ -1,8 +1,7 @@
 #!/bin/sh
-composer update --no-suggest --no-progress
 contents="$(cat composer.json | jq '.repositories = [{"packagist.org": false}, {"type": "path", "url": "../plugin"}, {"type": "composer", "url": "https://packagist.org"}]')"
 echo "$contents" > composer.json
-composer require robbrazier/piwik:* --no-suggest --no-progress
+composer require robbrazier/piwik:* --no-suggest --no-progress --update-no-dev
 sed -e 's/App\\Providers\\RouteServiceProvider::class,/App\\Providers\\RouteServiceProvider::class, RobBrazier\\Piwik\\PiwikServiceProvider::class/g' -i.bak config/app.php
 sed -e 's/Illuminate\\Support\\Facades\\View::class,/Illuminate\\Support\\Facades\\View::class, "Piwik" => RobBrazier\\Piwik\\Facades\\Piwik::class/g' -i.bak config/app.php
 filename="routes/web.php"
