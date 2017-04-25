@@ -20,6 +20,13 @@ class UrlTest extends \PHPUnit_Framework_TestCase {
         $this->testClass = new Url($this->url);
     }
 
+    /**
+     * @expectedException \RobBrazier\Piwik\PiwikException
+     */
+    public function testInvalidUrl() {
+        $this->testClass = new Url("http:///example.com");
+    }
+
     public function testSetScheme() {
         $scheme = 'https';
         $expectedUrl = str_replace('http', $scheme, $this->url);

@@ -41,7 +41,7 @@ class Url {
     public function __construct($url) {
         $parsed_url = parse_url($url);
         if (is_bool($parsed_url)) {
-            throw new PiwikException("Cannot parse URL [" + $url + "]");
+            throw new PiwikException("Cannot parse URL [" . $url . "]");
         }
         $this->scheme = $this->getPart($parsed_url, 'scheme');
         $this->host = $this->getPart($parsed_url, 'host');
