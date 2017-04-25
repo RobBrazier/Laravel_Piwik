@@ -3,5 +3,6 @@ docs/_build/
 .idea/
 vendor/
 reports/
+coverage.xml
 *.iml
 *.phar
