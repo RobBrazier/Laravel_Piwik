@@ -1,48 +1,25 @@
 <?php
-/**
- * MIT License
- * ===========
- *
- * Copyright (c) 2015 Rob Brazier
- *
- * Permission is hereby granted, free of charge, to any person obtaining
- * a copy of this software and associated documentation files (the
- * "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish,
- * distribute, sublicense, and/or sell copies of the Software, and to
- * permit persons to whom the Software is furnished to do so, subject to
- * the following conditions:
- *
- * The above copyright notice and this permission notice shall be included
- * in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
- * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
- * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
- * CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
- * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
- * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- * @category   Libraries
- * @package    Libraries
- * @subpackage Libraries
- * @author     Rob Brazier
- * @copyright  2016 Rob Brazier.
- * @license    http://www.opensource.org/licenses/mit-license.php  MIT License
- * @version    2.0.2
- * @link       http://robbrazier.com
- */
 
 namespace RobBrazier\Piwik;
 
 use GuzzleHttp\Client;
+use RobBrazier\Piwik\Query\QueryDate;
+use RobBrazier\Piwik\Query\QueryDates;
+use RobBrazier\Piwik\Query\Url;
+use RobBrazier\Piwik\Query\UrlQueryBuilder;
 
 /**
  * Class Piwik
  * @package RobBrazier\Piwik
  */
 class Piwik {
+
+    /**
+     * Allowed Response formats
+     * (Unfortunately PHP 5.5 doesn't support array constants)
+     * @var array
+     */
+    private $allowedFormats = array("json", "php", "xml", "html", "rss", "original");
     /**
      * @var string
      */
@@ -54,7 +31,7 @@ class Piwik {
     /**
      * @var string
      */
-    private $apikey = '';
+    private $api_key = '';
     /**
      * @var string
      */
@@ -73,25 +50,18 @@ class Piwik {
     private $period = '';
 
     /**
-     * @var bool
-     */
-    private $constructed = false;
-
-
-    /**
      * @param array $args
      */
     public function __construct(array $args = array()) {
         date_default_timezone_set("UTC");
         if (!empty($args)) {
-            $this->piwik_url = @$args['piwik_url'];
-            $this->site_id = @$args['site_id'];
-            $this->apikey = @$args['apikey'];
-            $this->username = @$args['username'];
-            $this->password = @$args['password'];
-            $this->format = @$args['format'];
-            $this->period = @$args['period'];
-            $this->constructed = true;
+            $this->piwik_url = array_get($args, 'piwik_url');
+            $this->site_id = array_get($args, 'site_id');
+            $this->api_key = array_get($args, 'apikey');
+            $this->username = array_get($args, 'username');
+            $this->password = array_get($args, 'password');
+            $this->format = array_get($args, 'format');
+            $this->period = array_get($args, 'period');
         }
 
     }
@@ -102,178 +72,84 @@ class Piwik {
 //
 // --------------------------------------------------------------------
 
+    /**
+     * @param string $period
+     * @return QueryDate
+     */
+    private function getDate($period) {
+        return QueryDates::getInstance()->get($period);
+    }
 
     /**
-     * date
-     * Read config for the period to make API queries about, and translate it into URL-friendly strings
-     *
-     * @access  private
-     * @return  string
+     * @param string $url
+     * @param bool $https
+     * @return string
      */
+    private function convertUrl($url, $https) {
+        $scheme = ($https) ? 'https' : 'http';
+        $parser = new Url($url);
+        $parser->setScheme($scheme);
+        return $parser->__toString();
+    }
 
-    private function date() {
-        $this->period = ($this->constructed) ? $this->period : config('piwik.period');
-        $date_regex = "/^[0-9]{4}\\-[0-9]{1,2}\\-[0-9]{1,2},[0-9]{4}\\-[0-9]{1,2}\\-[0-9]{1,2}$/";
-        $period_mapping = array(
-            "today" => "&period=day&date=today",
-            "yesterday" => "&period=day&date=yesterday",
-            "previous7" => "&period=range&date=previous7",
-            "previous30" => "&period=range&date=previous30",
-            "last7" => "&period=range&date=last7",
-            "last30" => "&period=range&date=last30",
-            "currentweek" => "&period=week&date=today",
-            "currentmonth" => "&period=month&date=today",
-            "currentyear" => "&period=year&date=today"
-        );
-        $period_keys = array_keys($period_mapping);
-        $default_period = $period_mapping["yesterday"];
-        $period = $default_period;
-        if (in_array($this->period, $period_keys)) {
-            $period = $period_mapping[$this->period];
-        } else {
-            $matches = array();
-            preg_match($date_regex, $this->period, $matches);
-            if (sizeof($matches) == 1) {
-                $period = "&period=range&date=" . $this->period;
-            }
+    private function getFormat($format) {
+        if ($format == null) {
+            $format = $this->getConfig('format');
         }
-        return $period;
-    }
-
-    /**
-     * to_https
-     * Convert http:// to https:// for tag generation
-     *
-     * @access  private
-     * @return  string
-     */
-
-    private function to_https() {
-        return $this->replace_url_scheme("http", "https");
-    }
-
-    /**
-     * to_http
-     * Check that the URL is http://
-     *
-     * @access  private
-     * @return  string
-     */
-
-    private function to_http() {
-        return $this->replace_url_scheme("https", "http");
-    }
-
-    /**
-     * replace_url_schema
-     * Underlying method called by to_http and to_https
-     *
-     * @param   $search string        the value to search for
-     * @param   $replace string       the value to replace $search with
-     * @return  string
-     */
-
-    private function replace_url_scheme($search, $replace) {
-        $url = $this->get_piwik_url();
-        if (preg_match('/' . $search . ':/', $url)) {
-            return str_replace($search, $replace, $url);
-        } else if (preg_match('/' . $replace . ':/', $url)) {
-            return $url;
-        }
-    }
-
-    /**
-     * check_format
-     * Check the format as defined in config, and default to json if it is not on the list
-     *
-     * @access  private
-     * @param   $override string    Override string for the format of the API Query to be returned as
-     * @return  string
-     */
-
-    private function check_format($override = null) {
-        if ($override !== null) {
-            $this->format = $override;
-        } else {
-            $this->format = ($this->constructed) ? $this->format : config('piwik.format');
-        }
-        $allowed_formats = array("json", "php", "xml", "html", "rss", "original");
-        $default_format = "json";
-        $format = $this->format;
-        if (!in_array($format, $allowed_formats)) {
-            $format = $default_format;
+        if (!in_array($format, $this->allowedFormats)) {
+            throw new PiwikException("Invalid format [" . $format . "]");
         }
         return $format;
-
     }
 
-    /**
-     * get_site_id
-     * Allows access to site_id from all functions
-     *
-     * @access  private
-     * @param   $id string          overridden site id
-     * @return  string
-     */
-
-    private function get_site_id($id = null) {
-        $this->site_id = ($this->constructed) ? $this->site_id : config('piwik.site_id');
-        if (isset($id)) {
-            $this->site_id = $id;
-            return $this->site_id;
-        } else {
-            return $this->site_id;
-        }
-    }
-
-    /**
-     * get_apikey
-     * Allows access to api key from all functions
-     *
-     * @access  private
-     * @return  string
-     */
-
-    private function get_apikey() {
-        $this->apikey = ($this->constructed) ? $this->apikey : config('piwik.api_key');
-        $this->username = ($this->constructed) ? $this->username : config('piwik.username');
-        $this->password = ($this->constructed) ? $this->password : md5(config('piwik.password'));
-
-        if (empty($this->apikey) && !empty($this->username) && !empty($this->password)) {
+    private function getApiKey() {
+        $apikey = $this->getConfig('api_key');
+        $username = $this->getConfig('username');
+        $password = md5($this->getConfig('password'));
+        $result = $apikey;
+        if (empty($result) && !empty($username) && !empty($password)) {
             $arguments = array("userLogin" => $this->username, "md5Password" => $this->password);
-            $apikey = $this->custom("UsersManager.getTokenAuth", $arguments, false, false, null);
-            if (!Session::has('apikey')) Session::put('apikey', $apikey);
-            $this->apikey = Session::get('apikey');
-            return $this->apikey->value;
-        } else if (!empty($this->apikey)) {
-            return $this->apikey;
-        } else {
-            echo '<strong style="color:red">You must enter your API Key or Username/Password combination to use this bundle!</strong><br/>';
+            $this->api_key = $this->custom("UsersManager.getTokenAuth", $arguments, false, false, null);
+            $result = $this->api_key;
+        } else if (empty($result)) {
+            throw new PiwikException("Unable to retrieve API Key from the provided credentials");
         }
+        return $result;
     }
 
     /**
-     * get_piwik_url
-     * Allows access to piwik_url from all functions
-     *
-     * @access  private
-     * @return  string
+     * @param string $key
+     * @return mixed
      */
+    private function getConfig($key) {
+        $result = $this->$key;
+        if ($this->$key == null) {
+            $result = config('piwik.' . $key);
+        }
+        return $result;
+    }
 
-    private function get_piwik_url() {
-        $this->piwik_url = ($this->constructed) ? $this->piwik_url : config('piwik.piwik_url');
-        return $this->piwik_url;
+    private function getSiteId($override = null) {
+        $result = $override;
+        if (empty($result)) {
+            $result = $this->getConfig('site_id');
+        }
+        return $result;
+    }
+
+    private function getSiteUrl($id = null) {
+        return $this->custom("SitesManager.getSiteUrlsFromId", null, $id, true, "json")[0];
     }
 
     /**
      * @param   $url string            the url to send a request to
      * @return  string
      */
-    private function _get($url) {
+    private function request($url) {
         $client = new Client(array(
             "timeout" => config('piwik.curl_timeout', 5.0),
             "verify" => config('piwik.verify_peer', true),
-            "base_uri" => $this->get_piwik_url()
+            "base_uri" => $this->getConfig('piwik_url')
         ));
         $response = $client->get($url);
         $body = $response->getBody();
@@ -291,40 +167,16 @@ class Piwik {
      */
 
     private function get_decoded($url, $format) {
-        switch ($this->check_format($format)) {
+        $result = $this->request($url);
+        switch ($this->getFormat($format)) {
             case 'json':
-                return json_decode($this->_get($url));
+                $result = json_decode($result);
+                break;
             case 'php':
-                return unserialize($this->_get($url));
-
-            case 'xml':
-                return 'Not Supported as of yet';
-
-            case 'html':
-                return $this->_get($url);
-
-            case 'rss':
-                return 'Not supported as of yet';
-
-            case 'original':
-                return $this->_get($url);
-
-            default:
-                return $this->_get($url);
+                $result = unserialize($result);
+                break;
         }
-    }
-
-    /**
-     * url_from_id
-     * Fetches the URL from Site ID
-     *
-     * @access  private
-     * @param   $id string          Override for ID, so you can specify one rather than fetching it from config
-     * @return  string
-     */
-
-    private function url_from_id($id = null) {
-        return $this->custom("SitesManager.getSiteUrlsFromId", null, $id, true, "php")[0][0];
+        return $result;
     }
 
 // ====================================================================
@@ -393,104 +245,49 @@ class Piwik {
      * @return  array
      */
     public function last_visits_parsed($count, $format = null) {
-        if (in_array($format, array('xml', 'rss', 'html', 'original'))) {
-            echo "Sorry, 'xml', 'rss', 'html' and 'original' are not yet supported.";
-            return false;
-        }
         $arguments = array("filter_limit" => $count);
         $visits = $this->custom("Live.getLastVisitsDetails", $arguments, true, true, $format);
 
         $data = array();
         foreach ($visits as $v) {
             // Get the last array element which has information of the last page the visitor accessed
-            switch ($this->check_format($format)) {
+            switch ($this->getFormat($format)) {
                 case 'json':
-                    $count = count($v->actionDetails) - 1;
-                    $page_link = $v->actionDetails[$count]->url;
-                    $page_title = isset($v->actionDetails[$count]->pageTitle) ? $v->actionDetails[$count]->pageTitle : null;
-
-                    // Get just the image names (API returns path to icons in piwik install)
-                    $flag = explode('/', $v->countryFlag);
-                    $flag_icon = end($flag);
-
-                    $os = explode('/', $v->operatingSystemIcon);
-                    $os_icon = end($os);
-
-                    $browser = explode('/', $v->browserIcon);
-                    $browser_icon = end($browser);
-
-                    $data[] = array(
-                        'time' => date("M j Y, g:i a", $v->lastActionTimestamp),
-                        'title' => $page_title,
-                        'link' => $page_link,
-                        'ip_address' => $v->visitIp,
-                        'provider' => $v->provider,
-                        'country' => $v->country,
-                        'country_icon' => $flag_icon,
-                        'os' => $v->operatingSystem,
-                        'os_icon' => $os_icon,
-                        'browser' => $v->browserName,
-                        'browser_icon' => $browser_icon,
-                    );
-                    break;
+                    // no break as the logic is the same as in the php case, but with an object to array conversion
+                    $v = (array) $v;
                 case 'php':
-                    $count = count($v['actionDetails']) - 1;
-                    $page_link = $v['actionDetails'][$count]['url'];
-                    $page_title = $v['actionDetails'][$count]['pageTitle'];
+                    $actionDetails = (array) array_get($v, 'actionDetails');
+                    $count = count($actionDetails) - 1;
+                    $actionDetail = (array) array_get($actionDetails, $count);
+                    $page_link = array_get($actionDetail, 'url');
+                    $page_title = array_get($actionDetail, 'pageTitle');
 
                     // Get just the image names (API returns path to icons in piwik install)
-                    $flag = explode('/', $v['countryFlag']);
+                    $flag = explode('/', array_get($v, 'countryFlag'));
                     $flag_icon = end($flag);
 
-                    $os = explode('/', $v['operatingSystemIcon']);
+                    $os = explode('/', array_get($v, 'operatingSystemIcon'));
                     $os_icon = end($os);
 
-                    $browser = explode('/', $v['browserIcon']);
+                    $browser = explode('/', array_get($v, 'browserIcon'));
                     $browser_icon = end($browser);
 
                     $data[] = array(
-                        'time' => date("M j Y, g:i a", $v['lastActionTimestamp']),
+                        'time' => date("M j Y, g:i a", array_get($v, 'lastActionTimestamp')),
                         'title' => $page_title,
                         'link' => $page_link,
-                        'ip_address' => $v['visitIp'],
-                        'provider' => $v['provider'],
-                        'country' => $v['country'],
+                        'ip_address' => array_get($v, 'visitIp'),
+                        'provider' => array_get($v, 'provider'),
+                        'country' => array_get($v, 'country'),
                         'country_icon' => $flag_icon,
-                        'os' => $v['operatingSystem'],
+                        'os' => array_get($v, 'operatingSystem'),
                         'os_icon' => $os_icon,
-                        'browser' => $v['browserName'],
+                        'browser' => array_get($v, 'browserName'),
                         'browser_icon' => $browser_icon,
                     );
                     break;
                 default:
-                    $count = count($v->actionDetails) - 1;
-                    $page_link = $v->actionDetails[$count]->url;
-                    $page_title = $v->actionDetails[$count]->pageTitle;
-
-                    // Get just the image names (API returns path to icons in piwik install)
-                    $flag = explode('/', $v->countryFlag);
-                    $flag_icon = end($flag);
-
-                    $os = explode('/', $v->operatingSystemIcon);
-                    $os_icon = end($os);
-
-                    $browser = explode('/', $v->browserIcon);
-                    $browser_icon = end($browser);
-
-                    $data[] = array(
-                        'time' => date("M j Y, g:i a", $v->lastActionTimestamp),
-                        'title' => $page_title,
-                        'link' => $page_link,
-                        'ip_address' => $v->visitIp,
-                        'provider' => $v->provider,
-                        'country' => $v->country,
-                        'country_icon' => $flag_icon,
-                        'os' => $v->operatingSystem,
-                        'os_icon' => $os_icon,
-                        'browser' => $v->browserName,
-                        'browser_icon' => $browser_icon,
-                    );
-                    break;
+                    throw new PiwikException("Format [" . $format . "] is not yet supported.");
             }
 
         }
@@ -580,19 +377,19 @@ class Piwik {
      */
 
     public function tag() {
-        $tag =
-            '<!-- Piwik -->
-<script type="text/javascript">
+        $piwik_url = $this->getConfig('piwik_url');
+        $tag = sprintf("<!-- Piwik -->
+<script type=\"text/javascript\">
 var _paq = _paq || [];
-(function(){ var u=(("https:" == document.location.protocol) ? "' . $this->to_https() . '/" : "' . $this->to_http() . '/");
-_paq.push([\'setSiteId\', ' . $this->get_site_id() . ']);
-_paq.push([\'setTrackerUrl\', u+\'piwik.php\']);
-_paq.push([\'trackPageView\']);
-_paq.push([\'enableLinkTracking\']);
-var d=document, g=d.createElement(\'script\'), s=d.getElementsByTagName(\'script\')[0]; g.type=\'text/javascript\'; g.defer=true; g.async=true; g.src=u+\'piwik.js\';
+(function(){ var u=((\"https:\" == document.location.protocol) ? \"%s/\" : \"%s/\");
+_paq.push(['setSiteId', %s]);
+_paq.push(['setTrackerUrl', u+'piwik.php']);
+_paq.push(['trackPageView']);
+_paq.push(['enableLinkTracking']);
+var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript'; g.defer=true; g.async=true; g.src=u+'piwik.js';
 s.parentNode.insertBefore(g,s); })();
 </script>
-<!-- End Piwik Code -->';
+<!-- End Piwik Code -->", $this->convertUrl($piwik_url, true), $this->convertUrl($piwik_url, false), $this->getSiteId());
 
         return $tag;
     }
@@ -607,9 +404,8 @@ s.parentNode.insertBefore(g,s); })();
      * @return array
      */
 
-    public function seo_rank($id, $format = 'json') {
-        // PHP doesn't seem to work with this, so defaults to JSON
-        $arguments = array("url" => $this->url_from_id($id));
+    public function seo_rank($id, $format = null) {
+        $arguments = array("url" => $this->getSiteUrl($id));
         return $this->custom("SEO.getRank", $arguments, false, false, $format);
     }
 
@@ -629,33 +425,37 @@ s.parentNode.insertBefore(g,s); })();
     /**
      * @param $method string        The API method, as found in the Piwik API documentation
      * @param $arguments array|null A multidimensional map of key => value for custom data to be added onto the url, e.g. ["test" => "foo"] ===> &test=foo
-     * @param $id mixed             values can be true/false to add the default site id, or you can specify the id here
+     * @param $id string|bool       values can be true/false to add the default site id, or you can specify the id here
      * @param $period bool          boolean value to determine whether the time period is appended to the API url
      * @param $format string        Override string for the format of the API Query to be returned as
      * @return mixed
      */
     public function custom($method, $arguments, $id = false, $period = false, $format = null) {
+        $format = $this->getFormat($format);
         if ($arguments == null) {
             $arguments = array();
         }
-        if (isset($method)) {
-            $url = 'index.php?module=API&method=' . $method;
-            foreach ($arguments as $key => $value) {
-                $url .= '&' . $key . '=' . $value;
+        $url = 'index.php';
+        $builder = new UrlQueryBuilder();
+        $builder->setModule("API");
+        $builder->setMethod($method);
+        $builder->addAll($arguments);
+        if ($id != null || (is_bool($id) && $id)) {
+            $override_id = null;
+            if (!is_bool($id)) {
+                $override_id = $id;
             }
-            if ($id != null || (is_bool($id) && $id)) {
-                $override_id = null;
-                if (!is_bool($id)) {
-                    $override_id = $id;
-                }
-                $url .= "&idSite=" . $this->get_site_id($override_id);
-            }
-            if ($period) {
-                $url .= $this->date();
-            }
-            $url .= '&format=' . $this->check_format($format) . '&token_auth=' . $this->get_apikey();
-            return $this->get_decoded($url, $format);
+            $siteId = $this->getSiteId($override_id);
+            $builder->setSiteId($siteId);
         }
+        if ($period) {
+            $date = $this->getDate($this->getConfig('period'));
+            $builder->setDate($date);
+        }
+        $builder->setFormat($format);
+        $builder->setTokenAuth($this->getApiKey());
+        $url .= $builder->build();
+        return $this->get_decoded($url, $format);
     }
 
 }
