@@ -1,22 +1,66 @@
 <?php
 
-namespace tests;
+namespace RobBrazier\Piwik;
 
 use DOMDocument;
 use Orchestra\Testbench\TestCase;
 use RobBrazier\Piwik\Piwik;
 
+/**
+ * Class PiwikTest
+ * @package RobBrazier\Piwik
+ * @covers \RobBrazier\Piwik\Piwik
+ */
 class PiwikTest extends TestCase {
 
+    /**
+     * @var Piwik
+     */
     private $piwik;
+
+    /**
+     * @var int
+     */
     private $last_visits_count = 2;
+
+    /**
+     * @var string
+     */
     private $piwik_url = "http://demo.piwik.org";
+
+    /**
+     * @var string
+     */
     private $site_id = "7";
+
+    /**
+     * @var string
+     */
     private $apikey = "anonymous";
+
+    /**
+     * @var string
+     */
     private $format = "json";
+
+    /**
+     * @var string
+     */
     private $period = "last7";
+
+    /**
+     * @var float
+     */
     private $curl_timeout = 10.0;
+
+    /**
+     * @var bool
+     */
     private $verify_peer = true;
+
+    /**
+     * @var string
+     */
     private $tag;
 
     const PIWIK_URL = "piwik.piwik_url";
@@ -72,31 +116,21 @@ EOT;
     /**
      * Actions Tests
      * [json, php, html and original]
-     * @covers \RobBrazier\Piwik\Piwik::actions
      */
     public function testActionsJson() {
         $this->assertObjectHasAttribute("value", $this->piwik->actions('json'));
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::actions
-     */
     public function testActionsPhp() {
         $this->assertGreaterThan(0, $this->piwik->actions('php'));
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::actions
-     */
     public function testActionsHtml() {
         $document = new DOMDocument;
         $document->loadHTML($this->piwik->actions('html'));
         $this->assertGreaterThan(0, $document->getElementsByTagName("td")->item(0)->nodeValue);
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::actions
-     */
     public function testActionsOriginal() {
         $document = new DOMDocument;
         $document->loadHTML($this->piwik->actions('original'));
@@ -106,7 +140,6 @@ EOT;
     /**
      * Downloads Tests
      * [json, php, html and original]
-     * @covers \RobBrazier\Piwik\Piwik::downloads
      */
     public function testDownloadsJson() {
         $downloads = $this->piwik->downloads('json');
@@ -118,9 +151,6 @@ EOT;
         }
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::downloads
-     */
     public function testDownloadsPhp() {
         $downloads = $this->piwik->downloads('php');
         foreach ($downloads as $d) {
@@ -131,9 +161,6 @@ EOT;
         }
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::downloads
-     */
     public function testDownloadsHtml() {
         $downloads = $this->piwik->downloads('html');
         $document = new DOMDocument;
@@ -143,9 +170,6 @@ EOT;
         $this->assertEquals(0, $contentSize % $headingsCount);
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::downloads
-     */
     public function testDownloadsOriginal() {
         $downloads = $this->piwik->downloads('original');
         $document = new DOMDocument;
@@ -158,7 +182,6 @@ EOT;
     /**
      * Keywords Tests
      * [json, php, html and original]
-     * @covers \RobBrazier\Piwik\Piwik::keywords
      */
     public function testKeywordsJson() {
         $keywords = $this->piwik->keywords('json');
@@ -175,9 +198,6 @@ EOT;
         }
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::keywords
-     */
     public function testKeywordsPhp() {
         $keywords = $this->piwik->keywords('php');
         foreach ($keywords as $d) {
@@ -193,9 +213,6 @@ EOT;
         }
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::keywords
-     */
     public function testKeywordsHtml() {
         $keywords = $this->piwik->keywords('html');
         $document = new DOMDocument;
@@ -205,9 +222,6 @@ EOT;
         $this->assertEquals(0, $contentSize % $headingsCount);
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::keywords
-     */
     public function testKeywordsOriginal() {
         $keywords = $this->piwik->keywords('html');
         $document = new DOMDocument;
@@ -220,7 +234,6 @@ EOT;
     /**
      * Last Visits Tests
      * [json, php, html and original]
-     * @covers \RobBrazier\Piwik\Piwik::last_visits
      */
     public function testLastVisitsJson() {
         $lastVisits = $this->piwik->last_visits($this->last_visits_count, 'json');
@@ -231,9 +244,6 @@ EOT;
         }
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::last_visits
-     */
     public function testLastVisitsPhp() {
         $lastVisits = $this->piwik->last_visits($this->last_visits_count, 'php');
         foreach ($lastVisits as $d) {
@@ -243,9 +253,6 @@ EOT;
         }
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::last_visits
-     */
     public function testLastVisitsHtml() {
         $lastVisits = $this->piwik->last_visits($this->last_visits_count, 'html');
         $document = new DOMDocument;
@@ -255,9 +262,6 @@ EOT;
         $this->assertEquals(0, $contentSize % $headingsCount);
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::last_visits
-     */
     public function testLastVisitsOriginal() {
         $lastVisits = $this->piwik->last_visits($this->last_visits_count, 'original');
         $document = new DOMDocument;
@@ -270,7 +274,6 @@ EOT;
     /**
      * Last Visits Parsed Tests
      * [json and php]
-     * @covers \RobBrazier\Piwik\Piwik::last_visits_parsed
      */
     public function testLastVisitsParsedJson() {
         $lastVisitsParsed = $this->piwik->last_visits_parsed($this->last_visits_count, 'json');
@@ -289,9 +292,6 @@ EOT;
         }
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::last_visits_parsed
-     */
     public function testLastVisitsParsedPhp() {
         $lastVisitsParsed = $this->piwik->last_visits_parsed($this->last_visits_count, 'php');
         foreach ($lastVisitsParsed as $d) {
@@ -312,7 +312,6 @@ EOT;
     /**
      * Outlinks Tests
      * [json, php, html and original]
-     * @covers \RobBrazier\Piwik\Piwik::outlinks
      */
     public function testOutlinksJson() {
         $outlinks = $this->piwik->outlinks('json');
@@ -325,9 +324,6 @@ EOT;
         }
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::outlinks
-     */
     public function testOutlinksPhp() {
         $outlinks = $this->piwik->outlinks('php');
         foreach ($outlinks as $d) {
@@ -339,9 +335,6 @@ EOT;
         }
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::outlinks
-     */
     public function testOutlinksHtml() {
         $outlinks = $this->piwik->outlinks('html');
         $document = new DOMDocument;
@@ -351,9 +344,6 @@ EOT;
         $this->assertEquals(0, $contentSize % $headingsCount);
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::outlinks
-     */
     public function testOutlinksOriginal() {
         $outlinks = $this->piwik->outlinks('original');
         $document = new DOMDocument;
@@ -366,7 +356,6 @@ EOT;
     /**
      * Page Titles Tests
      * [json, php, html and original]
-     * @covers \RobBrazier\Piwik\Piwik::page_titles
      */
     public function testPageTitlesJson() {
         $pageTitles = $this->piwik->page_titles('json');
@@ -379,9 +368,6 @@ EOT;
         }
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::page_titles
-     */
     public function testPageTitlesPhp() {
         $pageTitles = $this->piwik->page_titles('php');
         foreach ($pageTitles as $d) {
@@ -393,9 +379,6 @@ EOT;
         }
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::page_titles
-     */
     public function testPageTitlesHtml() {
         $pageTitles = $this->piwik->page_titles('html');
         $document = new DOMDocument;
@@ -405,9 +388,6 @@ EOT;
         $this->assertEquals(0, $contentSize % $headingsCount);
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::page_titles
-     */
     public function testPageTitlesOriginal() {
         $pageTitles = $this->piwik->page_titles('original');
         $document = new DOMDocument;
@@ -420,7 +400,6 @@ EOT;
     /**
      * Search Engines Tests
      * [json, php, html and original]
-     * @covers \RobBrazier\Piwik\Piwik::search_engines
      */
     public function testSearchEnginesJson() {
         $searchEngines = $this->piwik->search_engines('json');
@@ -433,9 +412,6 @@ EOT;
         }
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::search_engines
-     */
     public function testSearchEnginesPhp() {
         $searchEngines = $this->piwik->search_engines('php');
         foreach ($searchEngines as $d) {
@@ -447,9 +423,6 @@ EOT;
         }
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::search_engines
-     */
     public function testSearchEnginesHtml() {
         $searchEngines = $this->piwik->search_engines('html');
         $document = new DOMDocument;
@@ -459,9 +432,6 @@ EOT;
         $this->assertEquals(0, $contentSize % $headingsCount);
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::search_engines
-     */
     public function testSearchEnginesOriginal() {
         $searchEngines = $this->piwik->search_engines('original');
         $document = new DOMDocument;
@@ -474,7 +444,6 @@ EOT;
     /**
      * Unique Visitors Tests
      * [json, php, html and original]
-     * @covers \RobBrazier\Piwik\Piwik::unique_visitors
      */
     public function testUniqueVisitorsJson() {
         $this->app->config[self::PERIOD] = "yesterday";
@@ -482,18 +451,12 @@ EOT;
         $this->assertGreaterThan(0, $uniqueVisitors->value);
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::unique_visitors
-     */
     public function testUniqueVisitorsPhp() {
         $this->app->config[self::PERIOD] = "yesterday";
         $uniqueVisitors = $this->piwik->unique_visitors('php');
         $this->assertGreaterThan(0, $uniqueVisitors);
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::unique_visitors
-     */
     public function testUniqueVisitorsHtml() {
         $this->app->config[self::PERIOD] = "yesterday";
         $document = new DOMDocument;
@@ -501,9 +464,6 @@ EOT;
         $this->assertGreaterThan(0, $document->getElementsByTagName("td")->item(0)->nodeValue);
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::unique_visitors
-     */
     public function testUniqueVisitorsOriginal() {
         $this->app->config[self::PERIOD] = "yesterday";
         $document = new DOMDocument;
@@ -514,42 +474,29 @@ EOT;
     /**
      * Visits Tests
      * [json, php, html and original]
-     * @covers \RobBrazier\Piwik\Piwik::visits
      */
     public function testVisitsJson() {
         $visits = $this->piwik->visits('json');
         $this->assertGreaterThan(0, $visits->value);
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::visits
-     */
     public function testVisitsPhp() {
         $visits = $this->piwik->visits('php');
         $this->assertGreaterThan(0, $visits);
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::visits
-     */
     public function testVisitsHtml() {
         $document = new DOMDocument;
         $document->loadHTML($this->piwik->visits('html'));
         $this->assertGreaterThan(0, $document->getElementsByTagName("td")->item(0)->nodeValue);
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::visits
-     */
     public function testVisitsOriginal() {
         $document = new DOMDocument;
         $document->loadHTML($this->piwik->visits('html'));
         $this->assertGreaterThan(0, $document->getElementsByTagName("td")->item(0)->nodeValue);
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::visits
-     */
     public function testVisitsCustomDateRange() {
         $date = getdate();
         $day = $date["mday"];
@@ -557,7 +504,7 @@ EOT;
         $year = $date["year"];
         $last_year = $year - 1;
         $date_range = sprintf("%d-%d-%d,%d-%d-%d", $last_year, $month, $day, $year, $month, $day);
-        $this->piwik = new Piwik(array('piwik_url' => $this->piwik_url, 'site_id' => $this->site_id, 'apikey' => $this->apikey, 'format' => $this->format, 'period' => $date_range));
+        $this->piwik = new \RobBrazier\Piwik\Piwik(array('piwik_url' => $this->piwik_url, 'site_id' => $this->site_id, 'apikey' => $this->apikey, 'format' => $this->format, 'period' => $date_range));
         $visits = $this->piwik->visits('json');
         $this->assertGreaterThan(0, $visits->value);
     }
@@ -565,7 +512,6 @@ EOT;
     /**
      * Websites Tests
      * [json, php, html and original]
-     * @covers \RobBrazier\Piwik\Piwik::websites
      */
     public function testWebsitesJson() {
         $websites = $this->piwik->websites('json');
@@ -582,9 +528,6 @@ EOT;
         }
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::websites
-     */
     public function testWebsitesPhp() {
         $websites = $this->piwik->websites('php');
         foreach ($websites as $d) {
@@ -600,9 +543,6 @@ EOT;
         }
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::websites
-     */
     public function testWebsitesHtml() {
         $keywords = $this->piwik->websites('html');
         $document = new DOMDocument;
@@ -612,9 +552,6 @@ EOT;
         $this->assertEquals(0, $contentSize % $headingsCount);
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::websites
-     */
     public function testWebsitesOriginal() {
         $keywords = $this->piwik->websites('original');
         $document = new DOMDocument;
@@ -626,7 +563,6 @@ EOT;
 
     /**
      * Tag Test
-     * @covers \RobBrazier\Piwik\Piwik::tag
      */
     public function testTag() {
         $this->assertEquals($this->piwik->tag(), $this->tag);
@@ -635,7 +571,6 @@ EOT;
     /**
      * SEO Rank Tests
      * [json, php, html and original]
-     * @covers \RobBrazier\Piwik\Piwik::seo_rank
      */
     public function testSeoRankJson() {
         $seoRank = $this->piwik->seo_rank($this->site_id, 'json');
@@ -650,9 +585,6 @@ EOT;
         }
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::seo_rank
-     */
     public function testSeoRankPhp() {
         $seoRank = $this->piwik->seo_rank($this->site_id, 'php');
         foreach ($seoRank as $d) {
@@ -666,9 +598,6 @@ EOT;
         }
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::seo_rank
-     */
     public function testSeoRankHtml() {
         $keywords = $this->piwik->seo_rank($this->site_id, 'html');
         $document = new DOMDocument;
@@ -678,9 +607,6 @@ EOT;
         $this->assertEquals(0, $contentSize % $headingsCount);
     }
 
-    /**
-     * @covers \RobBrazier\Piwik\Piwik::seo_rank
-     */
     public function testSeoRankOriginal() {
         $keywords = $this->piwik->seo_rank($this->site_id, 'original');
         $document = new DOMDocument;
@@ -693,7 +619,6 @@ EOT;
 
     /**
      * Version Tests
-     * @covers \RobBrazier\Piwik\Piwik::version
      */
     public function testVersion() {
         $version = $this->piwik->version()->value;
@@ -702,7 +627,6 @@ EOT;
 
     /**
      * Custom Test
-     * @covers \RobBrazier\Piwik\Piwik::custom
      */
     public function testCustom() {
         $custom = $this->piwik->custom('SitesManager.getSitesIdFromSiteUrl', array('url' => 'http://forum.piwik.org'), false, false, 'json');
