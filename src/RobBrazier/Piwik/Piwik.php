@@ -105,7 +105,7 @@ class Piwik {
      * @return string
      */
     private function getFormat($format = null) {
-        if ($format == null) {
+        if ($format === null) {
             $format = $this->getConfig('format');
         }
         if (!in_array($format, $this->allowedFormats)) {
@@ -162,10 +162,10 @@ class Piwik {
     /**
      * Get Site URL from Site ID
      *
-     * @param string|bool $siteId
+     * @param string $siteId
      * @return string
      */
-    private function getSiteUrl($siteId = null) {
+    private function getSiteUrl($siteId) {
         return $this->custom("SitesManager.getSiteUrlsFromId", null, $siteId, true, "json")[0];
     }
 
