@@ -1,5 +1,5 @@
 #!/bin/sh
-contents="$(cat composer.json | jq '.repositories = [{"packagist.org": false}, {"type": "path", "url": "../plugin"}, {"type": "composer", "url": "https://packagist.org"}]')"
+contents="$(jq '.repositories = [{"packagist.org": false}, {"type": "path", "url": "../plugin"}, {"type": "composer", "url": "https://packagist.org"}]' < composer.json)"
 echo "$contents" > composer.json
 composer require robbrazier/piwik:* --no-suggest --no-progress --update-no-dev
 sed -e 's/App\\Providers\\RouteServiceProvider::class,/App\\Providers\\RouteServiceProvider::class, RobBrazier\\Piwik\\PiwikServiceProvider::class/g' -i.bak config/app.php
