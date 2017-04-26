@@ -454,8 +454,9 @@ s.parentNode.insertBefore(g,s); })();
 
     /**
      * @param $method string        The API method, as found in the Piwik API documentation
-     * @param $arguments array|null A multidimensional map of key => value for custom data to be added onto the url, e.g. ["test" => "foo"] ===> &test=foo
-     * @param $siteId string|bool       values can be true/false to add the default site id, or you can specify the id here
+     * @param $arguments array|null A multidimensional map of key => value for custom data to be added onto the url
+     *                                  e.g. ["test" => "foo"] ===> &test=foo
+     * @param $siteId string|bool   values can be true/false to add the default site id, or you can specify the id here
      * @param $period bool          boolean value to determine whether the time period is appended to the API url
      * @param $format string        Override string for the format of the API Query to be returned as
      * @return mixed
@@ -475,8 +476,8 @@ s.parentNode.insertBefore(g,s); })();
             if (!is_bool($siteId)) {
                 $overrideSiteId = $siteId;
             }
-            $id = $this->getSiteId($overrideSiteId);
-            $builder->setSiteId($id);
+            $finalSiteId = $this->getSiteId($overrideSiteId);
+            $builder->setSiteId($finalSiteId);
         }
         if ($period) {
             $date = $this->getDate($this->getConfig('period'));
