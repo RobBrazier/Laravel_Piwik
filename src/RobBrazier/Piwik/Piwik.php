@@ -73,6 +73,10 @@ class Piwik {
 // --------------------------------------------------------------------
 
     /**
+     * Get QueryDate object from period name
+     *
+     * e.g. "yesterday" => QueryDate(period = "day", date = "yesterday")
+     *
      * @param string $period
      * @return QueryDate
      */
@@ -81,6 +85,8 @@ class Piwik {
     }
 
     /**
+     * Convert URL from HTTP to HTTPS and vice versa
+     *
      * @param string $url
      * @param bool $https
      * @return string
@@ -92,8 +98,14 @@ class Piwik {
         return $parser->__toString();
     }
 
-    private function getFormat($format) {
-        if ($format == null) {
+    /**
+     * Check format against allowed values
+     *
+     * @param string $format
+     * @return string
+     */
+    private function getFormat($format = null) {
+        if ($format === null) {
             $format = $this->getConfig('format');
         }
         if (!in_array($format, $this->allowedFormats)) {
@@ -118,6 +130,10 @@ class Piwik {
     }
 
     /**
+     * Get configuration item from
+     *  1. Current class instance (if specified in constructor)
+     *  2. piwik.php configuration file
+     *
      * @param string $key
      * @return mixed
      */
@@ -129,19 +145,33 @@ class Piwik {
         return $result;
     }
 
-    private function getSiteId($override = null) {
-        $result = $override;
+    /**
+     * Get Site ID
+     *
+     * @param string $siteId
+     * @return string
+     */
+    private function getSiteId($siteId = null) {
+        $result = $siteId;
         if (empty($result)) {
             $result = $this->getConfig('site_id');
         }
         return $result;
     }
 
-    private function getSiteUrl($id = null) {
-        return $this->custom("SitesManager.getSiteUrlsFromId", null, $id, true, "json")[0];
+    /**
+     * Get Site URL from Site ID
+     *
+     * @param string $siteId
+     * @return string
+     */
+    private function getSiteUrl($siteId) {
+        return $this->custom("SitesManager.getSiteUrlsFromId", null, $siteId, true, "json")[0];
     }
 
     /**
+     * Send HTTP/HTTPS request to Piwik server
+     *
      * @param   $url string            the url to send a request to
      * @return  string
      */
@@ -399,13 +429,13 @@ s.parentNode.insertBefore(g,s); })();
      * Get SEO Rank for the website
      *
      * @access  public
-     * @param   $id string          Override for ID, so you can specify one rather than fetching it from config
+     * @param   $siteId string          Override for ID, so you can specify one rather than fetching it from config
      * @param   $format string      Override string for the format of the API Query to be returned as
      * @return array
      */
 
-    public function seo_rank($id, $format = null) {
-        $arguments = array("url" => $this->getSiteUrl($id));
+    public function seo_rank($siteId, $format = null) {
+        $arguments = array("url" => $this->getSiteUrl($siteId));
         return $this->custom("SEO.getRank", $arguments, false, false, $format);
     }
 
@@ -424,13 +454,14 @@ s.parentNode.insertBefore(g,s); })();
 
     /**
      * @param $method string        The API method, as found in the Piwik API documentation
-     * @param $arguments array|null A multidimensional map of key => value for custom data to be added onto the url, e.g. ["test" => "foo"] ===> &test=foo
-     * @param $id string|bool       values can be true/false to add the default site id, or you can specify the id here
+     * @param $arguments array|null A multidimensional map of key => value for custom data to be added onto the url
+     *                                  e.g. ["test" => "foo"] ===> &test=foo
+     * @param $siteId string|bool   values can be true/false to add the default site id, or you can specify the id here
      * @param $period bool          boolean value to determine whether the time period is appended to the API url
      * @param $format string        Override string for the format of the API Query to be returned as
      * @return mixed
      */
-    public function custom($method, $arguments, $id = false, $period = false, $format = null) {
+    public function custom($method, $arguments, $siteId = false, $period = false, $format = null) {
         $format = $this->getFormat($format);
         if ($arguments == null) {
             $arguments = array();
@@ -440,13 +471,13 @@ s.parentNode.insertBefore(g,s); })();
         $builder->setModule("API");
         $builder->setMethod($method);
         $builder->addAll($arguments);
-        if ($id != null || (is_bool($id) && $id)) {
-            $override_id = null;
-            if (!is_bool($id)) {
-                $override_id = $id;
+        if ($siteId != null || (is_bool($siteId) && $siteId)) {
+            $overrideSiteId = null;
+            if (!is_bool($siteId)) {
+                $overrideSiteId = $siteId;
             }
-            $siteId = $this->getSiteId($override_id);
-            $builder->setSiteId($siteId);
+            $finalSiteId = $this->getSiteId($overrideSiteId);
+            $builder->setSiteId($finalSiteId);
         }
         if ($period) {
             $date = $this->getDate($this->getConfig('period'));
