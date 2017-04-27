@@ -20,6 +20,7 @@ $versions = GitVersionCollection::create($dir)
 
 return new Sami($iterator, array(
     'theme'                => 'symfony',
+    'title'                => 'Laravel_Piwik',
     'versions'             => $versions,
     'build_dir'            => __DIR__.'/../docs/api/%version%',
     'cache_dir'            => __DIR__.'/../cache/%version%',
