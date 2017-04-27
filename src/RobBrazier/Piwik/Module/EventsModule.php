@@ -2,7 +2,7 @@
 
 namespace RobBrazier\Piwik\Module;
 
-use RobBrazier\Piwik\Base\PiwikBase;
+use RobBrazier\Piwik\Repository\RequestRepository;
 
 /**
  * Class EventsModule
@@ -11,8 +11,12 @@ use RobBrazier\Piwik\Base\PiwikBase;
  */
 class EventsModule extends Module {
 
-    public function __construct(PiwikBase $base) {
-        parent::__construct($base);
+    /**
+     * EventsModule constructor.
+     * @param RequestRepository $request
+     */
+    public function __construct(RequestRepository $request) {
+        parent::__construct($request);
     }
 
     /**
@@ -22,7 +26,7 @@ class EventsModule extends Module {
      */
     public function getCategory($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -32,7 +36,7 @@ class EventsModule extends Module {
      */
     public function getAction($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -42,7 +46,7 @@ class EventsModule extends Module {
      */
     public function getName($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -52,7 +56,7 @@ class EventsModule extends Module {
      */
     public function getActionFromCategoryId($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -62,7 +66,7 @@ class EventsModule extends Module {
      */
     public function getNameFromCategoryId($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -72,7 +76,7 @@ class EventsModule extends Module {
      */
     public function getCategoryFromActionId($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -82,7 +86,7 @@ class EventsModule extends Module {
      */
     public function getNameFromActionId($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -92,7 +96,7 @@ class EventsModule extends Module {
      */
     public function getActionFromNameId($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -102,7 +106,7 @@ class EventsModule extends Module {
      */
     public function getCategoryFromNameId($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
 }

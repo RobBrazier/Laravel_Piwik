@@ -2,8 +2,9 @@
 
 namespace RobBrazier\Piwik\Module;
 
-use RobBrazier\Piwik\Base\PiwikBase;
 use RobBrazier\Piwik\Exception\PiwikException;
+use RobBrazier\Piwik\Repository\RequestRepository;
+use RobBrazier\Piwik\Traits\FormatTrait;
 
 /**
  * Class LiveModule
@@ -12,8 +13,14 @@ use RobBrazier\Piwik\Exception\PiwikException;
  */
 class LiveModule extends Module {
 
-    public function __construct(PiwikBase $base) {
-        parent::__construct($base);
+    use FormatTrait;
+
+    /**
+     * LiveModule constructor.
+     * @param RequestRepository $request
+     */
+    public function __construct(RequestRepository $request) {
+        parent::__construct($request);
     }
 
     /**
@@ -25,7 +32,7 @@ class LiveModule extends Module {
     public function getCounters($lastMinutes, $arguments = [], $format = null) {
         $arguments = array_add($arguments, "lastMinutes", $lastMinutes);
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -37,7 +44,7 @@ class LiveModule extends Module {
     public function getLastVisitsDetails($count, $arguments = [], $format = null) {
         $arguments = array_add($arguments, "filter_limit", $count);
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -56,7 +63,7 @@ class LiveModule extends Module {
         $data = [];
         foreach ($visits as $v) {
             // Get the last array element which has information of the last page the visitor accessed
-            switch ($this->base->getFormat($format)) {
+            switch ($this->validateFormat($format)) {
                 case 'json':
                     // no break as the logic is the same as in the php case, but with an object to array conversion
                     $v = (array) $v;
@@ -108,7 +115,7 @@ class LiveModule extends Module {
     public function getVisitorProfile($visitorId, $arguments = [], $format = null) {
         $arguments = array_add($arguments, "visitorId", $visitorId);
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -120,7 +127,7 @@ class LiveModule extends Module {
         $options = $this->getOptions($format)
             ->usePeriod(false)
             ->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
 }

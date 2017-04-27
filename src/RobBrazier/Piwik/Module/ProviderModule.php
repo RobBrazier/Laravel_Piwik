@@ -2,7 +2,7 @@
 
 namespace RobBrazier\Piwik\Module;
 
-use RobBrazier\Piwik\Base\PiwikBase;
+use RobBrazier\Piwik\Repository\RequestRepository;
 
 /**
  * Class ProviderModule
@@ -11,8 +11,12 @@ use RobBrazier\Piwik\Base\PiwikBase;
  */
 class ProviderModule extends Module {
 
-    public function __construct(PiwikBase $base) {
-        parent::__construct($base);
+    /**
+     * ProviderModule constructor.
+     * @param RequestRepository $request
+     */
+    public function __construct(RequestRepository $request) {
+        parent::__construct($request);
     }
 
     /**
@@ -22,7 +26,7 @@ class ProviderModule extends Module {
      */
     public function getProvider($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
 }

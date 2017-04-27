@@ -2,11 +2,16 @@
 
 namespace RobBrazier\Piwik\Request;
 
-use RobBrazier\Piwik\Base\PiwikBase;
 use RobBrazier\Piwik\Config\Option;
 use RobBrazier\Piwik\Query\UrlQueryBuilder;
+use RobBrazier\Piwik\Repository\ConfigRepository;
+use RobBrazier\Piwik\Traits\DateTrait;
+use RobBrazier\Piwik\Traits\FormatTrait;
 
 class RequestOptions {
+
+    use DateTrait;
+    use FormatTrait;
 
     /**
      * @var string
@@ -55,13 +60,6 @@ class RequestOptions {
     private $arguments = [];
 
     /**
-     * RequestOptions constructor.
-     */
-    public function __construct() {
-        return $this;
-    }
-
-    /**
      * @param string $method
      * @return RequestOptions
      */
@@ -102,13 +100,13 @@ class RequestOptions {
     }
 
     /**
-     * @param PiwikBase $parent
+     * @param ConfigRepository $config
      * @return string
      */
-    private function getSiteId(PiwikBase $parent) {
+    private function getSiteId(ConfigRepository $config) {
         $siteId = $this->siteId;
         if ($this->useSiteId) {
-            $siteId = $parent->getSiteId();
+            $siteId = $config->get(Option::SITE_ID);
         }
         return $siteId;
     }
@@ -136,15 +134,15 @@ class RequestOptions {
     }
 
     /**
-     * @param PiwikBase $parent
+     * @param ConfigRepository $config
      * @return string
      */
-    public function getFormat(PiwikBase $parent) {
+    public function getFormat(ConfigRepository $config) {
         $format = $this->format;
         if ($this->useFormat) {
-            $format = $parent->getConfig(Option::FORMAT);
+            $format = $config->get(Option::FORMAT);
         }
-        return $parent->getFormat($format);
+        return $this->validateFormat($format);
     }
 
     /**
@@ -157,13 +155,13 @@ class RequestOptions {
     }
 
     /**
-     * @param PiwikBase $parent
+     * @param ConfigRepository $config
      * @return string|null
      */
-    private function getTokenAuth(PiwikBase $parent) {
+    private function getTokenAuth(ConfigRepository $config) {
         $tokenAuth = null;
         if ($this->tokenAuth) {
-            $tokenAuth = $parent->getApiKey();
+            $tokenAuth = $config->get(Option::API_KEY);
         }
         return $tokenAuth;
     }
@@ -182,20 +180,20 @@ class RequestOptions {
     }
 
     /**
-     * @param PiwikBase $parent
+     * @param ConfigRepository $config
      * @return string
      */
-    public function build(PiwikBase $parent) {
+    public function build(ConfigRepository $config) {
         $builder = new UrlQueryBuilder();
         $builder->setModule("API");
         $builder->setMethod($this->method);
         if ($this->usePeriod) {
-            $period = $parent->getConfig(Option::PERIOD);
-            $builder->setDate($parent->getDate($period));
+            $period = $config->get(Option::PERIOD);
+            $builder->setDate($this->getDate($period));
         }
-        $builder->setSiteId($this->getSiteId($parent));
-        $builder->setFormat($this->getFormat($parent));
-        $builder->setTokenAuth($this->getTokenAuth($parent));
+        $builder->setSiteId($this->getSiteId($config));
+        $builder->setFormat($this->getFormat($config));
+        $builder->setTokenAuth($this->getTokenAuth($config));
         $builder->addAll($this->arguments);
         return $builder->build();
     }

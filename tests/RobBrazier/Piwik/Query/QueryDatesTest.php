@@ -33,7 +33,7 @@ class QueryDatesTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @expectedException \RobBrazier\Piwik\PiwikException
+     * @expectedException \RobBrazier\Piwik\Exception\PiwikException
      */
     public function testGetInvalid() {
         $dates = QueryDates::getInstance();
