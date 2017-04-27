@@ -1,12 +1,6 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: Rob
- * Date: 23/04/2017
- * Time: 22:46
- */
 
-namespace RobBrazier\Piwik;
+namespace RobBrazier\Piwik\Exception;
 
 
 class PiwikException extends \RuntimeException {
