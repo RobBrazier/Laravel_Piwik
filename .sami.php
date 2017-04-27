@@ -23,4 +23,5 @@ return new Sami($iterator, array(
     'build_dir'            => __DIR__.'/../docs/api/%version%',
     'cache_dir'            => __DIR__.'/../cache/%version%',
     'remote_repository'    => new GitHubRemoteRepository('RobBrazier/Laravel_Piwik', dirname($dir)),
+    'default_opened_level' => 2,
 ));
