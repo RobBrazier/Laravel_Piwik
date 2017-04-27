@@ -16,7 +16,7 @@ return array(
     'password'      => 'password',
 
     /*
-     *  Optional API Key (will be used instead of Username and Password) 
+     *  Optional API Key (will be used instead of Username and Password)
      *  The bundle works much faster with the API Key, rather than username and password.
      */
 
@@ -24,9 +24,9 @@ return array(
 
     /*
      *  Format for API calls to be returned in
-     *  
+     *
      *  Can be [php, xml, json, html, rss, original]
-     *  
+     *
      *  The default is 'json'
      */
 
@@ -34,8 +34,9 @@ return array(
 
     /*
      *  Period/Date range for results
-     *  
-     *  Can be [today, yesterday, previous7, previous30, last7, last30, currentweek, currentmonth, currentyear] as well as a date range in the format of "yyyy-MM-dd,yyyy-MM-dd"
+     *
+     *  Can be [today, yesterday, previous7, previous30, last7, last30, currentweek, currentmonth, currentyear]
+     *  as well as a date range in the format of "yyyy-MM-dd,yyyy-MM-dd"
      *
      *  The default is 'yesterday'
      */

@@ -1,6 +1,6 @@
 <?php
 
-namespace RobBrazier\Piwik;
+namespace RobBrazier\Piwik\Exception;
 
 /**
  * Class PiwikExceptionTest

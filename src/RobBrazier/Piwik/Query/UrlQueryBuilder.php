@@ -1,8 +1,6 @@
 <?php
 namespace RobBrazier\Piwik\Query;
 
-use RobBrazier\Piwik\Query\QueryDate;
-
 class UrlQueryBuilder {
 
     const MODULE = "module";
@@ -17,62 +15,80 @@ class UrlQueryBuilder {
 
     /**
      * @param string $module
+     * @return UrlQueryBuilder
      */
     public function setModule($module) {
         $this->add(self::MODULE, $module);
+        return $this;
     }
 
     /**
      * @param string $method
+     * @return UrlQueryBuilder
      */
     public function setMethod($method) {
         $this->add(self::METHOD, $method);
+        return $this;
     }
 
     /**
      * @param QueryDate $date
+     * @return UrlQueryBuilder
      */
     public function setDate($date) {
         $this->add(self::PERIOD, $date->getPeriod());
         $this->add(self::DATE, $date->getDate());
+        return $this;
     }
 
     /**
      * @param string $siteId
+     * @return UrlQueryBuilder
      */
     public function setSiteId($siteId) {
         $this->add(self::SITE_ID, $siteId);
+        return $this;
     }
 
     /**
      * @param string $format
+     * @return UrlQueryBuilder
      */
     public function setFormat($format) {
         $this->add(self::FORMAT, $format);
+        return $this;
     }
 
     /**
      * @param string $tokenAuth
+     * @return UrlQueryBuilder
      */
     public function setTokenAuth($tokenAuth) {
         $this->add(self::TOKEN_AUTH, $tokenAuth);
+        return $this;
     }
 
     /**
      * @param string $key
      * @param string $value
+     * @return UrlQueryBuilder
      */
     public function add($key, $value) {
-        $this->data = array_add($this->data, $key, $value);
+        if (!is_null($value)) {
+            $this->data = array_add($this->data, $key, $value);
+        }
+        return $this;
     }
 
     /**
      * @param array $array
+     * @return UrlQueryBuilder
      */
     public function addAll($array) {
         foreach ($array as $key => $value) {
             $this->add($key, $value);
         }
+        return $this;
     }
 
     /**

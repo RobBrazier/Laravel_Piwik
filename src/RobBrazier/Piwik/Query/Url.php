@@ -39,14 +39,14 @@ class Url {
      * @param string $url
      */
     public function __construct($url) {
-        $parsed_url = parse_url($url);
-        if (is_bool($parsed_url)) {
+        $parsedUrl = parse_url($url);
+        if (is_bool($parsedUrl)) {
             throw new PiwikException("Cannot parse URL [" . $url . "]");
         }
-        $this->scheme = $this->getPart($parsed_url, 'scheme');
-        $this->host = $this->getPart($parsed_url, 'host');
-        $this->port = $this->getPart($parsed_url, 'port', 0);
-        $this->path = $this->getPart($parsed_url, 'path');
+        $this->scheme = $this->getPart($parsedUrl, 'scheme');
+        $this->host = $this->getPart($parsedUrl, 'host');
+        $this->port = $this->getPart($parsedUrl, 'port', 0);
+        $this->path = $this->getPart($parsedUrl, 'path');
     }
 
     /**
