@@ -2,7 +2,7 @@
 
 namespace RobBrazier\Piwik\Module;
 
-use RobBrazier\Piwik\Base\PiwikBase;
+use RobBrazier\Piwik\Repository\RequestRepository;
 
 /**
  * Class APIModule
@@ -11,8 +11,12 @@ use RobBrazier\Piwik\Base\PiwikBase;
  */
 class APIModule extends Module {
 
-    public function __construct(PiwikBase $base) {
-        parent::__construct($base);
+    /**
+     * APIModule constructor.
+     * @param RequestRepository $request
+     */
+    public function __construct(RequestRepository $request) {
+        parent::__construct($request);
     }
 
     /**
@@ -23,7 +27,7 @@ class APIModule extends Module {
         $options = $this->getOptions($format)
             ->usePeriod(false)
             ->useSiteId(false);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -34,7 +38,7 @@ class APIModule extends Module {
         $options = $this->getOptions($format)
             ->usePeriod(false)
             ->useSiteId(false);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -45,7 +49,7 @@ class APIModule extends Module {
         $options = $this->getOptions($format)
             ->usePeriod(false)
             ->useSiteId(false);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -62,7 +66,7 @@ class APIModule extends Module {
             ->usePeriod(false)
             ->useSiteId(false)
             ->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -72,7 +76,7 @@ class APIModule extends Module {
      */
     public function getMetadata($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -88,7 +92,7 @@ class APIModule extends Module {
             ->usePeriod(false)
             ->useSiteId(false)
             ->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -102,7 +106,7 @@ class APIModule extends Module {
         $arguments = array_add($arguments, "apiModule", $apiModule);
         $arguments = array_add($arguments, "apiAction", $apiAction);
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -112,7 +116,7 @@ class APIModule extends Module {
     public function getReportPagesMetadata($format = null) {
         $options = $this->getOptions($format)
             ->usePeriod(false);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -122,7 +126,7 @@ class APIModule extends Module {
     public function getWidgetMetadata($format = null) {
         $options = $this->getOptions($format)
             ->usePeriod(false);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -132,7 +136,7 @@ class APIModule extends Module {
      */
     public function get($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -146,7 +150,7 @@ class APIModule extends Module {
         $arguments = array_add($arguments, "apiModule", $apiModule);
         $arguments = array_add($arguments, "apiAction", $apiAction);
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
 }

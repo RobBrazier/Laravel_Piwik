@@ -2,7 +2,7 @@
 
 namespace RobBrazier\Piwik\Module;
 
-use RobBrazier\Piwik\Base\PiwikBase;
+use RobBrazier\Piwik\Repository\RequestRepository;
 
 /**
  * Class VisitsSummaryModule
@@ -11,8 +11,12 @@ use RobBrazier\Piwik\Base\PiwikBase;
  */
 class VisitsSummaryModule extends Module {
 
-    public function __construct(PiwikBase $base) {
-        parent::__construct($base);
+    /**
+     * VisitsSummaryModule constructor.
+     * @param RequestRepository $request
+     */
+    public function __construct(RequestRepository $request) {
+        parent::__construct($request);
     }
 
     /**
@@ -22,7 +26,7 @@ class VisitsSummaryModule extends Module {
      */
     public function get($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -32,7 +36,7 @@ class VisitsSummaryModule extends Module {
      */
     public function getVisits($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -42,7 +46,7 @@ class VisitsSummaryModule extends Module {
      */
     public function getUniqueVisitors($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -52,7 +56,7 @@ class VisitsSummaryModule extends Module {
      */
     public function getUsers($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -62,7 +66,7 @@ class VisitsSummaryModule extends Module {
      */
     public function getActions($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -72,7 +76,7 @@ class VisitsSummaryModule extends Module {
      */
     public function getMaxActions($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -82,7 +86,7 @@ class VisitsSummaryModule extends Module {
      */
     public function getBounceCount($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -92,7 +96,7 @@ class VisitsSummaryModule extends Module {
      */
     public function getVisitsConverted($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -102,7 +106,7 @@ class VisitsSummaryModule extends Module {
      */
     public function getSumVisitsLength($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -112,7 +116,7 @@ class VisitsSummaryModule extends Module {
      */
     public function getSumVisitsLengthPretty($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
 }

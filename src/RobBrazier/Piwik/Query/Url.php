@@ -9,7 +9,7 @@
 namespace RobBrazier\Piwik\Query;
 
 
-use RobBrazier\Piwik\PiwikException;
+use RobBrazier\Piwik\Exception\PiwikException;
 
 class Url {
 

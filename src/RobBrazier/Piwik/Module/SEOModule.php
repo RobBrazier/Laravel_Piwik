@@ -2,7 +2,7 @@
 
 namespace RobBrazier\Piwik\Module;
 
-use RobBrazier\Piwik\Base\PiwikBase;
+use RobBrazier\Piwik\Repository\RequestRepository;
 
 /**
  * Class SEOModule
@@ -11,8 +11,19 @@ use RobBrazier\Piwik\Base\PiwikBase;
  */
 class SEOModule extends Module {
 
-    public function __construct(PiwikBase $base) {
-        parent::__construct($base);
+    /**
+     * @var SitesManagerModule
+     */
+    private $sitesManager;
+
+    /**
+     * SEOModule constructor.
+     * @param RequestRepository $request
+     * @param SitesManagerModule $sitesManager
+     */
+    public function __construct(RequestRepository $request, SitesManagerModule $sitesManager) {
+        parent::__construct($request);
+        $this->sitesManager = $sitesManager;
     }
 
     /**
@@ -28,11 +39,11 @@ class SEOModule extends Module {
             ->useSiteId(false)
             ->usePeriod(false)
             ->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     public function getRankFromSiteId($siteId, $format = null) {
-        $url = $this->base->getSiteUrl($siteId);
+        $url = $this->sitesManager->getSiteUrlsFromId($siteId)[0];
         return $this->getRank($url, $format);
     }
 

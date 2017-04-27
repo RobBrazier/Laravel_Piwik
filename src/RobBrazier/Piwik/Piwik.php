@@ -3,9 +3,6 @@
 namespace RobBrazier\Piwik;
 
 use RobBrazier\Piwik\Base\PiwikBase;
-use RobBrazier\Piwik\Config\Option;
-use RobBrazier\Piwik\Config\Options;
-use RobBrazier\Piwik\Exception\PiwikException;
 use RobBrazier\Piwik\Module\ActionsModule;
 use RobBrazier\Piwik\Module\APIModule;
 use RobBrazier\Piwik\Module\EventsModule;
@@ -16,7 +13,10 @@ use RobBrazier\Piwik\Module\SEOModule;
 use RobBrazier\Piwik\Module\SitesManagerModule;
 use RobBrazier\Piwik\Module\VisitorInterestModule;
 use RobBrazier\Piwik\Module\VisitsSummaryModule;
+use RobBrazier\Piwik\Repository\ConfigRepository;
+use RobBrazier\Piwik\Repository\RequestRepository;
 use RobBrazier\Piwik\Request\RequestOptions;
+use RobBrazier\Piwik\Traits\ConfigTrait;
 
 /**
  * Class Piwik
@@ -24,69 +24,103 @@ use RobBrazier\Piwik\Request\RequestOptions;
  */
 class Piwik extends PiwikBase {
 
+    use ConfigTrait {
+        ConfigTrait::__construct as private __configConstruct;
+    }
+
     /**
-     * @param Options $options
+     * @var RequestRepository
      */
-    public function __construct($options = null) {
-        date_default_timezone_set("UTC");
-        if (!is_null($options)) {
-            parent::__construct($options);
-        } else {
-            parent::__construct(new Options());
-        }
+    private $request;
 
-    }
-
-    public function getActions() {
-        return new ActionsModule($this);
-    }
-
-    public function getAPI() {
-        return new APIModule($this);
-    }
-
-    public function getEvents() {
-        return new EventsModule($this);
-    }
-
-    public function getLive() {
-        return new LiveModule($this);
-    }
-
-    public function getProvider() {
-        return new ProviderModule($this);
-    }
-
-    public function getReferrers() {
-        return new ReferrersModule($this);
-    }
-
-    public function getSEO() {
-        return new SEOModule($this);
-    }
-
-    public function getSitesManager() {
-        return new SitesManagerModule($this);
-    }
-
-    public function getVisitorInterest() {
-        return new VisitorInterestModule($this);
-    }
-
-    public function getVisitsSummary() {
-        return new VisitsSummaryModule($this);
+    /**
+     * Piwik constructor.
+     * @param ConfigRepository $config
+     * @param RequestRepository $request
+     */
+    public function __construct(ConfigRepository $config, RequestRepository $request) {
+        $this->__configConstruct($config);
+        $this->request = $request;
     }
 
     /**
-     * tag
+     * @return ActionsModule
+     */
+    public function getActions() {
+        return new ActionsModule($this->request);
+    }
+
+    /**
+     * @return APIModule
+     */
+    public function getAPI() {
+        return new APIModule($this->request);
+    }
+
+    /**
+     * @return EventsModule
+     */
+    public function getEvents() {
+        return new EventsModule($this->request);
+    }
+
+    /**
+     * @return LiveModule
+     */
+    public function getLive() {
+        return new LiveModule($this->request);
+    }
+
+    /**
+     * @return ProviderModule
+     */
+    public function getProvider() {
+        return new ProviderModule($this->request);
+    }
+
+    /**
+     * @return ReferrersModule
+     */
+    public function getReferrers() {
+        return new ReferrersModule($this->request);
+    }
+
+    /**
+     * @return SEOModule
+     */
+    public function getSEO() {
+        return new SEOModule($this->request, $this->getSitesManager());
+    }
+
+    /**
+     * @return SitesManagerModule
+     */
+    public function getSitesManager() {
+        return new SitesManagerModule($this->request);
+    }
+
+    /**
+     * @return VisitorInterestModule
+     */
+    public function getVisitorInterest() {
+        return new VisitorInterestModule($this->request);
+    }
+
+    /**
+     * @return VisitsSummaryModule
+     */
+    public function getVisitsSummary() {
+        return new VisitsSummaryModule($this->request);
+    }
+
+    /**
      * Get javascript tag for use in tracking the website
      *
-     * @access  public
      * @return  string
      */
 
     public function getTag() {
-        $piwik_url = $this->getConfig(Option::PIWIK_URL);
+        $piwik_url = $this->getPiwikUrl();
         $tag = sprintf("<!-- Piwik -->
 <script type=\"text/javascript\">
 var _paq = _paq || [];
@@ -111,18 +145,15 @@ s.parentNode.insertBefore(g,s); })();
      * @return mixed
      */
     public function getCustom(RequestOptions $requestOptions) {
-        $url = 'index.php';
-        $url .= $requestOptions->build($this);
-        $format = $requestOptions->getFormat($this);
-        return $this->get_decoded($url, $format);
+        return $this->request->send($requestOptions);
     }
 
     /**
-     * actions
      * Get actions (hits) for the specific time period
      *
-     * @deprecated Please use {@link RobBrazier\Piwik\Module\VisitsSummaryModule::getActions} instead
-     * @param   $format string      Override string for the format of the API Query to be returned as
+     * @deprecated
+     * @see VisitsSummaryModule::getActions()
+     * @param   string $format      Override string for the format of the API Query to be returned as
      * @return  mixed
      */
     public function actions($format = null) {
@@ -130,11 +161,11 @@ s.parentNode.insertBefore(g,s); })();
     }
 
     /**
-     * downloads
      * Get file downloads for the specific time period
      *
      * @deprecated
-     * @param   $format string           Override string for the format of the API Query to be returned as
+     * @see ActionsModule::getDownloads()
+     * @param   string $format           Override string for the format of the API Query to be returned as
      * @return  mixed
      */
     public function downloads($format = null) {
@@ -142,55 +173,151 @@ s.parentNode.insertBefore(g,s); })();
     }
 
     /**
-     * keywords
      * Get search keywords for the specific time period
      *
      * @deprecated
-     * @param   $format string           Override string for the format of the API Query to be returned as
+     * @see ReferrersModule::getKeywords()
+     * @param   string $format           Override string for the format of the API Query to be returned as
      * @return  mixed
      */
     public function keywords($format = null) {
         return $this->getReferrers()->getKeywords([], $format);
     }
 
+    /**
+     * Get information about last 10 visits (ip, time, country, pages, etc.)
+     *
+     * @deprecated
+     * @see LiveModule::getLastVisitsDetails()
+     * @param   int $count          Limit the number of visits returned by $count
+     * @param   string $format      Override string for the format of the API Query to be returned as
+     * @return  mixed
+     */
     public function last_visits($count, $format = null) {
         return $this->getLive()->getLastVisitsDetails($count, [], $format);
     }
 
+    /**
+     * Get information about last 10 visits (ip, time, country, pages, etc.) in a formatted array with GeoIP information if enabled
+     *
+     * @deprecated
+     * @see LiveModule::getLastVisitsDetailsParsed()
+     * @param   int $count          Limit the number of visits returned by $count
+     * @param   string $format      Override string for the format of the API Query to be returned as
+     * @return  mixed
+     */
     public function last_visits_parsed($count, $format = null) {
-        return $this->getLive()->getLastVisitsDetailsParsed($count, [], $format);
+        return $this->getLive()->getLastVisitsDetailsParsed($count, $format);
     }
 
+    /**
+     * Get outlinks for the specific time period
+     *
+     * @deprecated
+     * @see ActionsModule::getOutlinks()
+     * @param   string $format      Override string for the format of the API Query to be returned as
+     * @return  mixed
+     */
     public function outlinks($format = null) {
         return $this->getActions()->getOutlinks([], $format);
     }
+
+    /**
+     * Get page visit information for the specific time period
+     *
+     * @deprecated
+     * @see ActionsModule::getPageTitles()
+     * @param   string $format      Override string for the format of the API Query to be returned as
+     * @return  mixed
+     */
 
     public function page_titles($format = null) {
         return $this->getActions()->getPageTitles([], $format);
     }
 
+    /**
+     * Get search engine referer information for the specific time period
+     *
+     * @deprecated
+     * @see ReferrersModule::getSearchEngines()
+     * @param   string $format         Override string for the format of the API Query to be returned as
+     * @return  mixed
+     */
     public function search_engines($format = null) {
         return $this->getReferrers()->getSearchEngines([], $format);
     }
 
+    /**
+     * Get unique visitors for the specific time period
+     *
+     * @deprecated
+     * @see VisitsSummaryModule::getUniqueVisitors()
+     * @param   string $format      Override string for the format of the API Query to be returned as
+     * @return  mixed
+     */
     public function unique_visitors($format = null) {
         return $this->getVisitsSummary()->getUniqueVisitors([], $format);
     }
 
+    /**
+     * Get all visits for the specific time period
+     *
+     * @deprecated
+     * @see VisitsSummaryModule::getVisits()
+     * @param   string $format      Override string for the format of the API Query to be returned as
+     * @return  mixed
+     */
     public function visits($format = null) {
         return $this->getVisitsSummary()->getVisits([], $format);
     }
 
+    /**
+     * Get referring websites (traffic sources) for the specific time period
+     *
+     * @deprecated
+     * @see ReferrersModule::getWebsites()
+     * @param   string $format      Override string for the format of the API Query to be returned as
+     * @return  mixed
+     */
     public function websites($format = null) {
         return $this->getReferrers()->getWebsites([], $format);
     }
 
+    /**
+     * Get SEO Rank for the website
+     *
+     * @deprecated
+     * @see SEOModule::getRankFromSiteId()
+     * @param   string $siteId          Override for ID, so you can specify one rather than fetching it from config
+     * @param   string $format      Override string for the format of the API Query to be returned as
+     * @return mixed
+     */
     public function seo_rank($siteId, $format = null) {
         return $this->getSEO()->getRankFromSiteId($siteId, $format);
     }
 
-    public function custom($method, $arguments, $siteId = false, $period = false, $format = null) {
-        throw new PiwikException("Piwik::custom is deprecated, please use Piwik::getCustom instead (different arguments)");
+    /**
+     * Get javascript tag for use in tracking the website
+     *
+     * @deprecated
+     * @see Piwik::getTag()
+     * @return  string
+     */
+    public function tag() {
+        return $this->getTag();
+    }
+
+
+    /**
+     * Get Version of the Piwik Server
+     *
+     * @deprecated
+     * @see APIModule::getPiwikVersion()
+     * @param   string $format      Override string for the format of the API Query to be returned as
+     * @return  mixed
+     */
+    public function version($format = null) {
+        return $this->getAPI()->getPiwikVersion($format);
     }
 
 }

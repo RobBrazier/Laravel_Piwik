@@ -2,7 +2,7 @@
 
 namespace RobBrazier\Piwik\Module;
 
-use RobBrazier\Piwik\Base\PiwikBase;
+use RobBrazier\Piwik\Repository\RequestRepository;
 
 /**
  * Class ActionsModule
@@ -11,8 +11,12 @@ use RobBrazier\Piwik\Base\PiwikBase;
  */
 class ActionsModule extends Module {
 
-    public function __construct(PiwikBase $base) {
-        parent::__construct($base);
+    /**
+     * ActionsModule constructor.
+     * @param RequestRepository $request
+     */
+    public function __construct(RequestRepository $request) {
+        parent::__construct($request);
     }
 
     /**
@@ -22,7 +26,7 @@ class ActionsModule extends Module {
      */
     public function get($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -32,7 +36,7 @@ class ActionsModule extends Module {
      */
     public function getPageUrls($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -42,7 +46,7 @@ class ActionsModule extends Module {
      */
     public function getPageUrlsFollowingSiteSearch($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -52,7 +56,7 @@ class ActionsModule extends Module {
      */
     public function getPageTitlesFollowingSiteSearch($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -62,7 +66,7 @@ class ActionsModule extends Module {
      */
     public function getEntryPageUrls($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -72,7 +76,7 @@ class ActionsModule extends Module {
      */
     public function getExitPageUrls($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -84,7 +88,7 @@ class ActionsModule extends Module {
     public function getPageUrl($pageUrl, $arguments = [], $format = null) {
         $arguments = array_add($arguments, "pageUrl", $pageUrl);
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -94,7 +98,7 @@ class ActionsModule extends Module {
      */
     public function getPageTitles($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -104,7 +108,7 @@ class ActionsModule extends Module {
      */
     public function getEntryPageTitles($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -114,7 +118,7 @@ class ActionsModule extends Module {
      */
     public function getExitPageTitles($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -126,7 +130,7 @@ class ActionsModule extends Module {
     public function getPageTitle($pageName, $arguments = [], $format = null) {
         $arguments = array_add($arguments, "pageName", $pageName);
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -136,7 +140,7 @@ class ActionsModule extends Module {
      */
     public function getDownloads($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -148,7 +152,7 @@ class ActionsModule extends Module {
     public function getDownload($downloadUrl, $arguments = [], $format = null) {
         $arguments = array_add($arguments, "downloadUrl", $downloadUrl);
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -158,7 +162,7 @@ class ActionsModule extends Module {
      */
     public function getOutlinks($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -170,7 +174,7 @@ class ActionsModule extends Module {
     public function getOutlink($outlinkUrl, $arguments = [], $format = null) {
         $arguments = array_add($arguments, "outlinkUrl", $outlinkUrl);
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -180,7 +184,7 @@ class ActionsModule extends Module {
      */
     public function getSiteSearchKeywords($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -190,7 +194,7 @@ class ActionsModule extends Module {
      */
     public function getSiteSearchNoResultKeywords($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -200,7 +204,7 @@ class ActionsModule extends Module {
      */
     public function getSiteSearchCategories($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
 }

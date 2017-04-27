@@ -2,22 +2,22 @@
 
 namespace RobBrazier\Piwik\Module;
 
-use RobBrazier\Piwik\Base\PiwikBase;
+use RobBrazier\Piwik\Repository\RequestRepository;
 use RobBrazier\Piwik\Request\RequestOptions;
 
 abstract class Module {
 
     /**
-     * @var PiwikBase
+     * @var RequestRepository
      */
-    protected $base;
+    protected $request;
 
     /**
      * Module constructor.
-     * @param PiwikBase $base
+     * @param RequestRepository $request
      */
-    public function __construct(PiwikBase $base) {
-        $this->base = $base;
+    public function __construct(RequestRepository $request) {
+        $this->request = $request;
     }
 
 
@@ -34,8 +34,11 @@ abstract class Module {
         return $requestOptions;
     }
 
+    /**
+     * @param string $className
+     * @return mixed
+     */
     private function getModuleName($className) {
-        $matches = [];
         $moduleClassName = last(explode("\\", $className));
         $moduleName = str_replace("Module", "", $moduleClassName);
         return $moduleName;

@@ -21,7 +21,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @expectedException \RobBrazier\Piwik\PiwikException
+     * @expectedException \RobBrazier\Piwik\Exception\PiwikException
      */
     public function testInvalidUrl() {
         $this->testClass = new Url("http:///example.com");

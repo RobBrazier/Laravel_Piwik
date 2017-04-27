@@ -2,7 +2,7 @@
 
 namespace RobBrazier\Piwik\Module;
 
-use RobBrazier\Piwik\Base\PiwikBase;
+use RobBrazier\Piwik\Repository\RequestRepository;
 
 /**
  * Class ReferrersModule
@@ -11,8 +11,12 @@ use RobBrazier\Piwik\Base\PiwikBase;
  */
 class ReferrersModule extends Module {
 
-    public function __construct(PiwikBase $base) {
-        parent::__construct($base);
+    /**
+     * ReferrersModule constructor.
+     * @param RequestRepository $request
+     */
+    public function __construct(RequestRepository $request) {
+        parent::__construct($request);
     }
 
     /**
@@ -22,7 +26,7 @@ class ReferrersModule extends Module {
      */
     public function getReferrerType($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -32,7 +36,7 @@ class ReferrersModule extends Module {
      */
     public function getAll($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -42,7 +46,7 @@ class ReferrersModule extends Module {
      */
     public function getKeywords($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -54,7 +58,7 @@ class ReferrersModule extends Module {
     public function getKeywordsForPageUrl($url, $arguments = [], $format = null) {
         $arguments = array_add($arguments, "url", $url);
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -66,7 +70,7 @@ class ReferrersModule extends Module {
     public function getKeywordsForPageTitle($title, $arguments = [], $format = null) {
         $arguments = array_add($arguments, "title", $title);
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -76,7 +80,7 @@ class ReferrersModule extends Module {
      */
     public function getSearchEnginesFromKeywordId($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -86,7 +90,7 @@ class ReferrersModule extends Module {
      */
     public function getSearchEngines($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -96,7 +100,7 @@ class ReferrersModule extends Module {
      */
     public function getKeywordsFromSearchEngineId($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -106,7 +110,7 @@ class ReferrersModule extends Module {
      */
     public function getCampaigns($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -116,7 +120,7 @@ class ReferrersModule extends Module {
      */
     public function getKeywordsFromCampaignId($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -126,7 +130,7 @@ class ReferrersModule extends Module {
      */
     public function getWebsites($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -136,7 +140,7 @@ class ReferrersModule extends Module {
      */
     public function getUrlsFromWebsiteId($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -146,7 +150,7 @@ class ReferrersModule extends Module {
      */
     public function getSocials($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -156,7 +160,7 @@ class ReferrersModule extends Module {
      */
     public function getUrlsForSocial($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -166,7 +170,7 @@ class ReferrersModule extends Module {
      */
     public function getNumberOfDistinctSearchEngines($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -176,7 +180,7 @@ class ReferrersModule extends Module {
      */
     public function getNumberOfDistinctKeywords($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -186,7 +190,7 @@ class ReferrersModule extends Module {
      */
     public function getNumberOfDistinctCampaigns($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -196,7 +200,7 @@ class ReferrersModule extends Module {
      */
     public function getNumberOfDistinctWebsites($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -206,7 +210,7 @@ class ReferrersModule extends Module {
      */
     public function getNumberOfDistinctWebsitesUrls($arguments = [], $format = null) {
         $options = $this->getOptions($format)->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
 }

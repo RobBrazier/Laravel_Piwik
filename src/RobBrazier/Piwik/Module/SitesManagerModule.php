@@ -2,7 +2,7 @@
 
 namespace RobBrazier\Piwik\Module;
 
-use RobBrazier\Piwik\Base\PiwikBase;
+use RobBrazier\Piwik\Repository\RequestRepository;
 
 /**
  * Class SitesManagerModule
@@ -11,8 +11,12 @@ use RobBrazier\Piwik\Base\PiwikBase;
  */
 class SitesManagerModule extends Module {
 
-    public function __construct(PiwikBase $base) {
-        parent::__construct($base);
+    /**
+     * SitesManagerModule constructor.
+     * @param RequestRepository $request
+     */
+    public function __construct(RequestRepository $request) {
+        parent::__construct($request);
     }
 
     /**
@@ -28,7 +32,7 @@ class SitesManagerModule extends Module {
             ->useSiteId(false)
             ->usePeriod(false)
             ->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -39,7 +43,7 @@ class SitesManagerModule extends Module {
         $options = $this->getOptions($format)
             ->useSiteId(false)
             ->usePeriod(false);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -49,7 +53,16 @@ class SitesManagerModule extends Module {
     public function getSitesFromId($format = null) {
         $options = $this->getOptions($format)
             ->usePeriod(false);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
+    }
+
+    public function getSiteUrlsFromId($siteId = null, $format = null) {
+        $options = $this->getOptions($format)
+            ->usePeriod(false);
+        if (!is_null($siteId)) {
+            $options->setSiteId($siteId);
+        }
+        return $this->request->send($options);
     }
 
     /**
@@ -60,7 +73,7 @@ class SitesManagerModule extends Module {
         $options = $this->getOptions($format)
             ->useSiteId(false)
             ->usePeriod(false);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -71,7 +84,7 @@ class SitesManagerModule extends Module {
         $options = $this->getOptions($format)
             ->useSiteId(false)
             ->usePeriod(false);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -84,7 +97,7 @@ class SitesManagerModule extends Module {
             ->useSiteId(false)
             ->usePeriod(false)
             ->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -95,7 +108,7 @@ class SitesManagerModule extends Module {
         $options = $this->getOptions($format)
             ->useSiteId(false)
             ->usePeriod(false);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -108,7 +121,7 @@ class SitesManagerModule extends Module {
             ->useSiteId(false)
             ->usePeriod(false)
             ->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -119,7 +132,7 @@ class SitesManagerModule extends Module {
         $options = $this->getOptions($format)
             ->useSiteId(false)
             ->usePeriod(false);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -130,7 +143,7 @@ class SitesManagerModule extends Module {
         $options = $this->getOptions($format)
             ->useSiteId(false)
             ->usePeriod(false);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
 
@@ -142,7 +155,7 @@ class SitesManagerModule extends Module {
         $options = $this->getOptions($format)
             ->useSiteId(false)
             ->usePeriod(false);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
     /**
@@ -158,7 +171,7 @@ class SitesManagerModule extends Module {
             ->useSiteId(false)
             ->usePeriod(false)
             ->setArguments($arguments);
-        return $this->base->getCustom($options);
+        return $this->request->send($options);
     }
 
 

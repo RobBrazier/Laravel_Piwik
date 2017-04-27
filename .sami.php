@@ -14,9 +14,7 @@ $iterator = Finder::create()
 $versions = GitVersionCollection::create($dir)
     ->addFromTags('2.0.*')
     ->addFromTags('2.1.*')
-    ->add('master', 'master branch')
-    ->add('29-widen-range-of-api-methods', 'next')
-;
+    ->add('master', 'master branch');
 
 return new Sami($iterator, array(
     'title'                => 'Laravel_Piwik',
