@@ -216,7 +216,6 @@ s.parentNode.insertBefore(g,s); })();
      * Get information about last 10 visits (ip, time, country, pages, etc.) in a formatted array with GeoIP information if enabled
      *
      * @deprecated
-     * @see LiveModule::getLastVisitsDetailsParsed()
      * @param   int $count          Limit the number of visits returned by $count
      * @param   string $format      Override string for the format of the API Query to be returned as
      * @return  mixed

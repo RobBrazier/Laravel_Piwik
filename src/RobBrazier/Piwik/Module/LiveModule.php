@@ -24,7 +24,7 @@ class LiveModule extends Module {
     }
 
     /**
-     * @param string $lastMinutes
+     * @param int $lastMinutes
      * @param array $arguments
      * @param string|null $format
      * @return mixed
@@ -53,6 +53,7 @@ class LiveModule extends Module {
      * with GeoIP information if enabled
      *
      * @access  public
+     * @deprecated
      * @param   int $count      Limit the number of visits returned by $count
      * @param   string $format  Override string for the format of the API Query to be returned as
      * @return  array
@@ -69,8 +70,7 @@ class LiveModule extends Module {
                     $v = (array) $v;
                 case 'php':
                     $actionDetails = (array) array_get($v, 'actionDetails');
-                    $count = count($actionDetails) - 1;
-                    $actionDetail = (array) array_get($actionDetails, $count);
+                    $actionDetail = (array) array_last($actionDetails);
                     $page_link = array_get($actionDetail, 'url');
                     $page_title = array_get($actionDetail, 'pageTitle');
 
