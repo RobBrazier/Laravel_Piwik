@@ -71,31 +71,31 @@ class LiveModule extends Module {
                 case 'php':
                     $actionDetails = (array) array_get($v, 'actionDetails');
                     $actionDetail = (array) array_last($actionDetails);
-                    $page_link = array_get($actionDetail, 'url');
-                    $page_title = array_get($actionDetail, 'pageTitle');
+                    $pageLink = array_get($actionDetail, 'url');
+                    $pageTitle = array_get($actionDetail, 'pageTitle');
 
                     // Get just the image names (API returns path to icons in piwik install)
                     $flag = explode('/', array_get($v, 'countryFlag'));
-                    $flag_icon = end($flag);
+                    $flagIcon = end($flag);
 
                     $os = explode('/', array_get($v, 'operatingSystemIcon'));
-                    $os_icon = end($os);
+                    $osIcon = end($os);
 
                     $browser = explode('/', array_get($v, 'browserIcon'));
-                    $browser_icon = end($browser);
+                    $browserIcon = end($browser);
 
                     $data[] = [
                         'time' => date("M j Y, g:i a", array_get($v, 'lastActionTimestamp')),
-                        'title' => $page_title,
-                        'link' => $page_link,
+                        'title' => $pageTitle,
+                        'link' => $pageLink,
                         'ip_address' => array_get($v, 'visitIp'),
                         'provider' => array_get($v, 'provider'),
                         'country' => array_get($v, 'country'),
-                        'country_icon' => $flag_icon,
+                        'country_icon' => $flagIcon,
                         'os' => array_get($v, 'operatingSystem'),
-                        'os_icon' => $os_icon,
+                        'os_icon' => $osIcon,
                         'browser' => array_get($v, 'browserName'),
-                        'browser_icon' => $browser_icon,
+                        'browser_icon' => $browserIcon,
                     ];
                     break;
                 default:
