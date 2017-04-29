@@ -9,13 +9,6 @@ return array(
     'piwik_url'     => 'https://demo.piwik.org',
 
     /*
-     *  Piwik Username and Password
-     */
-
-    'username'      => 'username',
-    'password'      => 'password',
-
-    /*
      *  Optional API Key (will be used instead of Username and Password)
      *  The bundle works much faster with the API Key, rather than username and password.
      */
