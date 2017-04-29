@@ -13,6 +13,7 @@ use RobBrazier\Piwik\Module\SEOModule;
 use RobBrazier\Piwik\Module\SitesManagerModule;
 use RobBrazier\Piwik\Module\VisitorInterestModule;
 use RobBrazier\Piwik\Module\VisitsSummaryModule;
+use RobBrazier\Piwik\Query\Url;
 use RobBrazier\Piwik\Repository\ConfigRepository;
 use RobBrazier\Piwik\Repository\RequestRepository;
 use RobBrazier\Piwik\Request\RequestOptions;
@@ -22,7 +23,7 @@ use RobBrazier\Piwik\Traits\ConfigTrait;
  * Class Piwik
  * @package RobBrazier\Piwik
  */
-class Piwik extends PiwikBase {
+class Piwik {
 
     use ConfigTrait {
         ConfigTrait::__construct as private __configConstruct;
@@ -41,6 +42,20 @@ class Piwik extends PiwikBase {
     public function __construct(ConfigRepository $config, RequestRepository $request) {
         $this->__configConstruct($config);
         $this->request = $request;
+    }
+
+    /**
+     * Convert URL from HTTP to HTTPS and vice versa
+     *
+     * @param string $url
+     * @param bool $https
+     * @return string
+     */
+    protected function convertUrl($url, $https) {
+        $scheme = ($https) ? 'https' : 'http';
+        $parser = new Url($url);
+        $parser->setScheme($scheme);
+        return $parser->__toString();
     }
 
     /**

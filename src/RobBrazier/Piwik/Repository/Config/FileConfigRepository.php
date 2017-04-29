@@ -7,10 +7,9 @@ use RobBrazier\Piwik\Repository\ConfigRepository;
 class FileConfigRepository implements ConfigRepository {
 
     /**
-     * @param string $key
-     * @return mixed
+     * @inheritdoc
      */
-    public function get($key) {
-        return config('piwik.' . $key);
+    public function get($key, $default = null) {
+        return config('piwik.' . $key, $default);
     }
 }

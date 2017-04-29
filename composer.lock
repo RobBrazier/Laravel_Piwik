@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "333bfe7fd679bd35ef3ab115ec200508",
+    "content-hash": "8ebdf63571c70038843162b4e1e159fe",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -815,16 +815,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.39",
+            "version": "1.0.40",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "2474325ee924134bb05848663b12531f6f2e9fbe"
+                "reference": "3828f0b24e2c1918bb362d57a53205d6dc8fde61"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/2474325ee924134bb05848663b12531f6f2e9fbe",
-                "reference": "2474325ee924134bb05848663b12531f6f2e9fbe",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/3828f0b24e2c1918bb362d57a53205d6dc8fde61",
+                "reference": "3828f0b24e2c1918bb362d57a53205d6dc8fde61",
                 "shasum": ""
             },
             "require": {
@@ -894,60 +894,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2017-04-25T15:24:43+00:00"
-        },
-        {
-            "name": "lightair/phpunit-testlistener-xhprof",
-            "version": "1.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/LightAir/phpunit-testlistener-xhprof.git",
-                "reference": "7314429e0f08c6fc51371d9c8180e7af687e44c0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/LightAir/phpunit-testlistener-xhprof/zipball/7314429e0f08c6fc51371d9c8180e7af687e44c0",
-                "reference": "7314429e0f08c6fc51371d9c8180e7af687e44c0",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6",
-                "phpunit/phpunit": "5.7.*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sb@sebastian-bergmann.de",
-                    "role": "lead"
-                },
-                {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de",
-                    "role": "lead"
-                }
-            ],
-            "description": "A updated TestListener for PHPUnit that uses XHProf for automated profiling of the tested code.",
-            "homepage": "https://github.com/LightAir/phpunit-testlistener-xhprof/",
-            "keywords": [
-                "phpunit",
-                "xhprof"
-            ],
-            "time": "2016-12-05T07:23:11+00:00"
+            "time": "2017-04-28T10:15:08+00:00"
         },
         {
             "name": "monolog/monolog",

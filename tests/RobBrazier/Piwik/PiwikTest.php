@@ -1,6 +1,7 @@
 <?php
 namespace RobBrazier\Piwik;
 use DOMDocument;
+use GuzzleHttp\Client;
 use Orchestra\Testbench\TestCase;
 use RobBrazier\Piwik\Config\Options;
 use RobBrazier\Piwik\Repository\Config\FileConfigRepository;
@@ -62,7 +63,7 @@ class PiwikTest extends TestCase {
     public function setUp() {
         parent::setUp();
         $config = new FileConfigRepository();
-        $request = new GuzzleRequestRepository($config);
+        $request = new GuzzleRequestRepository($config, new Client());
         $this->piwik = new Piwik($config, $request);
         $this->tag = <<<EOT
 <!-- Piwik -->

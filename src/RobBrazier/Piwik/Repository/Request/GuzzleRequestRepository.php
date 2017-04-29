@@ -3,7 +3,8 @@
 namespace RobBrazier\Piwik\Repository\Request;
 
 
-use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
+use RobBrazier\Piwik\Repository\ConfigRepository;
 use RobBrazier\Piwik\Repository\RequestRepository;
 use RobBrazier\Piwik\Request\RequestOptions;
 use RobBrazier\Piwik\Traits\ConfigTrait;
@@ -11,12 +12,24 @@ use RobBrazier\Piwik\Traits\FormatTrait;
 
 class GuzzleRequestRepository implements RequestRepository {
 
-    use ConfigTrait;
+    use ConfigTrait {
+        ConfigTrait::__construct as private __configConstruct;
+    }
     use FormatTrait;
 
     /**
-     * @param RequestOptions $requestOptions
-     * @return mixed
+     * @var ClientInterface
+     */
+    private $client;
+
+    public function __construct(ConfigRepository $config, ClientInterface $client)
+    {
+        $this->__configConstruct($config);
+        $this->client = $client;
+    }
+
+    /**
+     * @inheritdoc
      */
     public function send(RequestOptions $requestOptions) {
         $body = $this->getResponseBody($requestOptions);
@@ -29,12 +42,12 @@ class GuzzleRequestRepository implements RequestRepository {
      */
     private function getResponseBody(RequestOptions $requestOptions) {
         $url = 'index.php' . $requestOptions->build($this->config);
-        $client = new Client([
-            "timeout" => config('piwik.curl_timeout', 5.0),
-            "verify" => config('piwik.verify_peer', true),
+        $options = [
+            "timeout" => $this->config->get('curl_timeout', 5.0),
+            "verify" => $this->config->get('verify_peer', true),
             "base_uri" => $this->getPiwikUrl()
-        ]);
-        $response = $client->get($url);
+        ];
+        $response = $this->client->request("get", $url, $options);
         $body = $response->getBody();
         return $body->getContents();
     }
