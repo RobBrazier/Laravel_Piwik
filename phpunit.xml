@@ -23,6 +23,7 @@
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">src</directory>
             <exclude>
+                <directory suffix="ServiceProvider.php">src</directory>
                 <directory suffix=".php">src/config</directory>
             </exclude>
         </whitelist>

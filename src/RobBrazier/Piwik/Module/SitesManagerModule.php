@@ -56,6 +56,11 @@ class SitesManagerModule extends Module {
         return $this->request->send($options);
     }
 
+    /**
+     * @param int $siteId
+     * @param string|null $format
+     * @return mixed
+     */
     public function getSiteUrlsFromId($siteId = null, $format = null) {
         $options = $this->getOptions($format)
             ->usePeriod(false);

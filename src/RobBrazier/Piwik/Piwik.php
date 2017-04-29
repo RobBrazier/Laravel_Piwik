@@ -135,7 +135,7 @@ class Piwik {
      */
 
     public function getTag() {
-        $piwik_url = $this->getPiwikUrl();
+        $piwikUrl = $this->getPiwikUrl();
         $tag = sprintf("<!-- Piwik -->
 <script type=\"text/javascript\">
 var _paq = _paq || [];
@@ -148,8 +148,8 @@ var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[
 s.parentNode.insertBefore(g,s); })();
 </script>
 <!-- End Piwik Code -->",
-            $this->convertUrl($piwik_url, true),
-            $this->convertUrl($piwik_url, false),
+            $this->convertUrl($piwikUrl, true),
+            $this->convertUrl($piwikUrl, false),
             $this->getSiteId());
 
         return $tag;
