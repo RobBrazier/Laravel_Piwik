@@ -1,6 +1,9 @@
 <?php namespace RobBrazier\Piwik;
 
+use GuzzleHttp\Client;
 use Illuminate\Support\ServiceProvider;
+use RobBrazier\Piwik\Repository\Config\FileConfigRepository;
+use RobBrazier\Piwik\Repository\Request\GuzzleRequestRepository;
 
 class PiwikServiceProvider extends ServiceProvider {
 
@@ -30,8 +33,19 @@ class PiwikServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
+	    $this->app->bind('piwik.config', function() {
+	        return new FileConfigRepository;
+        });
+
+	    $this->app->bind('piwik.request', function() {
+	        $config = $this->app->make('piwik.config');
+	        return new GuzzleRequestRepository($config, new Client());
+        });
+
         $this->app->bind('piwik', function() {
-        	return new Piwik;
+            $config = $this->app->make('piwik.config');
+            $request = $this->app->make('piwik.request');
+        	return new Piwik($config, $request);
         });
 	}
 
