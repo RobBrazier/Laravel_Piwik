@@ -23,16 +23,6 @@ class Options {
     /**
      * @var string
      */
-    private $username;
-
-    /**
-     * @var string
-     */
-    private $password;
-
-    /**
-     * @var string
-     */
     private $format;
 
     /**
