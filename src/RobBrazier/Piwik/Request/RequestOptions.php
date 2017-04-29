@@ -142,7 +142,7 @@ class RequestOptions {
         if ($this->useFormat) {
             $format = $config->get(Option::FORMAT);
         }
-        return $this->validateFormat($format);
+        return $format;
     }
 
     /**
@@ -192,7 +192,10 @@ class RequestOptions {
             $builder->setDate($this->getDate($period));
         }
         $builder->setSiteId($this->getSiteId($config));
-        $builder->setFormat($this->getFormat($config));
+        $format = $this->getFormat($config);
+        if (!is_null($format)) {
+            $builder->setFormat($this->validateFormat($format));
+        }
         $builder->setTokenAuth($this->getTokenAuth($config));
         $builder->addAll($this->arguments);
         return $builder->build();

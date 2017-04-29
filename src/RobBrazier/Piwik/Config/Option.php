@@ -11,5 +11,7 @@ abstract class Option {
     const PASSWORD = 'password';
     const FORMAT = 'format';
     const PERIOD = 'period';
+    const CURL_TIMEOUT = "curl_timeout";
+    const VERIFY_PEER = "verify_peer";
 
 }

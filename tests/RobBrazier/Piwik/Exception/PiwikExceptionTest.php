@@ -1,12 +1,13 @@
 <?php
 
 namespace RobBrazier\Piwik\Exception;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class PiwikExceptionTest
  * @package RobBrazier\Piwik
  */
-class PiwikExceptionTest extends \PHPUnit_Framework_TestCase{
+class PiwikExceptionTest extends TestCase {
 
     public function testGetMessage() {
         $expectedMessage = "message";
