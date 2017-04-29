@@ -42,6 +42,11 @@ class SEOModule extends Module {
         return $this->request->send($options);
     }
 
+    /**
+     * @param int $siteId
+     * @param string|null $format
+     * @return mixed
+     */
     public function getRankFromSiteId($siteId, $format = null) {
         $url = $this->sitesManager->getSiteUrlsFromId($siteId)[0];
         return $this->getRank($url, $format);

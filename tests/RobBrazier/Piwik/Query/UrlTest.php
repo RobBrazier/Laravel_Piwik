@@ -6,7 +6,6 @@ use PHPUnit\Framework\TestCase;
 /**
  * Class UrlTest
  * @package RobBrazier\Piwik\Query
- * @covers \RobBrazier\Piwik\Query\Url
  */
 class UrlTest extends TestCase {
 

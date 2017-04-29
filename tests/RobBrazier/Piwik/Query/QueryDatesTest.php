@@ -6,7 +6,6 @@ use PHPUnit\Framework\TestCase;
 /**
  * Class QueryDatesTest
  * @package RobBrazier\Piwik\Query
- * @covers \RobBrazier\Piwik\Query\QueryDates
  */
 class QueryDatesTest extends TestCase {
 
