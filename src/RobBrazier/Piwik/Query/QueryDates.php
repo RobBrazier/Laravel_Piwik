@@ -2,7 +2,7 @@
 
 namespace RobBrazier\Piwik\Query;
 
-use RobBrazier\Piwik\PiwikException;
+use RobBrazier\Piwik\Exception\PiwikException;
 
 class QueryDates {
 
@@ -18,6 +18,9 @@ class QueryDates {
      */
     private $map;
 
+    /**
+     * QueryDates constructor.
+     */
     private function __construct() {
         $this->map = array(
             "today" => new QueryDate("day", "today"),

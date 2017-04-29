@@ -1,13 +1,13 @@
 <?php
 
 namespace RobBrazier\Piwik\Query;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class QueryDatesTest
  * @package RobBrazier\Piwik\Query
- * @covers \RobBrazier\Piwik\Query\QueryDates
  */
-class QueryDatesTest extends \PHPUnit_Framework_TestCase {
+class QueryDatesTest extends TestCase {
 
     public function testSingleton() {
         $reflectionClass = new \ReflectionClass('\RobBrazier\Piwik\Query\QueryDates');
@@ -33,7 +33,7 @@ class QueryDatesTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @expectedException \RobBrazier\Piwik\PiwikException
+     * @expectedException \RobBrazier\Piwik\Exception\PiwikException
      */
     public function testGetInvalid() {
         $dates = QueryDates::getInstance();

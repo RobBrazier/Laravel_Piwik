@@ -1,9 +1,10 @@
 <?php
 
 namespace RobBrazier\Piwik\Query;
+use PHPUnit\Framework\TestCase;
 
 
-class UrlQueryBuilderTest extends \PHPUnit_Framework_TestCase {
+class UrlQueryBuilderTest extends TestCase {
 
     const MODULE = "API";
     const METHOD = "Method.name";

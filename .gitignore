@@ -1,5 +1,7 @@
 .DS_Store
 docs/_build/
+docs/api/
+cache
 .idea/
 vendor/
 reports/
