@@ -71,13 +71,13 @@ class LiveModule extends Module {
                 $data = $this->getParsedLastVisitsDetails($visits);
                 break;
             case 'xml':
-                $d = [];
+                $parsedVisits = [];
                 $rows = $visits->count();
                 for ($i = 0; $i < $rows; $i++) {
                     $row = json_decode(json_encode($visits->row[$i]), true);
-                    array_push($d, $row);
+                    array_push($parsedVisits, $row);
                 }
-                $data = $this->getParsedLastVisitsDetails($d);
+                $data = $this->getParsedLastVisitsDetails($parsedVisits);
                 break;
             default:
                 throw new PiwikException("Format [" . $format . "] is not yet supported.");
