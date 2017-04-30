@@ -125,11 +125,10 @@ class LiveModuleTest extends TestCase {
     public function testGetLastVisitsParsedXml() {
         ob_start();
         include(__DIR__ . '/resources/Live.getLastVisitsDetails.xml');
-        $loader = new XmlLoader();
         $contents = ob_get_contents();
-        $this->expectedResponse = simplexml_import_dom($loader->loadXml($contents));
         ob_end_clean();
-        print_r($contents);
+        $loader = new XmlLoader();
+        $this->expectedResponse = simplexml_import_dom($loader->loadXml($contents));
         $format = "xml";
         $count = 1;
         $this->requestOptions
