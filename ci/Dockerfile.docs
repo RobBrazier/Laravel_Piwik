@@ -14,7 +14,8 @@ RUN cp -r ./ci ../ci && \
 
 USER www-data
 
-RUN set PATH=/home/www-data/.composer/vendor/bin:$PATH && \
+RUN composer global require hirak/prestissimo --no-progress && \
+    set PATH=/home/www-data/.composer/vendor/bin:$PATH && \
     curl -O http://get.sensiolabs.org/sami.phar && \
     composer global require justinwalsh/daux.io
 
