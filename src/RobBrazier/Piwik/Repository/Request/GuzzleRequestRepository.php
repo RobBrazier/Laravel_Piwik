@@ -4,11 +4,13 @@ namespace RobBrazier\Piwik\Repository\Request;
 
 
 use GuzzleHttp\ClientInterface;
+use Lightools\Xml\XmlLoader;
 use RobBrazier\Piwik\Repository\ConfigRepository;
 use RobBrazier\Piwik\Repository\RequestRepository;
 use RobBrazier\Piwik\Request\RequestOptions;
 use RobBrazier\Piwik\Traits\ConfigTrait;
 use RobBrazier\Piwik\Traits\FormatTrait;
+use Sabre\Xml;
 
 class GuzzleRequestRepository implements RequestRepository {
 
@@ -66,6 +68,10 @@ class GuzzleRequestRepository implements RequestRepository {
             case 'php':
                 $result = unserialize($result);
                 break;
+            case 'xml':
+                $loader = new XmlLoader();
+                $domDocument = $loader->loadXml($result);
+                $result = simplexml_import_dom($domDocument);
         };
         return $result;
     }
