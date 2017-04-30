@@ -1,6 +1,7 @@
-Dockerfile*
+#Dockerfile*
 vendor
-docker-compose.yml
-.git
+#docker-compose.yml
 .idea
 *.iml
+build/
+#.dockerignore
