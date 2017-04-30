@@ -4,6 +4,7 @@ namespace RobBrazier\Piwik\Repository\Request;
 
 
 use GuzzleHttp\ClientInterface;
+use Lightools\Xml\XmlLoader;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Prophecy\Prophet;
@@ -40,11 +41,18 @@ class GuzzleRequestRepositoryTest extends TestCase {
     }
 
     public function testSendForXml() {
-        $response = "body";
+        $response = "<note>
+<to>Tove</to>
+<from>Jani</from>
+<heading>Reminder</heading>
+<body>Don't forget me this weekend!</body>
+</note>";
         $this->givenConfig("xml");
         $this->givenRequest($response);
         $result = $this->whenRequestIsSent();
-        $this->assertEquals($response, $result);
+        $loader = new XmlLoader();
+        $expected = simplexml_import_dom($loader->loadXml($response));
+        $this->assertEquals($expected, $result);
     }
 
     public function testSendForJson() {

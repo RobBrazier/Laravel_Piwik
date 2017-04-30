@@ -1,4 +1,4 @@
-Laravel-Piwik v2.1.3
+Laravel-Piwik v3.0.0
 ====================
 
 [![Build Status](https://semaphoreci.com/api/v1/robbrazier/laravel_piwik/branches/master/shields_badge.svg)](https://semaphoreci.com/robbrazier/laravel_piwik)
@@ -21,7 +21,7 @@ Add `RobBrazier/Piwik` to `composer.json`:
 ```json
 {
     "require": {
-        "robbrazier/piwik": "~2.1"
+        "robbrazier/piwik": "~3.0"
     }
 }
 ```
