@@ -127,6 +127,7 @@ class LiveModuleTest extends TestCase {
         include(__DIR__ . '/resources/Live.getLastVisitsDetails.xml');
         $contents = ob_get_contents();
         ob_end_clean();
+        print_r($contents);
         $loader = new XmlLoader();
         $this->expectedResponse = simplexml_import_dom($loader->loadXml($contents));
         $format = "xml";
