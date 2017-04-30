@@ -69,10 +69,8 @@ class LiveModuleTest extends TestCase {
     }
 
     public function testGetLastVisitsParsedJson() {
-        ob_start();
-        include(__DIR__ . '/resources/Live.getLastVisitsDetails.json');
-        $this->expectedResponse = json_decode(ob_get_contents());
-        ob_end_clean();
+        $contents = file_get_contents(__DIR__ . '/resources/Live.getLastVisitsDetails.json');
+        $this->expectedResponse = json_decode($contents);
         $format = "json";
         $count = 1;
         $this->requestOptions
@@ -96,10 +94,8 @@ class LiveModuleTest extends TestCase {
     }
 
     public function testGetLastVisitsParsedPhp() {
-        ob_start();
-        include(__DIR__ . '/resources/Live.getLastVisitsDetails.php');
-        $this->expectedResponse = unserialize(ob_get_contents());
-        ob_end_clean();
+        $contents = file_get_contents(__DIR__ . '/resources/Live.getLastVisitsDetails.php');
+        $this->expectedResponse = unserialize($contents);
         $format = "php";
         $count = 1;
         $this->requestOptions
@@ -123,11 +119,7 @@ class LiveModuleTest extends TestCase {
     }
 
     public function testGetLastVisitsParsedXml() {
-        ob_start();
-        include(__DIR__ . '/resources/Live.getLastVisitsDetails.xml');
-        $contents = ob_get_contents();
-        ob_end_clean();
-        print_r($contents);
+        $contents = file_get_contents(__DIR__ . '/resources/Live.getLastVisitsDetails.xml');
         $loader = new XmlLoader();
         $this->expectedResponse = simplexml_import_dom($loader->loadXml($contents));
         $format = "xml";

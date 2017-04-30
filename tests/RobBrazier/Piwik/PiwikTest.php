@@ -164,10 +164,8 @@ class PiwikTest extends TestCase {
     }
 
     public function testLastVisitsParsed() {
-        ob_start();
-        include(__DIR__ . '/Module/resources/Live.getLastVisitsDetails.json');
-        $this->expectedResponse = json_decode(ob_get_contents());
-        ob_end_clean();
+        $contents = file_get_contents(__DIR__ . '/Module/resources/Live.getLastVisitsDetails.json');
+        $this->expectedResponse = json_decode($contents);
         $format = "json";
         $count = 1;
         $this->requestOptions
