@@ -4,8 +4,6 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-VOLUME /usr/src/docs
-
 RUN cp -r ./ci ../ci && \
     chmod +x ../ci/scripts/*.sh && \
     ../ci/scripts/setup.sh && \
@@ -13,6 +11,8 @@ RUN cp -r ./ci ../ci && \
     chown -R www-data:www-data ..
 
 USER www-data
+
+VOLUME /usr/src/docs
 
 RUN composer global require hirak/prestissimo --no-progress && \
     set PATH=/home/www-data/.composer/vendor/bin:$PATH && \
