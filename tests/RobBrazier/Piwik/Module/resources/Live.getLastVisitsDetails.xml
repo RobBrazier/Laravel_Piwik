@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<result>
+    <row>
+        <idSite>3</idSite>
+        <idVisit>23212768</idVisit>
+        <visitIp />
+        <visitorId>0</visitorId>
+        <actionDetails>
+            <row>
+                <type>action</type>
+                <url>http://www.virtual-drums.com/</url>
+                <pageTitle>Virtual Drums: A 3D drum set!</pageTitle>
+                <pageIdAction>169779</pageIdAction>
+                <serverTimePretty>Apr 29, 2017 22:14:03</serverTimePretty>
+                <pageId>97840605</pageId>
+                <generationTimeMilliseconds>130</generationTimeMilliseconds>
+                <generationTime>0.13s</generationTime>
+                <interactionPosition>1</interactionPosition>
+                <icon />
+                <timestamp>1493504043</timestamp>
+            </row>
+        </actionDetails>
+        <goalConversions>0</goalConversions>
+        <siteCurrency>USD</siteCurrency>
+        <siteCurrencySymbol>$</siteCurrencySymbol>
+        <serverDate>2017-04-30</serverDate>
+        <visitServerHour>2</visitServerHour>
+        <lastActionTimestamp>1493518443</lastActionTimestamp>
+        <lastActionDateTime>2017-04-30 02:14:03</lastActionDateTime>
+        <userId />
+        <visitorType>new</visitorType>
+        <visitorTypeIcon />
+        <visitConverted>0</visitConverted>
+        <visitConvertedIcon />
+        <visitCount>1</visitCount>
+        <firstActionTimestamp>1493518443</firstActionTimestamp>
+        <visitEcommerceStatus>none</visitEcommerceStatus>
+        <visitEcommerceStatusIcon />
+        <daysSinceFirstVisit>0</daysSinceFirstVisit>
+        <daysSinceLastEcommerceOrder>0</daysSinceLastEcommerceOrder>
+        <visitDuration>0</visitDuration>
+        <visitDurationPretty>0s</visitDurationPretty>
+        <searches>0</searches>
+        <actions>1</actions>
+        <interactions>1</interactions>
+        <referrerType>search</referrerType>
+        <referrerTypeName>Search Engines</referrerTypeName>
+        <referrerName>Google</referrerName>
+        <referrerKeyword>Keyword not defined</referrerKeyword>
+        <referrerKeywordPosition />
+        <referrerUrl>http://piwik.org/faq/general/#faq_144</referrerUrl>
+        <referrerSearchEngineUrl>http://google.com</referrerSearchEngineUrl>
+        <referrerSearchEngineIcon>plugins/Morpheus/icons/dist/searchEngines/google.com.png</referrerSearchEngineIcon>
+        <languageCode>en-us</languageCode>
+        <language>Language code en-us</language>
+        <deviceType>Desktop</deviceType>
+        <deviceTypeIcon>plugins/DevicesDetection/images/screens/normal.png</deviceTypeIcon>
+        <deviceBrand>Unknown</deviceBrand>
+        <deviceModel />
+        <operatingSystem>Windows 8.1</operatingSystem>
+        <operatingSystemName>Windows</operatingSystemName>
+        <operatingSystemIcon>plugins/Morpheus/icons/dist/os/WIN.png</operatingSystemIcon>
+        <operatingSystemCode>WIN</operatingSystemCode>
+        <operatingSystemVersion>8.1</operatingSystemVersion>
+        <browserFamily>Blink</browserFamily>
+        <browserFamilyDescription>Blink (Chrome, Opera)</browserFamilyDescription>
+        <browser>Chrome 58.0</browser>
+        <browserName>Chrome</browserName>
+        <browserIcon>plugins/Morpheus/icons/dist/browsers/CH.png</browserIcon>
+        <browserCode>CH</browserCode>
+        <browserVersion>58.0</browserVersion>
+        <events>0</events>
+        <continent>North America</continent>
+        <continentCode>amn</continentCode>
+        <country>United States</country>
+        <countryCode>us</countryCode>
+        <countryFlag>plugins/Morpheus/icons/dist/flags/us.png</countryFlag>
+        <region>New York</region>
+        <regionCode>NY</regionCode>
+        <city>Ithaca</city>
+        <location>Ithaca, New York, United States</location>
+        <latitude>42.407000</latitude>
+        <longitude>-76.516000</longitude>
+        <visitLocalTime>22:13:51</visitLocalTime>
+        <visitLocalHour>22</visitLocalHour>
+        <daysSinceLastVisit>0</daysSinceLastVisit>
+        <customVariables>
+        </customVariables>
+        <resolution>1366x768</resolution>
+        <plugins>pdf</plugins>
+        <pluginsIcons>
+            <row>
+                <pluginIcon>plugins/Morpheus/icons/dist/plugins/pdf.png</pluginIcon>
+                <pluginName>pdf</pluginName>
+            </row>
+        </pluginsIcons>
+        <provider>Verizon Internet Services</provider>
+        <providerName>Verizon Internet Services</providerName>
+        <providerUrl>https://startpage.com/do/search?q=Verizon+Internet+Services</providerUrl>
+        <serverTimestamp>1493518443</serverTimestamp>
+        <serverTimePretty>22:14:03</serverTimePretty>
+        <serverDatePretty>Saturday, April 29, 2017</serverDatePretty>
+        <serverDatePrettyFirstAction>Saturday, April 29, 2017</serverDatePrettyFirstAction>
+        <serverTimePrettyFirstAction>22:14:03</serverTimePrettyFirstAction>
+        <totalEcommerceRevenue>0.00</totalEcommerceRevenue>
+        <totalEcommerceConversions>0</totalEcommerceConversions>
+        <totalEcommerceItems>0</totalEcommerceItems>
+        <totalAbandonedCartsRevenue>0.00</totalAbandonedCartsRevenue>
+        <totalAbandonedCarts>0</totalAbandonedCarts>
+        <totalAbandonedCartsItems>0</totalAbandonedCartsItems>
+    </row>
+</result>

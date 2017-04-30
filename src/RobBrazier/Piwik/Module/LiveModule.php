@@ -61,49 +61,67 @@ class LiveModule extends Module {
     public function getLastVisitsDetailsParsed($count, $format = null) {
         $visits = $this->getLastVisitsDetails($count, [], $format);
 
-        $data = [];
-        foreach ($visits as $v) {
-            // Get the last array element which has information of the last page the visitor accessed
-            switch ($this->validateFormat($format)) {
-                case 'json':
-                    // no break as the logic is the same as in the php case, but with an object to array conversion
-                    $v = (array) $v;
-                case 'php':
-                    $actionDetails = (array) array_get($v, 'actionDetails');
-                    $actionDetail = (array) array_last($actionDetails);
-                    $pageLink = array_get($actionDetail, 'url');
-                    $pageTitle = array_get($actionDetail, 'pageTitle');
-
-                    // Get just the image names (API returns path to icons in piwik install)
-                    $flag = explode('/', array_get($v, 'countryFlag'));
-                    $flagIcon = end($flag);
-
-                    $os = explode('/', array_get($v, 'operatingSystemIcon'));
-                    $osIcon = end($os);
-
-                    $browser = explode('/', array_get($v, 'browserIcon'));
-                    $browserIcon = end($browser);
-
-                    $data[] = [
-                        'time' => date("M j Y, g:i a", array_get($v, 'lastActionTimestamp')),
-                        'title' => $pageTitle,
-                        'link' => $pageLink,
-                        'ip_address' => array_get($v, 'visitIp'),
-                        'provider' => array_get($v, 'provider'),
-                        'country' => array_get($v, 'country'),
-                        'country_icon' => $flagIcon,
-                        'os' => array_get($v, 'operatingSystem'),
-                        'os_icon' => $osIcon,
-                        'browser' => array_get($v, 'browserName'),
-                        'browser_icon' => $browserIcon,
-                    ];
-                    break;
-                default:
-                    throw new PiwikException("Format [" . $format . "] is not yet supported.");
-            }
-
+        switch ($this->validateFormat($format)) {
+            case 'json':
+                $visits = json_decode(json_encode($visits), true);
+                $data = $this->getParsedLastVisitsDetails($visits);
+                break;
+            case 'original':
+            case 'php':
+                $data = $this->getParsedLastVisitsDetails($visits);
+                break;
+            case 'xml':
+                $parsedVisits = [];
+                $rows = $visits->count();
+                for ($i = 0; $i < $rows; $i++) {
+                    $row = json_decode(json_encode($visits->row[$i]), true);
+                    array_push($parsedVisits, $row);
+                }
+                $data = $this->getParsedLastVisitsDetails($parsedVisits);
+                break;
+            default:
+                throw new PiwikException("Format [" . $format . "] is not yet supported.");
         }
         return $data;
+    }
+
+    /**
+     * @param array $visits
+     * @return array
+     */
+    private function getParsedLastVisitsDetails($visits) {
+        $result = [];
+        foreach ($visits as $visit) {
+            $actionDetails = (array) array_get($visit, 'actionDetails');
+            $actionDetail = (array) array_last($actionDetails);
+            $pageLink = array_get($actionDetail, 'url');
+            $pageTitle = array_get($actionDetail, 'pageTitle');
+
+            // Get just the image names (API returns path to icons in piwik install)
+            $flag = explode('/', array_get($visit, 'countryFlag'));
+            $flagIcon = end($flag);
+
+            $os = explode('/', array_get($visit, 'operatingSystemIcon'));
+            $osIcon = end($os);
+
+            $browser = explode('/', array_get($visit, 'browserIcon'));
+            $browserIcon = end($browser);
+
+            array_push($result, [
+                'time' => date("M j Y, g:i a", array_get($visit, 'lastActionTimestamp')),
+                'title' => $pageTitle,
+                'link' => $pageLink,
+                'ip_address' => array_get($visit, 'visitIp'),
+                'provider' => array_get($visit, 'provider'),
+                'country' => array_get($visit, 'country'),
+                'country_icon' => $flagIcon,
+                'os' => array_get($visit, 'operatingSystem'),
+                'os_icon' => $osIcon,
+                'browser' => array_get($visit, 'browserName'),
+                'browser_icon' => $browserIcon,
+            ]);
+        }
+        return $result;
     }
 
     /**
