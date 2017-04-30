@@ -31,7 +31,7 @@ Add `'RobBrazier\Piwik\PiwikServiceProvider'` and `'Piwik' => 'RobBrazier\Piwik\
 ```php
 'providers' = array(
     ...
-    'RobBrazier\Piwik\PiwikServiceProvider',
+    RobBrazier\Piwik\PiwikServiceProvider::class,
     ...
 );
 
@@ -39,7 +39,7 @@ Add `'RobBrazier\Piwik\PiwikServiceProvider'` and `'Piwik' => 'RobBrazier\Piwik\
 
 'aliases' = array(
     ...
-    'Piwik' => 'RobBrazier\Piwik\Facades\Piwik',
+    'Piwik' => RobBrazier\Piwik\Facades\Piwik::class,
     ...
 );
 ```
