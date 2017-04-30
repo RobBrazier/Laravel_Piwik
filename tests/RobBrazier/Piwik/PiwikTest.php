@@ -163,6 +163,31 @@ class PiwikTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
+    public function testLastVisitsParsed() {
+        $contents = file_get_contents(__DIR__ . '/Module/resources/Live.getLastVisitsDetails.json');
+        $this->expectedResponse = json_decode($contents);
+        $format = "json";
+        $count = 1;
+        $this->requestOptions
+            ->setFormat($format)
+            ->setArguments([
+                "filter_limit" => $count
+            ])
+            ->setMethod("Live.getLastVisitsDetails");
+        $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
+        $response = $this->piwik->last_visits_parsed($count, $format)[0];
+        $this->assertNotNull($response["time"]);
+        $this->assertNotNull($response["title"]);
+        $this->assertNotNull($response["link"]);
+        $this->assertNotNull($response["provider"]);
+        $this->assertNotNull($response["country"]);
+        $this->assertNotNull($response["country_icon"]);
+        $this->assertNotNull($response["os"]);
+        $this->assertNotNull($response["os_icon"]);
+        $this->assertNotNull($response["browser"]);
+        $this->assertNotNull($response["browser_icon"]);
+    }
+
     public function testOutlinks() {
         $this->requestOptions
             ->setMethod("Actions.getOutlinks");
