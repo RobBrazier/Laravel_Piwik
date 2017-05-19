@@ -16,12 +16,13 @@ abstract class Module {
      * Module constructor.
      * @param RequestRepository $request
      */
-    public function __construct(RequestRepository $request) {
+    public function __construct($request) {
         $this->request = $request;
     }
 
 
     /**
+     * @param string $format response format
      * @return RequestOptions
      */
     protected function getOptions($format) {
@@ -36,7 +37,7 @@ abstract class Module {
 
     /**
      * @param string $className
-     * @return mixed
+     * @return string
      */
     private function getModuleName($className) {
         $moduleClassName = last(explode("\\", $className));

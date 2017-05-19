@@ -15,13 +15,13 @@ class VisitorInterestModule extends Module {
      * VisitorInterestModule constructor.
      * @param RequestRepository $request
      */
-    public function __construct(RequestRepository $request) {
+    public function __construct($request) {
         parent::__construct($request);
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array[string]mixed $arguments
+     * @param string $format
      * @return mixed
      */
     public function getNumberOfVisitsPerVisitDuration($arguments = [], $format = null) {
@@ -30,8 +30,8 @@ class VisitorInterestModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array[string]mixed $arguments
+     * @param string $format
      * @return mixed
      */
     public function getNumberOfVisitsPerPage($arguments = [], $format = null) {
@@ -40,8 +40,8 @@ class VisitorInterestModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array[string]mixed $arguments
+     * @param string $format
      * @return mixed
      */
     public function getNumberOfVisitsByDaysSinceLast($arguments = [], $format = null) {
@@ -50,8 +50,8 @@ class VisitorInterestModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array[string]mixed $arguments
+     * @param string $format
      * @return mixed
      */
     public function getNumberOfVisitsByVisitCount($arguments = [], $format = null) {

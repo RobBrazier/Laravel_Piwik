@@ -15,13 +15,13 @@ class VisitsSummaryModule extends Module {
      * VisitsSummaryModule constructor.
      * @param RequestRepository $request
      */
-    public function __construct(RequestRepository $request) {
+    public function __construct($request) {
         parent::__construct($request);
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array[string]mixed $arguments
+     * @param string $format
      * @return mixed
      */
     public function get($arguments = [], $format = null) {
@@ -30,8 +30,8 @@ class VisitsSummaryModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array[string]mixed $arguments
+     * @param string $format
      * @return mixed
      */
     public function getVisits($arguments = [], $format = null) {
@@ -40,8 +40,8 @@ class VisitsSummaryModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array[string]mixed $arguments
+     * @param string $format
      * @return mixed
      */
     public function getUniqueVisitors($arguments = [], $format = null) {
@@ -50,8 +50,8 @@ class VisitsSummaryModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array[string]mixed $arguments
+     * @param string $format
      * @return mixed
      */
     public function getUsers($arguments = [], $format = null) {
@@ -60,8 +60,8 @@ class VisitsSummaryModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array[string]mixed $arguments
+     * @param string $format
      * @return mixed
      */
     public function getActions($arguments = [], $format = null) {
@@ -70,8 +70,8 @@ class VisitsSummaryModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array[string]mixed $arguments
+     * @param string $format
      * @return mixed
      */
     public function getMaxActions($arguments = [], $format = null) {
@@ -80,8 +80,8 @@ class VisitsSummaryModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array[string]mixed $arguments
+     * @param string $format
      * @return mixed
      */
     public function getBounceCount($arguments = [], $format = null) {
@@ -90,8 +90,8 @@ class VisitsSummaryModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array[string]mixed $arguments
+     * @param string $format
      * @return mixed
      */
     public function getVisitsConverted($arguments = [], $format = null) {
@@ -100,8 +100,8 @@ class VisitsSummaryModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array[string]mixed $arguments
+     * @param string $format
      * @return mixed
      */
     public function getSumVisitsLength($arguments = [], $format = null) {
@@ -110,8 +110,8 @@ class VisitsSummaryModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array[string]mixed $arguments
+     * @param string $format
      * @return mixed
      */
     public function getSumVisitsLengthPretty($arguments = [], $format = null) {

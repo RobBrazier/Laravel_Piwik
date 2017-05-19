@@ -38,12 +38,6 @@ class ConfigTraitTest extends TestCase {
         $this->assertEquals(self::EXPECTED_SITE_ID, $siteId);
     }
 
-    public function testGetSiteIdWithOverride() {
-        $expected = '2';
-        $siteId = $this->configTrait->getSiteId($expected);
-        $this->assertEquals($expected, $siteId);
-    }
-
     public function testGetPiwikUrl() {
         $piwikUrl = $this->configTrait->getPiwikUrl();
         $this->assertEquals(self::EXPECTED_PIWIK_URL, $piwikUrl);

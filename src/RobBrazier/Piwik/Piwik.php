@@ -38,7 +38,7 @@ class Piwik {
      * @param ConfigRepository $config
      * @param RequestRepository $request
      */
-    public function __construct(ConfigRepository $config, RequestRepository $request) {
+    public function __construct($config, $request) {
         $this->__configConstruct($config);
         $this->request = $request;
     }
@@ -58,6 +58,10 @@ class Piwik {
     }
 
     /**
+     * Initialise the Actions module
+     *
+     * @see https://developer.piwik.org/api-reference/reporting-api#Actions for arguments
+     *
      * @return ActionsModule
      */
     public function getActions() {
@@ -65,6 +69,10 @@ class Piwik {
     }
 
     /**
+     * Initialise the API Module
+     *
+     * @see https://developer.piwik.org/api-reference/reporting-api#API for arguments
+     *
      * @return APIModule
      */
     public function getAPI() {
@@ -72,6 +80,10 @@ class Piwik {
     }
 
     /**
+     * Initialise the Events Module
+     *
+     * @see https://developer.piwik.org/api-reference/reporting-api#Events for arguments
+     *
      * @return EventsModule
      */
     public function getEvents() {
@@ -79,6 +91,10 @@ class Piwik {
     }
 
     /**
+     * Initialise the Live Module
+     *
+     * @see https://developer.piwik.org/api-reference/reporting-api#Live for arguments
+     *
      * @return LiveModule
      */
     public function getLive() {
@@ -86,6 +102,10 @@ class Piwik {
     }
 
     /**
+     * Initialise the Provider Module
+     *
+     * @see https://developer.piwik.org/api-reference/reporting-api#Provider for arguments
+     *
      * @return ProviderModule
      */
     public function getProvider() {
@@ -93,6 +113,10 @@ class Piwik {
     }
 
     /**
+     * Initialise the Referrers Module
+     *
+     * @see https://developer.piwik.org/api-reference/reporting-api#Referrers for arguments
+     *
      * @return ReferrersModule
      */
     public function getReferrers() {
@@ -100,6 +124,10 @@ class Piwik {
     }
 
     /**
+     * Initialise the SEO Module
+     *
+     * @see https://developer.piwik.org/api-reference/reporting-api#SEO for arguments
+     *
      * @return SEOModule
      */
     public function getSEO() {
@@ -107,6 +135,10 @@ class Piwik {
     }
 
     /**
+     * Initialise the SitesManager Module
+     *
+     * @see https://developer.piwik.org/api-reference/reporting-api#SitesManager for arguments
+     *
      * @return SitesManagerModule
      */
     public function getSitesManager() {
@@ -114,6 +146,10 @@ class Piwik {
     }
 
     /**
+     * Initialise the VisitorInterest Module
+     *
+     * @see https://developer.piwik.org/api-reference/reporting-api#VisitorInterest for arguments
+     *
      * @return VisitorInterestModule
      */
     public function getVisitorInterest() {
@@ -121,6 +157,10 @@ class Piwik {
     }
 
     /**
+     * Initialise the VisitsSummary Module
+     *
+     * @see https://developer.piwik.org/api-reference/reporting-api#VisitsSummary for arguments
+     *
      * @return VisitsSummaryModule
      */
     public function getVisitsSummary() {
@@ -155,10 +195,14 @@ s.parentNode.insertBefore(g,s); })();
     }
 
     /**
+     * Create a custom request
+     * N.B. It is safer to raise a GitHub issue to request another API method
+     * @see https://github.com/RobBrazier/Laravel_Piwik/issues
+     *
      * @param RequestOptions $requestOptions
      * @return mixed
      */
-    public function getCustom(RequestOptions $requestOptions) {
+    public function getCustom($requestOptions) {
         return $this->request->send($requestOptions);
     }
 
