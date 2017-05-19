@@ -52,13 +52,11 @@ class QueryDates {
      */
     public function get($data) {
         if (array_has($this->map, $data)) {
-            $result = array_get($this->map, $data);
+            return array_get($this->map, $data);
         } else if (preg_match(self::DATE_REGEX, $data)) {
-            $result = new QueryDate("range", $data);
-        } else {
-            throw new PiwikException("Invalid period provided (" . $data . ")");
+            return new QueryDate("range", $data);
         }
-        return $result;
+        throw new PiwikException("Invalid period provided (" . $data . ")");
     }
 
 }
