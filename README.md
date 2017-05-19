@@ -2,7 +2,7 @@ Laravel-Piwik v3.0.0
 ====================
 
 [![Build Status](https://semaphoreci.com/api/v1/robbrazier/laravel_piwik/branches/master/shields_badge.svg)](https://semaphoreci.com/robbrazier/laravel_piwik)
-[![Scrutinizer](https://img.shields.io/scrutinizer/g/filp/whoops.svg)](https://scrutinizer-ci.com/g/RobBrazier/Laravel_Piwik/)
+[![Scrutinizer](https://img.shields.io/scrutinizer/g/robbrazier/laravel_piwik.svg)](https://scrutinizer-ci.com/g/RobBrazier/Laravel_Piwik/)
 [![Codecov](https://img.shields.io/codecov/c/github/RobBrazier/Laravel_Piwik.svg)](https://codecov.io/gh/RobBrazier/Laravel_Piwik)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%205.6-8892BF.svg?style=flat)](https://php.net/)
 [![Packagist Version](https://img.shields.io/packagist/v/robbrazier/piwik.svg)](https://packagist.org/packages/robbrazier/piwik)
