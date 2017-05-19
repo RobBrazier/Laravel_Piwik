@@ -1,6 +1,7 @@
 .DS_Store
 docs/_build/
 build/
+cache/
 .idea/
 vendor/
 reports/

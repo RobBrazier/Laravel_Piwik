@@ -15,13 +15,13 @@ class SitesManagerModule extends Module {
      * SitesManagerModule constructor.
      * @param RequestRepository $request
      */
-    public function __construct(RequestRepository $request) {
+    public function __construct($request) {
         parent::__construct($request);
     }
 
     /**
      * @param string $group
-     * @param string|null $format
+     * @param string $format
      * @return mixed
      */
     public function getSitesFromGroup($group, $format = null) {
@@ -36,7 +36,7 @@ class SitesManagerModule extends Module {
     }
 
     /**
-     * @param string|null $format
+     * @param string $format
      * @return mixed
      */
     public function getSiteGroups($format = null) {
@@ -47,7 +47,7 @@ class SitesManagerModule extends Module {
     }
 
     /**
-     * @param string|null $format
+     * @param string $format
      * @return mixed
      */
     public function getSitesFromId($format = null) {
@@ -58,7 +58,7 @@ class SitesManagerModule extends Module {
 
     /**
      * @param int $siteId
-     * @param string|null $format
+     * @param string $format
      * @return mixed
      */
     public function getSiteUrlsFromId($siteId = null, $format = null) {
@@ -71,7 +71,7 @@ class SitesManagerModule extends Module {
     }
 
     /**
-     * @param string|null $format
+     * @param string $format
      * @return mixed
      */
     public function getAllSites($format = null) {
@@ -82,7 +82,7 @@ class SitesManagerModule extends Module {
     }
 
     /**
-     * @param string|null $format
+     * @param string $format
      * @return mixed
      */
     public function getAllSitesId($format = null) {
@@ -93,8 +93,8 @@ class SitesManagerModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array[string]mixed $arguments
+     * @param string $format
      * @return mixed
      */
     public function getSitesWithAdminAccess($arguments = [], $format = null) {
@@ -106,7 +106,7 @@ class SitesManagerModule extends Module {
     }
 
     /**
-     * @param string|null $format
+     * @param string $format
      * @return mixed
      */
     public function getSitesWithViewAccess($format = null) {
@@ -117,8 +117,8 @@ class SitesManagerModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array[string]mixed $arguments
+     * @param string $format
      * @return mixed
      */
     public function getSitesWithAtLeastViewAccess($arguments = [], $format = null) {
@@ -130,7 +130,7 @@ class SitesManagerModule extends Module {
     }
 
     /**
-     * @param string|null $format
+     * @param string $format
      * @return mixed
      */
     public function getSitesIdWithAdminAccess($format = null) {
@@ -141,7 +141,7 @@ class SitesManagerModule extends Module {
     }
 
     /**
-     * @param string|null $format
+     * @param string $format
      * @return mixed
      */
     public function getSitesIdWithViewAccess($format = null) {
@@ -153,7 +153,7 @@ class SitesManagerModule extends Module {
 
 
     /**
-     * @param string|null $format
+     * @param string $format
      * @return mixed
      */
     public function getSitesIdWithAtLeastViewAccess($format = null) {
@@ -165,7 +165,7 @@ class SitesManagerModule extends Module {
 
     /**
      * @param string $url
-     * @param string|null $format
+     * @param string $format
      * @return mixed
      */
     public function getSitesIdFromSiteUrl($url, $format = null) {

@@ -19,8 +19,7 @@ class PiwikServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function boot()
-    {
+    public function boot() {
         $this->publishes([
             __DIR__.'/../../config/config.php' => config_path('piwik.php'),
         ], 'config');
@@ -31,8 +30,7 @@ class PiwikServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function register()
-    {
+    public function register() {
         $this->app->bind('piwik.config', function() {
             return new FileConfigRepository;
         });
@@ -52,11 +50,10 @@ class PiwikServiceProvider extends ServiceProvider {
     /**
      * Get the services provided by the provider.
      *
-     * @return array
+     * @return string[]
      */
-    public function provides()
-    {
-        return array('RobBrazier\Piwik\Piwik');
+    public function provides() {
+        return ['RobBrazier\Piwik\Piwik'];
     }
 
 }

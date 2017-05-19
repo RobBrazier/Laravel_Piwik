@@ -15,13 +15,13 @@ class ReferrersModule extends Module {
      * ReferrersModule constructor.
      * @param RequestRepository $request
      */
-    public function __construct(RequestRepository $request) {
+    public function __construct($request) {
         parent::__construct($request);
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getReferrerType($arguments = [], $format = null) {
@@ -30,8 +30,8 @@ class ReferrersModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getAll($arguments = [], $format = null) {
@@ -40,8 +40,8 @@ class ReferrersModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getKeywords($arguments = [], $format = null) {
@@ -50,32 +50,32 @@ class ReferrersModule extends Module {
     }
 
     /**
-     * @param string $url
-     * @param array $arguments
-     * @param string|null $format
+     * @param string $pageUrl page url to get keywords for
+     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
-    public function getKeywordsForPageUrl($url, $arguments = [], $format = null) {
-        $arguments = array_add($arguments, "url", $url);
+    public function getKeywordsForPageUrl($pageUrl, $arguments = [], $format = null) {
+        $arguments = array_add($arguments, "url", $pageUrl);
         $options = $this->getOptions($format)->setArguments($arguments);
         return $this->request->send($options);
     }
 
     /**
-     * @param string $title
-     * @param array $arguments
-     * @param string|null $format
+     * @param string $pageTitle page title to get keywords for
+     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
-    public function getKeywordsForPageTitle($title, $arguments = [], $format = null) {
-        $arguments = array_add($arguments, "title", $title);
+    public function getKeywordsForPageTitle($pageTitle, $arguments = [], $format = null) {
+        $arguments = array_add($arguments, "title", $pageTitle);
         $options = $this->getOptions($format)->setArguments($arguments);
         return $this->request->send($options);
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getSearchEnginesFromKeywordId($arguments = [], $format = null) {
@@ -84,8 +84,8 @@ class ReferrersModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getSearchEngines($arguments = [], $format = null) {
@@ -94,8 +94,8 @@ class ReferrersModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getKeywordsFromSearchEngineId($arguments = [], $format = null) {
@@ -104,8 +104,8 @@ class ReferrersModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getCampaigns($arguments = [], $format = null) {
@@ -114,8 +114,8 @@ class ReferrersModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getKeywordsFromCampaignId($arguments = [], $format = null) {
@@ -124,8 +124,8 @@ class ReferrersModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getWebsites($arguments = [], $format = null) {
@@ -134,8 +134,8 @@ class ReferrersModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getUrlsFromWebsiteId($arguments = [], $format = null) {
@@ -144,8 +144,8 @@ class ReferrersModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getSocials($arguments = [], $format = null) {
@@ -154,8 +154,8 @@ class ReferrersModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getUrlsForSocial($arguments = [], $format = null) {
@@ -164,8 +164,8 @@ class ReferrersModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getNumberOfDistinctSearchEngines($arguments = [], $format = null) {
@@ -174,8 +174,8 @@ class ReferrersModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getNumberOfDistinctKeywords($arguments = [], $format = null) {
@@ -184,8 +184,8 @@ class ReferrersModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getNumberOfDistinctCampaigns($arguments = [], $format = null) {
@@ -194,8 +194,8 @@ class ReferrersModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getNumberOfDistinctWebsites($arguments = [], $format = null) {
@@ -204,8 +204,8 @@ class ReferrersModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getNumberOfDistinctWebsitesUrls($arguments = [], $format = null) {
