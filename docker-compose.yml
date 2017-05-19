@@ -1,11 +1,5 @@
 version: '2'
 services:
-  docs:
-    build:
-      context: .
-      dockerfile: ./ci/Dockerfile.docs
-    volumes:
-      - ./build:/usr/src/docs
   php55:
     build:
       context: .

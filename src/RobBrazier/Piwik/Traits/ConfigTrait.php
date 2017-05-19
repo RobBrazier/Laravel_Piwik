@@ -16,36 +16,34 @@ trait ConfigTrait {
      * ConfigTrait constructor.
      * @param ConfigRepository $config
      */
-    function __construct(ConfigRepository $config) {
+    function __construct($config) {
         $this->config = $config;
     }
 
     /**
-     * @param null $override
-     * @return mixed
+     * Retrieve Site ID from configuration
+     *
+     * @return string site id retrieved from configuration
      */
-    function getSiteId($override = null) {
-        return $this->get(Option::SITE_ID, $override);
+    function getSiteId() {
+        return $this->get(Option::SITE_ID);
     }
 
     /**
-     * @return mixed
+     * Retrieve Piwik URL from configuration
+     *
+     * @return string piwik url retrieved from configuration
      */
     function getPiwikUrl() {
-        return $this->get(Option::PIWIK_URL, null);
+        return $this->get(Option::PIWIK_URL);
     }
 
     /**
-     * @param $key
-     * @param $override
+     * @param string $key key of item to retrieve from configuration
      * @return mixed
      */
-    private function get($key, $override) {
-        $result = $override;
-        if (empty($result)) {
-            $result = $this->config->get($key);
-        }
-        return $result;
+    private function get($key) {
+        return $this->config->get($key);
     }
 
 }

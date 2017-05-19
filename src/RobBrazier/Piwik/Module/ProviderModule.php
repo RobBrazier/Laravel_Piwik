@@ -15,13 +15,13 @@ class ProviderModule extends Module {
      * ProviderModule constructor.
      * @param RequestRepository $request
      */
-    public function __construct(RequestRepository $request) {
+    public function __construct($request) {
         parent::__construct($request);
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getProvider($arguments = [], $format = null) {

@@ -5,7 +5,6 @@ namespace RobBrazier\Piwik\Repository\Request;
 
 use GuzzleHttp\ClientInterface;
 use Lightools\Xml\XmlLoader;
-use RobBrazier\Piwik\Repository\ConfigRepository;
 use RobBrazier\Piwik\Repository\RequestRepository;
 use RobBrazier\Piwik\Request\RequestOptions;
 use RobBrazier\Piwik\Traits\ConfigTrait;
@@ -24,16 +23,13 @@ class GuzzleRequestRepository implements RequestRepository {
      */
     private $client;
 
-    public function __construct(ConfigRepository $config, ClientInterface $client)
+    public function __construct($config, $client)
     {
         $this->__configConstruct($config);
         $this->client = $client;
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function send(RequestOptions $requestOptions) {
+    public function send($requestOptions) {
         $body = $this->getResponseBody($requestOptions);
         return $this->decode($body, $requestOptions);
     }
@@ -42,7 +38,7 @@ class GuzzleRequestRepository implements RequestRepository {
      * @param RequestOptions $requestOptions
      * @return string
      */
-    private function getResponseBody(RequestOptions $requestOptions) {
+    private function getResponseBody($requestOptions) {
         $url = 'index.php' . $requestOptions->build($this->config);
         $options = [
             "timeout" => $this->config->get('curl_timeout', 5.0),
@@ -59,7 +55,7 @@ class GuzzleRequestRepository implements RequestRepository {
      * @param RequestOptions $requestOptions
      * @return mixed
      */
-    private function decode($result, RequestOptions $requestOptions) {
+    private function decode($result, $requestOptions) {
         $format = $requestOptions->getFormat($this->config);
         switch ($this->validateFormat($format)) {
             case 'json':
