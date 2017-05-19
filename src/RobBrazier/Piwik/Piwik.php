@@ -2,7 +2,6 @@
 
 namespace RobBrazier\Piwik;
 
-use RobBrazier\Piwik\Base\PiwikBase;
 use RobBrazier\Piwik\Module\ActionsModule;
 use RobBrazier\Piwik\Module\APIModule;
 use RobBrazier\Piwik\Module\EventsModule;
