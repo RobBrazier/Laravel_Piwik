@@ -63,8 +63,7 @@ class RequestOptions {
      * @param string $method
      * @return RequestOptions
      */
-    public function setMethod($method)
-    {
+    public function setMethod($method) {
         $this->method = $method;
         return $this;
     }
@@ -73,8 +72,7 @@ class RequestOptions {
      * @param bool $period
      * @return RequestOptions
      */
-    public function usePeriod($period)
-    {
+    public function usePeriod($period) {
         $this->usePeriod = $period;
         return $this;
     }
@@ -83,8 +81,7 @@ class RequestOptions {
      * @param string $siteId
      * @return RequestOptions
      */
-    public function setSiteId($siteId)
-    {
+    public function setSiteId($siteId) {
         $this->siteId = $siteId;
         $this->useSiteId(false);
         return $this;
@@ -115,8 +112,7 @@ class RequestOptions {
      * @param string $format
      * @return RequestOptions
      */
-    public function setFormat($format)
-    {
+    public function setFormat($format) {
         if (!is_null($format)) {
             $this->format = $format;
             $this->useFormat(false);
@@ -170,8 +166,7 @@ class RequestOptions {
      * @param array[string]mixed $arguments
      * @return RequestOptions
      */
-    public function setArguments($arguments)
-    {
+    public function setArguments($arguments) {
         if (is_null($arguments)) {
             $arguments = [];
         }

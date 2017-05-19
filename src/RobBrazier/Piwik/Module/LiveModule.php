@@ -80,7 +80,7 @@ class LiveModule extends Module {
                 $data = $this->getParsedLastVisitsDetails($parsedVisits);
                 break;
             default:
-                throw new PiwikException("Format [" . $format . "] is not yet supported.");
+                throw new PiwikException("Format [".$format."] is not yet supported.");
         }
         return $data;
     }

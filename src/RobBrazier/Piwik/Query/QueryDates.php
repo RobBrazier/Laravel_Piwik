@@ -56,7 +56,7 @@ class QueryDates {
         } else if (preg_match(self::DATE_REGEX, $data)) {
             return new QueryDate("range", $data);
         }
-        throw new PiwikException("Invalid period provided (" . $data . ")");
+        throw new PiwikException("Invalid period provided (".$data.")");
     }
 
 }

@@ -18,7 +18,7 @@ trait FormatTrait {
      */
     public function validateFormat($format) {
         if (!in_array($format, $this->allowedFormats)) {
-            throw new PiwikException("Invalid format [" . $format . "]");
+            throw new PiwikException("Invalid format [".$format."]");
         }
         return $format;
     }
