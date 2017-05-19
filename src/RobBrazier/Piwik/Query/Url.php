@@ -35,7 +35,7 @@ class Url {
     public function __construct($url) {
         $parsedUrl = parse_url($url);
         if (is_bool($parsedUrl)) {
-            throw new PiwikException("Cannot parse URL [" . $url . "]");
+            throw new PiwikException("Cannot parse URL [".$url."]");
         }
         $this->scheme = $this->getPart($parsedUrl, 'scheme');
         $this->host = $this->getPart($parsedUrl, 'host');
@@ -56,40 +56,35 @@ class Url {
     /**
      * @param string $scheme
      */
-    public function setScheme($scheme)
-    {
+    public function setScheme($scheme) {
         $this->scheme = $scheme;
     }
 
     /**
      * @param string $host
      */
-    public function setHost($host)
-    {
+    public function setHost($host) {
         $this->host = $host;
     }
 
     /**
      * @param int $port
      */
-    public function setPort($port)
-    {
+    public function setPort($port) {
         $this->port = $port;
     }
 
     /**
      * @param string $path
      */
-    public function setPath($path)
-    {
+    public function setPath($path) {
         $this->path = $path;
     }
 
     /**
      * @return string
      */
-    public function __toString()
-    {
+    public function __toString() {
         $format = "%s://%s";
         $args = [$this->scheme, $this->host];
         if ($this->port != 0) {

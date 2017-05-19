@@ -94,8 +94,7 @@ class UrlQueryBuilder {
     /**
      * @return string
      */
-    public function build()
-    {
+    public function build() {
         $separator = "";
         $result = "?";
         foreach ($this->data as $key => $value) {
