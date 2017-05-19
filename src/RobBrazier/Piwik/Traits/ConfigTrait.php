@@ -29,7 +29,7 @@ trait ConfigTrait {
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     function getPiwikUrl() {
         return $this->get(Option::PIWIK_URL, null);
