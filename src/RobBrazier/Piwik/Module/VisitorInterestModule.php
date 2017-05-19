@@ -15,12 +15,12 @@ class VisitorInterestModule extends Module {
      * VisitorInterestModule constructor.
      * @param RequestRepository $request
      */
-    public function __construct(RequestRepository $request) {
+    public function __construct($request) {
         parent::__construct($request);
     }
 
     /**
-     * @param array $arguments
+     * @param array[string]mixed $arguments
      * @param string $format
      * @return mixed
      */
@@ -30,7 +30,7 @@ class VisitorInterestModule extends Module {
     }
 
     /**
-     * @param array $arguments
+     * @param array[string]mixed $arguments
      * @param string $format
      * @return mixed
      */
@@ -40,7 +40,7 @@ class VisitorInterestModule extends Module {
     }
 
     /**
-     * @param array $arguments
+     * @param array[string]mixed $arguments
      * @param string $format
      * @return mixed
      */
@@ -50,7 +50,7 @@ class VisitorInterestModule extends Module {
     }
 
     /**
-     * @param array $arguments
+     * @param array[string]mixed $arguments
      * @param string $format
      * @return mixed
      */

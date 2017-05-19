@@ -19,13 +19,13 @@ class LiveModule extends Module {
      * LiveModule constructor.
      * @param RequestRepository $request
      */
-    public function __construct(RequestRepository $request) {
+    public function __construct($request) {
         parent::__construct($request);
     }
 
     /**
      * @param int $lastMinutes number of minutes to filter counters by (e.g. get counters for the last 30 minutes)
-     * @param array<string, mixed> $arguments extra arguments to be passed to the api call
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
      * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
@@ -37,7 +37,7 @@ class LiveModule extends Module {
 
     /**
      * @param int $count number of last visits to get (if set to `0`, retrieves all results)
-     * @param array<string, mixed> $arguments extra arguments to be passed to the api call
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
      * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
@@ -54,8 +54,6 @@ class LiveModule extends Module {
      * Get information about last 10 visits (ip, time, country, pages, etc.) in a formatted array
      * with GeoIP information if enabled
      *
-     * @access  public
-     * @deprecated
      * @param int $count number of last visits to get (if set to `0`, retrieves all results)
      * @param string $format override format (defaults to one specified in config file)
      * @return  array
@@ -89,7 +87,7 @@ class LiveModule extends Module {
 
     /**
      * @param array $visits
-     * @return array<array<string, string>>
+     * @return array[string]string[]
      */
     private function getParsedLastVisitsDetails($visits) {
         $result = [];
@@ -128,7 +126,7 @@ class LiveModule extends Module {
 
     /**
      * @param string $visitorId visitor id to search for
-     * @param array<string, mixed> $arguments extra arguments to be passed to the api call
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
      * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
@@ -139,8 +137,8 @@ class LiveModule extends Module {
     }
 
     /**
-     * @param array<string, mixed> $arguments extra arguments to be passed to the api call
-     * @param string $format override format (defaults to one specified in config file)* @param array $arguments
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getMostRecentVisitorId($arguments = [], $format = null) {

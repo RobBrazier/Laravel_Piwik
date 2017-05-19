@@ -15,7 +15,7 @@ class ReferrersModule extends Module {
      * ReferrersModule constructor.
      * @param RequestRepository $request
      */
-    public function __construct(RequestRepository $request) {
+    public function __construct($request) {
         parent::__construct($request);
     }
 

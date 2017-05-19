@@ -15,7 +15,7 @@ class APIModule extends Module {
      * APIModule constructor.
      * @param RequestRepository $request
      */
-    public function __construct(RequestRepository $request) {
+    public function __construct($request) {
         parent::__construct($request);
     }
 
@@ -53,7 +53,7 @@ class APIModule extends Module {
     }
 
     /**
-     * @param array<string> $siteIds list of site ids to get segment metadata for
+     * @param string[] $siteIds list of site ids to get segment metadata for
      * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
@@ -70,7 +70,7 @@ class APIModule extends Module {
     }
 
     /**
-     * @param array<string, mixed> $arguments extra arguments to be passed to the api call
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
      * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
@@ -80,12 +80,12 @@ class APIModule extends Module {
     }
 
     /**
-     * @param array<string> $siteIds list of site ids to get report metadata for
-     * @param array<string, mixed> $arguments extra arguments to be passed to the api call
+     * @param string[] $siteIds list of site ids to get report metadata for
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
      * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
-    public function getReportMetadata($siteIds = [], $arguments = [], $format = null) {
+    public function getReportMetadata($siteIds, $arguments = [], $format = null) {
         $idSites = implode(",", $siteIds);
         $arguments = array_add($arguments, "idSites", $idSites);
         $options = $this->getOptions($format)
@@ -98,7 +98,7 @@ class APIModule extends Module {
     /**
      * @param string $apiModule api module to get report for
      * @param string $apiAction api action/method to get report for
-     * @param array<string, mixed> $arguments extra arguments to be passed to the api call
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
      * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
@@ -130,7 +130,7 @@ class APIModule extends Module {
     }
 
     /**
-     * @param array<string, mixed> $arguments extra arguments to be passed to the api call
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
      * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
@@ -142,7 +142,7 @@ class APIModule extends Module {
     /**
      * @param string $apiModule api module to get report for
      * @param string $apiAction api action/method to get report for
-     * @param array<string, mixed> $arguments extra arguments to be passed to the api call
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
      * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */

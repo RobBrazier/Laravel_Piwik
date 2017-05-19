@@ -15,12 +15,12 @@ class VisitsSummaryModule extends Module {
      * VisitsSummaryModule constructor.
      * @param RequestRepository $request
      */
-    public function __construct(RequestRepository $request) {
+    public function __construct($request) {
         parent::__construct($request);
     }
 
     /**
-     * @param array $arguments
+     * @param array[string]mixed $arguments
      * @param string $format
      * @return mixed
      */
@@ -30,7 +30,7 @@ class VisitsSummaryModule extends Module {
     }
 
     /**
-     * @param array $arguments
+     * @param array[string]mixed $arguments
      * @param string $format
      * @return mixed
      */
@@ -40,7 +40,7 @@ class VisitsSummaryModule extends Module {
     }
 
     /**
-     * @param array $arguments
+     * @param array[string]mixed $arguments
      * @param string $format
      * @return mixed
      */
@@ -50,7 +50,7 @@ class VisitsSummaryModule extends Module {
     }
 
     /**
-     * @param array $arguments
+     * @param array[string]mixed $arguments
      * @param string $format
      * @return mixed
      */
@@ -60,7 +60,7 @@ class VisitsSummaryModule extends Module {
     }
 
     /**
-     * @param array $arguments
+     * @param array[string]mixed $arguments
      * @param string $format
      * @return mixed
      */
@@ -70,7 +70,7 @@ class VisitsSummaryModule extends Module {
     }
 
     /**
-     * @param array $arguments
+     * @param array[string]mixed $arguments
      * @param string $format
      * @return mixed
      */
@@ -80,7 +80,7 @@ class VisitsSummaryModule extends Module {
     }
 
     /**
-     * @param array $arguments
+     * @param array[string]mixed $arguments
      * @param string $format
      * @return mixed
      */
@@ -90,7 +90,7 @@ class VisitsSummaryModule extends Module {
     }
 
     /**
-     * @param array $arguments
+     * @param array[string]mixed $arguments
      * @param string $format
      * @return mixed
      */
@@ -100,7 +100,7 @@ class VisitsSummaryModule extends Module {
     }
 
     /**
-     * @param array $arguments
+     * @param array[string]mixed $arguments
      * @param string $format
      * @return mixed
      */
@@ -110,7 +110,7 @@ class VisitsSummaryModule extends Module {
     }
 
     /**
-     * @param array $arguments
+     * @param array[string]mixed $arguments
      * @param string $format
      * @return mixed
      */

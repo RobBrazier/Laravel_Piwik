@@ -15,7 +15,7 @@ class SitesManagerModule extends Module {
      * SitesManagerModule constructor.
      * @param RequestRepository $request
      */
-    public function __construct(RequestRepository $request) {
+    public function __construct($request) {
         parent::__construct($request);
     }
 
@@ -93,7 +93,7 @@ class SitesManagerModule extends Module {
     }
 
     /**
-     * @param array $arguments
+     * @param array[string]mixed $arguments
      * @param string $format
      * @return mixed
      */
@@ -117,7 +117,7 @@ class SitesManagerModule extends Module {
     }
 
     /**
-     * @param array $arguments
+     * @param array[string]mixed $arguments
      * @param string $format
      * @return mixed
      */

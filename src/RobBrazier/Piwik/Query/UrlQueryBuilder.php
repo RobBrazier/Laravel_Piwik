@@ -81,7 +81,7 @@ class UrlQueryBuilder {
     }
 
     /**
-     * @param array $array
+     * @param array[string]string $array
      * @return UrlQueryBuilder
      */
     public function addAll($array) {

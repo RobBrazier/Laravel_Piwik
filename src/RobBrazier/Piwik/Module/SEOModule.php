@@ -21,7 +21,7 @@ class SEOModule extends Module {
      * @param RequestRepository $request
      * @param SitesManagerModule $sitesManager
      */
-    public function __construct(RequestRepository $request, SitesManagerModule $sitesManager) {
+    public function __construct($request, $sitesManager) {
         parent::__construct($request);
         $this->sitesManager = $sitesManager;
     }

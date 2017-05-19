@@ -103,7 +103,7 @@ class RequestOptions {
      * @param ConfigRepository $config
      * @return string
      */
-    private function getSiteId(ConfigRepository $config) {
+    private function getSiteId($config) {
         $siteId = $this->siteId;
         if ($this->useSiteId) {
             $siteId = $config->get(Option::SITE_ID);
@@ -137,7 +137,7 @@ class RequestOptions {
      * @param ConfigRepository $config
      * @return string
      */
-    public function getFormat(ConfigRepository $config) {
+    public function getFormat($config) {
         $format = $this->format;
         if ($this->useFormat) {
             $format = $config->get(Option::FORMAT);
@@ -158,7 +158,7 @@ class RequestOptions {
      * @param ConfigRepository $config
      * @return string
      */
-    private function getTokenAuth(ConfigRepository $config) {
+    private function getTokenAuth($config) {
         $tokenAuth = null;
         if ($this->tokenAuth) {
             $tokenAuth = $config->get(Option::API_KEY);
@@ -167,7 +167,7 @@ class RequestOptions {
     }
 
     /**
-     * @param array $arguments
+     * @param array[string]mixed $arguments
      * @return RequestOptions
      */
     public function setArguments($arguments)
@@ -183,7 +183,7 @@ class RequestOptions {
      * @param ConfigRepository $config
      * @return string
      */
-    public function build(ConfigRepository $config) {
+    public function build($config) {
         $builder = new UrlQueryBuilder();
         $builder->setModule("API");
         $builder->setMethod($this->method);

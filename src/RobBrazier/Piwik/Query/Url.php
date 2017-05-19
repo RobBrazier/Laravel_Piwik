@@ -44,7 +44,7 @@ class Url {
     }
 
     /**
-     * @param array $parts
+     * @param array[string]mixed $parts
      * @param string $part
      * @param mixed $default
      * @return mixed
