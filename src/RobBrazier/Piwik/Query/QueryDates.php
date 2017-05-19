@@ -22,7 +22,7 @@ class QueryDates {
      * QueryDates constructor.
      */
     private function __construct() {
-        $this->map = array(
+        $this->map = [
             "today" => new QueryDate("day", "today"),
             "yesterday" => new QueryDate("day", "yesterday"),
             "previous7" => new QueryDate("range", "previous7"),
@@ -32,7 +32,7 @@ class QueryDates {
             "currentweek" => new QueryDate("week", "today"),
             "currentmonth" => new QueryDate("month", "today"),
             "currentyear" => new QueryDate("year", "today")
-        );
+        ];
     }
 
 
@@ -52,13 +52,11 @@ class QueryDates {
      */
     public function get($data) {
         if (array_has($this->map, $data)) {
-            $result = array_get($this->map, $data);
+            return array_get($this->map, $data);
         } else if (preg_match(self::DATE_REGEX, $data)) {
-            $result = new QueryDate("range", $data);
-        } else {
-            throw new PiwikException("Invalid period provided (" . $data . ")");
+            return new QueryDate("range", $data);
         }
-        return $result;
+        throw new PiwikException("Invalid period provided (" . $data . ")");
     }
 
 }

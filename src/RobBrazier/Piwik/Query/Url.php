@@ -44,7 +44,7 @@ class Url {
     }
 
     /**
-     * @param array $parts
+     * @param array[string]mixed $parts
      * @param string $part
      * @param mixed $default
      * @return mixed
@@ -91,7 +91,7 @@ class Url {
     public function __toString()
     {
         $format = "%s://%s";
-        $args = array($this->scheme, $this->host);
+        $args = [$this->scheme, $this->host];
         if ($this->port != 0) {
             $format .= ":%d";
             array_push($args, $this->port);

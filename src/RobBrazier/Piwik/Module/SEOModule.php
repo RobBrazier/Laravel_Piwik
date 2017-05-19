@@ -21,14 +21,14 @@ class SEOModule extends Module {
      * @param RequestRepository $request
      * @param SitesManagerModule $sitesManager
      */
-    public function __construct(RequestRepository $request, SitesManagerModule $sitesManager) {
+    public function __construct($request, $sitesManager) {
         parent::__construct($request);
         $this->sitesManager = $sitesManager;
     }
 
     /**
      * @param string $url
-     * @param string|null $format
+     * @param string $format
      * @return mixed
      */
     public function getRank($url, $format = null) {
@@ -44,7 +44,7 @@ class SEOModule extends Module {
 
     /**
      * @param int $siteId
-     * @param string|null $format
+     * @param string $format
      * @return mixed
      */
     public function getRankFromSiteId($siteId, $format = null) {
