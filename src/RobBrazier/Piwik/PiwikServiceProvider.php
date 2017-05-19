@@ -43,7 +43,7 @@ class PiwikServiceProvider extends ServiceProvider {
         $this->app->bind('piwik', function() {
             $config = $this->app->make('piwik.config');
             $request = $this->app->make('piwik.request');
-        	return new Piwik($config, $request);
+            return new Piwik($config, $request);
         });
     }
 
