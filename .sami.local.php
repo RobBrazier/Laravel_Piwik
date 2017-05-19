@@ -10,8 +10,8 @@ $iterator = Finder::create()
     ->exclude('config')
     ->in($dir = 'src');
 
-return new Sami($iterator, array(
+return new Sami($iterator, [
     'title'                => 'Laravel_Piwik',
     'remote_repository'    => new GitHubRemoteRepository('RobBrazier/Laravel_Piwik', dirname($dir)),
     'default_opened_level' => 2,
-));
+]);
