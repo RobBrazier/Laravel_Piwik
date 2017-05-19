@@ -22,7 +22,7 @@ class QueryDates {
      * QueryDates constructor.
      */
     private function __construct() {
-        $this->map = array(
+        $this->map = [
             "today" => new QueryDate("day", "today"),
             "yesterday" => new QueryDate("day", "yesterday"),
             "previous7" => new QueryDate("range", "previous7"),
@@ -32,7 +32,7 @@ class QueryDates {
             "currentweek" => new QueryDate("week", "today"),
             "currentmonth" => new QueryDate("month", "today"),
             "currentyear" => new QueryDate("year", "today")
-        );
+        ];
     }
 
 

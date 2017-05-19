@@ -11,7 +11,7 @@ class UrlQueryBuilder {
     const FORMAT = "format";
     const TOKEN_AUTH = "token_auth";
 
-    private $data = array();
+    private $data = [];
 
     /**
      * @param string $module
