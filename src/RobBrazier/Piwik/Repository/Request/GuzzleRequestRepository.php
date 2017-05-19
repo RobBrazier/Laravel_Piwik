@@ -23,6 +23,9 @@ class GuzzleRequestRepository implements RequestRepository {
      */
     private $client;
 
+    /**
+     * @param \GuzzleHttp\Client $client
+     */
     public function __construct($config, $client)
     {
         $this->__configConstruct($config);
@@ -39,7 +42,7 @@ class GuzzleRequestRepository implements RequestRepository {
      * @return string
      */
     private function getResponseBody($requestOptions) {
-        $url = 'index.php' . $requestOptions->build($this->config);
+        $url = 'index.php'.$requestOptions->build($this->config);
         $options = [
             "timeout" => $this->config->get('curl_timeout', 5.0),
             "verify" => $this->config->get('verify_peer', true),

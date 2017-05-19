@@ -20,8 +20,7 @@ class QueryDate {
      * @param string $period
      * @param string $date
      */
-    public function __construct($period, $date)
-    {
+    public function __construct($period, $date) {
         $this->period = $period;
         $this->date = $date;
     }
@@ -30,16 +29,14 @@ class QueryDate {
     /**
      * @return string
      */
-    public function getPeriod()
-    {
+    public function getPeriod() {
         return $this->period;
     }
 
     /**
      * @return string
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
 
