@@ -20,8 +20,8 @@ class ActionsModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array<string, mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function get($arguments = [], $format = null) {
@@ -30,8 +30,8 @@ class ActionsModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array<string, mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getPageUrls($arguments = [], $format = null) {
@@ -40,8 +40,8 @@ class ActionsModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array<string, mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getPageUrlsFollowingSiteSearch($arguments = [], $format = null) {
@@ -50,8 +50,8 @@ class ActionsModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array<string, mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getPageTitlesFollowingSiteSearch($arguments = [], $format = null) {
@@ -60,8 +60,8 @@ class ActionsModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array<string, mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getEntryPageUrls($arguments = [], $format = null) {
@@ -70,8 +70,8 @@ class ActionsModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array<string, mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getExitPageUrls($arguments = [], $format = null) {
@@ -80,9 +80,9 @@ class ActionsModule extends Module {
     }
 
     /**
-     * @param string $pageUrl
-     * @param array $arguments
-     * @param string|null $format
+     * @param string $pageUrl page url to get actions for
+     * @param array<string, mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getPageUrl($pageUrl, $arguments = [], $format = null) {
@@ -92,8 +92,8 @@ class ActionsModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array<string, mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getPageTitles($arguments = [], $format = null) {
@@ -102,8 +102,8 @@ class ActionsModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array<string, mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getEntryPageTitles($arguments = [], $format = null) {
@@ -112,8 +112,8 @@ class ActionsModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array<string, mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getExitPageTitles($arguments = [], $format = null) {
@@ -122,9 +122,9 @@ class ActionsModule extends Module {
     }
 
     /**
-     * @param string $pageName
-     * @param array $arguments
-     * @param string|null $format
+     * @param string $pageName page name to get actions for
+     * @param array<string, mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getPageTitle($pageName, $arguments = [], $format = null) {
@@ -134,8 +134,8 @@ class ActionsModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array<string, mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getDownloads($arguments = [], $format = null) {
@@ -144,9 +144,9 @@ class ActionsModule extends Module {
     }
 
     /**
-     * @param string $downloadUrl
-     * @param array $arguments
-     * @param string|null $format
+     * @param string $downloadUrl download url to get actions for
+     * @param array<string, mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getDownload($downloadUrl, $arguments = [], $format = null) {
@@ -156,8 +156,8 @@ class ActionsModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array<string, mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getOutlinks($arguments = [], $format = null) {
@@ -166,9 +166,9 @@ class ActionsModule extends Module {
     }
 
     /**
-     * @param string $outlinkUrl
-     * @param array $arguments
-     * @param string|null $format
+     * @param string $outlinkUrl outlink url to get actions for
+     * @param array<string, mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getOutlink($outlinkUrl, $arguments = [], $format = null) {
@@ -178,8 +178,8 @@ class ActionsModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array<string, mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getSiteSearchKeywords($arguments = [], $format = null) {
@@ -188,8 +188,8 @@ class ActionsModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array<string, mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getSiteSearchNoResultKeywords($arguments = [], $format = null) {
@@ -198,8 +198,8 @@ class ActionsModule extends Module {
     }
 
     /**
-     * @param array $arguments
-     * @param string|null $format
+     * @param array<string, mixed> $arguments extra arguments to be passed to the api call
+     * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
     public function getSiteSearchCategories($arguments = [], $format = null) {

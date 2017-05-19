@@ -28,7 +28,7 @@ class SEOModule extends Module {
 
     /**
      * @param string $url
-     * @param string|null $format
+     * @param string $format
      * @return mixed
      */
     public function getRank($url, $format = null) {
@@ -44,7 +44,7 @@ class SEOModule extends Module {
 
     /**
      * @param int $siteId
-     * @param string|null $format
+     * @param string $format
      * @return mixed
      */
     public function getRankFromSiteId($siteId, $format = null) {

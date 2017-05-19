@@ -21,7 +21,7 @@ class VisitorInterestModule extends Module {
 
     /**
      * @param array $arguments
-     * @param string|null $format
+     * @param string $format
      * @return mixed
      */
     public function getNumberOfVisitsPerVisitDuration($arguments = [], $format = null) {
@@ -31,7 +31,7 @@ class VisitorInterestModule extends Module {
 
     /**
      * @param array $arguments
-     * @param string|null $format
+     * @param string $format
      * @return mixed
      */
     public function getNumberOfVisitsPerPage($arguments = [], $format = null) {
@@ -41,7 +41,7 @@ class VisitorInterestModule extends Module {
 
     /**
      * @param array $arguments
-     * @param string|null $format
+     * @param string $format
      * @return mixed
      */
     public function getNumberOfVisitsByDaysSinceLast($arguments = [], $format = null) {
@@ -51,7 +51,7 @@ class VisitorInterestModule extends Module {
 
     /**
      * @param array $arguments
-     * @param string|null $format
+     * @param string $format
      * @return mixed
      */
     public function getNumberOfVisitsByVisitCount($arguments = [], $format = null) {

@@ -156,7 +156,7 @@ class RequestOptions {
 
     /**
      * @param ConfigRepository $config
-     * @return string|null
+     * @return string
      */
     private function getTokenAuth(ConfigRepository $config) {
         $tokenAuth = null;
