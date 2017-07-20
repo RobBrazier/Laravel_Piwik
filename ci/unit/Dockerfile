@@ -1,4 +1,5 @@
-FROM php:7.0-alpine
+ARG PHP_VERSION=7.1
+FROM php:$PHP_VERSION-alpine
 
 WORKDIR /usr/src/app
 

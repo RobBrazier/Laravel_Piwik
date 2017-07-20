@@ -4,7 +4,7 @@ ENV APP_DIR /usr/src/app
 
 WORKDIR $APP_DIR
 
-ENV LARAVEL_VERSION 5.2
+ARG LARAVEL_VERSION=5.4
 
 COPY . plugin
 RUN mv plugin/ci ..
