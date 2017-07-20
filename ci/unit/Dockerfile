@@ -10,7 +10,7 @@ WORKDIR $APP_DIR
 
 COPY . .
 
-RUN "chmod +x $SCRIPTS_DIR/*.sh"
+RUN chmod +x $SCRIPTS_DIR/*.sh
 RUN "$SCRIPTS_DIR/setup.sh"
 
 USER www-data
