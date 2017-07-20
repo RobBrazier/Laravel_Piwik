@@ -2,12 +2,13 @@ Laravel-Piwik v3.0.0
 ====================
 
 [![Build Status](https://semaphoreci.com/api/v1/robbrazier/laravel_piwik/branches/master/shields_badge.svg)](https://semaphoreci.com/robbrazier/laravel_piwik)
-[![Scrutinizer](https://img.shields.io/scrutinizer/g/robbrazier/laravel_piwik.svg)](https://scrutinizer-ci.com/g/RobBrazier/Laravel_Piwik/)
-[![Codecov](https://img.shields.io/codecov/c/github/RobBrazier/Laravel_Piwik.svg)](https://codecov.io/gh/RobBrazier/Laravel_Piwik)
+[![Codacy grade](https://img.shields.io/codacy/grade/35cea59a74e342f5b870fe9c2c3f368b.svg)](https://www.codacy.com/app/RobBrazier/Laravel_Piwik)
+[![Codacy coverage](https://img.shields.io/codacy/coverage/35cea59a74e342f5b870fe9c2c3f368b.svg)](https://www.codacy.com/app/RobBrazier/Laravel_Piwik)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%205.6-8892BF.svg?style=flat)](https://php.net/)
 [![Packagist Version](https://img.shields.io/packagist/v/robbrazier/piwik.svg)](https://packagist.org/packages/robbrazier/piwik)
 [![Packagist Total Downloads](https://img.shields.io/packagist/dt/robbrazier/piwik.svg)](https://packagist.org/packages/robbrazier/piwik)
 [![Waffle.io](https://img.shields.io/waffle/label/RobBrazier/Laravel_Piwik/in%20progress.svg)](https://waffle.io/RobBrazier/Laravel_Piwik)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2FRobBrazier%2FLaravel_Piwik.svg?type=shield)](https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2FRobBrazier%2FLaravel_Piwik?ref=badge_shield)
 
 An Interface to Piwik's Analytics API for Laravel (Composer Package)
 
