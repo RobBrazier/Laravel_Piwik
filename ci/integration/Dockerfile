@@ -18,7 +18,7 @@ RUN "$SCRIPTS_DIR/setup.sh"
 USER www-data
 
 RUN "$SCRIPTS_DIR/laravel.sh"
-WORKDIR "$APP_DIR/integration"
+WORKDIR $APP_DIR/integration
 RUN "$SCRIPTS_DIR/integration.sh"
 
 CMD "/bin/bash $SCRIPTS_DIR/integration-test.sh"
