@@ -12,13 +12,13 @@ ARG LARAVEL_VERSION=5.4
 COPY . plugin
 RUN mv plugin/ci ..
 
-RUN chmod +x $SCRIPTS_DIR/*.sh
-RUN $SCRIPTS_DIR/setup.sh
+RUN "chmod +x $SCRIPTS_DIR/*.sh"
+RUN "$SCRIPTS_DIR/setup.sh"
 
 USER www-data
 
-RUN $SCRIPTS_DIR/laravel.sh
-WORKDIR $APP_DIR/integration
-RUN $SCRIPTS_DIR/integration.sh
+RUN "$SCRIPTS_DIR/laravel.sh"
+WORKDIR "$APP_DIR/integration"
+RUN "$SCRIPTS_DIR/integration.sh"
 
 CMD "/bin/bash $SCRIPTS_DIR/integration-test.sh"
