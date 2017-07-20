@@ -1,6 +1,8 @@
 ARG PHP_VERSION=7.1
 FROM php:$PHP_VERSION-alpine
 
+LABEL maintainer="github.laravelpiwik@rob.brzr.co"
+
 WORKDIR /usr/src/app
 
 COPY . .

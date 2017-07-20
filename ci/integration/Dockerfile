@@ -1,5 +1,7 @@
 FROM php:7.0-alpine
 
+LABEL maintainer="github.laravelpiwik@rob.brzr.co"
+
 ENV APP_DIR /usr/src/app
 
 WORKDIR $APP_DIR
