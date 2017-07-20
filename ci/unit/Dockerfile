@@ -1,17 +1,20 @@
-ARG PHP_VERSION=7.1
-FROM php:$PHP_VERSION-alpine
+ARG PHP_VERSION=rc
+FROM php:${PHP_VERSION}-alpine
 
-LABEL maintainer="github.laravelpiwik@rob.brzr.co"
+MAINTAINER Rob Brazier <github.laravelpiwik@rob.brzr.co>
 
-WORKDIR /usr/src/app
+ENV APP_DIR /usr/src/app
+ENV SCRIPTS_DIR "$APP_DIR/ci/scripts"
+
+WORKDIR $APP_DIR
 
 COPY . .
 
-RUN chmod +x ./ci/scripts/*.sh
-RUN ./ci/scripts/setup.sh
+RUN chmod +x $SCRIPTS_DIR/*.sh
+RUN $SCRIPTS_DIR/setup.sh
 
 USER www-data
 
-RUN ./ci/scripts/install.sh
+RUN $SCRIPTS_DIR/install.sh
 
-CMD [ "sh", "./ci/scripts/test.sh" ]
+CMD "/bin/bash $SCRIPTS_DIR/test.sh"

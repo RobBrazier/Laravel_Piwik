@@ -1,8 +1,9 @@
-FROM php:7.0-alpine
+FROM php:7.1-alpine
 
-LABEL maintainer="github.laravelpiwik@rob.brzr.co"
+MAINTAINER Rob Brazier <github.laravelpiwik@rob.brzr.co>
 
 ENV APP_DIR /usr/src/app
+ENV SCRIPTS_DIR "$APP_DIR/../ci/scripts"
 
 WORKDIR $APP_DIR
 
@@ -11,13 +12,13 @@ ARG LARAVEL_VERSION=5.4
 COPY . plugin
 RUN mv plugin/ci ..
 
-RUN chmod +x ../ci/scripts/*.sh
-RUN ../ci/scripts/setup.sh
+RUN chmod +x $SCRIPTS_DIR/*.sh
+RUN $SCRIPTS_DIR/setup.sh
 
 USER www-data
 
-RUN ../ci/scripts/laravel.sh
+RUN $SCRIPTS_DIR/laravel.sh
 WORKDIR $APP_DIR/integration
-RUN $APP_DIR/../ci/scripts/integration.sh
+RUN $SCRIPTS_DIR/integration.sh
 
-CMD ["/bin/bash", "../../ci/scripts/integration-test.sh"]
+CMD "/bin/bash $SCRIPTS_DIR/integration-test.sh"
