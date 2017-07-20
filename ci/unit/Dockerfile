@@ -10,11 +10,11 @@ WORKDIR $APP_DIR
 
 COPY . .
 
-RUN chmod +x $SCRIPTS_DIR/*.sh
+RUN "find $SCRIPTS_DIR -name '*.sh' | xargs chmod +x"
 RUN "$SCRIPTS_DIR/setup.sh"
 
 USER www-data
 
 RUN "$SCRIPTS_DIR/install.sh"
 
-CMD "/bin/bash $SCRIPTS_DIR/test.sh"
+CMD "$SCRIPTS_DIR/test.sh"
