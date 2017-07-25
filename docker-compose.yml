@@ -3,32 +3,48 @@ services:
   php55:
     build:
       context: .
-      dockerfile: ./ci/unit/Dockerfile.5.5
+      args:
+        PHP_VERSION: 5.5
+      dockerfile: ./ci/unit/Dockerfile
   php56:
     build:
       context: .
-      dockerfile: ./ci/unit/Dockerfile.5.6
+      args:
+        PHP_VERSION: 5.6
+      dockerfile: ./ci/unit/Dockerfile
   php70:
     build:
       context: .
-      dockerfile: ./ci/unit/Dockerfile.7.0
+      args:
+        PHP_VERSION: 7.0
+      dockerfile: ./ci/unit/Dockerfile
   php71:
     build:
       context: .
-      dockerfile: ./ci/unit/Dockerfile.7.1
+      args:
+        PHP_VERSION: 7.1
+      dockerfile: ./ci/unit/Dockerfile
   laravel51:
     build:
       context: .
-      dockerfile: ./ci/integration/Dockerfile.l5.1
+      args:
+        LARAVEL_VERSION: 5.1
+      dockerfile: ./ci/integration/Dockerfile
   laravel52:
     build:
       context: .
-      dockerfile: ./ci/integration/Dockerfile.l5.2
+      args:
+        LARAVEL_VERSION: 5.2
+      dockerfile: ./ci/integration/Dockerfile
   laravel53:
     build:
       context: .
-      dockerfile: ./ci/integration/Dockerfile.l5.3
+      args:
+        LARAVEL_VERSION: 5.3
+      dockerfile: ./ci/integration/Dockerfile
   laravel54:
     build:
       context: .
-      dockerfile: ./ci/integration/Dockerfile.l5.4
+      args:
+        LARAVEL_VERSION: 5.4
+      dockerfile: ./ci/integration/Dockerfile
