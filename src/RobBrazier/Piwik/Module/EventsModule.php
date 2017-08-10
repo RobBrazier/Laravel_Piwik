@@ -2,22 +2,12 @@
 
 namespace RobBrazier\Piwik\Module;
 
-use RobBrazier\Piwik\Repository\RequestRepository;
-
 /**
  * Class EventsModule
  * @package RobBrazier\Piwik\Module
  * @see https://developer.piwik.org/api-reference/reporting-api#Events for arguments
  */
 class EventsModule extends Module {
-
-    /**
-     * EventsModule constructor.
-     * @param RequestRepository $request
-     */
-    public function __construct($request) {
-        parent::__construct($request);
-    }
 
     /**
      * @param array[string]mixed $arguments extra arguments to be passed to the api call

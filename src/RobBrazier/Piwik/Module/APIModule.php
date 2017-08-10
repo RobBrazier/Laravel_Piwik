@@ -2,22 +2,12 @@
 
 namespace RobBrazier\Piwik\Module;
 
-use RobBrazier\Piwik\Repository\RequestRepository;
-
 /**
  * Class APIModule
  * @package RobBrazier\Piwik\Module
  * @see https://developer.piwik.org/api-reference/reporting-api#API for arguments
  */
 class APIModule extends Module {
-
-    /**
-     * APIModule constructor.
-     * @param RequestRepository $request
-     */
-    public function __construct($request) {
-        parent::__construct($request);
-    }
 
     /**
      * @param string $format override format (defaults to one specified in config file)
