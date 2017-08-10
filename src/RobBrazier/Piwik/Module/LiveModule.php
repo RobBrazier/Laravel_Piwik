@@ -3,7 +3,6 @@
 namespace RobBrazier\Piwik\Module;
 
 use RobBrazier\Piwik\Exception\PiwikException;
-use RobBrazier\Piwik\Repository\RequestRepository;
 use RobBrazier\Piwik\Traits\FormatTrait;
 
 /**
@@ -14,14 +13,6 @@ use RobBrazier\Piwik\Traits\FormatTrait;
 class LiveModule extends Module {
 
     use FormatTrait;
-
-    /**
-     * LiveModule constructor.
-     * @param RequestRepository $request
-     */
-    public function __construct($request) {
-        parent::__construct($request);
-    }
 
     /**
      * @param int $lastMinutes number of minutes to filter counters by (e.g. get counters for the last 30 minutes)
