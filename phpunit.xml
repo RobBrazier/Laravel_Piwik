@@ -17,7 +17,6 @@
     </testsuites>
     <logging>
         <log type="coverage-clover" target="coverage.xml"/>
-        <log type="coverage-php" target="./reports/coverage.serialized"/>
         <log type="coverage-html" target="./reports/html"/>
         <log type="junit" target="./reports/tests.xml"/>
     </logging>
