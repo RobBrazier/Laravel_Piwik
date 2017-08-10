@@ -2,22 +2,12 @@
 
 namespace RobBrazier\Piwik\Module;
 
-use RobBrazier\Piwik\Repository\RequestRepository;
-
 /**
  * Class VisitorInterestModule
  * @package RobBrazier\Piwik\Module
  * @see https://developer.piwik.org/api-reference/reporting-api#VisitorInterest for arguments
  */
 class VisitorInterestModule extends Module {
-
-    /**
-     * VisitorInterestModule constructor.
-     * @param RequestRepository $request
-     */
-    public function __construct($request) {
-        parent::__construct($request);
-    }
 
     /**
      * @param array[string]mixed $arguments

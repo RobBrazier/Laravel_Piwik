@@ -2,22 +2,12 @@
 
 namespace RobBrazier\Piwik\Module;
 
-use RobBrazier\Piwik\Repository\RequestRepository;
-
 /**
  * Class VisitsSummaryModule
  * @package RobBrazier\Piwik\Module
  * @see https://developer.piwik.org/api-reference/reporting-api#VisitsSummary for arguments
  */
 class VisitsSummaryModule extends Module {
-
-    /**
-     * VisitsSummaryModule constructor.
-     * @param RequestRepository $request
-     */
-    public function __construct($request) {
-        parent::__construct($request);
-    }
 
     /**
      * @param array[string]mixed $arguments

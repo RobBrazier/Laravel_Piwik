@@ -7,6 +7,8 @@ use RobBrazier\Piwik\Repository\Request\GuzzleRequestRepository;
 
 class PiwikServiceProvider extends ServiceProvider {
 
+    const PIWIK_CONFIG = "piwik.config";
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -31,17 +33,17 @@ class PiwikServiceProvider extends ServiceProvider {
      * @return void
      */
     public function register() {
-        $this->app->bind('piwik.config', function() {
+        $this->app->bind(self::PIWIK_CONFIG, function() {
             return new FileConfigRepository;
         });
 
         $this->app->bind('piwik.request', function() {
-            $config = $this->app->make('piwik.config');
+            $config = $this->app->make(self::PIWIK_CONFIG);
             return new GuzzleRequestRepository($config, new Client());
         });
 
         $this->app->bind('piwik', function() {
-            $config = $this->app->make('piwik.config');
+            $config = $this->app->make(self::PIWIK_CONFIG);
             $request = $this->app->make('piwik.request');
             return new Piwik($config, $request);
         });

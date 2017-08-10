@@ -2,22 +2,12 @@
 
 namespace RobBrazier\Piwik\Module;
 
-use RobBrazier\Piwik\Repository\RequestRepository;
-
 /**
  * Class ReferrersModule
  * @package RobBrazier\Piwik\Module
  * @see https://developer.piwik.org/api-reference/reporting-api#Referrers for arguments
  */
 class ReferrersModule extends Module {
-
-    /**
-     * ReferrersModule constructor.
-     * @param RequestRepository $request
-     */
-    public function __construct($request) {
-        parent::__construct($request);
-    }
 
     /**
      * @param array<string,mixed> $arguments extra arguments to be passed to the api call
