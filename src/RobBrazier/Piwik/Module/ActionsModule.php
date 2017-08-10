@@ -2,21 +2,11 @@
 
 namespace RobBrazier\Piwik\Module;
 
-use RobBrazier\Piwik\Repository\RequestRepository;
-
 /**
  * Class ActionsModule
  * @package RobBrazier\Piwik\Module
  */
 class ActionsModule extends Module {
-
-    /**
-     * ActionsModule constructor.
-     * @param RequestRepository $request
-     */
-    public function __construct($request) {
-        parent::__construct($request);
-    }
 
     /**
      * @param array[string]mixed $arguments extra arguments to be passed to the api call

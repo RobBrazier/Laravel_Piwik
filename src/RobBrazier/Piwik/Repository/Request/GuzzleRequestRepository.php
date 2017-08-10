@@ -9,7 +9,6 @@ use RobBrazier\Piwik\Repository\RequestRepository;
 use RobBrazier\Piwik\Request\RequestOptions;
 use RobBrazier\Piwik\Traits\ConfigTrait;
 use RobBrazier\Piwik\Traits\FormatTrait;
-use Sabre\Xml;
 
 class GuzzleRequestRepository implements RequestRepository {
 
@@ -61,9 +60,6 @@ class GuzzleRequestRepository implements RequestRepository {
     private function decode($result, $requestOptions) {
         $format = $requestOptions->getFormat($this->config);
         switch ($this->validateFormat($format)) {
-            case 'json':
-                $result = json_decode($result);
-                break;
             case 'php':
                 $result = unserialize($result);
                 break;
@@ -71,7 +67,11 @@ class GuzzleRequestRepository implements RequestRepository {
                 $loader = new XmlLoader();
                 $domDocument = $loader->loadXml($result);
                 $result = simplexml_import_dom($domDocument);
-        };
+                break;
+            case 'json':
+            default:
+                $result = json_decode($result);
+        }
         return $result;
     }
 }

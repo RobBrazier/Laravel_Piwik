@@ -41,8 +41,7 @@ abstract class Module {
      */
     private function getModuleName($className) {
         $moduleClassName = last(explode("\\", $className));
-        $moduleName = str_replace("Module", "", $moduleClassName);
-        return $moduleName;
+        return str_replace("Module", "", $moduleClassName);
     }
 
 }

@@ -101,11 +101,11 @@ class RequestOptions {
      * @return string
      */
     private function getSiteId($config) {
-        $siteId = $this->siteId;
+        $result = $this->siteId;
         if ($this->useSiteId) {
-            $siteId = $config->get(Option::SITE_ID);
+            $result = $config->get(Option::SITE_ID);
         }
-        return $siteId;
+        return $result;
     }
 
     /**
@@ -134,11 +134,11 @@ class RequestOptions {
      * @return string
      */
     public function getFormat($config) {
-        $format = $this->format;
+        $result = $this->format;
         if ($this->useFormat) {
-            $format = $config->get(Option::FORMAT);
+            $result = $config->get(Option::FORMAT);
         }
-        return $format;
+        return $result;
     }
 
     /**
@@ -155,11 +155,11 @@ class RequestOptions {
      * @return string
      */
     private function getTokenAuth($config) {
-        $tokenAuth = null;
+        $result = null;
         if ($this->tokenAuth) {
-            $tokenAuth = $config->get(Option::API_KEY);
+            $result = $config->get(Option::API_KEY);
         }
-        return $tokenAuth;
+        return $result;
     }
 
     /**
@@ -187,9 +187,9 @@ class RequestOptions {
             $builder->setDate($this->getDate($period));
         }
         $builder->setSiteId($this->getSiteId($config));
-        $format = $this->getFormat($config);
-        if (!is_null($format)) {
-            $builder->setFormat($this->validateFormat($format));
+        $formatOverride = $this->getFormat($config);
+        if (!is_null($formatOverride)) {
+            $builder->setFormat($this->validateFormat($formatOverride));
         }
         $builder->setTokenAuth($this->getTokenAuth($config));
         $builder->addAll($this->arguments);
