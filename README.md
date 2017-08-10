@@ -2,8 +2,8 @@ Laravel-Piwik v3.0.0
 ====================
 
 [![Build Status](https://semaphoreci.com/api/v1/robbrazier/laravel_piwik/branches/master/shields_badge.svg)](https://semaphoreci.com/robbrazier/laravel_piwik)
-[![Codacy grade](https://img.shields.io/codacy/grade/35cea59a74e342f5b870fe9c2c3f368b.svg)](https://www.codacy.com/app/RobBrazier/Laravel_Piwik)
-[![Codacy coverage](https://img.shields.io/codacy/coverage/35cea59a74e342f5b870fe9c2c3f368b.svg)](https://www.codacy.com/app/RobBrazier/Laravel_Piwik)
+[![Sonarqube Quality Gate](https://sonarcloud.io/api/badges/gate?key=com.github.RobBrazier%3ALaravel_Piwik)](https://sonarcloud.io/dashboard?id=com.github.RobBrazier%3ALaravel_Piwik)
+[![Sonarqube Code Coverage](https://sonarcloud.io/api/badges/measure?key=com.github.RobBrazier%3ALaravel_Piwik&metric=coverage)](https://sonarcloud.io/dashboard?id=com.github.RobBrazier%3ALaravel_Piwik)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%205.6-8892BF.svg?style=flat)](https://php.net/)
 [![Packagist Version](https://img.shields.io/packagist/v/robbrazier/piwik.svg)](https://packagist.org/packages/robbrazier/piwik)
 [![Packagist Total Downloads](https://img.shields.io/packagist/dt/robbrazier/piwik.svg)](https://packagist.org/packages/robbrazier/piwik)
