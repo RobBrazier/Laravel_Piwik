@@ -11,7 +11,11 @@ node {
     },
     "PHP 7.1": { 
       sh "docker-compose run php71" 
+    },
+    "Hyper": {
+      sh "hyper help"
     }
+
   }
   stage('Integration Tests') {
     parallel "Laravel 5.1": {
