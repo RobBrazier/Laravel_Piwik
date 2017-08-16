@@ -5,9 +5,15 @@ node {
   stage('Unit Tests') {
     steps {
       parallel {
-        php56: { sh "docker-compose run php56" },
-        php70: { sh "docker-compose run php70" },
-        php71: { sh "docker-compose run php71" }
+        "PHP 5.6": {
+          sh "docker-compose run php56" 
+        },
+        "PHP 7.0": { 
+          sh "docker-compose run php70" 
+        },
+        "PHP 7.1": { 
+          sh "docker-compose run php71" 
+        }
       }
     }
   }
