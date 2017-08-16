@@ -13,7 +13,7 @@ node {
       sh "docker-compose run php71" 
     },
     "Hyper": {
-      sh "hyper help"
+      sh "/var/lib/jenkins/bin/hyper help"
     }
 
   }
