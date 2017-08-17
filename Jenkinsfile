@@ -9,8 +9,8 @@ def runHyper(category, phpVersion, uniqueIdentifier, appDir, workingDir, script)
     try {
       sh "$hyper run --size=s4 --name $volume --entrypoint '/bin/sh' -v $volume:$appDir -w $workingDir php:${phpVersion}-alpine $script"
     } finally {
-      sh "$hyper rm $volume"
-      sh "$hyper volume rm $volume"
+      sh "$hyper rm $volume || true"
+      sh "$hyper volume rm $volume || true"
     }
   }
 }
