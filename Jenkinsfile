@@ -19,7 +19,7 @@ node {
       sh "$hyper volume create --name $volume"
       sh "$hyper volume init $workspace:$volume"
       try {
-        sh "$hyper run --size=s4 --name $volume --entrypoint '/bin/sh' -v $volume:/usr/src/app -w /usr/src/app php:7.1-alpine ./ci/unit/run.s"
+        sh "$hyper run --size=s4 --name $volume --entrypoint '/bin/sh' -v $volume:/usr/src/app -w /usr/src/app php:7.1-alpine ./ci/unit/run.sh"
       } finally {
         sh "$hyper rm $volume"
         sh "$hyper volume rm $volume"
