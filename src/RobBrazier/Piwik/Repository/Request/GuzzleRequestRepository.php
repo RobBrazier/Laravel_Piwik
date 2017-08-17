@@ -9,6 +9,7 @@ use RobBrazier\Piwik\Repository\RequestRepository;
 use RobBrazier\Piwik\Request\RequestOptions;
 use RobBrazier\Piwik\Traits\ConfigTrait;
 use RobBrazier\Piwik\Traits\FormatTrait;
+use RobBrazier\Piwik\Config\Option;
 
 class GuzzleRequestRepository implements RequestRepository {
 
@@ -43,8 +44,8 @@ class GuzzleRequestRepository implements RequestRepository {
     private function getResponseBody($requestOptions) {
         $url = 'index.php'.$requestOptions->build($this->config);
         $options = [
-            "timeout" => $this->config->get('curl_timeout', 5.0),
-            "verify" => $this->config->get('verify_peer', true),
+            "timeout" => $this->config->get(Option::CURL_TIMEOUT, 5.0),
+            "verify" => $this->config->get(Option::VERIFY_PEER, true),
             "base_uri" => $this->getPiwikUrl()
         ];
         $response = $this->client->request("get", $url, $options);
