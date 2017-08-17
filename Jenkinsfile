@@ -21,7 +21,7 @@ def unitTest(phpVersion) {
 }
 
 def integrationTest(laravelVersion) {
-  return runHyper("integration", "7.1", laravelVersion, "/usr/src/app/plugin", appDir "./plugin/ci/integration/run.sh")
+  return runHyper("integration", "7.1", laravelVersion, "/usr/src/app/plugin", appDir, "./plugin/ci/integration/run.sh")
 }
 
 node {
