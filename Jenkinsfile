@@ -1,17 +1,8 @@
 env.hyper = "/var/lib/jenkins/bin/hyper"
 
-def generateUid() {
-  def length = 16
-  def pool = [‘a‘..’z‘, ‘A‘..’Z‘, 0..9, ‘-‘].flatten()
-  Random random = new Random(System.currentTimeMillis())
-  def randomChars = (0..length –1).collect { pool[random.nextInt(pool.size())] }
-  return randomChars.join()
-}
-
 def runHyper(category, phpVersion, uniqueIdentifier, appDir, workingDir, script, environment) {
   return {
-    def uid = generateUid()
-    def volume = "jenkins-laravelpiwik-$category-$uid-${uniqueIdentifier.replace('.', '-')}-${BUILD_NUMBER}"
+    def volume = "jenkins-laravelpiwik-$category-${uniqueIdentifier.replace('.', '-')}-${BUILD_NUMBER}"
     def workspace = pwd()
     def envArgument = ""
     if (!environment.isEmpty()) {
