@@ -7,7 +7,7 @@ def runHyper(category, phpVersion, uniqueIdentifier, script) {
     sh "$hyper volume create --name $volume"
     sh "$hyper volume init $workspace:$volume"
     try {
-      sh "$hyper run --size=s4 --name $volume --entrypoint '/bin/sh' -v $volume:/usr/src/app -w /usr/src/app php:${phpVersion}-alpine ./ci/unit/run.sh"
+      sh "$hyper run --size=s4 --name $volume --entrypoint '/bin/sh' -v $volume:/usr/src/app -w /usr/src/app php:${phpVersion}-alpine $script"
     } finally {
       sh "$hyper rm $volume"
       sh "$hyper volume rm $volume"
