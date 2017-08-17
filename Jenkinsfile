@@ -14,7 +14,7 @@ node {
     for (int i = 0; i < phpVersions.size(); i++) {
       def phpVersion = phpVersions.get(i)
       steps["PHP ${phpVersion}"] = {
-        def volume = "jenkins-laravelpiwik-unit-${BUILD_NUMBER}"
+        def volume = "jenkins-laravelpiwik-unit-${phpVersion}-${BUILD_NUMBER}"
         def workspace = pwd()
         sh "$hyper volume create --name $volume"
         sh "$hyper volume init $workspace:$volume"
