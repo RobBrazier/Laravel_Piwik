@@ -1,13 +1,13 @@
 env.hyper = "/var/lib/jenkins/bin/hyper"
 
-def runHyper(category, phpVersion, uniqueIdentifier, script) {
+def runHyper(category, phpVersion, uniqueIdentifier, appDir, workingDir, script) {
   return {
     def volume = "jenkins-laravelpiwik-$category-${uniqueIdentifier.replace('.', '-')}-${BUILD_NUMBER}"
     def workspace = pwd()
     sh "$hyper volume create --name $volume"
     sh "$hyper volume init $workspace:$volume"
     try {
-      sh "$hyper run --size=s4 --name $volume --entrypoint '/bin/sh' -v $volume:/usr/src/app -w /usr/src/app php:${phpVersion}-alpine $script"
+      sh "$hyper run --size=s4 --name $volume --entrypoint '/bin/sh' -v $volume:$appDir -w $workingDir php:${phpVersion}-alpine $script"
     } finally {
       sh "$hyper rm $volume"
       sh "$hyper volume rm $volume"
@@ -16,11 +16,11 @@ def runHyper(category, phpVersion, uniqueIdentifier, script) {
 }
 
 def unitTest(phpVersion) {
-  return runHyper("unit", phpVersion, phpVersion, "./ci/unit/run.sh")
+  return runHyper("unit", phpVersion, phpVersion, "/usr/src/app", "./ci/unit/run.sh")
 }
 
 def integrationTest(laravelVersion) {
-  return runHyper("integration", "7.1", laravelVersion, "../ci/integration/run.sh")
+  return runHyper("integration", "7.1", laravelVersion, "/usr/src/app/plugin" "./plugin/ci/integration/run.sh")
 }
 
 node {
