@@ -1,8 +1,8 @@
 env.hyper = "/var/lib/jenkins/bin/hyper"
 
-def unitTest(phpVersion) {
+def runHyper(category, phpVersion, uniqueIdentifier, script) {
   return {
-    def volume = "jenkins-laravelpiwik-unit-${phpVersion.replace('.', '-')}-${BUILD_NUMBER}"
+    def volume = "jenkins-laravelpiwik-$category-${uniqueIdentifier.replace('.', '-')}-${BUILD_NUMBER}"
     def workspace = pwd()
     sh "$hyper volume create --name $volume"
     sh "$hyper volume init $workspace:$volume"
@@ -13,6 +13,14 @@ def unitTest(phpVersion) {
       sh "$hyper volume rm $volume"
     }
   }
+}
+
+def unitTest(phpVersion) {
+  return runHyper("unit", phpVersion, phpVersion, "./ci/unit/run.sh")
+}
+
+def integrationTest(laravelVersion) {
+  return runHyper("integration", "7.1", laravelVersion, "../ci/integration/run.sh")
 }
 
 node {
@@ -30,17 +38,12 @@ node {
 
   }
   stage('Integration Tests') {
-    parallel "Laravel 5.1": {
-      sh "docker-compose run laravel51"
-    },
-    "Laravel 5.2": {
-      sh "docker-compose run laravel52"
-    },
-    "Laravel 5.3": {
-      sh "docker-compose run laravel53"
-    },
-    "Laravel 5.4": {
-      sh "docker-compose run laravel54"
+    laravelVersions = ['5.1', '5.2', '5.3', '5.4']
+    integrationTestSteps = [:]
+    for (int i = 0; i < laravelVersions.size(); i++) {
+      def laravelVersion = laravelVersions.get(i)
+      integrationTestSteps["Laravel ${laravelVersion}"] = integrationTest(laravelVersion)
     }
+    parallel integrationTestSteps
   }
 }
