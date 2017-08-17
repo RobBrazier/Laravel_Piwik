@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 app_dir="/usr/src/app"
 scripts_dir="$app_dir/ci/scripts"
