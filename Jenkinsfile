@@ -18,7 +18,7 @@ node {
       def workspace = pwd()
       sh "$hyper volume create --name $volume"
       sh "$hyper volume init $workspace:$volume"
-      sh "$hyper run --size=s2 --name $volume --entrypoint '/bin/sh' -v $volume:/usr/src/app -w /usr/src/app php:7.1-alpine ./unit/run.sh"
+      sh "$hyper run --size=s2 --name $volume --entrypoint '/bin/sh' -v $volume:/usr/src/app -w /usr/src/app php:7.1-alpine ./ci/unit/run.sh"
       //sh "$hyper volume rm $volume"
       //sh "$hyper rm $volume"
     }
