@@ -1,3 +1,4 @@
+env.hyper = "/var/lib/jenkins/bin/hyper"
 node {
   stage('Checkout') {
     checkout scm
@@ -13,7 +14,10 @@ node {
       sh "docker-compose run php71" 
     },
     "Hyper": {
-      sh "/var/lib/jenkins/bin/hyper help"
+      def volume = "hyper_laravel_piwik_${BUILD_NUMBER}"
+      def workspace = pwd()
+      sh "$hyper volume create --name $volume"
+      sh "$hyper volume init $workspace:$volume"
     }
 
   }
