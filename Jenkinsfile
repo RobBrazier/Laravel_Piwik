@@ -2,7 +2,7 @@ env.hyper = "/var/lib/jenkins/bin/hyper"
 
 def unitTest(phpVersion) {
   return {
-    def volume = "jenkins-laravelpiwik-unit-${phpVersion}-${BUILD_NUMBER}"
+    def volume = "jenkins-laravelpiwik-unit-${phpVersion.replace('.', '-')}-${BUILD_NUMBER}"
     def workspace = pwd()
     sh "$hyper volume create --name $volume"
     sh "$hyper volume init $workspace:$volume"
