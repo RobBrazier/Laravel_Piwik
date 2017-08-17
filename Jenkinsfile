@@ -44,7 +44,7 @@ node {
 
   }
   stage('Integration Tests') {
-    laravelVersions = ['5.1', '5.2', '5.3', '5.4', '5.5']
+    laravelVersions = ['5.1', '5.2', '5.3', '5.4']
     integrationTestSteps = [:]
     for (int i = 0; i < laravelVersions.size(); i++) {
       def laravelVersion = laravelVersions.get(i)
