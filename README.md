@@ -1,4 +1,4 @@
-Laravel-Piwik v3.0.0
+Laravel-Piwik v3.0.1
 ====================
 
 [![Build Status](https://semaphoreci.com/api/v1/robbrazier/laravel_piwik/branches/master/shields_badge.svg)](https://semaphoreci.com/robbrazier/laravel_piwik)
