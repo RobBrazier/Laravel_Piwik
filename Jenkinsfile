@@ -5,22 +5,22 @@ node {
   }
   stage('Unit Tests') {
     parallel "PHP 5.6": {
-       sh "docker-compose run php56" 
+       sh "docker-compose run php56"
     },
-    "PHP 7.0": { 
-      sh "docker-compose run php70" 
+    "PHP 7.0": {
+      sh "docker-compose run php70"
     },
-    "PHP 7.1": { 
-      sh "docker-compose run php71" 
+    "PHP 7.1": {
+      sh "docker-compose run php71"
     },
     "Hyper": {
       def volume = "jenkins-laravelpiwik-${BUILD_NUMBER}"
       def workspace = pwd()
       sh "$hyper volume create --name $volume"
       sh "$hyper volume init $workspace:$volume"
-      sh "$hyper run --size=s2 --name $volume php:7.1-alpine"
-      sh "$hyper volume rm $volume"
-      sh "$hyper rm $volume"
+      sh "$hyper run --size=s2 --name $volume -v $volume:/usr/src/app php:7.1-alpine bash /usr/src/app/unit/run.sh"
+      #sh "$hyper volume rm $volume"
+      #sh "$hyper rm $volume"
     }
 
   }
