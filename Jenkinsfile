@@ -1,30 +1,32 @@
 env.hyper = "/var/lib/jenkins/bin/hyper"
+
+def unitTest(phpVersion) {
+
+}
+
 node {
   stage('Checkout') {
     checkout scm
   }
   stage('Unit Tests') {
-    parallel "PHP 5.6": {
-       sh "docker-compose run php56"
-    },
-    "PHP 7.0": {
-      sh "docker-compose run php70"
-    },
-    "PHP 7.1": {
-      sh "docker-compose run php71"
-    },
-    "Hyper": {
-      def volume = "jenkins-laravelpiwik-${BUILD_NUMBER}"
-      def workspace = pwd()
-      sh "$hyper volume create --name $volume"
-      sh "$hyper volume init $workspace:$volume"
-      try {
-        sh "$hyper run --size=s4 --name $volume --entrypoint '/bin/sh' -v $volume:/usr/src/app -w /usr/src/app php:7.1-alpine ./ci/unit/run.sh"
-      } finally {
-        sh "$hyper rm $volume"
-        sh "$hyper volume rm $volume"
+    phpVersions = ['5.6', '7.0', '7.1']
+    steps = [:]
+    for (int i = 0; i < phpVersions.size(); i++) {
+      def phpVersion = phpVersions.get(i)
+      steps["PHP ${phpVersion}"] = {
+        def volume = "jenkins-laravelpiwik-unit-${BUILD_NUMBER}"
+        def workspace = pwd()
+        sh "$hyper volume create --name $volume"
+        sh "$hyper volume init $workspace:$volume"
+        try {
+          sh "$hyper run --size=s4 --name $volume --entrypoint '/bin/sh' -v $volume:/usr/src/app -w /usr/src/app php:${phpVersion}-alpine ./ci/unit/run.sh"
+        } finally {
+          sh "$hyper rm $volume"
+          sh "$hyper volume rm $volume"
+        }
       }
     }
+    parallel steps
 
   }
   stage('Integration Tests') {
