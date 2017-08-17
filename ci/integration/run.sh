@@ -1,10 +1,10 @@
 #!/bin/sh
 
-app_dir="/usr/src/app"
-ci_dir="$app_dir/plugin/ci"
-scripts_dir="$ci_dir/scripts"
-sh "$scripts_dir/setup.sh"
-sudo -u www-data -H bash "$scripts_dir/laravel.sh"
-cd "$app_dir/integration"
-sudo -u www-data -H bash "$scripts_dir/integration.sh"
-sudo -u www-data -H bash "$scripts_dir/integration-test.sh"
+export APP_DIR="/usr/src/app"
+ci_dir="$APP_DIR/plugin/ci"
+export SCRIPTS_DIR="$ci_dir/scripts"
+sh "$SCRIPTS_DIR/setup.sh"
+sudo -E -u www-data -H bash "$SCRIPTS_DIR/laravel.sh"
+cd "$APP_DIR/integration"
+sudo -E -u www-data -H bash "$SCRIPTS_DIR/integration.sh"
+sudo -E -u www-data -H bash "$SCRIPTS_DIR/integration-test.sh"
