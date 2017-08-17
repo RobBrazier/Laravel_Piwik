@@ -9,7 +9,7 @@ abstract class Option {
     const API_KEY = 'api_key';
     const FORMAT = 'format';
     const PERIOD = 'period';
-    const CURL_TIMEOUT = "curl_timeout";
+    const CURL_TIMEOUT = "http_timeout";
     const VERIFY_PEER = "verify_peer";
 
 }
