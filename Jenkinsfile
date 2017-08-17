@@ -16,11 +16,12 @@ def runHyper(category, phpVersion, uniqueIdentifier, appDir, workingDir, script)
 }
 
 def unitTest(phpVersion) {
-  return runHyper("unit", phpVersion, phpVersion, "/usr/src/app", "./ci/unit/run.sh")
+  def appDir = "/usr/src/app"
+  return runHyper("unit", phpVersion, phpVersion, appDir, appDir, "./ci/unit/run.sh")
 }
 
 def integrationTest(laravelVersion) {
-  return runHyper("integration", "7.1", laravelVersion, "/usr/src/app/plugin" "./plugin/ci/integration/run.sh")
+  return runHyper("integration", "7.1", laravelVersion, "/usr/src/app/plugin", appDir "./plugin/ci/integration/run.sh")
 }
 
 node {
