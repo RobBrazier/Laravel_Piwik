@@ -30,9 +30,11 @@ def integrationTest(laravelVersion) {
 }
 
 node {
+  properties([buildDiscarder(logRotator(numToKeepStr: '20'))])
   stage('Checkout') {
     checkout scm
   }
+
   stage('Unit Tests') {
     phpVersions = ['5.6', '7.0', '7.1']
     unitTestSteps = [:]
@@ -41,8 +43,8 @@ node {
       unitTestSteps["PHP ${phpVersion}"] = unitTest(phpVersion)
     }
     parallel unitTestSteps
-
   }
+
   stage('Integration Tests') {
     laravelVersions = ['5.1', '5.2', '5.3', '5.4']
     integrationTestSteps = [:]
@@ -51,5 +53,9 @@ node {
       integrationTestSteps["Laravel ${laravelVersion}"] = integrationTest(laravelVersion)
     }
     parallel integrationTestSteps
+  }
+
+  stage('QA') {
+
   }
 }
