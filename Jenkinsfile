@@ -1,21 +1,7 @@
 env.hyper = "/var/lib/jenkins/bin/hyper"
 env.containerNamePrefix = "jenkins-laravelpiwik"
 env.appDir = "/usr/src/app"
-
-def createSnapshot() {
-  return {
-    def container = "$containerNamePrefix-snapshot-${BUILD_NUMBER}"
-    def workspace = pwd()
-    sh "$hyper volume create --name $container"
-    sh "$hyper volume init $workspace:$container"
-    try {
-      sh "$hyper run --size=s4 --name $container --entrypoint '/bin/sh sudo -u www-data -H' -v $container:$appDir -w $appDir php:5.6-alpine ./ci/scripts/install.sh"
-      sh "$hyper snapshot create --name $container -v $container"
-    } finally {
-      sh "$hyper rm -v $container || true"
-    }
-  }
-}
+env.snapshotVolume = "$containerNamePrefix-snapshot-${BUILD_NUMBER}"
 
 def runHyper(category, phpVersion, uniqueIdentifier, appDir, workingDir, script, environment) {
   return {
@@ -26,9 +12,11 @@ def runHyper(category, phpVersion, uniqueIdentifier, appDir, workingDir, script,
       envArgument = "--env $environment"
     }
     try {
-      sh "$hyper run --size=s4 --name $container $envArgument --entrypoint '/bin/sh' -v $workspace:$appDir -w $workingDir php:${phpVersion}-alpine $script"
+      sh "$hyper volume create --snapshot=$snapshotVolume --name $container"
+      sh "$hyper run --size=s4 --name $container $envArgument --entrypoint '/bin/sh' -v $container:$appDir -w $workingDir php:${phpVersion}-alpine $script"
     } finally {
-      sh "$hyper rm -v $container || true"
+      sh "$hyper rm $container || true"
+      sh "$hyper volume rm $container || true"
     }
   }
 }
@@ -58,33 +46,34 @@ pipeline {
       steps {
         sh "echo 'Installing composer dependencies'"
         script {
-          def container = "$containerNamePrefix-snapshot-${BUILD_NUMBER}"
+          def container = "$snapshotVolume"
           def workspace = pwd()
-          sh "$hyper volume create --name $container"
-          sh "$hyper volume init $workspace:$container"
           try {
+            sh "$hyper volume create --name $container"
+            sh "$hyper volume init $workspace:$container"
             sh "$hyper run --size=s4 --name $container --entrypoint '/bin/sh' -v $container:$appDir -w $appDir php:5.6-alpine ./ci/init/run.sh"
             sh "$hyper snapshot create --name $container -v $container"
           } finally {
-            sh "$hyper rm -v $container || true"
+            sh "$hyper rm $container || true"
+            sh "$hyper volume rm $container || true"
           }
         }
       }
     }
 
-    // stage('Unit Tests') {
-    //   steps {
-    //     script {
-    //       phpVersions = ['5.6', '7.0', '7.1']
-    //       unitTestSteps = [:]
-    //       for (int i = 0; i < phpVersions.size(); i++) {
-    //         def phpVersion = phpVersions.get(i)
-    //         unitTestSteps["PHP ${phpVersion}"] = unitTest(phpVersion)
-    //       }
-    //       parallel unitTestSteps
-    //     }
-    //   }
-    // }
+    stage('Unit Tests') {
+      steps {
+        script {
+          phpVersions = ['5.6']//, '7.0', '7.1']
+          unitTestSteps = [:]
+          for (int i = 0; i < phpVersions.size(); i++) {
+            def phpVersion = phpVersions.get(i)
+            unitTestSteps["PHP ${phpVersion}"] = unitTest(phpVersion)
+          }
+          parallel unitTestSteps
+        }
+      }
+    }
     //
     // stage('Integration Tests') {
     //   steps {
@@ -111,7 +100,7 @@ pipeline {
   }
   post {
     always {
-      sh "$hyper snapshot rm $containerNamePrefix-snapshot-${BUILD_NUMBER} || true"
+      sh "$hyper snapshot rm $snapshotVolume || true"
     }
   }
 }
