@@ -52,8 +52,5 @@ node {
     parallel integrationTestSteps
   }
 
-  stage('QA') {
-    def phpVersion = "7.1"
-    return runHyper("qa", phpVersion, phpVersion, appDir, appDir, "./ci/qa/run.sh", "")
-  }
+  stage('QA') runHyper("qa", "7.1", "7.1", appDir, appDir, "./ci/qa/run.sh", "")
 }
