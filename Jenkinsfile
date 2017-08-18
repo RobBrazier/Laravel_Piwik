@@ -83,7 +83,7 @@ node {
     }
   }
 }
-catch (e) {
+catch (exc) {
   echo 'Failed :('
 }
 finally {
