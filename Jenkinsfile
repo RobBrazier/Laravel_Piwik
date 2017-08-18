@@ -55,7 +55,6 @@ node {
   stage('QA') {
     def phpVersion = "7.1"
     def junitFile = "junit.xml"
-    runHyper("qa", phpVersion, phpVersion, appDir, appDir, "./ci/scripts/qa.sh", "") > $junitFile
-    junit $junitFile
+    runHyper("qa", phpVersion, phpVersion, appDir, appDir, "./ci/qa/run.sh", "")
   }
 }
