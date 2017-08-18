@@ -3,6 +3,21 @@ env.containerNamePrefix = "jenkins-laravelpiwik"
 env.appDir = "/usr/src/app"
 env.snapshotVolume = "$containerNamePrefix-snapshot-${BUILD_NUMBER}"
 
+def createSnapshot() {
+  return {
+    def container = "$snapshotVolume"
+    def workspace = pwd()
+    try {
+      sh "$hyper volume create --name $container"
+      sh "$hyper volume init $workspace:$container"
+      sh "$hyper run --size=s4 --name $container --entrypoint '/bin/sh' -v $container:$appDir -w $appDir php:5.6-alpine ./ci/init/run.sh"
+      sh "$hyper snapshot create --name $container -v $container"
+    } finally {
+      sh "$hyper rm $container || true"
+    }
+  }
+}
+
 def runHyper(category, phpVersion, uniqueIdentifier, appDir, workingDir, script, environment) {
   return {
     def container = "$containerNamePrefix-$category-${uniqueIdentifier.replace('.', '-')}-${BUILD_NUMBER}"
@@ -45,18 +60,7 @@ pipeline {
     stage('Install') {
       steps {
         sh "echo 'Installing composer dependencies'"
-        script {
-          def container = "$snapshotVolume"
-          def workspace = pwd()
-          try {
-            sh "$hyper volume create --name $container"
-            sh "$hyper volume init $workspace:$container"
-            sh "$hyper run --size=s4 --name $container --entrypoint '/bin/sh' -v $container:$appDir -w $appDir php:5.6-alpine ./ci/init/run.sh"
-            sh "$hyper snapshot create --name $container -v $container"
-          } finally {
-            sh "$hyper rm $container || true"
-          }
-        }
+        script createSnapshot()
       }
     }
 
@@ -91,9 +95,7 @@ pipeline {
     stage('QA') {
       steps {
         sh "env"
-        script {
-          return runHyper("qa", "7.1", "7.1", appDir, appDir, "./ci/qa/run.sh", "")
-        }
+        script runHyper("qa", "7.1", "7.1", appDir, appDir, "./ci/qa/run.sh", "")
       }
     }
   }
