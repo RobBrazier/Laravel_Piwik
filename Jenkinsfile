@@ -52,5 +52,7 @@ node {
     parallel integrationTestSteps
   }
 
-  stage('QA') runHyper("qa", "7.1", "7.1", appDir, appDir, "./ci/qa/run.sh", "")
+  stage('QA') {
+    script runHyper("qa", "7.1", "7.1", appDir, appDir, "./ci/qa/run.sh", "")
+  }
 }
