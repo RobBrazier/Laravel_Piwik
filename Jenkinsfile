@@ -55,14 +55,11 @@ node {
   stage('QA') {
     def workspace = pwd()
     container = "$containerNamePrefix-qa-${BUILD_NUMBER}"
-    sh "$hyper volume create --name $container"
-    sh "$hyper volume init $workspace:$container"
     try {
-      sh "$hyper run --size=s4 --rm --entrypoint '/bin/sh' -v $container:$appDir -w $appDir php:7.1-alpine ./ci/scripts/qaInit.sh"
-      sh "$hyper run --size=s4 --rm -v $container:/app robbrazier/composer-xdebug 'run-script test && cat /app/reports/tests.xml' > $workspace/junit.xml"
-      junit "$workspace/junit.xml"
+      sh "$hyper run --size=s4 --name $container --entrypoint '/bin/sh' -v $workspace:$appDir -w $appDir php:7.1-alpine ./ci/scripts/qa.sh"
+      // junit "$workspace/junit.xml"
     } finally {
-      sh "$hyper volume rm $container || true"
+      sh "$hyper rm -v $container || true"
     }
   }
 }
