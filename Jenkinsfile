@@ -26,34 +26,43 @@ def integrationTest(laravelVersion) {
   return runHyper("integration", "7.1", laravelVersion, "$appDir/plugin", appDir, "./plugin/ci/integration/run.sh", "LARAVEL_VERSION=$laravelVersion")
 }
 
-node {
+pipeline {
+  agent any
   properties([buildDiscarder(logRotator(numToKeepStr: '20'))])
-  stage('Checkout') {
-    checkout scm
-  }
-
-  stage('Unit Tests') {
-    phpVersions = ['5.6', '7.0', '7.1']
-    unitTestSteps = [:]
-    for (int i = 0; i < phpVersions.size(); i++) {
-      def phpVersion = phpVersions.get(i)
-      unitTestSteps["PHP ${phpVersion}"] = unitTest(phpVersion)
+  stages {
+    stage('Checkout') {
+      checkout scm
     }
-    parallel unitTestSteps
-  }
 
-  stage('Integration Tests') {
-    laravelVersions = ['5.1', '5.2', '5.3', '5.4']
-    integrationTestSteps = [:]
-    for (int i = 0; i < laravelVersions.size(); i++) {
-      def laravelVersion = laravelVersions.get(i)
-      integrationTestSteps["Laravel ${laravelVersion}"] = integrationTest(laravelVersion)
+    stage('Unit Tests') {
+      phpVersions = ['5.6', '7.0', '7.1']
+      unitTestSteps = [:]
+      for (int i = 0; i < phpVersions.size(); i++) {
+        def phpVersion = phpVersions.get(i)
+        unitTestSteps["PHP ${phpVersion}"] = unitTest(phpVersion)
+      }
+      parallel unitTestSteps
     }
-    parallel integrationTestSteps
+
+    stage('Integration Tests') {
+      laravelVersions = ['5.1', '5.2', '5.3', '5.4']
+      integrationTestSteps = [:]
+      for (int i = 0; i < laravelVersions.size(); i++) {
+        def laravelVersion = laravelVersions.get(i)
+        integrationTestSteps["Laravel ${laravelVersion}"] = integrationTest(laravelVersion)
+      }
+      parallel integrationTestSteps
+    }
+
+    stage('QA') {
+      sh "env"
+      script runHyper("qa", "7.1", "7.1", appDir, appDir, "./ci/qa/run.sh", "")
+    }
   }
 
-  stage('QA') {
-    sh "env"
-    script runHyper("qa", "7.1", "7.1", appDir, appDir, "./ci/qa/run.sh", "")
+  post {
+    always {
+      echo 'Finished!'
+    }
   }
 }
