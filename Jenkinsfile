@@ -18,21 +18,22 @@ def createSnapshot() {
   }
 }
 
-def runHyper(category, phpVersion, uniqueIdentifier, appDir, workingDir, script, environment) {
+def runHyper(category, phpVersion, uniqueIdentifier, appDir, workingDir, scriptPath, envVars) {
   return {
     def container = "$containerNamePrefix-$category-${uniqueIdentifier.replace('.', '-')}-${BUILD_NUMBER}"
     def workspace = pwd()
     def envArgument = ""
-    if (!environment.isEmpty()) {
-      envVars = environment.split(",")
-      for (int i = 0; i < envVars.size(); i++) {
-        def envVar = envVars.get(i).trim()
+    if (!envVars.isEmpty()) {
+      vars = envVars.split(",")
+      print vars
+      for (int i = 0; i < vars.size(); i++) {
+        def envVar = vars.get(i).trim()
         envArgument += "--env $envVar "
       }
     }
     try {
       sh "$hyper volume create --snapshot=$snapshotVolume --name $container"
-      sh "$hyper run --size=s4 --name $container $envArgument --entrypoint '/bin/sh' -v $container:$appDir -w $workingDir php:${phpVersion}-alpine $script"
+      sh "$hyper run --size=s4 --name $container $envArgument --entrypoint '/bin/sh' -v $container:$appDir -w $workingDir php:${phpVersion}-alpine $scriptPath"
     } finally {
       sh "$hyper rm $container || true"
       sh "$hyper volume rm $container || true"
