@@ -24,7 +24,11 @@ def runHyper(category, phpVersion, uniqueIdentifier, appDir, workingDir, script,
     def workspace = pwd()
     def envArgument = ""
     if (!environment.isEmpty()) {
-      envArgument = "--env $environment"
+      envVars = environment.split(",")
+      for (int i = 0; i < envVars.size(); i++) {
+        def envVar = envVars.get(i).trim()
+        envArgument += "--env $envVar "
+      }
     }
     try {
       sh "$hyper volume create --snapshot=$snapshotVolume --name $container"
@@ -80,7 +84,7 @@ node {
 
     stage('QA') {
       withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 'SONAR_TOKEN'), string(credentialsId: 'GITHUB_TOKEN', variable: 'GITHUB_TOKEN')]) {
-          script runHyper("qa", "7.1", "7.1", appDir, appDir, "./ci/qa/run.sh", "SONAR_TOKEN=$SONAR_TOKEN,GITHUB_TOKEN=$GITHUB_TOKEN")
+          script runHyper("qa", "7.1", "7.1", appDir, appDir, "./ci/qa/run.sh", "SONAR_TOKEN=$SONAR_TOKEN, GITHUB_TOKEN=$GITHUB_TOKEN")
       }
     }
   } catch (exc) {
