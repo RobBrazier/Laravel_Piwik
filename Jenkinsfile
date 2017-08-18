@@ -79,7 +79,9 @@ node {
     }
 
     stage('QA') {
-      script runHyper("qa", "7.1", "7.1", appDir, appDir, "./ci/qa/run.sh", "")
+      withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 'SONAR_TOKEN'), string(credentialsId: 'GITHUB_TOKEN', variable: 'GITHUB_TOKEN')]) {
+          script runHyper("qa", "7.1", "7.1", appDir, appDir, "./ci/qa/run.sh", "SONAR_TOKEN=$SONAR_TOKEN,GITHUB_TOKEN=$GITHUB_TOKEN")
+      }
     }
   } catch (exc) {
     echo 'Failed :('
