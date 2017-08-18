@@ -53,14 +53,14 @@ node {
   }
 
   stage('QA') {
-    container = "$containerNamePrefix-qa-${BUILD_NUMBER}"
-    sh "$hyper volume create --name $container"
-    sh "$hyper volume init $workspace:$container"
-    try {
-      sh "$hyper run --size=s4 --rm --entrypoint '/bin/sh' -v $container:$appDir -w $appDir php:7.1-alpine ./ci/scripts/qaInit.sh"
-      sh "$hyper run --size=s4 --rm -i -v $container:/app -t robbrazier/composer-xdebug run-script test"
-    } finally {
-      sh "$hyper volume rm $container"
-    }
+  //  container = "$containerNamePrefix-qa-${BUILD_NUMBER}"
+  //  sh "$hyper volume create --name $container"
+  //  sh "$hyper volume init $workspace:$container"
+  //  try {
+  //    sh "$hyper run --size=s4 --rm --entrypoint '/bin/sh' -v $container:$appDir -w $appDir php:7.1-alpine ./ci/scripts/qaInit.sh"
+  //    sh "$hyper run --size=s4 --rm -i -v $container:/app -t robbrazier/composer-xdebug run-script test"
+  //  } finally {
+  //    sh "$hyper volume rm $container"
+  //  }
   }
 }
