@@ -8,7 +8,7 @@ runScript() {
 }
 
 runScript "$SCRIPTS_DIR/install.sh"
-apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community php7-xdebug
+apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community php7-xdebug wget ca-certificates
 docker-php-ext-enable /usr/lib/php7/modules/xdebug.so
 runScript "composer run-script test"
 runScript "$SCRIPTS_DIR/sonar.sh"
