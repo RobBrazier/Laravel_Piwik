@@ -1,16 +1,17 @@
 #!/bin/bash
-
-# env
-# sed -i 's/\/app/\/data/g' coverage.xml
-# version="$(jq -M -r '.version' composer.json)"
-# cmd="docker run -it -v $(pwd):/data letsdeal/sonar-scanner:2.8 -Dsonar.projectVersion=$version"
+scanner_download="https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.0.3.778-linux.zip"
+curl -o /tmp/scanner.zip $scanner_download
+unzip -a /tmp/scanner.zip
+executable="$(ls /tmp/sonar*/bin/sonar-scanner)"
+version="$(jq -M -r '.version' composer.json)"
+cmd="$executable -Dsonar.projectVersion=$version"
 # if [[ "$SEMAPHORE_REPO_SLUG" == "RobBrazier/Laravel_Piwik" ]]; then
 #   pr_num="$(curl https://api.github.com/repos/RobBrazier/Laravel_Piwik/pulls?head=RobBrazier:$BRANCH_NAME | jq .[0].number)"
 #   if [[ "$pr_num" -ne "null" ]]; then
 #     CHANGE_ID="$pr_num"
 #   fi
 # fi
-# [[ "$BRANCH_NAME" == "master" ]] || cmd="$cmd -Dsonar.analysis.mode=preview"
-# [[ "$CHANGE_ID" == "" ]] || cmd="$cmd -Dsonar.github.pullRequest=$PULL_REQUEST_NUMBER"
-#
-# exec $cmd
+[[ "$BRANCH_NAME" == "master" ]] || cmd="$cmd -Dsonar.analysis.mode=preview"
+[[ "$CHANGE_ID" == "" ]] || cmd="$cmd -Dsonar.github.pullRequest=$PULL_REQUEST_NUMBER"
+
+echo $cmd
