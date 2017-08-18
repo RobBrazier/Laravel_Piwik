@@ -55,6 +55,7 @@ pipeline {
 
     stage('Install') {
       steps {
+        sh "echo 'Installing composer dependencies'"
         script {
           return createSnapshot()
         }
