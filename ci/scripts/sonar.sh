@@ -1,6 +1,6 @@
 #!/bin/bash
 
-env
+# env
 # sed -i 's/\/app/\/data/g' coverage.xml
 # version="$(jq -M -r '.version' composer.json)"
 # cmd="docker run -it -v $(pwd):/data letsdeal/sonar-scanner:2.8 -Dsonar.projectVersion=$version"
