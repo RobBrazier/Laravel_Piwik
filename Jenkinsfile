@@ -45,6 +45,7 @@ pipeline {
   agent any
   options {
     buildDiscarder(logRotator(numToKeepStr: '20'))
+    disableConcurrentBuilds()
   }
   stages {
     stage('Checkout') {
@@ -62,7 +63,7 @@ pipeline {
           sh "$hyper volume create --name $container"
           sh "$hyper volume init $workspace:$container"
           try {
-            sh "$hyper run --size=s4 --name $container --entrypoint '/bin/sh sudo -u www-data -H' -v $container:$appDir -w $appDir php:5.6-alpine ./ci/scripts/install.sh"
+            sh "$hyper run --size=s4 --name $container --entrypoint '/bin/sh' -v $container:$appDir -w $appDir php:5.6-alpine ./ci/init/run.sh"
             sh "$hyper snapshot create --name $container -v $container"
           } finally {
             sh "$hyper rm -v $container || true"
@@ -110,7 +111,7 @@ pipeline {
   }
   post {
     always {
-      sh "$hyper snapshot rm $containerNamePrefix-snapshot-${BUILD_NUMBER}"
+      sh "$hyper snapshot rm $containerNamePrefix-snapshot-${BUILD_NUMBER} || true"
     }
   }
 }
