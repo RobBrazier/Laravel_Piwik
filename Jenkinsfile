@@ -55,7 +55,6 @@ pipeline {
             sh "$hyper snapshot create --name $container -v $container"
           } finally {
             sh "$hyper rm $container || true"
-            sh "$hyper volume rm $container || true"
           }
         }
       }
@@ -64,7 +63,7 @@ pipeline {
     stage('Unit Tests') {
       steps {
         script {
-          phpVersions = ['5.6']//, '7.0', '7.1']
+          phpVersions = ['5.6', '7.0', '7.1']
           unitTestSteps = [:]
           for (int i = 0; i < phpVersions.size(); i++) {
             def phpVersion = phpVersions.get(i)
@@ -74,33 +73,34 @@ pipeline {
         }
       }
     }
-    //
-    // stage('Integration Tests') {
-    //   steps {
-    //     script {
-    //       laravelVersions = ['5.1', '5.2', '5.3', '5.4']
-    //       integrationTestSteps = [:]
-    //       for (int i = 0; i < laravelVersions.size(); i++) {
-    //         def laravelVersion = laravelVersions.get(i)
-    //         integrationTestSteps["Laravel ${laravelVersion}"] = integrationTest(laravelVersion)
-    //       }
-    //       parallel integrationTestSteps
-    //     }
-    //   }
-    // }
-    //
-    // stage('QA') {
-    //   steps {
-    //     sh "env"
-    //     script {
-    //       return runHyper("qa", "7.1", "7.1", appDir, appDir, "./ci/qa/run.sh", "")
-    //     }
-    //   }
-    // }
+
+    stage('Integration Tests') {
+      steps {
+        script {
+          laravelVersions = ['5.1', '5.2', '5.3', '5.4']
+          integrationTestSteps = [:]
+          for (int i = 0; i < laravelVersions.size(); i++) {
+            def laravelVersion = laravelVersions.get(i)
+            integrationTestSteps["Laravel ${laravelVersion}"] = integrationTest(laravelVersion)
+          }
+          parallel integrationTestSteps
+        }
+      }
+    }
+
+    stage('QA') {
+      steps {
+        sh "env"
+        script {
+          return runHyper("qa", "7.1", "7.1", appDir, appDir, "./ci/qa/run.sh", "")
+        }
+      }
+    }
   }
   post {
     always {
       sh "$hyper snapshot rm $snapshotVolume || true"
+      sh "$hyper volume rm $snapshotVolume || true"
     }
   }
 }
