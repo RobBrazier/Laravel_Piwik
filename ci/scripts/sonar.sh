@@ -1,6 +1,6 @@
 #!/bin/bash
 scanner_download="https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.0.3.778-linux.zip"
-curl -o /tmp/scanner.zip $scanner_download
+wget -O /tmp/scanner.zip $scanner_download
 unzip /tmp/scanner.zip -C /tmp
 executable="$(ls /tmp/sonar*/bin/sonar-scanner)"
 version="$(jq -M -r '.version' composer.json)"
