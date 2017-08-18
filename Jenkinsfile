@@ -59,9 +59,9 @@ node {
     sh "$hyper volume init $workspace:$container"
     try {
       sh "$hyper run --size=s4 --rm --entrypoint '/bin/sh' -v $container:$appDir -w $appDir php:7.1-alpine ./ci/scripts/qaInit.sh"
-      sh "$hyper run --size=s4 --rm -i -v $container:/app -t robbrazier/composer-xdebug run-script test"
+      sh "$hyper run --size=s4 --rm -i -v $container:/app robbrazier/composer-xdebug run-script test"
     } finally {
-      sh "$hyper volume rm $container"
+      sh "$hyper volume rm $container || true"
     }
   }
 }
