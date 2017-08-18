@@ -61,7 +61,7 @@ pipeline {
       steps {
         sh "echo 'Installing composer dependencies'"
         script {
-          return createSnapshot()
+          parallel createSnapshot()
         }
       }
     }
@@ -98,7 +98,7 @@ pipeline {
       steps {
         sh "env"
         script {
-          return runHyper("qa", "7.1", "7.1", appDir, appDir, "./ci/qa/run.sh", "")
+          parallel runHyper("qa", "7.1", "7.1", appDir, appDir, "./ci/qa/run.sh", "")
         }
       }
     }
