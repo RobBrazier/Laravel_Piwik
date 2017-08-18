@@ -53,7 +53,7 @@ node {
   }
 
   stage('QA') {
-    def container = "$containerNamePrefix-qa-${BUILD_NUMBER}"
+    container = "$containerNamePrefix-qa-${BUILD_NUMBER}"
     sh "$hyper volume create --name $container"
     sh "$hyper volume init $workspace:$container"
     try {
