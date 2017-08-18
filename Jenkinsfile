@@ -55,7 +55,9 @@ pipeline {
 
     stage('Install') {
       steps {
-        return createSnapshot()
+        script {
+          return createSnapshot()
+        }
       }
     }
 
