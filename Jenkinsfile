@@ -2,19 +2,16 @@ env.hyper = "/var/lib/jenkins/bin/hyper"
 
 def runHyper(category, phpVersion, uniqueIdentifier, appDir, workingDir, script, environment) {
   return {
-    def volume = "jenkins-laravelpiwik-$category-${uniqueIdentifier.replace('.', '-')}-${BUILD_NUMBER}"
+    def container = "jenkins-laravelpiwik-$category-${uniqueIdentifier.replace('.', '-')}-${BUILD_NUMBER}"
     def workspace = pwd()
     def envArgument = ""
     if (!environment.isEmpty()) {
       envArgument = "--env $environment"
     }
-    sh "$hyper volume create --name $volume"
-    sh "$hyper volume init $workspace:$volume"
     try {
-      sh "$hyper run --size=s4 --name $volume $envArgument --entrypoint '/bin/sh' -v $volume:$appDir -w $workingDir php:${phpVersion}-alpine $script"
+      sh "$hyper run --size=s4 --name $container $envArgument --entrypoint '/bin/sh' -v $workspace:$appDir -w $workingDir php:${phpVersion}-alpine $script"
     } finally {
-      sh "$hyper rm $volume || true"
-      sh "$hyper volume rm $volume || true"
+      sh "$hyper rm -v $container || true"
     }
   }
 }
