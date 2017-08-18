@@ -4,7 +4,7 @@ env.appDir = "/usr/src/app"
 env.snapshotVolume = "$containerNamePrefix-snapshot-${BUILD_NUMBER}"
 
 def createSnapshot() {
-  // return {
+  return {
     def container = "$snapshotVolume"
     def workspace = pwd()
     try {
@@ -15,7 +15,7 @@ def createSnapshot() {
     } finally {
       sh "$hyper rm $container || true"
     }
-  // }
+  }
 }
 
 def runHyper(category, phpVersion, uniqueIdentifier, appDir, workingDir, script, environment) {
@@ -61,7 +61,7 @@ pipeline {
       steps {
         sh "echo 'Installing composer dependencies'"
         script {
-          createSnapshot()
+          return createSnapshot()
         }
       }
     }
@@ -97,7 +97,9 @@ pipeline {
     stage('QA') {
       steps {
         sh "env"
-        script runHyper("qa", "7.1", "7.1", appDir, appDir, "./ci/qa/run.sh", "")
+        script {
+          return runHyper("qa", "7.1", "7.1", appDir, appDir, "./ci/qa/run.sh", "")
+        }
       }
     }
   }
