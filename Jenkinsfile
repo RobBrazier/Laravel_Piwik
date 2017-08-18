@@ -53,13 +53,9 @@ node {
   }
 
   stage('QA') {
-    def workspace = pwd()
-    container = "$containerNamePrefix-qa-${BUILD_NUMBER}"
-    try {
-      sh "$hyper run --size=s4 --name $container --entrypoint '/bin/sh' -v $workspace:$appDir -w $appDir php:7.1-alpine ./ci/scripts/qa.sh"
-      // junit "$workspace/junit.xml"
-    } finally {
-      sh "$hyper rm -v $container || true"
-    }
+    def phpVersion = "7.1"
+    def junitFile = "junit.xml"
+    runHyper("qa", phpVersion, phpVersion, appDir, appDir, "./ci/scripts/qa.sh", "") > $junitFile
+    junit $junitFile
   }
 }

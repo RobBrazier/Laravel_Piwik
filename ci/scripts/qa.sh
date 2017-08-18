@@ -11,4 +11,4 @@ runScript "$SCRIPTS_DIR/install.sh"
 apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community php7-xdebug
 docker-php-ext-enable /usr/lib/php7/modules/xdebug.so
 composer run-script test
-ls -la reports/tests.xml
+cat reports/junit.xml
