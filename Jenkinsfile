@@ -40,25 +40,29 @@ pipeline {
 
     stage('Unit Tests') {
       steps {
-        phpVersions = ['5.6', '7.0', '7.1']
-        unitTestSteps = [:]
-        for (int i = 0; i < phpVersions.size(); i++) {
-          def phpVersion = phpVersions.get(i)
-          unitTestSteps["PHP ${phpVersion}"] = unitTest(phpVersion)
+        script {
+          phpVersions = ['5.6', '7.0', '7.1']
+          unitTestSteps = [:]
+          for (int i = 0; i < phpVersions.size(); i++) {
+            def phpVersion = phpVersions.get(i)
+            unitTestSteps["PHP ${phpVersion}"] = unitTest(phpVersion)
+          }
+          parallel unitTestSteps
         }
-        parallel unitTestSteps
       }
     }
 
     stage('Integration Tests') {
       steps {
-        laravelVersions = ['5.1', '5.2', '5.3', '5.4']
-        integrationTestSteps = [:]
-        for (int i = 0; i < laravelVersions.size(); i++) {
-          def laravelVersion = laravelVersions.get(i)
-          integrationTestSteps["Laravel ${laravelVersion}"] = integrationTest(laravelVersion)
+        script {
+          laravelVersions = ['5.1', '5.2', '5.3', '5.4']
+          integrationTestSteps = [:]
+          for (int i = 0; i < laravelVersions.size(); i++) {
+            def laravelVersion = laravelVersions.get(i)
+            integrationTestSteps["Laravel ${laravelVersion}"] = integrationTest(laravelVersion)
+          }
+          parallel integrationTestSteps
         }
-        parallel integrationTestSteps
       }
     }
 
@@ -70,7 +74,7 @@ pipeline {
     }
   }
   post {
-    alway {
+    always {
       echo 'Finished!'
     }
   }
