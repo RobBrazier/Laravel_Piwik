@@ -49,36 +49,38 @@ node {
     buildDiscarder(logRotator(numToKeepStr: '20')),
     disableConcurrentBuilds()
   ])
-  stage('Checkout') {
-    checkout scm
-  }
-
-  stage('Install') {
-    return createSnapshot()
-  }
-
-  stage('Unit Tests') {
-    phpVersions = ['5.6', '7.0', '7.1']
-    unitTestSteps = [:]
-    for (int i = 0; i < phpVersions.size(); i++) {
-      def phpVersion = phpVersions.get(i)
-      unitTestSteps["PHP ${phpVersion}"] = unitTest(phpVersion)
+  try {
+    stage('Checkout') {
+      checkout scm
     }
-    parallel unitTestSteps
-  }
 
-  stage('Integration Tests') {
-    laravelVersions = ['5.1', '5.2', '5.3', '5.4']
-    integrationTestSteps = [:]
-    for (int i = 0; i < laravelVersions.size(); i++) {
-      def laravelVersion = laravelVersions.get(i)
-      integrationTestSteps["Laravel ${laravelVersion}"] = integrationTest(laravelVersion)
+    stage('Install') {
+      return createSnapshot()
     }
-    parallel integrationTestSteps
-  }
 
-  stage('QA') {
-    return runHyper("qa", "7.1", "7.1", appDir, appDir, "./ci/qa/run.sh", "")
+    stage('Unit Tests') {
+      phpVersions = ['5.6', '7.0', '7.1']
+      unitTestSteps = [:]
+      for (int i = 0; i < phpVersions.size(); i++) {
+        def phpVersion = phpVersions.get(i)
+        unitTestSteps["PHP ${phpVersion}"] = unitTest(phpVersion)
+      }
+      parallel unitTestSteps
+    }
+
+    stage('Integration Tests') {
+      laravelVersions = ['5.1', '5.2', '5.3', '5.4']
+      integrationTestSteps = [:]
+      for (int i = 0; i < laravelVersions.size(); i++) {
+        def laravelVersion = laravelVersions.get(i)
+        integrationTestSteps["Laravel ${laravelVersion}"] = integrationTest(laravelVersion)
+      }
+      parallel integrationTestSteps
+    }
+
+    stage('QA') {
+      return runHyper("qa", "7.1", "7.1", appDir, appDir, "./ci/qa/run.sh", "")
+    }
   }
 }
 catch (e) {
