@@ -16,4 +16,4 @@ cmd="$executable -Dsonar.projectVersion=$version"
 [[ "$SONAR_TOKEN" == "" ]] || cmd="$cmd -Dsonar.login=$SONAR_TOKEN"
 [[ "$GITHUB_TOKEN" == "" ]] || cmd="$cmd -Dsonar.github.oauth=$GITHUB_TOKEN"
 
-echo $cmd
+exec $cmd
