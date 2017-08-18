@@ -80,9 +80,11 @@ node {
   stage('QA') {
     return runHyper("qa", "7.1", "7.1", appDir, appDir, "./ci/qa/run.sh", "")
   }
-} catch (e) {
+}
+catch (e) {
   echo 'Failed :('
-} finally {
+}
+finally {
   sh "$hyper snapshot rm $snapshotVolume || true"
   sh "$hyper volume rm $snapshotVolume || true"
 }
