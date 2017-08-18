@@ -2,6 +2,21 @@ env.hyper = "/var/lib/jenkins/bin/hyper"
 env.containerNamePrefix = "jenkins-laravelpiwik"
 env.appDir = "/usr/src/app"
 
+def createSnapshot() {
+  return {
+    def container = "$containerNamePrefix-snapshot-${BUILD_NUMBER}"
+    def workspace = pwd()
+    sh "$hyper volume create --name $container"
+    sh "$hyper volume init $workspace:$container"
+    try {
+      sh "$hyper run --size=s4 --name $container --entrypoint '/bin/sh sudo -u www-data -H' -v $container:$appDir -w $appDir php:5.6-alpine ./ci/scripts/install.sh"
+      sh "$hyper snapshot create --name $container -v $container"
+    } finally {
+      sh "$hyper rm -v $container || true"
+    }
+  }
+}
+
 def runHyper(category, phpVersion, uniqueIdentifier, appDir, workingDir, script, environment) {
   return {
     def container = "$containerNamePrefix-$category-${uniqueIdentifier.replace('.', '-')}-${BUILD_NUMBER}"
@@ -35,6 +50,12 @@ pipeline {
     stage('Checkout') {
       steps {
         checkout scm
+      }
+    }
+
+    stage('Install') {
+      steps {
+        return createSnapshot()
       }
     }
 
@@ -77,7 +98,7 @@ pipeline {
   }
   post {
     always {
-      echo 'Finished!'
+      sh "$hyper snapshot rm $containerNamePrefix-snapshot-${BUILD_NUMBER}"
     }
   }
 }
