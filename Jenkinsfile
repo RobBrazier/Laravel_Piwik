@@ -25,9 +25,8 @@ def runHyper(category, phpVersion, uniqueIdentifier, appDir, workingDir, scriptP
     def envArgument = ""
     if (!envVars.isEmpty()) {
       vars = envVars.split(",")
-      print vars
       for (int i = 0; i < vars.size(); i++) {
-        def envVar = vars.get(i).trim()
+        def envVar = vars[i].trim()
         envArgument += "--env $envVar "
       }
     }
