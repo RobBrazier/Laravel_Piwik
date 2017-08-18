@@ -57,47 +57,56 @@ pipeline {
       steps {
         sh "echo 'Installing composer dependencies'"
         script {
-          return createSnapshot()
-        }
-      }
-    }
-
-    stage('Unit Tests') {
-      steps {
-        script {
-          phpVersions = ['5.6', '7.0', '7.1']
-          unitTestSteps = [:]
-          for (int i = 0; i < phpVersions.size(); i++) {
-            def phpVersion = phpVersions.get(i)
-            unitTestSteps["PHP ${phpVersion}"] = unitTest(phpVersion)
+          def container = "$containerNamePrefix-snapshot-${BUILD_NUMBER}"
+          def workspace = pwd()
+          sh "$hyper volume create --name $container"
+          sh "$hyper volume init $workspace:$container"
+          try {
+            sh "$hyper run --size=s4 --name $container --entrypoint '/bin/sh sudo -u www-data -H' -v $container:$appDir -w $appDir php:5.6-alpine ./ci/scripts/install.sh"
+            sh "$hyper snapshot create --name $container -v $container"
+          } finally {
+            sh "$hyper rm -v $container || true"
           }
-          parallel unitTestSteps
         }
       }
     }
 
-    stage('Integration Tests') {
-      steps {
-        script {
-          laravelVersions = ['5.1', '5.2', '5.3', '5.4']
-          integrationTestSteps = [:]
-          for (int i = 0; i < laravelVersions.size(); i++) {
-            def laravelVersion = laravelVersions.get(i)
-            integrationTestSteps["Laravel ${laravelVersion}"] = integrationTest(laravelVersion)
-          }
-          parallel integrationTestSteps
-        }
-      }
-    }
-
-    stage('QA') {
-      steps {
-        sh "env"
-        script {
-          return runHyper("qa", "7.1", "7.1", appDir, appDir, "./ci/qa/run.sh", "")
-        }
-      }
-    }
+    // stage('Unit Tests') {
+    //   steps {
+    //     script {
+    //       phpVersions = ['5.6', '7.0', '7.1']
+    //       unitTestSteps = [:]
+    //       for (int i = 0; i < phpVersions.size(); i++) {
+    //         def phpVersion = phpVersions.get(i)
+    //         unitTestSteps["PHP ${phpVersion}"] = unitTest(phpVersion)
+    //       }
+    //       parallel unitTestSteps
+    //     }
+    //   }
+    // }
+    //
+    // stage('Integration Tests') {
+    //   steps {
+    //     script {
+    //       laravelVersions = ['5.1', '5.2', '5.3', '5.4']
+    //       integrationTestSteps = [:]
+    //       for (int i = 0; i < laravelVersions.size(); i++) {
+    //         def laravelVersion = laravelVersions.get(i)
+    //         integrationTestSteps["Laravel ${laravelVersion}"] = integrationTest(laravelVersion)
+    //       }
+    //       parallel integrationTestSteps
+    //     }
+    //   }
+    // }
+    //
+    // stage('QA') {
+    //   steps {
+    //     sh "env"
+    //     script {
+    //       return runHyper("qa", "7.1", "7.1", appDir, appDir, "./ci/qa/run.sh", "")
+    //     }
+    //   }
+    // }
   }
   post {
     always {
