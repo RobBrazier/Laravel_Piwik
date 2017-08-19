@@ -32,7 +32,7 @@ def runHyper(category, phpVersion, uniqueIdentifier, appDir, workingDir, scriptP
     }
     try {
       sh "$hyper volume create --snapshot=$snapshotVolume --name $container"
-      sh "$hyper run --size=s4 --name $container $envArgument --entrypoint '/bin/sh' -v $container:$appDir -w $workingDir php:${phpVersion}-alpine $scriptPath"
+      sh "$hyper run --size=m1 --name $container $envArgument --entrypoint '/bin/sh' -v $container:$appDir -w $workingDir php:${phpVersion}-alpine $scriptPath"
     } finally {
       sh "$hyper rm $container || true"
       sh "$hyper volume rm $container || true"
@@ -84,7 +84,11 @@ node {
 
     stage('QA') {
       withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 'SONAR_TOKEN'), string(credentialsId: 'GITHUB_TOKEN', variable: 'GITHUB_TOKEN')]) {
-          script runHyper("qa", "7.1", "7.1", appDir, appDir, "./ci/qa/run.sh", "BRANCH_NAME=\"$env.BRANCH_NAME\", CHANGE_ID=\"$env.CHANGE_ID\", SONAR_TOKEN=\"$SONAR_TOKEN\", GITHUB_TOKEN=\"$GITHUB_TOKEN\"")
+          changeId = env.CHANGE_ID
+          if (changeId == null) {
+            changeId = ""
+          }
+          script runHyper("qa", "7.1", "7.1", appDir, appDir, "./ci/qa/run.sh", "BRANCH_NAME=\"$env.BRANCH_NAME\", CHANGE_ID=\"$changeId\", SONAR_TOKEN=\"$SONAR_TOKEN\", GITHUB_TOKEN=\"$GITHUB_TOKEN\"")
       }
     }
   } catch (e) {
