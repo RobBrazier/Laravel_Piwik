@@ -84,11 +84,12 @@ node {
 
     stage('QA') {
       withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 'SONAR_TOKEN'), string(credentialsId: 'GITHUB_TOKEN', variable: 'GITHUB_TOKEN')]) {
-          script runHyper("qa", "7.1", "7.1", appDir, appDir, "./ci/qa/run.sh", "SONAR_TOKEN=$SONAR_TOKEN, GITHUB_TOKEN=$GITHUB_TOKEN")
+          script runHyper("qa", "7.1", "7.1", appDir, appDir, "./ci/qa/run.sh", "BRANCH_NAME=\"$BRANCH_NAME\", CHANGE_ID=\"$CHANGE_ID\", SONAR_TOKEN=\"$SONAR_TOKEN\", GITHUB_TOKEN=\"$GITHUB_TOKEN\"")
       }
     }
-  } catch (exc) {
+  } catch (e) {
     echo 'Failed :('
+    throw e
   }
   finally {
     sh "$hyper snapshot rm $snapshotVolume || true"
