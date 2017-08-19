@@ -10,7 +10,7 @@ def createSnapshot() {
     try {
       sh "$hyper volume create --name $container"
       sh "$hyper volume init $workspace:$container"
-      sh "$hyper run --size=s4 --name $container --entrypoint '/bin/sh' -v $container:$appDir -w $appDir php:5.6-alpine ./ci/init/run.sh"
+      sh "$hyper run --size=m1 --name $container --entrypoint '/bin/sh' -v $container:$appDir -w $appDir php:5.6-alpine ./ci/init/run.sh"
       sh "$hyper snapshot create --name $container -v $container"
     } finally {
       sh "$hyper rm $container || true"
