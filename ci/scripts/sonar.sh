@@ -1,13 +1,12 @@
 #!/bin/bash
 set -x
-scanner_download="https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.0.3.778-linux.zip"
+scanner_download="https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-2.8.zip"
 wget -qO /tmp/scanner.zip $scanner_download
 unzip -q /tmp/scanner.zip -d /tmp
 rm /tmp/scanner.zip
 executable="$(ls /tmp/sonar*/bin/sonar-scanner)"
 version="$(jq -M -r '.version' composer.json)"
 cmd="$executable -Dsonar.projectVersion=$version"
-chmod u+x /tmp/sonar*/**/*
 # if [[ "$SEMAPHORE_REPO_SLUG" == "RobBrazier/Laravel_Piwik" ]]; then
 #   pr_num="$(curl https://api.github.com/repos/RobBrazier/Laravel_Piwik/pulls?head=RobBrazier:$BRANCH_NAME | jq .[0].number)"
 #   if [[ "$pr_num" -ne "null" ]]; then
