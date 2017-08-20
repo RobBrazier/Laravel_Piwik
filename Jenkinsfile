@@ -33,7 +33,7 @@ def runHyper(category, phpVersion, uniqueIdentifier, appDir, workingDir, scriptP
     }
     try {
       sh "$hyper volume create --snapshot=$snapshotVolume --name $container"
-      sh "$hyper run --size=$containerSize --name $container --link $apkCache:dl-cdn.alpinelinux.org $envArgument --entrypoint '/bin/sh' -v $container:$appDir -w $workingDir php:${phpVersion}-alpine $scriptPath"
+      sh "$hyper run --size=$containerSize --name $container $envArgument --entrypoint '/bin/sh' -v $container:$appDir -w $workingDir php:${phpVersion}-alpine $scriptPath"
     } finally {
       sh "$hyper rm $container || true"
       sh "$hyper volume rm $container || true"
