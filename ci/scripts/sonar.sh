@@ -1,6 +1,7 @@
 #!/bin/bash
 set -x
-scanner_download="https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.0.3.778-linux.zip"
+# scanner_download="https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.0.3.778-linux.zip"
+scanner_download="https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-2.8.zip"
 wget -qO /tmp/scanner.zip $scanner_download
 unzip -q /tmp/scanner.zip -d /tmp
 rm /tmp/scanner.zip
@@ -18,7 +19,7 @@ cmd="$executable -Dsonar.projectVersion=$version"
 [[ "$SONAR_TOKEN" == "" ]] || cmd="$cmd -Dsonar.login=$SONAR_TOKEN"
 [[ "$GITHUB_TOKEN" == "" ]] || cmd="$cmd -Dsonar.github.oauth=$GITHUB_TOKEN"
 
-# sed -i 's/#echo/echo/g' /tmp/sonar*/bin/sonar-scanner
-# sed -i 's/exec/echo/g' /tmp/sonar*/bin/sonar-scanner
-# sed -i 's/exec/ls -la $java_cmd \&\& exec/g' $sexecutable
+sed -i 's/#echo/echo/g' $executable
+# sed -i 's/exec/echo/g' $executable
+# sed -i 's/exec/ls -la $java_cmd \&\& exec/g' $executable
 exec $cmd

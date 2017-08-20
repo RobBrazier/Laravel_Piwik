@@ -2,6 +2,7 @@ env.hyper = "/var/lib/jenkins/bin/hyper"
 env.containerNamePrefix = "jenkins-laravelpiwik"
 env.appDir = "/usr/src/app"
 env.snapshotVolume = "$containerNamePrefix-snapshot-${BUILD_NUMBER}"
+env.containerSize = "s4"
 
 def createSnapshot() {
   return {
@@ -10,7 +11,7 @@ def createSnapshot() {
     try {
       sh "$hyper volume create --name $container"
       sh "$hyper volume init $workspace:$container"
-      sh "$hyper run --size=s4 --name $container --entrypoint '/bin/sh' -v $container:$appDir -w $appDir php:5.6 ./ci/init/run.sh"
+      sh "$hyper run --size=$containerSize --name $container --entrypoint '/bin/sh' -v $container:$appDir -w $appDir php:5.6-alpine ./ci/init/run.sh"
       sh "$hyper snapshot create --name $container -v $container"
     } finally {
       sh "$hyper rm $container || true"
@@ -32,7 +33,7 @@ def runHyper(category, phpVersion, uniqueIdentifier, appDir, workingDir, scriptP
     }
     try {
       sh "$hyper volume create --snapshot=$snapshotVolume --name $container"
-      sh "$hyper run --size=s4 --name $container $envArgument --entrypoint '/bin/sh' -v $container:$appDir -w $workingDir php:${phpVersion} $scriptPath"
+      sh "$hyper run --size=$containerSize --name $container --link $apkCache:dl-cdn.alpinelinux.org $envArgument --entrypoint '/bin/sh' -v $container:$appDir -w $workingDir php:${phpVersion}-alpine $scriptPath"
     } finally {
       sh "$hyper rm $container || true"
       sh "$hyper volume rm $container || true"
