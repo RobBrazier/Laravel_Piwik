@@ -1,7 +1,7 @@
 #!/bin/bash
 set -x
 # scanner_download="https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.0.3.778-linux.zip"
-scanner_download="https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-2.8.zip"
+scanner_download="https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.0.3.778.zip"
 wget -qO /tmp/scanner.zip $scanner_download
 unzip -q /tmp/scanner.zip -d /tmp
 rm /tmp/scanner.zip
