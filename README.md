@@ -1,7 +1,7 @@
 Laravel-Piwik v3.0.1
 ====================
 
-[![Build Status](https://semaphoreci.com/api/v1/robbrazier/laravel_piwik/branches/master/shields_badge.svg)](https://semaphoreci.com/robbrazier/laravel_piwik)
+[![Jenkins](https://img.shields.io/jenkins/s/https/ci.brazier.cloud/job/RobBrazier/job/Laravel_Piwik/job/master.svg)](https://ci.brazier.cloud/blue/organizations/jenkins/RobBrazier%2FLaravel_Piwik/branches)
 [![Sonarqube Quality Gate](https://sonarcloud.io/api/badges/gate?key=com.github.RobBrazier%3ALaravel_Piwik)](https://sonarcloud.io/dashboard?id=com.github.RobBrazier%3ALaravel_Piwik)
 [![Sonarqube Code Coverage](https://sonarcloud.io/api/badges/measure?key=com.github.RobBrazier%3ALaravel_Piwik&metric=coverage)](https://sonarcloud.io/dashboard?id=com.github.RobBrazier%3ALaravel_Piwik)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%205.6-8892BF.svg?style=flat)](https://php.net/)
