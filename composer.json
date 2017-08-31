@@ -22,7 +22,8 @@
         "phpspec/prophecy": "^1.7"
     },
     "scripts": {
-        "test": "phpunit"
+        "test": "phpunit",
+        "coverage": "phpdbg -qrr ./vendor/bin/phpunit"
     },
     "autoload": {
         "psr-0": {
