@@ -1,2 +1,2 @@
 #!/bin/bash
-./vendor/bin/phpunit
+composer run-script test

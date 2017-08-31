@@ -1,7 +1,8 @@
 #!/bin/sh
-if [[ "$1" -eq "true" ]]; then
+set -x
+if [[ "$1" == "true" ]]; then
   composer global require hirak/prestissimo --no-progress
 fi
-if [[ "$2" -eq "true" ]]; then
+if [[ "$2" == "true" ]]; then
   composer install --no-suggest --no-progress
 fi
