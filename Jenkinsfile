@@ -89,7 +89,7 @@ node {
           if (changeId == null) {
             changeId = ""
           }
-          script runHyper("qa", "7.1", "7.1", appDir, appDir, "./ci/qa/run.sh", "BRANCH_NAME=\"$env.BRANCH_NAME\", CHANGE_ID=\"$changeId\", SONAR_TOKEN=\"$SONAR_TOKEN\", GITHUB_TOKEN=\"$GITHUB_TOKEN\"")
+          script runHyper("qa", "7.2-rc", "7.2-rc", appDir, appDir, "./ci/qa/run.sh", "BRANCH_NAME=\"$env.BRANCH_NAME\", CHANGE_ID=\"$changeId\", SONAR_TOKEN=\"$SONAR_TOKEN\", GITHUB_TOKEN=\"$GITHUB_TOKEN\"")
       }
     }
   } catch (e) {
