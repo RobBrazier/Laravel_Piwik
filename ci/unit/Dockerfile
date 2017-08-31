@@ -15,6 +15,6 @@ RUN "$SCRIPTS_DIR/setup.sh"
 
 USER www-data
 
-RUN "$SCRIPTS_DIR/install.sh"
+RUN "$SCRIPTS_DIR/install.sh true true"
 
 CMD "$SCRIPTS_DIR/test.sh"
