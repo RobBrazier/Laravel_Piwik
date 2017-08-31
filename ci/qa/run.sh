@@ -7,7 +7,7 @@ runScript() {
   sudo -E -u www-data -H $*
 }
 
-runScript "bash $SCRIPTS_DIR/install.sh"
+runScript "bash $SCRIPTS_DIR/install.sh false false"
 apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
     php7-xdebug wget openjdk8-jre
 docker-php-ext-enable $(find / -name xdebug.so)
