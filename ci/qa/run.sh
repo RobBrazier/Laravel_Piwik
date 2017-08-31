@@ -9,7 +9,7 @@ runScript() {
 
 runScript "bash $SCRIPTS_DIR/install.sh"
 apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
-    php7-xdebug wget ca-certificates openjdk8-jre
+    php7-xdebug wget openjdk8-jre
 docker-php-ext-enable $(find / -name xdebug.so)
 export COMPOSER_ALLOW_XDEBUG="1"
 export COMPOSER_DISABLE_XDEBUG_WARN="1"
