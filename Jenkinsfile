@@ -1,52 +1,19 @@
-env.hyper = "/var/lib/jenkins/bin/hyper"
-env.containerNamePrefix = "jenkins-laravelpiwik"
-env.appDir = "/usr/src/app"
-env.snapshotVolume = "$containerNamePrefix-snapshot-${BUILD_NUMBER}"
-env.containerSize = "s4"
-
-def createSnapshot() {
-  return {
-    def container = "$snapshotVolume"
-    def workspace = pwd()
-    try {
-      sh "$hyper volume create --name $container"
-      sh "$hyper volume init $workspace:$container"
-      sh "$hyper run --size=$containerSize --name $container --entrypoint '/bin/sh' -v $container:$appDir -w $appDir php:5.6-alpine ./ci/init/run.sh"
-      sh "$hyper snapshot create --name $container -v $container"
-    } finally {
-      sh "$hyper rm $container || true"
-    }
-  }
-}
-
-def runHyper(category, phpVersion, uniqueIdentifier, appDir, workingDir, scriptPath, envVars) {
-  return {
-    def container = "$containerNamePrefix-$category-${uniqueIdentifier.replace('.', '-')}-${BUILD_NUMBER}"
-    def workspace = pwd()
-    def envArgument = ""
-    if (!envVars.isEmpty()) {
-      vars = envVars.split(",")
-      for (int i = 0; i < vars.size(); i++) {
-        def envVar = vars[i].trim()
-        envArgument += "--env $envVar "
-      }
-    }
-    try {
-      sh "$hyper volume create --snapshot=$snapshotVolume --name $container"
-      sh "$hyper run --size=$containerSize --name $container $envArgument --entrypoint '/bin/sh' -v $container:$appDir -w $workingDir php:${phpVersion}-alpine $scriptPath"
-    } finally {
-      sh "$hyper rm $container || true"
-      sh "$hyper volume rm $container || true"
-    }
-  }
-}
-
+env.HYPER_EXECUTABLE = "/var/lib/jenkins/bin/hyper"
+env.runner = "./runnerfile.sh"
 def unitTest(phpVersion) {
-  return runHyper("unit", phpVersion, phpVersion, appDir, appDir, "./ci/unit/run.sh", "")
+  return {
+    withEnv(["PHP_VERSION=$phpVersion"]) {
+      sh "$runner unitTest"
+    }
+  }
 }
 
 def integrationTest(laravelVersion) {
-  return runHyper("integration", "7.1", laravelVersion, "$appDir/plugin", appDir, "./plugin/ci/integration/run.sh", "LARAVEL_VERSION=$laravelVersion")
+  return {
+    withEnv(["LARAVEL_VERSION=$laravelVersion"]) {
+      sh "$runner integrationTest"
+    }
+  }
 }
 
 node {
@@ -60,7 +27,7 @@ node {
     }
 
     stage('Install') {
-      script createSnapshot()
+      sh "$runner install"
     }
 
     stage('Unit Tests') {
@@ -89,7 +56,7 @@ node {
           if (changeId == null) {
             changeId = ""
           }
-          script runHyper("qa", "7.2-rc", "7.2-rc", appDir, appDir, "./ci/qa/run.sh", "BRANCH_NAME=\"$env.BRANCH_NAME\", CHANGE_ID=\"$changeId\", SONAR_TOKEN=\"$SONAR_TOKEN\", GITHUB_TOKEN=\"$GITHUB_TOKEN\"")
+          sh "$runner qa"
       }
     }
   } catch (e) {
@@ -97,7 +64,6 @@ node {
     throw e
   }
   finally {
-    sh "$hyper snapshot rm $snapshotVolume || true"
-    sh "$hyper volume rm $snapshotVolume || true"
+    sh "$runner cleanup"
   }
 }
