@@ -67,7 +67,7 @@ task_daux() {
   volumeName="$containerNamePrefix-publish-docs"
   containerName="$volumeName-daux"
   {
-    run_container $containerName $volumeName $appDir $appDir "php:5.6-alpine" "./ci/docs/daux.sh"
+    run_container $containerName $volumeName $appDir $appDir "php:7.1-alpine" "./ci/docs/daux.sh"
   } && {
     destroy_container $containerName
   } || {
@@ -81,7 +81,7 @@ task_sami() {
   volumeName="$containerNamePrefix-publish-docs"
   containerName="$volumeName-sami"
   {
-    run_container $containerName $volumeName $appDir $appDir "php:5.6-alpine" "./ci/docs/sami.sh"
+    run_container $containerName $volumeName $appDir $appDir "php:7.1-alpine" "./ci/docs/sami.sh"
   } && {
     destroy_container $containerName
   } || {
