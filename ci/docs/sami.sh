@@ -12,7 +12,7 @@ runScript() {
 }
 
 sh "$SCRIPTS_DIR/setup.sh"
-runScript "bash $SCRIPTS_DIR/install.sh" false false
+runScript "bash $SCRIPTS_DIR/install.sh" true false
 chown -R www-data:www-data ..
 apk add --no-cache git
 runScript composer global require "sami/sami:4.0.*"
