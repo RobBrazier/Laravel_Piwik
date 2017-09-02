@@ -81,7 +81,7 @@ task_sami() {
   volumeName="$containerNamePrefix-publish-docs"
   containerName="$volumeName-sami"
   {
-    run_container $containerName $volumeName $appDir $appDir "php:7.1-alpine" "./ci/docs/sami.sh"
+    run_container $containerName $volumeName $appDir $appDir "robbrazier/php:7.1" "./ci/docs/sami.sh"
   } && {
     destroy_container $containerName
   } || {
