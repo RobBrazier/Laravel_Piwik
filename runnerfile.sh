@@ -57,7 +57,9 @@ task_publish_docs() {
   } && {
     destroy_volume $snapshotContainerName
   } || {
+    exit_code="$?"
     destroy_volume $snapshotContainerName
+    exit $exit_code
   }
 }
 
@@ -69,7 +71,9 @@ task_daux() {
   } && {
     destroy_container $containerName
   } || {
+    exit_code="$?"
     destroy_container $containerName
+    exit $exit_code
   }
 }
 
@@ -81,7 +85,9 @@ task_sami() {
   } && {
     destroy_container $containerName
   } || {
+    exit_code="$?"
     destroy_container $containerName
+    exit $exit_code
   }
 }
 

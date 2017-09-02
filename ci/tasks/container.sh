@@ -6,7 +6,7 @@ run_container() {
   image="$5"
   script="$6"
   envVars="$7"
-  envString="$(get_env_string $8)"
+  envString="$(get_env_string $envVars)"
   common_args="--name $name --entrypoint /bin/sh -w $workingDir $envString $image $script"
   if is_hyper; then
     hyper run --size $containerSize -v $volumeSrc:$volumeDest $common_args
@@ -31,8 +31,10 @@ run_container_with_snapshot_volume() {
     destroy_container $name
     destroy_volume $name
   } || {
+    exit_code="$?"
     destroy_container $name
     destroy_volume $name
+    exit $exit_code
   }
 }
 
