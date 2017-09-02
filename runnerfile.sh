@@ -16,7 +16,7 @@ task_install() {
   {
     create_volume $snapshotVolume
     init_volume $snapshotVolume
-    run_container $snapshotVolume $appDir $appDir "php:5.6-alpine" "./ci/init/run.sh"
+    run_container $snapshotVolume $snapshotVolume $appDir $appDir "php:5.6-alpine" "./ci/init/run.sh"
     create_snapshot $snapshotVolume
   } && {
     destroy_container $snapshotVolume
@@ -47,6 +47,42 @@ task_qa() {
   phpVersion="7.2-rc"
   containerName="$containerNamePrefix-qa-${phpVersion/\./-}"
   run_container_with_snapshot_volume $containerName $appDir $appDir "php:$phpVersion-alpine" "./ci/qa/run.sh" "BRANCH_NAME,CHANGE_ID,SONAR_TOKEN,GITHUB_TOKEN"
+}
+
+task_publish_docs() {
+  snapshotContainerName="$containerNamePrefix-publish-docs"
+  {
+    create_volume_from_snapshot $snapshotVolume $snapshotContainerName
+    runner_sequence daux sami
+  } && {
+    destroy_volume $snapshotContainerName
+  } || {
+    destroy_volume $snapshotContainerName
+  }
+}
+
+task_daux() {
+  volumeName="$containerNamePrefix-publish-docs"
+  containerName="$volumeName-daux"
+  {
+    run_container $containerName $volumeName $appDir $appDir "php:5.6-alpine" "./ci/docs/daux.sh"
+  } && {
+    destroy_container $containerName
+  } || {
+    destroy_container $containerName
+  }
+}
+
+task_sami() {
+  volumeName="$containerNamePrefix-publish-docs"
+  containerName="$volumeName-sami"
+  {
+    run_container $containerName $volumeName $appDir $appDir "php:5.6-alpine" "./ci/docs/sami.sh"
+  } && {
+    destroy_container $containerName
+  } || {
+    destroy_container $containerName
+  }
 }
 
 task_cleanup() {

@@ -61,7 +61,7 @@ node {
       }
     }
 
-    stage('Deploy') {
+    stage('Publish Docs') {
       if (env.BRANCH_NAME == "master" && env.CHANGE_ID == null) {
         deploySteps = [:]
         parallel deploySteps
