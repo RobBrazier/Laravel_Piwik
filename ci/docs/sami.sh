@@ -5,7 +5,7 @@ set -x
 export APP_DIR="/usr/src/app"
 export SCRIPTS_DIR="$APP_DIR/ci/scripts"
 
-sami="/home/www-data/.composer/vendor/bin/sami"
+sami="/home/www-data/.composer/vendor/bin/sami.php"
 
 runScript() {
   sudo -E -u www-data -H $*
