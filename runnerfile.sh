@@ -16,7 +16,7 @@ task_install() {
   {
     create_volume $snapshotVolume
     init_volume $snapshotVolume
-    run_container $snapshotVolume $snapshotVolume $appDir $appDir "php:5.6-alpine" "./ci/init/run.sh"
+    run_container $snapshotVolume $snapshotVolume $appDir $appDir "robbrazier/php:5.6" "./ci/init/run.sh"
     create_snapshot $snapshotVolume
   } && {
     destroy_container $snapshotVolume
@@ -31,7 +31,7 @@ task_unitTest() {
     exit 1
   fi
   containerName="$containerNamePrefix-unit-${PHP_VERSION/\./-}"
-  run_container_with_snapshot_volume $containerName $appDir $appDir "php:$PHP_VERSION-alpine" "./ci/unit/run.sh"
+  run_container_with_snapshot_volume $containerName $appDir $appDir "robbrazier/php:$PHP_VERSION" "./ci/unit/run.sh"
 }
 
 task_integrationTest() {
@@ -40,13 +40,13 @@ task_integrationTest() {
     exit 1
   fi
   containerName="$containerNamePrefix-integration-${LARAVEL_VERSION/\./-}"
-  run_container_with_snapshot_volume $containerName "$appDir/plugin" $appDir "php:7.1-alpine" "./plugin/ci/integration/run.sh" "LARAVEL_VERSION"
+  run_container_with_snapshot_volume $containerName "$appDir/plugin" $appDir "robbrazier/php:7.1" "./plugin/ci/integration/run.sh" "LARAVEL_VERSION"
 }
 
 task_qa() {
   phpVersion="7.2-rc"
   containerName="$containerNamePrefix-qa-${phpVersion/\./-}"
-  run_container_with_snapshot_volume $containerName $appDir $appDir "php:$phpVersion-alpine" "./ci/qa/run.sh" "BRANCH_NAME,CHANGE_ID,SONAR_TOKEN,GITHUB_TOKEN"
+  run_container_with_snapshot_volume $containerName $appDir $appDir "robbrazier/php:$phpVersion" "./ci/qa/run.sh" "BRANCH_NAME,CHANGE_ID,SONAR_TOKEN,GITHUB_TOKEN"
 }
 
 task_publish_docs() {
@@ -67,7 +67,7 @@ task_daux() {
   volumeName="$containerNamePrefix-publish-docs"
   containerName="$volumeName-daux"
   {
-    run_container $containerName $volumeName $appDir $appDir "php:7.1-alpine" "./ci/docs/daux.sh"
+    run_container $containerName $volumeName $appDir $appDir "robbrazier/php:7.1" "./ci/docs/daux.sh"
   } && {
     destroy_container $containerName
   } || {
