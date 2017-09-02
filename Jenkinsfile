@@ -19,7 +19,8 @@ def integrationTest(laravelVersion) {
 node {
   properties([
     buildDiscarder(logRotator(numToKeepStr: '20')),
-    disableConcurrentBuilds()
+    disableConcurrentBuilds(),
+    pipelineTriggers([githubPush()])
   ])
   try {
     stage('Checkout') {
@@ -59,11 +60,14 @@ node {
           sh "$runner qa"
       }
     }
-  } catch (e) {
-    echo 'Failed :('
-    throw e
-  }
-  finally {
+
+    stage('Deploy') {
+      if (env.BRANCH_NAME == "master" && env.CHANGE_ID == null) {
+        deploySteps = [:]
+        parallel deploySteps
+      }
+    }
+  } finally {
     sh "$runner cleanup"
   }
 }
