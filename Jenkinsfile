@@ -32,7 +32,7 @@ node {
     }
 
     stage('Unit Tests') {
-      phpVersions = ['5.6', '7.0', '7.1', '7.2-rc']
+      phpVersions = ['5.6', '7.0', '7.1', '7.2']
       unitTestSteps = [:]
       for (int i = 0; i < phpVersions.size(); i++) {
         def phpVersion = phpVersions.get(i)
