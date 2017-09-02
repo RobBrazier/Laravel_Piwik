@@ -9,6 +9,7 @@ runScript() {
 
 sh "$SCRIPTS_DIR/setup.sh"
 runScript "bash $SCRIPTS_DIR/install.sh" false false
+chown -R www-data:www-data ..
 apk add --no-cache git
 runScript curl -O http://get.sensiolabs.org/sami.phar
 runScript php sami.phar update .sami.php
