@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 #!/usr/bin/env bash
-=======
-#!/bin/bash
->>>>>>> c0efc5bb104fbc6dbc77ab89c15421ba73d37fc0
 set -x
 scanner_download="https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.0.3.778.zip"
 wget -qO /tmp/scanner.zip $scanner_download
