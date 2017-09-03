@@ -53,7 +53,7 @@ task_publish_docs() {
   snapshotContainerName="$containerNamePrefix-publish-docs"
   {
     create_volume_from_snapshot $snapshotVolume $snapshotContainerName
-    runner_sequence daux sami
+    runner_sequence daux sami netlify
   } && {
     destroy_volume $snapshotContainerName
   } || {
@@ -82,6 +82,24 @@ task_sami() {
   containerName="$volumeName-sami"
   {
     run_container $containerName $volumeName $appDir $appDir "robbrazier/php:7.1" "./ci/docs/sami.sh"
+  } && {
+    destroy_container $containerName
+  } || {
+    exit_code="$?"
+    destroy_container $containerName
+    exit $exit_code
+  }
+}
+
+task_netlify() {
+  if [ -z "$NETLIFY_TOKEN" ]; then
+    runner_log_error "NETLIFY_TOKEN environment variable is unset"
+    exit 1
+  fi
+  volumeName="$containerNamePrefix-publish-docs"
+  containerName="$volumeName-netlify"
+  {
+    run_container $containerName $volumeName $appDir $appDir "node:6.11-alpine" "./ci/docs/netlify.sh" "NETLIFY_TOKEN"
   } && {
     destroy_container $containerName
   } || {
