@@ -62,9 +62,9 @@ node {
     }
 
     stage('Publish Docs') {
-      // if (env.BRANCH_NAME == "master" && env.CHANGE_ID == null) {
+      if (env.BRANCH_NAME == "master" && env.CHANGE_ID == null) {
         sh "$runner publish_docs"
-      // }
+      }
     }
   } finally {
     sh "$runner cleanup"
