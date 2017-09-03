@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 create_volume() {
   name="$1"
   if is_hyper; then

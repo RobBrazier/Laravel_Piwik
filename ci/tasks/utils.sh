@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 if [ -z "$CONTAINER_RUNTIME" ]; then
   CONTAINER_RUNTIME="hyper"
 fi

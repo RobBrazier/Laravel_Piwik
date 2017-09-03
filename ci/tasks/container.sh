@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 run_container() {
   name="$1"
   volumeSrc="$2"
