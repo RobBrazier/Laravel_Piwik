@@ -17,5 +17,6 @@ chown -R www-data:www-data ..
 apk add --no-cache git
 runScript composer global require "sami/sami:4.0.*"
 runScript "$sami update .sami.php"
-runScript mv ../docs ./build
+runScript "mkdir -p build"
+runScript mv ../docs/api ./build/api
 runScript ls -la build
