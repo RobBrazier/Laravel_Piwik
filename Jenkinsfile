@@ -56,6 +56,7 @@ node {
           if (changeId == null) {
             changeId = ""
           }
+          sh "env"
           sh "$runner qa"
       }
     }
