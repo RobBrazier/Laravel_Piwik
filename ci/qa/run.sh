@@ -8,6 +8,6 @@ runScript() {
   sudo -E -u www-data -H $*
 }
 
-apk add --no-cache wget openjdk8-jre
+apk add --no-cache wget git openjdk8-jre
 runScript "composer run-script coverage"
 runScript "bash $SCRIPTS_DIR/sonar.sh"
