@@ -7,7 +7,7 @@ rm /tmp/scanner.zip
 executable="$(ls /tmp/sonar*/bin/sonar-scanner)"
 version="$(jq -M -r '.version' composer.json)"
 cmd="$executable -Dsonar.projectVersion=$version"
-REPO_SLUG="$(git remote show -n origin | grep 'Fetch URL' | sed 's/\s\sFetch URL:\s//g;s/.git//g;s/git@//g;s/github.com//g;s/://g')"
+REPO_SLUG="$(git remote show -n origin | grep 'Fetch URL' | sed -e 's/\s*Fetch URL:\s*//g' -e 's/github.com[\/:]//g' -e 's/git@//g' -e 's/https:\/\///g' -e 's/.git//g')"
 if [[ "$REPO_SLUG" == "RobBrazier/Laravel_Piwik" ]]; then
   pr_num="$(curl https://api.github.com/repos/RobBrazier/Laravel_Piwik/pulls?head=RobBrazier:$BRANCH_NAME | jq .[0].number)"
   if [[ "$pr_num" -ne "null" ]]; then
