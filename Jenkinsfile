@@ -62,7 +62,9 @@ node {
 
     stage('Publish Docs') {
       if (env.BRANCH_NAME == "master" && env.CHANGE_ID == null) {
-        sh "$runner publish_docs"
+        withCredentials([string(credentialsId: 'NETLIFY_TOKEN', variable: 'NETLIFY_TOKEN')]) {
+          sh "$runner publish_docs"
+        }
       }
     }
   } finally {
