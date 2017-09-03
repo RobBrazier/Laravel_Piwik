@@ -8,5 +8,4 @@ runScript() {
 }
 
 sh "$SCRIPTS_DIR/setup.sh"
-runScript "bash $SCRIPTS_DIR/install.sh" false false
 runScript "bash $SCRIPTS_DIR/test.sh"

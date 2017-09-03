@@ -1,5 +1,5 @@
 ARG PHP_VERSION=rc
-FROM php:${PHP_VERSION}-alpine
+FROM robbrazier/php:${PHP_VERSION}
 
 MAINTAINER Rob Brazier <github.laravelpiwik@rob.brzr.co>
 
@@ -15,6 +15,6 @@ RUN "$SCRIPTS_DIR/setup.sh"
 
 USER www-data
 
-RUN "$SCRIPTS_DIR/install.sh" "true" "true"
+RUN "$SCRIPTS_DIR/install.sh"
 
 CMD "$SCRIPTS_DIR/test.sh"
