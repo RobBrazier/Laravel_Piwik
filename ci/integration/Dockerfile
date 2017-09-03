@@ -1,4 +1,4 @@
-FROM php:7.1-alpine
+FROM robbrazier/php:7.1
 
 MAINTAINER Rob Brazier <github.laravelpiwik@rob.brzr.co>
 
