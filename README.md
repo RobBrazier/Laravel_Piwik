@@ -1,5 +1,4 @@
-Laravel-Piwik v3.0.1
-====================
+# Laravel-Piwik v3.0.1
 
 [![Build Status](https://semaphoreci.com/api/v1/robbrazier/laravel_piwik/branches/master/shields_badge.svg)](https://semaphoreci.com/robbrazier/laravel_piwik)
 [![Sonarqube Quality Gate](https://sonarcloud.io/api/badges/gate?key=com.github.RobBrazier%3ALaravel_Piwik)](https://sonarcloud.io/dashboard?id=com.github.RobBrazier%3ALaravel_Piwik)
@@ -13,9 +12,7 @@ An Interface to Piwik's Analytics API for Laravel (Composer Package)
 
 This is the Laravel 5 version of the Laravel-Piwik Bundle.
 
-Installation
-------------
-
+## Installation
 Add `RobBrazier/Piwik` to `composer.json`:
 
 ```json
@@ -50,7 +47,15 @@ Update your packages with `composer update` or install with `composer install`.
 
 Then go to `config/piwik.php` and add your config settings such as server, username, password, apikey etc.
 
-Manual
-------
+## Documentation
+Usage Documentation is located at http://laravel-piwik.robbrazier.com/Usage.html
+API Documentation is located at http://laravel-piwik.robbrazier.com/API_Docs.html
 
-The Manual is still the same as version 1.0.x, and is at [http://robbrazier.com/projects/laravel-piwik](http://robbrazier.com/projects/laravel-piwik).
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first
+to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
