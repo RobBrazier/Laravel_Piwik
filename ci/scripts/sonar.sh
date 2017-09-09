@@ -15,7 +15,7 @@ if [[ "$SEMAPHORE_REPO_SLUG" == "RobBrazier/Laravel_Piwik" ]]; then
 fi
 set -
 sed -i "s/\$SONAR_TOKEN/$SONAR_TOKEN/g" sonar-project.properties
-sed -i "s/\$GITHUB_TOKE/$GITHUB_TOKEN/g" sonar-project.properties
+sed -i "s/\$GITHUB_TOKEN/$GITHUB_TOKEN/g" sonar-project.properties
 set -x
 [[ "$BRANCH_NAME" == "master" ]] || cmd="$cmd -Dsonar.analysis.mode=issues"
 [[ "$PULL_REQUEST_NUMBER" == "" ]] || cmd="$cmd -Dsonar.github.pullRequest=$PULL_REQUEST_NUMBER"
