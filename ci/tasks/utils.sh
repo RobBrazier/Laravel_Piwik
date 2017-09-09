@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ -z "$CONTAINER_RUNTIME" ]; then
-  CONTAINER_RUNTIME="hyper"
+  CONTAINER_RUNTIME="docker"
 fi
 
 is_docker() {
