@@ -7,15 +7,14 @@ rm /tmp/scanner.zip
 executable="$(ls /tmp/sonar*/bin/sonar-scanner)"
 version="$(jq -M -r '.version' composer.json)"
 cmd="$executable -Dsonar.projectVersion=$version"
-REPO_SLUG="$(git remote show -n origin | grep 'Fetch URL' | sed -e 's/\s*Fetch URL:\s*//g' -e 's/github.com[\/:]//g' -e 's/git@//g' -e 's/https:\/\///g' -e 's/.git//g')"
-if [[ "$REPO_SLUG" == "RobBrazier/Laravel_Piwik" ]]; then
+if [[ "$SEMAPHORE_REPO_SLUG" == "RobBrazier/Laravel_Piwik" ]]; then
   pr_num="$(curl https://api.github.com/repos/RobBrazier/Laravel_Piwik/pulls?head=RobBrazier:$BRANCH_NAME | jq .[0].number)"
   if [[ "$pr_num" -ne "null" ]]; then
-    CHANGE_ID="$pr_num"
+    PULL_REQUEST_NUMBER="$pr_num"
   fi
 fi
 [[ "$BRANCH_NAME" == "master" ]] || cmd="$cmd -Dsonar.analysis.mode=issues"
-[[ "$CHANGE_ID" == "" ]] || cmd="$cmd -Dsonar.github.pullRequest=$CHANGE_ID"
+[[ "$PULL_REQUEST_NUMBER" == "" ]] || cmd="$cmd -Dsonar.github.pullRequest=$PULL_REQUEST_NUMBER"
 [[ "$SONAR_TOKEN" == "" ]] || cmd="$cmd -Dsonar.login=$SONAR_TOKEN"
 [[ "$GITHUB_TOKEN" == "" ]] || cmd="$cmd -Dsonar.github.oauth=$GITHUB_TOKEN"
 
