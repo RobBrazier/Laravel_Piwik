@@ -1,5 +1,5 @@
 #!/bin/sh
-
+set -e -x
 export APP_DIR="/usr/src/app"
 export SCRIPTS_DIR="$APP_DIR/ci/scripts"
 

@@ -12,26 +12,13 @@ source $task_dir/utils.sh
 source $task_dir/volumes.sh
 source $task_dir/container.sh
 
-task_install() {
-  {
-    create_volume $snapshotVolume
-    init_volume $snapshotVolume
-    run_container $snapshotVolume $snapshotVolume $appDir $appDir "robbrazier/php:5.6" "./ci/init/run.sh"
-    create_snapshot $snapshotVolume
-  } && {
-    destroy_container $snapshotVolume
-  } || {
-    destroy_container $snapshotVolume
-  }
-}
-
 task_unitTest() {
   if [ -z "$PHP_VERSION" ]; then
     runner_log_error "PHP_VERSION environment variable is unset"
     exit 1
   fi
   containerName="$containerNamePrefix-unit-${PHP_VERSION/\./-}"
-  run_container_with_snapshot_volume $containerName $appDir $appDir "robbrazier/php:$PHP_VERSION" "./ci/unit/run.sh"
+  run_container_with_snapshot_volume $containerName $appDir $appDir "robbrazier/php:$PHP_VERSION" "./ci/unit.sh"
 }
 
 task_integrationTest() {
@@ -40,13 +27,13 @@ task_integrationTest() {
     exit 1
   fi
   containerName="$containerNamePrefix-integration-${LARAVEL_VERSION/\./-}"
-  run_container_with_snapshot_volume $containerName "$appDir/plugin" $appDir "robbrazier/php:7.1" "./plugin/ci/integration/run.sh" "LARAVEL_VERSION"
+  run_container_with_snapshot_volume $containerName "$appDir/plugin" $appDir "robbrazier/php:7.1" "./plugin/ci/integration.sh" "LARAVEL_VERSION"
 }
 
 task_qa() {
   phpVersion="7.2"
   containerName="$containerNamePrefix-qa-${phpVersion/\./-}"
-  run_container_with_snapshot_volume $containerName $appDir $appDir "robbrazier/php:$phpVersion" "./ci/qa/run.sh" "BRANCH_NAME,PULL_REQUEST_NUMBER,SEMAPHORE_REPO_SLUG,SONAR_TOKEN,GITHUB_TOKEN"
+  run_container_with_snapshot_volume $containerName $appDir $appDir "robbrazier/php:$phpVersion" "./ci/qa.sh" "BRANCH_NAME,PULL_REQUEST_NUMBER,SEMAPHORE_REPO_SLUG,SONAR_TOKEN,GITHUB_TOKEN"
 }
 
 task_publish_docs() {
