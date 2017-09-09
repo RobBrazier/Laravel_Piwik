@@ -7,7 +7,6 @@ rm /tmp/scanner.zip
 executable="$(ls /tmp/sonar*/bin/sonar-scanner)"
 version="$(jq -M -r '.version' composer.json)"
 cmd="$executable -Dsonar.projectVersion=$version"
-env
 if [[ "$SEMAPHORE_REPO_SLUG" == "RobBrazier/Laravel_Piwik" ]]; then
   pr_num="$(curl https://api.github.com/repos/RobBrazier/Laravel_Piwik/pulls?head=RobBrazier:$BRANCH_NAME | jq .[0].number)"
   if [[ "$pr_num" -ne "null" ]]; then
