@@ -15,7 +15,7 @@ if [[ "$SEMAPHORE_REPO_SLUG" == "RobBrazier/Laravel_Piwik" ]]; then
 fi
 [[ "$BRANCH_NAME" == "master" ]] || cmd="$cmd -Dsonar.analysis.mode=issues"
 [[ "$PULL_REQUEST_NUMBER" == "" ]] || cmd="$cmd -Dsonar.github.pullRequest=$PULL_REQUEST_NUMBER"
-[[ "$SONAR_TOKEN" == "" ]] || cmd="$cmd -Dsonar.login=$SONAR_TOKEN"
-[[ "$GITHUB_TOKEN" == "" ]] || cmd="$cmd -Dsonar.github.oauth=$GITHUB_TOKEN"
+# [[ "$SONAR_TOKEN" == "" ]] || cmd="$cmd -Dsonar.login=$SONAR_TOKEN"
+# [[ "$GITHUB_TOKEN" == "" ]] || cmd="$cmd -Dsonar.github.oauth=$GITHUB_TOKEN"
 
 exec $cmd
