@@ -46,7 +46,7 @@ task_integrationTest() {
 task_qa() {
   phpVersion="7.2"
   containerName="$containerNamePrefix-qa-${phpVersion/\./-}"
-  run_container_with_snapshot_volume $containerName $appDir $appDir "robbrazier/php:$phpVersion" "./ci/qa/run.sh" "BRANCH_NAME,CHANGE_ID,SONAR_TOKEN,GITHUB_TOKEN"
+  run_container_with_snapshot_volume $containerName $appDir $appDir "robbrazier/php:$phpVersion" "./ci/qa/run.sh" "BRANCH_NAME,PULL_REQUEST_NUMBER,SEMAPHORE_REPO_SLUG,SONAR_TOKEN,GITHUB_TOKEN"
 }
 
 task_publish_docs() {
