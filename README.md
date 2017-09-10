@@ -47,6 +47,23 @@ Update your packages with `composer update` or install with `composer install`.
 
 Then go to `config/piwik.php` and add your config settings such as server, username, password, apikey etc.
 
+## Development
+Common CI scripts are contained within a submodule, so to make use of them, the repository will need to be recursively cloned
+```
+git clone --recursive git@github.com:RobBrazier/Laravel_Piwik.git
+git clone --recursive https://github.com/RobBrazier/Laravel_Piwik.git
+```
+
+The scripts can be used locally for running tests, e.g. integration with laravel and unit tests across php versions.
+e.g.
+```
+# unit tests
+PHP_VERSION=7.1 ./runner unitTest
+
+# integration tests
+LARAVEL_VERSION=5.5 ./runner integrationTest
+```
+
 ## Documentation
 Usage Documentation is located at http://laravel-piwik.robbrazier.com/Usage.html
 API Documentation is located at http://laravel-piwik.robbrazier.com/API_Docs.html
