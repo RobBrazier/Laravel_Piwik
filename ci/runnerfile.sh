@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
-cd "$(dirname "$0")" || exit
-task_dir="./ci/tasks"
-source $task_dir/runner.sh
 
 containerNamePrefix="jenkins-laravelpiwik"
 appDir="/usr/src/app"
 snapshotVolume="$containerNamePrefix-snapshot-$BUILD_NUMBER"
 containerSize="s4"
 
+task_dir="./ci/common"
 source $task_dir/utils.sh
 source $task_dir/volumes.sh
 source $task_dir/container.sh
