@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+./ci/common/runner.sh -f ./ci/runnerfile.sh $*
