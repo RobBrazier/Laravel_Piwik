@@ -6,7 +6,9 @@ export SCRIPTS_DIR="$APP_DIR/ci/scripts"
 runScript() {
   sudo -E -u www-data -H $*
 }
-
+export CURRENT_USER=$(ls -l composer.json | awk '{print $3}')
+export CURRENT_GROUP=$(ls -l composer.json | awk '{print $3}')
 sh "$SCRIPTS_DIR/setup.sh"
 runScript "bash $SCRIPTS_DIR/install.sh"
 runScript "bash $SCRIPTS_DIR/test.sh"
+chown -R $CURRENT_USER:$CURRENT_GROUP $APP_DIR
