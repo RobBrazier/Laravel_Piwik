@@ -7,8 +7,8 @@ runScript() {
   sudo -E -u www-data -H $*
 }
 
-export CURRENT_USER=$(ls -l composer.json | awk '{print $3}')
-export CURRENT_GROUP=$(ls -l composer.json | awk '{print $3}')
+export CURRENT_USER=$(ls -l $SCRIPTS_DIR/test.sh | awk '{print $3}')
+export CURRENT_GROUP=$(ls -l $SCRIPTS_DIR/test.sh | awk '{print $3}')
 sh "$SCRIPTS_DIR/setup.sh"
 apk add --no-cache wget git openjdk8-jre
 runScript "composer run-script coverage"
