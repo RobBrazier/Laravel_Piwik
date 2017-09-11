@@ -8,7 +8,7 @@ runScript() {
 }
 
 export CURRENT_USER=$(ls -l $SCRIPTS_DIR/test.sh | awk '{print $3}')
-export CURRENT_GROUP=$(ls -l $SCRIPTS_DIR/test.sh | awk '{print $3}')
+export CURRENT_GROUP=$(ls -l $SCRIPTS_DIR/test.sh | awk '{print $4}')
 sh "$SCRIPTS_DIR/setup.sh"
 apk add --no-cache wget git openjdk8-jre
 runScript "composer run-script coverage"
