@@ -13,6 +13,7 @@ runScript() {
 
 export CURRENT_USER=$(ls -l $SCRIPTS_DIR/test.sh | awk '{print $3}')
 export CURRENT_GROUP=$(ls -l $SCRIPTS_DIR/test.sh | awk '{print $4}')
+[ -f "$APP_DIR/.ci-env" ] && rm "$APP_DIR/.ci-env"
 sh "$SCRIPTS_DIR/setup.sh"
 runScript "bash $SCRIPTS_DIR/install.sh"
 chown -R www-data:www-data ..
