@@ -9,6 +9,9 @@ runScript() {
 
 daux="/home/www-data/.composer/vendor/bin/daux"
 
+export CURRENT_USER=$(ls -l $SCRIPTS_DIR/test.sh | awk '{print $3}')
+export CURRENT_GROUP=$(ls -l $SCRIPTS_DIR/test.sh | awk '{print $4}')
 sh "$SCRIPTS_DIR/setup.sh"
 runScript composer global require "justinwalsh/daux.io:0.3.*"
 runScript "$daux generate --format html --source docs --destination build"
+chown -R $CURRENT_USER:$CURRENT_GROUP $APP_DIR
