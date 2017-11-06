@@ -10,7 +10,7 @@ runScript() {
 export CURRENT_USER=$(ls -l $SCRIPTS_DIR/test.sh | awk '{print $3}')
 export CURRENT_GROUP=$(ls -l $SCRIPTS_DIR/test.sh | awk '{print $4}')
 sh "$SCRIPTS_DIR/setup.sh"
-apk add --no-cache wget git openjdk8-jre
+apk add --no-cache wget git
 runScript "composer run-script coverage"
-runScript "bash $SCRIPTS_DIR/sonar.sh"
+runScript "bash $SCRIPTS_DIR/codacy.sh" || true
 chown -R $CURRENT_USER:$CURRENT_GROUP $APP_DIR
