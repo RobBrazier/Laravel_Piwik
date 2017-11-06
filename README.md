@@ -1,5 +1,6 @@
 # Laravel-Piwik v3.0.1
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b91611603d5141e79e5c596ae439242c)](https://www.codacy.com/app/RobBrazier/Laravel_Piwik?utm_source=github.com&utm_medium=referral&utm_content=RobBrazier/Laravel_Piwik&utm_campaign=badger)
 [![Build Status](https://semaphoreci.com/api/v1/robbrazier/laravel_piwik/branches/master/shields_badge.svg)](https://semaphoreci.com/robbrazier/laravel_piwik)
 [![Sonarqube Quality Gate](https://sonarcloud.io/api/badges/gate?key=com.github.RobBrazier%3ALaravel_Piwik)](https://sonarcloud.io/dashboard?id=com.github.RobBrazier%3ALaravel_Piwik)
 [![Sonarqube Code Coverage](https://sonarcloud.io/api/badges/measure?key=com.github.RobBrazier%3ALaravel_Piwik&metric=coverage)](https://sonarcloud.io/dashboard?id=com.github.RobBrazier%3ALaravel_Piwik)
