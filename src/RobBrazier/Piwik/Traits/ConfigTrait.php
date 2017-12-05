@@ -17,7 +17,7 @@ trait ConfigTrait
      * ConfigTrait constructor.
      * @param ConfigRepository $config
      */
-    function __construct($config)
+    public function __construct($config)
     {
         $this->config = $config;
     }
@@ -27,7 +27,7 @@ trait ConfigTrait
      *
      * @return string site id retrieved from configuration
      */
-    function getSiteId()
+    public function getSiteId()
     {
         return $this->get(Option::SITE_ID);
     }
@@ -37,7 +37,7 @@ trait ConfigTrait
      *
      * @return string piwik url retrieved from configuration
      */
-    function getPiwikUrl()
+    public function getPiwikUrl()
     {
         return $this->get(Option::PIWIK_URL);
     }
