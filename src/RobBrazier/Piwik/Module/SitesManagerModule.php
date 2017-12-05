@@ -7,14 +7,16 @@ namespace RobBrazier\Piwik\Module;
  * @package RobBrazier\Piwik\Module
  * @see https://developer.piwik.org/api-reference/reporting-api#SitesManager for arguments
  */
-class SitesManagerModule extends Module {
+class SitesManagerModule extends Module
+{
 
     /**
      * @param string $group
      * @param string $format
      * @return mixed
      */
-    public function getSitesFromGroup($group, $format = null) {
+    public function getSitesFromGroup($group, $format = null)
+    {
         $arguments = [
             "group" => $group
         ];
@@ -29,7 +31,8 @@ class SitesManagerModule extends Module {
      * @param string $format
      * @return mixed
      */
-    public function getSiteGroups($format = null) {
+    public function getSiteGroups($format = null)
+    {
         $options = $this->getOptions($format)
             ->useSiteId(false)
             ->usePeriod(false);
@@ -40,7 +43,8 @@ class SitesManagerModule extends Module {
      * @param string $format
      * @return mixed
      */
-    public function getSitesFromId($format = null) {
+    public function getSitesFromId($format = null)
+    {
         $options = $this->getOptions($format)
             ->usePeriod(false);
         return $this->request->send($options);
@@ -51,7 +55,8 @@ class SitesManagerModule extends Module {
      * @param string $format
      * @return mixed
      */
-    public function getSiteUrlsFromId($siteId = null, $format = null) {
+    public function getSiteUrlsFromId($siteId = null, $format = null)
+    {
         $options = $this->getOptions($format)
             ->usePeriod(false);
         if (!is_null($siteId)) {
@@ -64,7 +69,8 @@ class SitesManagerModule extends Module {
      * @param string $format
      * @return mixed
      */
-    public function getAllSites($format = null) {
+    public function getAllSites($format = null)
+    {
         $options = $this->getOptions($format)
             ->useSiteId(false)
             ->usePeriod(false);
@@ -75,7 +81,8 @@ class SitesManagerModule extends Module {
      * @param string $format
      * @return mixed
      */
-    public function getAllSitesId($format = null) {
+    public function getAllSitesId($format = null)
+    {
         $options = $this->getOptions($format)
             ->useSiteId(false)
             ->usePeriod(false);
@@ -83,11 +90,12 @@ class SitesManagerModule extends Module {
     }
 
     /**
-     * @param array[string]mixed $arguments
+     * @param array [string]mixed $arguments
      * @param string $format
      * @return mixed
      */
-    public function getSitesWithAdminAccess($arguments = [], $format = null) {
+    public function getSitesWithAdminAccess($arguments = [], $format = null)
+    {
         $options = $this->getOptions($format)
             ->useSiteId(false)
             ->usePeriod(false)
@@ -99,7 +107,8 @@ class SitesManagerModule extends Module {
      * @param string $format
      * @return mixed
      */
-    public function getSitesWithViewAccess($format = null) {
+    public function getSitesWithViewAccess($format = null)
+    {
         $options = $this->getOptions($format)
             ->useSiteId(false)
             ->usePeriod(false);
@@ -107,11 +116,12 @@ class SitesManagerModule extends Module {
     }
 
     /**
-     * @param array[string]mixed $arguments
+     * @param array [string]mixed $arguments
      * @param string $format
      * @return mixed
      */
-    public function getSitesWithAtLeastViewAccess($arguments = [], $format = null) {
+    public function getSitesWithAtLeastViewAccess($arguments = [], $format = null)
+    {
         $options = $this->getOptions($format)
             ->useSiteId(false)
             ->usePeriod(false)
@@ -123,7 +133,8 @@ class SitesManagerModule extends Module {
      * @param string $format
      * @return mixed
      */
-    public function getSitesIdWithAdminAccess($format = null) {
+    public function getSitesIdWithAdminAccess($format = null)
+    {
         $options = $this->getOptions($format)
             ->useSiteId(false)
             ->usePeriod(false);
@@ -134,7 +145,8 @@ class SitesManagerModule extends Module {
      * @param string $format
      * @return mixed
      */
-    public function getSitesIdWithViewAccess($format = null) {
+    public function getSitesIdWithViewAccess($format = null)
+    {
         $options = $this->getOptions($format)
             ->useSiteId(false)
             ->usePeriod(false);
@@ -146,7 +158,8 @@ class SitesManagerModule extends Module {
      * @param string $format
      * @return mixed
      */
-    public function getSitesIdWithAtLeastViewAccess($format = null) {
+    public function getSitesIdWithAtLeastViewAccess($format = null)
+    {
         $options = $this->getOptions($format)
             ->useSiteId(false)
             ->usePeriod(false);
@@ -158,7 +171,8 @@ class SitesManagerModule extends Module {
      * @param string $format
      * @return mixed
      */
-    public function getSitesIdFromSiteUrl($url, $format = null) {
+    public function getSitesIdFromSiteUrl($url, $format = null)
+    {
         $arguments = [
             "url" => $url
         ];
@@ -168,7 +182,6 @@ class SitesManagerModule extends Module {
             ->setArguments($arguments);
         return $this->request->send($options);
     }
-
 
 
 }

@@ -2,7 +2,8 @@
 
 namespace RobBrazier\Piwik\Repository;
 
-interface ConfigRepository {
+interface ConfigRepository
+{
 
     /**
      * Retrieve a configuration item

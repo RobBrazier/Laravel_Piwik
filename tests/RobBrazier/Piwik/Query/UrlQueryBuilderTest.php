@@ -1,10 +1,12 @@
 <?php
 
 namespace RobBrazier\Piwik\Query;
+
 use PHPUnit\Framework\TestCase;
 
 
-class UrlQueryBuilderTest extends TestCase {
+class UrlQueryBuilderTest extends TestCase
+{
 
     const MODULE = "API";
     const METHOD = "Method.name";
@@ -12,7 +14,8 @@ class UrlQueryBuilderTest extends TestCase {
     const FORMAT = "json";
     const TOKEN_AUTH = "anonymous";
 
-    public function testBuild() {
+    public function testBuild()
+    {
         $date = QueryDates::getInstance()->get("yesterday");
         $builder = new UrlQueryBuilder();
         $builder->setModule(self::MODULE);
@@ -37,7 +40,7 @@ class UrlQueryBuilderTest extends TestCase {
         $argumentSize = sizeof($expectedData);
         $separator = "";
         $format = "?";
-        for ($i = 0; $i < $argumentSize/2; $i++) {
+        for ($i = 0; $i < $argumentSize / 2; $i++) {
             $format .= $separator . "%s=%s";
             $separator = "&";
         }

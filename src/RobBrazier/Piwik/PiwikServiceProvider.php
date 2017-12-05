@@ -5,7 +5,8 @@ use Illuminate\Support\ServiceProvider;
 use RobBrazier\Piwik\Repository\Config\FileConfigRepository;
 use RobBrazier\Piwik\Repository\Request\GuzzleRequestRepository;
 
-class PiwikServiceProvider extends ServiceProvider {
+class PiwikServiceProvider extends ServiceProvider
+{
 
     const PIWIK_CONFIG = "piwik.config";
 
@@ -21,9 +22,10 @@ class PiwikServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function boot() {
+    public function boot()
+    {
         $this->publishes([
-            __DIR__.'/../../config/config.php' => config_path('piwik.php'),
+            __DIR__ . '/../../config/config.php' => config_path('piwik.php'),
         ], 'config');
     }
 
@@ -32,17 +34,18 @@ class PiwikServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function register() {
-        $this->app->bind(self::PIWIK_CONFIG, function() {
+    public function register()
+    {
+        $this->app->bind(self::PIWIK_CONFIG, function () {
             return new FileConfigRepository;
         });
 
-        $this->app->bind('piwik.request', function() {
+        $this->app->bind('piwik.request', function () {
             $config = $this->app->make(self::PIWIK_CONFIG);
             return new GuzzleRequestRepository($config, new Client());
         });
 
-        $this->app->bind('piwik', function() {
+        $this->app->bind('piwik', function () {
             $config = $this->app->make(self::PIWIK_CONFIG);
             $request = $this->app->make('piwik.request');
             return new Piwik($config, $request);
@@ -54,7 +57,8 @@ class PiwikServiceProvider extends ServiceProvider {
      *
      * @return string[]
      */
-    public function provides() {
+    public function provides()
+    {
         return ['RobBrazier\Piwik\Piwik'];
     }
 

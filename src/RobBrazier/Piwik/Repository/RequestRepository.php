@@ -4,7 +4,8 @@ namespace RobBrazier\Piwik\Repository;
 
 use RobBrazier\Piwik\Request\RequestOptions;
 
-interface RequestRepository {
+interface RequestRepository
+{
 
     /**
      * Send a request to the Piwik API

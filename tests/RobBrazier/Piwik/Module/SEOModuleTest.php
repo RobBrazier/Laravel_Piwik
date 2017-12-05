@@ -7,7 +7,8 @@ use Prophecy\Prophet;
 use RobBrazier\Piwik\Repository\RequestRepository;
 use RobBrazier\Piwik\Request\RequestOptions;
 
-class SEOModuleTest extends TestCase {
+class SEOModuleTest extends TestCase
+{
 
     /**
      * @var Prophet
@@ -32,7 +33,8 @@ class SEOModuleTest extends TestCase {
      */
     private $expectedResponse;
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->prophet = new Prophet();
         $this->request = $this->prophet->prophesize(RequestRepository::class);
         $this->sitesManager = $this->prophet->prophesize(SitesManagerModule::class);
@@ -46,7 +48,8 @@ class SEOModuleTest extends TestCase {
         $this->expectedResponse = "foo";
     }
 
-    public function testGetRank() {
+    public function testGetRank()
+    {
         $url = "http://website.url";
         $this->requestOptions
             ->useSiteId(false)
@@ -60,7 +63,8 @@ class SEOModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetRankFromSiteId() {
+    public function testGetRankFromSiteId()
+    {
         $siteId = "1";
         $url = "http://website.url";
         $this->requestOptions

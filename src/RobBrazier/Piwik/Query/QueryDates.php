@@ -4,7 +4,8 @@ namespace RobBrazier\Piwik\Query;
 
 use RobBrazier\Piwik\Exception\PiwikException;
 
-class QueryDates {
+class QueryDates
+{
 
     const DATE_REGEX = "/^[0-9]{4}\\-[0-9]{1,2}\\-[0-9]{1,2},[0-9]{4}\\-[0-9]{1,2}\\-[0-9]{1,2}$/";
     const DAY = "day";
@@ -24,7 +25,8 @@ class QueryDates {
     /**
      * QueryDates constructor.
      */
-    private function __construct() {
+    private function __construct()
+    {
         $this->map = [
             self::TODAY => new QueryDate(self::DAY, self::TODAY),
             "yesterday" => new QueryDate(self::DAY, "yesterday"),
@@ -42,7 +44,8 @@ class QueryDates {
     /**
      * @return QueryDates
      */
-    public static function getInstance() {
+    public static function getInstance()
+    {
         if (is_null(self::$instance)) {
             self::$instance = new self();
         }
@@ -53,13 +56,14 @@ class QueryDates {
      * @param string $data
      * @return QueryDate
      */
-    public function get($data) {
+    public function get($data)
+    {
         if (array_has($this->map, $data)) {
             return array_get($this->map, $data);
         } else if (preg_match(self::DATE_REGEX, $data)) {
             return new QueryDate("range", $data);
         }
-        throw new PiwikException("Invalid period provided (".$data.")");
+        throw new PiwikException("Invalid period provided (" . $data . ")");
     }
 
 }

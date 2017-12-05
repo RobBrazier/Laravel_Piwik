@@ -8,7 +8,8 @@ use RobBrazier\Piwik\Repository\ConfigRepository;
 use RobBrazier\Piwik\Traits\DateTrait;
 use RobBrazier\Piwik\Traits\FormatTrait;
 
-class RequestOptions {
+class RequestOptions
+{
 
     use DateTrait;
     use FormatTrait;
@@ -63,7 +64,8 @@ class RequestOptions {
      * @param string $method
      * @return RequestOptions
      */
-    public function setMethod($method) {
+    public function setMethod($method)
+    {
         $this->method = $method;
         return $this;
     }
@@ -72,7 +74,8 @@ class RequestOptions {
      * @param bool $period
      * @return RequestOptions
      */
-    public function usePeriod($period) {
+    public function usePeriod($period)
+    {
         $this->usePeriod = $period;
         return $this;
     }
@@ -81,7 +84,8 @@ class RequestOptions {
      * @param string $siteId
      * @return RequestOptions
      */
-    public function setSiteId($siteId) {
+    public function setSiteId($siteId)
+    {
         $this->siteId = $siteId;
         $this->useSiteId(false);
         return $this;
@@ -91,7 +95,8 @@ class RequestOptions {
      * @param bool $siteId
      * @return RequestOptions
      */
-    public function useSiteId($siteId) {
+    public function useSiteId($siteId)
+    {
         $this->useSiteId = $siteId;
         return $this;
     }
@@ -100,7 +105,8 @@ class RequestOptions {
      * @param ConfigRepository $config
      * @return string
      */
-    private function getSiteId($config) {
+    private function getSiteId($config)
+    {
         $result = $this->siteId;
         if ($this->useSiteId) {
             $result = $config->get(Option::SITE_ID);
@@ -112,7 +118,8 @@ class RequestOptions {
      * @param string $format
      * @return RequestOptions
      */
-    public function setFormat($format) {
+    public function setFormat($format)
+    {
         if (!is_null($format)) {
             $this->format = $format;
             $this->useFormat(false);
@@ -124,7 +131,8 @@ class RequestOptions {
      * @param bool $format
      * @return RequestOptions
      */
-    public function useFormat($format) {
+    public function useFormat($format)
+    {
         $this->useFormat = $format;
         return $this;
     }
@@ -133,7 +141,8 @@ class RequestOptions {
      * @param ConfigRepository $config
      * @return string
      */
-    public function getFormat($config) {
+    public function getFormat($config)
+    {
         $result = $this->format;
         if ($this->useFormat) {
             $result = $config->get(Option::FORMAT);
@@ -145,7 +154,8 @@ class RequestOptions {
      * @param bool $tokenAuth
      * @return RequestOptions
      */
-    public function useTokenAuth($tokenAuth) {
+    public function useTokenAuth($tokenAuth)
+    {
         $this->tokenAuth = $tokenAuth;
         return $this;
     }
@@ -154,7 +164,8 @@ class RequestOptions {
      * @param ConfigRepository $config
      * @return string
      */
-    private function getTokenAuth($config) {
+    private function getTokenAuth($config)
+    {
         $result = null;
         if ($this->tokenAuth) {
             $result = $config->get(Option::API_KEY);
@@ -163,10 +174,11 @@ class RequestOptions {
     }
 
     /**
-     * @param array[string]mixed $arguments
+     * @param array [string]mixed $arguments
      * @return RequestOptions
      */
-    public function setArguments($arguments) {
+    public function setArguments($arguments)
+    {
         if (is_null($arguments)) {
             $arguments = [];
         }
@@ -178,7 +190,8 @@ class RequestOptions {
      * @param ConfigRepository $config
      * @return string
      */
-    public function build($config) {
+    public function build($config)
+    {
         $builder = new UrlQueryBuilder();
         $builder->setModule("API");
         $builder->setMethod($this->method);
@@ -195,7 +208,6 @@ class RequestOptions {
         $builder->addAll($this->arguments);
         return $builder->build();
     }
-
 
 
 }
