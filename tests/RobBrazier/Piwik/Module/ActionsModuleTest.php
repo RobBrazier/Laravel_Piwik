@@ -8,7 +8,8 @@ use Prophecy\Prophet;
 use RobBrazier\Piwik\Repository\RequestRepository;
 use RobBrazier\Piwik\Request\RequestOptions;
 
-class ActionsModuleTest extends TestCase {
+class ActionsModuleTest extends TestCase
+{
 
     /**
      * @var Prophet
@@ -32,7 +33,8 @@ class ActionsModuleTest extends TestCase {
      */
     private $expectedResponse;
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->prophet = new Prophet();
         $this->request = $this->prophet->prophesize(RequestRepository::class);
         $this->actions = new ActionsModule($this->request->reveal());
@@ -45,7 +47,8 @@ class ActionsModuleTest extends TestCase {
         $this->expectedResponse = "foo";
     }
 
-    public function testGet() {
+    public function testGet()
+    {
         $this->requestOptions
             ->setMethod("Actions.get");
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
@@ -53,7 +56,8 @@ class ActionsModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetPageUrls() {
+    public function testGetPageUrls()
+    {
         $this->requestOptions
             ->setMethod("Actions.getPageUrls");
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
@@ -61,7 +65,8 @@ class ActionsModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetPageUrlsFollowingSiteSearch() {
+    public function testGetPageUrlsFollowingSiteSearch()
+    {
         $this->requestOptions
             ->setMethod("Actions.getPageUrlsFollowingSiteSearch");
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
@@ -69,7 +74,8 @@ class ActionsModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetPageTitlesFollowingSiteSearch() {
+    public function testGetPageTitlesFollowingSiteSearch()
+    {
         $this->requestOptions
             ->setMethod("Actions.getPageTitlesFollowingSiteSearch");
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
@@ -77,7 +83,8 @@ class ActionsModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetEntryPageUrls() {
+    public function testGetEntryPageUrls()
+    {
         $this->requestOptions
             ->setMethod("Actions.getEntryPageUrls");
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
@@ -85,7 +92,8 @@ class ActionsModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetExitPageUrls() {
+    public function testGetExitPageUrls()
+    {
         $this->requestOptions
             ->setMethod("Actions.getExitPageUrls");
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
@@ -93,7 +101,8 @@ class ActionsModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetPageUrl() {
+    public function testGetPageUrl()
+    {
         $pageUrl = "pageUrl";
         $this->requestOptions
             ->setMethod("Actions.getPageUrl")
@@ -105,7 +114,8 @@ class ActionsModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetPageTitles() {
+    public function testGetPageTitles()
+    {
         $this->requestOptions
             ->setMethod("Actions.getPageTitles");
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
@@ -113,7 +123,8 @@ class ActionsModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetEntryPageTitles() {
+    public function testGetEntryPageTitles()
+    {
         $this->requestOptions
             ->setMethod("Actions.getEntryPageTitles");
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
@@ -121,7 +132,8 @@ class ActionsModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetExitPageTitles() {
+    public function testGetExitPageTitles()
+    {
         $this->requestOptions
             ->setMethod("Actions.getExitPageTitles");
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
@@ -129,7 +141,8 @@ class ActionsModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetPageTitle() {
+    public function testGetPageTitle()
+    {
         $pageName = "foo";
         $this->requestOptions
             ->setMethod("Actions.getPageTitle")
@@ -141,7 +154,8 @@ class ActionsModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetDownloads() {
+    public function testGetDownloads()
+    {
         $this->requestOptions
             ->setMethod("Actions.getDownloads");
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
@@ -149,7 +163,8 @@ class ActionsModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetDownload() {
+    public function testGetDownload()
+    {
         $downloadUrl = "downloadUrl";
         $this->requestOptions
             ->setMethod("Actions.getDownload")
@@ -161,7 +176,8 @@ class ActionsModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetOutlinks() {
+    public function testGetOutlinks()
+    {
         $this->requestOptions
             ->setMethod("Actions.getOutlinks");
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
@@ -169,7 +185,8 @@ class ActionsModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetOutlink() {
+    public function testGetOutlink()
+    {
         $outlinkUrl = "outlinkUrl";
         $this->requestOptions
             ->setMethod("Actions.getOutlink")
@@ -181,7 +198,8 @@ class ActionsModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSiteSearchKeywords() {
+    public function testGetSiteSearchKeywords()
+    {
         $this->requestOptions
             ->setMethod("Actions.getSiteSearchKeywords");
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
@@ -189,7 +207,8 @@ class ActionsModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSiteSearchNoResultKeywords() {
+    public function testGetSiteSearchNoResultKeywords()
+    {
         $this->requestOptions
             ->setMethod("Actions.getSiteSearchNoResultKeywords");
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
@@ -197,7 +216,8 @@ class ActionsModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSiteSearchCategories() {
+    public function testGetSiteSearchCategories()
+    {
         $this->requestOptions
             ->setMethod("Actions.getSiteSearchCategories");
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);

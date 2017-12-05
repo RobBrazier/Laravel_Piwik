@@ -5,7 +5,8 @@ namespace RobBrazier\Piwik\Traits;
 use RobBrazier\Piwik\Query\QueryDate;
 use RobBrazier\Piwik\Query\QueryDates;
 
-trait DateTrait {
+trait DateTrait
+{
 
     /**
      * Get QueryDate object from period name
@@ -15,7 +16,8 @@ trait DateTrait {
      * @param string $period
      * @return QueryDate
      */
-    public function getDate($period) {
+    public function getDate($period)
+    {
         return QueryDates::getInstance()->get($period);
     }
 

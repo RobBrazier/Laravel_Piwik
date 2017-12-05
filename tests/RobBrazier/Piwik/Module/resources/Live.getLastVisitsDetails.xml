@@ -3,7 +3,7 @@
     <row>
         <idSite>3</idSite>
         <idVisit>23212768</idVisit>
-        <visitIp />
+        <visitIp/>
         <visitorId>0</visitorId>
         <actionDetails>
             <row>
@@ -16,7 +16,7 @@
                 <generationTimeMilliseconds>130</generationTimeMilliseconds>
                 <generationTime>0.13s</generationTime>
                 <interactionPosition>1</interactionPosition>
-                <icon />
+                <icon/>
                 <timestamp>1493504043</timestamp>
             </row>
         </actionDetails>
@@ -27,15 +27,15 @@
         <visitServerHour>2</visitServerHour>
         <lastActionTimestamp>1493518443</lastActionTimestamp>
         <lastActionDateTime>2017-04-30 02:14:03</lastActionDateTime>
-        <userId />
+        <userId/>
         <visitorType>new</visitorType>
-        <visitorTypeIcon />
+        <visitorTypeIcon/>
         <visitConverted>0</visitConverted>
-        <visitConvertedIcon />
+        <visitConvertedIcon/>
         <visitCount>1</visitCount>
         <firstActionTimestamp>1493518443</firstActionTimestamp>
         <visitEcommerceStatus>none</visitEcommerceStatus>
-        <visitEcommerceStatusIcon />
+        <visitEcommerceStatusIcon/>
         <daysSinceFirstVisit>0</daysSinceFirstVisit>
         <daysSinceLastEcommerceOrder>0</daysSinceLastEcommerceOrder>
         <visitDuration>0</visitDuration>
@@ -47,7 +47,7 @@
         <referrerTypeName>Search Engines</referrerTypeName>
         <referrerName>Google</referrerName>
         <referrerKeyword>Keyword not defined</referrerKeyword>
-        <referrerKeywordPosition />
+        <referrerKeywordPosition/>
         <referrerUrl>http://piwik.org/faq/general/#faq_144</referrerUrl>
         <referrerSearchEngineUrl>http://google.com</referrerSearchEngineUrl>
         <referrerSearchEngineIcon>plugins/Morpheus/icons/dist/searchEngines/google.com.png</referrerSearchEngineIcon>
@@ -56,7 +56,7 @@
         <deviceType>Desktop</deviceType>
         <deviceTypeIcon>plugins/DevicesDetection/images/screens/normal.png</deviceTypeIcon>
         <deviceBrand>Unknown</deviceBrand>
-        <deviceModel />
+        <deviceModel/>
         <operatingSystem>Windows 8.1</operatingSystem>
         <operatingSystemName>Windows</operatingSystemName>
         <operatingSystemIcon>plugins/Morpheus/icons/dist/os/WIN.png</operatingSystemIcon>

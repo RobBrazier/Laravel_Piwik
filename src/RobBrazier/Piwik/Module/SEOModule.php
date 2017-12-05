@@ -9,7 +9,8 @@ use RobBrazier\Piwik\Repository\RequestRepository;
  * @package RobBrazier\Piwik\Module
  * @see https://developer.piwik.org/api-reference/reporting-api#SEO for arguments
  */
-class SEOModule extends Module {
+class SEOModule extends Module
+{
 
     /**
      * @var SitesManagerModule
@@ -21,7 +22,8 @@ class SEOModule extends Module {
      * @param RequestRepository $request
      * @param SitesManagerModule $sitesManager
      */
-    public function __construct($request, $sitesManager) {
+    public function __construct($request, $sitesManager)
+    {
         parent::__construct($request);
         $this->sitesManager = $sitesManager;
     }
@@ -31,7 +33,8 @@ class SEOModule extends Module {
      * @param string $format
      * @return mixed
      */
-    public function getRank($url, $format = null) {
+    public function getRank($url, $format = null)
+    {
         $arguments = [
             "url" => $url
         ];
@@ -47,7 +50,8 @@ class SEOModule extends Module {
      * @param string $format
      * @return mixed
      */
-    public function getRankFromSiteId($siteId, $format = null) {
+    public function getRankFromSiteId($siteId, $format = null)
+    {
         $url = $this->sitesManager->getSiteUrlsFromId($siteId)[0];
         return $this->getRank($url, $format);
     }

@@ -7,7 +7,8 @@ use Prophecy\Prophet;
 use RobBrazier\Piwik\Repository\RequestRepository;
 use RobBrazier\Piwik\Request\RequestOptions;
 
-class APIModuleTest extends TestCase {
+class APIModuleTest extends TestCase
+{
 
 
     /**
@@ -32,7 +33,8 @@ class APIModuleTest extends TestCase {
      */
     private $expectedResponse;
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->prophet = new Prophet();
         $this->request = $this->prophet->prophesize(RequestRepository::class);
         $this->api = new APIModule($this->request->reveal());
@@ -45,7 +47,8 @@ class APIModuleTest extends TestCase {
         $this->expectedResponse = "foo";
     }
 
-    public function testGetPiwikVersion() {
+    public function testGetPiwikVersion()
+    {
         $this->requestOptions
             ->usePeriod(false)
             ->useSiteId(false)
@@ -55,7 +58,8 @@ class APIModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetIpFromHeader() {
+    public function testGetIpFromHeader()
+    {
         $this->requestOptions
             ->usePeriod(false)
             ->useSiteId(false)
@@ -65,7 +69,8 @@ class APIModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSettings() {
+    public function testGetSettings()
+    {
         $this->requestOptions
             ->usePeriod(false)
             ->useSiteId(false)
@@ -75,7 +80,8 @@ class APIModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSegmentsMetadata() {
+    public function testGetSegmentsMetadata()
+    {
         $siteIds = [1, 2, 3];
         $this->requestOptions
             ->usePeriod(false)
@@ -89,7 +95,8 @@ class APIModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetMetadata() {
+    public function testGetMetadata()
+    {
         $this->requestOptions
             ->setMethod("API.getMetadata");
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
@@ -97,7 +104,8 @@ class APIModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetReportMetadata() {
+    public function testGetReportMetadata()
+    {
         $siteIds = [1, 2, 3];
         $this->requestOptions
             ->usePeriod(false)
@@ -111,7 +119,8 @@ class APIModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetProcessedReport() {
+    public function testGetProcessedReport()
+    {
         $apiModule = "API";
         $apiAction = "getProcessedReport";
         $this->requestOptions
@@ -125,7 +134,8 @@ class APIModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetReportPagesMetadata() {
+    public function testGetReportPagesMetadata()
+    {
         $this->requestOptions
             ->usePeriod(false)
             ->setMethod("API.getReportPagesMetadata");
@@ -134,7 +144,8 @@ class APIModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetWidgetMetadata() {
+    public function testGetWidgetMetadata()
+    {
         $this->requestOptions
             ->usePeriod(false)
             ->setMethod("API.getWidgetMetadata");
@@ -143,7 +154,8 @@ class APIModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGet() {
+    public function testGet()
+    {
         $this->requestOptions
             ->setMethod("API.get");
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
@@ -151,7 +163,8 @@ class APIModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetRowEvolution() {
+    public function testGetRowEvolution()
+    {
         $apiModule = "API";
         $apiAction = "getRowEvolution";
         $this->requestOptions

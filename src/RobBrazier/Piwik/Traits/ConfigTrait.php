@@ -5,7 +5,8 @@ namespace RobBrazier\Piwik\Traits;
 use RobBrazier\Piwik\Config\Option;
 use RobBrazier\Piwik\Repository\ConfigRepository;
 
-trait ConfigTrait {
+trait ConfigTrait
+{
 
     /**
      * @var ConfigRepository
@@ -16,7 +17,8 @@ trait ConfigTrait {
      * ConfigTrait constructor.
      * @param ConfigRepository $config
      */
-    function __construct($config) {
+    public function __construct($config)
+    {
         $this->config = $config;
     }
 
@@ -25,7 +27,8 @@ trait ConfigTrait {
      *
      * @return string site id retrieved from configuration
      */
-    function getSiteId() {
+    public function getSiteId()
+    {
         return $this->get(Option::SITE_ID);
     }
 
@@ -34,7 +37,8 @@ trait ConfigTrait {
      *
      * @return string piwik url retrieved from configuration
      */
-    function getPiwikUrl() {
+    public function getPiwikUrl()
+    {
         return $this->get(Option::PIWIK_URL);
     }
 
@@ -42,7 +46,8 @@ trait ConfigTrait {
      * @param string $key key of item to retrieve from configuration
      * @return mixed
      */
-    private function get($key) {
+    private function get($key)
+    {
         return $this->config->get($key);
     }
 

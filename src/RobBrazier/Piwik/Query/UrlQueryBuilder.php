@@ -1,7 +1,9 @@
 <?php
+
 namespace RobBrazier\Piwik\Query;
 
-class UrlQueryBuilder {
+class UrlQueryBuilder
+{
 
     const MODULE = "module";
     const METHOD = "method";
@@ -17,7 +19,8 @@ class UrlQueryBuilder {
      * @param string $module
      * @return UrlQueryBuilder
      */
-    public function setModule($module) {
+    public function setModule($module)
+    {
         $this->add(self::MODULE, $module);
         return $this;
     }
@@ -26,7 +29,8 @@ class UrlQueryBuilder {
      * @param string $method
      * @return UrlQueryBuilder
      */
-    public function setMethod($method) {
+    public function setMethod($method)
+    {
         $this->add(self::METHOD, $method);
         return $this;
     }
@@ -35,7 +39,8 @@ class UrlQueryBuilder {
      * @param QueryDate $date
      * @return UrlQueryBuilder
      */
-    public function setDate($date) {
+    public function setDate($date)
+    {
         $this->add(self::PERIOD, $date->getPeriod());
         $this->add(self::DATE, $date->getDate());
         return $this;
@@ -45,7 +50,8 @@ class UrlQueryBuilder {
      * @param string $siteId
      * @return UrlQueryBuilder
      */
-    public function setSiteId($siteId) {
+    public function setSiteId($siteId)
+    {
         $this->add(self::SITE_ID, $siteId);
         return $this;
     }
@@ -54,7 +60,8 @@ class UrlQueryBuilder {
      * @param string $format
      * @return UrlQueryBuilder
      */
-    public function setFormat($format) {
+    public function setFormat($format)
+    {
         $this->add(self::FORMAT, $format);
         return $this;
     }
@@ -63,7 +70,8 @@ class UrlQueryBuilder {
      * @param string $tokenAuth
      * @return UrlQueryBuilder
      */
-    public function setTokenAuth($tokenAuth) {
+    public function setTokenAuth($tokenAuth)
+    {
         $this->add(self::TOKEN_AUTH, $tokenAuth);
         return $this;
     }
@@ -73,7 +81,8 @@ class UrlQueryBuilder {
      * @param string $value
      * @return UrlQueryBuilder
      */
-    public function add($key, $value) {
+    public function add($key, $value)
+    {
         if (!is_null($value)) {
             $this->data = array_add($this->data, $key, $value);
         }
@@ -81,10 +90,11 @@ class UrlQueryBuilder {
     }
 
     /**
-     * @param array[string]string $array
+     * @param array [string]string $array
      * @return UrlQueryBuilder
      */
-    public function addAll($array) {
+    public function addAll($array)
+    {
         foreach ($array as $key => $value) {
             $this->add($key, $value);
         }
@@ -94,7 +104,8 @@ class UrlQueryBuilder {
     /**
      * @return string
      */
-    public function build() {
+    public function build()
+    {
         $separator = "";
         $result = "?";
         foreach ($this->data as $key => $value) {

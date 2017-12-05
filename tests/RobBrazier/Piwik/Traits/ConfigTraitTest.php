@@ -8,7 +8,8 @@ use Prophecy\Prophet;
 use RobBrazier\Piwik\Config\Option;
 use RobBrazier\Piwik\Repository\ConfigRepository;
 
-class ConfigTraitTest extends TestCase {
+class ConfigTraitTest extends TestCase
+{
 
     const EXPECTED_SITE_ID = '1';
     const EXPECTED_PIWIK_URL = 'http://piwik.example.com';
@@ -25,7 +26,8 @@ class ConfigTraitTest extends TestCase {
      */
     private $configTrait;
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->prophet = new Prophet();
         $this->configRepository = $this->prophet->prophesize(ConfigRepository::class);
         $this->configTrait = new ConfigTraitStub($this->configRepository->reveal());
@@ -33,18 +35,21 @@ class ConfigTraitTest extends TestCase {
         $this->configRepository->get(Option::PIWIK_URL)->willReturn(self::EXPECTED_PIWIK_URL);
     }
 
-    public function testGetSiteId() {
+    public function testGetSiteId()
+    {
         $siteId = $this->configTrait->getSiteId();
         $this->assertEquals(self::EXPECTED_SITE_ID, $siteId);
     }
 
-    public function testGetPiwikUrl() {
+    public function testGetPiwikUrl()
+    {
         $piwikUrl = $this->configTrait->getPiwikUrl();
         $this->assertEquals(self::EXPECTED_PIWIK_URL, $piwikUrl);
     }
 
 }
 
-class ConfigTraitStub {
+class ConfigTraitStub
+{
     use ConfigTrait;
 }

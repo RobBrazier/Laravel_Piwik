@@ -31,7 +31,7 @@ task_integrationTest() {
 task_qa() {
   phpVersion="7.2"
   containerName="$containerNamePrefix-qa-${phpVersion/\./-}"
-  run_container_with_snapshot_volume $containerName $appDir $appDir "robbrazier/php:$phpVersion" "./ci/qa.sh" "CODACY_PROJECT_TOKEN"
+  run_container_with_snapshot_volume $containerName $appDir $appDir "robbrazier/php:$phpVersion" "./ci/qa.sh" "CC_TEST_REPORTER_ID"
 }
 
 task_publish_docs() {

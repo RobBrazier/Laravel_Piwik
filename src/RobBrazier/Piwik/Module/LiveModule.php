@@ -10,17 +10,19 @@ use RobBrazier\Piwik\Traits\FormatTrait;
  * @package RobBrazier\Piwik\Module
  * @see https://developer.piwik.org/api-reference/reporting-api#Live for arguments
  */
-class LiveModule extends Module {
+class LiveModule extends Module
+{
 
     use FormatTrait;
 
     /**
      * @param int $lastMinutes number of minutes to filter counters by (e.g. get counters for the last 30 minutes)
-     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param array [string]mixed $arguments extra arguments to be passed to the api call
      * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
-    public function getCounters($lastMinutes, $arguments = [], $format = null) {
+    public function getCounters($lastMinutes, $arguments = [], $format = null)
+    {
         $arguments = array_add($arguments, "lastMinutes", $lastMinutes);
         $options = $this->getOptions($format)->setArguments($arguments);
         return $this->request->send($options);
@@ -28,11 +30,12 @@ class LiveModule extends Module {
 
     /**
      * @param int $count number of last visits to get (if set to `0`, retrieves all results)
-     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param array [string]mixed $arguments extra arguments to be passed to the api call
      * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
-    public function getLastVisitsDetails($count, $arguments = [], $format = null) {
+    public function getLastVisitsDetails($count, $arguments = [], $format = null)
+    {
         if ($count > 0) {
             $arguments = array_add($arguments, "filter_limit", $count);
         }
@@ -49,7 +52,8 @@ class LiveModule extends Module {
      * @param string $format override format (defaults to one specified in config file)
      * @return  array
      */
-    public function getLastVisitsDetailsParsed($count, $format = null) {
+    public function getLastVisitsDetailsParsed($count, $format = null)
+    {
         $visits = $this->getLastVisitsDetails($count, [], $format);
 
         switch ($this->validateFormat($format)) {
@@ -71,7 +75,7 @@ class LiveModule extends Module {
                 $data = $this->getParsedLastVisitsDetails($parsedVisits);
                 break;
             default:
-                throw new PiwikException("Format [".$format."] is not yet supported.");
+                throw new PiwikException("Format [" . $format . "] is not yet supported.");
         }
         return $data;
     }
@@ -80,11 +84,12 @@ class LiveModule extends Module {
      * @param array $visits
      * @return array[string]string[]
      */
-    private function getParsedLastVisitsDetails($visits) {
+    private function getParsedLastVisitsDetails($visits)
+    {
         $result = [];
         foreach ($visits as $visit) {
-            $actionDetails = (array) array_get($visit, 'actionDetails');
-            $actionDetail = (array) array_last($actionDetails);
+            $actionDetails = (array)array_get($visit, 'actionDetails');
+            $actionDetail = (array)array_last($actionDetails);
             $pageLink = array_get($actionDetail, 'url');
             $pageTitle = array_get($actionDetail, 'pageTitle');
 
@@ -117,22 +122,24 @@ class LiveModule extends Module {
 
     /**
      * @param string $visitorId visitor id to search for
-     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param array [string]mixed $arguments extra arguments to be passed to the api call
      * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
-    public function getVisitorProfile($visitorId, $arguments = [], $format = null) {
+    public function getVisitorProfile($visitorId, $arguments = [], $format = null)
+    {
         $arguments = array_add($arguments, "visitorId", $visitorId);
         $options = $this->getOptions($format)->setArguments($arguments);
         return $this->request->send($options);
     }
 
     /**
-     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param array [string]mixed $arguments extra arguments to be passed to the api call
      * @param string $format override format (defaults to one specified in config file)
      * @return mixed
      */
-    public function getMostRecentVisitorId($arguments = [], $format = null) {
+    public function getMostRecentVisitorId($arguments = [], $format = null)
+    {
         $options = $this->getOptions($format)
             ->usePeriod(false)
             ->setArguments($arguments);

@@ -5,6 +5,6 @@ cache/
 .idea/
 vendor/
 reports/
-coverage.xml
+clover.xml
 *.iml
 *.phar

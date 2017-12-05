@@ -7,7 +7,8 @@ use Prophecy\Prophet;
 use RobBrazier\Piwik\Repository\RequestRepository;
 use RobBrazier\Piwik\Request\RequestOptions;
 
-class VisitsSummaryModuleTest extends TestCase {
+class VisitsSummaryModuleTest extends TestCase
+{
 
     /**
      * @var Prophet
@@ -31,7 +32,8 @@ class VisitsSummaryModuleTest extends TestCase {
      */
     private $expectedResponse;
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->prophet = new Prophet();
         $this->request = $this->prophet->prophesize(RequestRepository::class);
         $this->visitsSummary = new VisitsSummaryModule($this->request->reveal());
@@ -44,7 +46,8 @@ class VisitsSummaryModuleTest extends TestCase {
         $this->expectedResponse = "foo";
     }
 
-    public function testGet() {
+    public function testGet()
+    {
         $this->requestOptions
             ->setMethod("VisitsSummary.get");
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
@@ -52,7 +55,8 @@ class VisitsSummaryModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetVisits() {
+    public function testGetVisits()
+    {
         $this->requestOptions
             ->setMethod("VisitsSummary.getVisits");
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
@@ -60,7 +64,8 @@ class VisitsSummaryModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetUniqueVisitors() {
+    public function testGetUniqueVisitors()
+    {
         $this->requestOptions
             ->setMethod("VisitsSummary.getUniqueVisitors");
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
@@ -68,7 +73,8 @@ class VisitsSummaryModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetUsers() {
+    public function testGetUsers()
+    {
         $this->requestOptions
             ->setMethod("VisitsSummary.getUsers");
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
@@ -76,7 +82,8 @@ class VisitsSummaryModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetActions() {
+    public function testGetActions()
+    {
         $this->requestOptions
             ->setMethod("VisitsSummary.getActions");
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
@@ -84,7 +91,8 @@ class VisitsSummaryModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetMaxActions() {
+    public function testGetMaxActions()
+    {
         $this->requestOptions
             ->setMethod("VisitsSummary.getMaxActions");
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
@@ -92,7 +100,8 @@ class VisitsSummaryModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetBounceCount() {
+    public function testGetBounceCount()
+    {
         $this->requestOptions
             ->setMethod("VisitsSummary.getBounceCount");
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
@@ -100,7 +109,8 @@ class VisitsSummaryModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetVisitsConverted() {
+    public function testGetVisitsConverted()
+    {
         $this->requestOptions
             ->setMethod("VisitsSummary.getVisitsConverted");
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
@@ -108,7 +118,8 @@ class VisitsSummaryModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSumVisitsLength() {
+    public function testGetSumVisitsLength()
+    {
         $this->requestOptions
             ->setMethod("VisitsSummary.getSumVisitsLength");
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
@@ -116,7 +127,8 @@ class VisitsSummaryModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSumVisitsLengthPretty() {
+    public function testGetSumVisitsLengthPretty()
+    {
         $this->requestOptions
             ->setMethod("VisitsSummary.getSumVisitsLengthPretty");
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
