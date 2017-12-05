@@ -8,7 +8,8 @@ use Prophecy\Prophet;
 use RobBrazier\Piwik\Repository\RequestRepository;
 use RobBrazier\Piwik\Request\RequestOptions;
 
-class LiveModuleTest extends TestCase {
+class LiveModuleTest extends TestCase
+{
     /**
      * @var Prophet
      */
@@ -31,7 +32,8 @@ class LiveModuleTest extends TestCase {
      */
     private $expectedResponse;
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->prophet = new Prophet();
         $this->request = $this->prophet->prophesize(RequestRepository::class);
         $this->live = new LiveModule($this->request->reveal());
@@ -44,7 +46,8 @@ class LiveModuleTest extends TestCase {
         $this->expectedResponse = "foo";
     }
 
-    public function testGetCounters() {
+    public function testGetCounters()
+    {
         $lastMinutes = 5;
         $this->requestOptions
             ->setArguments([
@@ -56,7 +59,8 @@ class LiveModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetLastVisitsDetails() {
+    public function testGetLastVisitsDetails()
+    {
         $count = 5;
         $this->requestOptions
             ->setArguments([
@@ -68,7 +72,8 @@ class LiveModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetLastVisitsParsedJson() {
+    public function testGetLastVisitsParsedJson()
+    {
         $contents = file_get_contents(__DIR__ . '/resources/Live.getLastVisitsDetails.json');
         $this->expectedResponse = json_decode($contents);
         $format = "json";
@@ -93,7 +98,8 @@ class LiveModuleTest extends TestCase {
         $this->assertNotNull($response["browser_icon"]);
     }
 
-    public function testGetLastVisitsParsedPhp() {
+    public function testGetLastVisitsParsedPhp()
+    {
         $contents = file_get_contents(__DIR__ . '/resources/Live.getLastVisitsDetails.php');
         $this->expectedResponse = unserialize($contents);
         $format = "php";
@@ -118,7 +124,8 @@ class LiveModuleTest extends TestCase {
         $this->assertNotNull($response["browser_icon"]);
     }
 
-    public function testGetLastVisitsParsedXml() {
+    public function testGetLastVisitsParsedXml()
+    {
         $contents = file_get_contents(__DIR__ . '/resources/Live.getLastVisitsDetails.xml');
         $loader = new XmlLoader();
         $this->expectedResponse = simplexml_import_dom($loader->loadXml($contents));
@@ -148,7 +155,8 @@ class LiveModuleTest extends TestCase {
      * @expectedException \RobBrazier\Piwik\Exception\PiwikException
      * @expectedExceptionMessage Format [rss] is not yet supported.
      */
-    public function testGetLastVisitsParsedRss() {
+    public function testGetLastVisitsParsedRss()
+    {
         $format = "rss";
         $count = 1;
         $this->requestOptions
@@ -161,7 +169,8 @@ class LiveModuleTest extends TestCase {
         $this->live->getLastVisitsDetailsParsed($count, $format);
     }
 
-    public function testGetVisitorProfile() {
+    public function testGetVisitorProfile()
+    {
         $visitorId = "10001";
         $this->requestOptions
             ->setArguments([
@@ -173,7 +182,8 @@ class LiveModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetMostRecentVisitorId() {
+    public function testGetMostRecentVisitorId()
+    {
         $this->requestOptions
             ->usePeriod(false)
             ->setMethod("Live.getMostRecentVisitorId");

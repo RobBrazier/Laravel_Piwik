@@ -7,7 +7,8 @@ use Prophecy\Prophet;
 use RobBrazier\Piwik\Config\Option;
 use RobBrazier\Piwik\Repository\ConfigRepository;
 
-class RequestOptionsTest extends TestCase {
+class RequestOptionsTest extends TestCase
+{
 
     /**
      * @var Prophet
@@ -21,7 +22,8 @@ class RequestOptionsTest extends TestCase {
 
     private $configRepository;
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->requestOptions = new RequestOptions();
         $this->requestOptions
             ->useSiteId(false)
@@ -32,7 +34,8 @@ class RequestOptionsTest extends TestCase {
         $this->configRepository = $this->prophet->prophesize(ConfigRepository::class);
     }
 
-    public function testSetMethod() {
+    public function testSetMethod()
+    {
         $method = "methodName";
         $result = $this->requestOptions
             ->setMethod($method)
@@ -40,7 +43,8 @@ class RequestOptionsTest extends TestCase {
         $this->assertContains($method, $result);
     }
 
-    public function testUsePeriod() {
+    public function testUsePeriod()
+    {
         $period = "yesterday";
         $this->configRepository->get(Option::PERIOD)->willReturn($period);
         $result = $this->requestOptions
@@ -49,7 +53,8 @@ class RequestOptionsTest extends TestCase {
         $this->assertContains($period, $result);
     }
 
-    public function testSetSiteId() {
+    public function testSetSiteId()
+    {
         $siteId = "siteId1";
         $result = $this->requestOptions
             ->setSiteId($siteId)
@@ -57,7 +62,8 @@ class RequestOptionsTest extends TestCase {
         $this->assertContains($siteId, $result);
     }
 
-    public function testUseSiteId() {
+    public function testUseSiteId()
+    {
         $siteId = "siteId2";
         $this->configRepository->get(Option::SITE_ID)->willReturn($siteId);
         $result = $this->requestOptions
@@ -66,7 +72,8 @@ class RequestOptionsTest extends TestCase {
         $this->assertContains($siteId, $result);
     }
 
-    public function testSetFormat() {
+    public function testSetFormat()
+    {
         $format = "json";
         $result = $this->requestOptions
             ->setFormat($format)
@@ -74,14 +81,16 @@ class RequestOptionsTest extends TestCase {
         $this->assertContains($format, $result);
     }
 
-    public function testSetNullFormat() {
+    public function testSetNullFormat()
+    {
         $result = $this->requestOptions
             ->setFormat(null)
             ->build($this->configRepository->reveal());
         $this->assertNotContains("format=", $result);
     }
 
-    public function testUseFormat() {
+    public function testUseFormat()
+    {
         $format = "xml";
         $this->configRepository->get(Option::FORMAT)->willReturn($format);
         $result = $this->requestOptions
@@ -90,7 +99,8 @@ class RequestOptionsTest extends TestCase {
         $this->assertContains($format, $result);
     }
 
-    public function testUseTokenAuth() {
+    public function testUseTokenAuth()
+    {
         $tokenAuth = "apikey123";
         $this->configRepository->get(Option::API_KEY)->willReturn($tokenAuth);
         $result = $this->requestOptions
@@ -99,7 +109,8 @@ class RequestOptionsTest extends TestCase {
         $this->assertContains($tokenAuth, $result);
     }
 
-    public function testSetArguments() {
+    public function testSetArguments()
+    {
         $arguments = [
             "foo" => "bar"
         ];
@@ -112,7 +123,8 @@ class RequestOptionsTest extends TestCase {
         }
     }
 
-    public function testSetArgumentsWithNull() {
+    public function testSetArgumentsWithNull()
+    {
         $arguments = null;
         $result = $this->requestOptions
             ->setArguments($arguments)

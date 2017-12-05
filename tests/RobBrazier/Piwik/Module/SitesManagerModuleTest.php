@@ -7,7 +7,8 @@ use Prophecy\Prophet;
 use RobBrazier\Piwik\Repository\RequestRepository;
 use RobBrazier\Piwik\Request\RequestOptions;
 
-class SitesManagerModuleTest extends TestCase {
+class SitesManagerModuleTest extends TestCase
+{
 
     /**
      * @var Prophet
@@ -31,7 +32,8 @@ class SitesManagerModuleTest extends TestCase {
      */
     private $expectedResponse;
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->prophet = new Prophet();
         $this->request = $this->prophet->prophesize(RequestRepository::class);
         $this->sitesManager = new SitesManagerModule($this->request->reveal());
@@ -44,7 +46,8 @@ class SitesManagerModuleTest extends TestCase {
         $this->expectedResponse = "foo";
     }
 
-    public function testGetProvider() {
+    public function testGetProvider()
+    {
         $group = "groupName";
         $this->requestOptions
             ->useSiteId(false)
@@ -58,7 +61,8 @@ class SitesManagerModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSiteGroups() {
+    public function testGetSiteGroups()
+    {
         $this->requestOptions
             ->useSiteId(false)
             ->usePeriod(false)
@@ -68,7 +72,8 @@ class SitesManagerModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSitesFromId() {
+    public function testGetSitesFromId()
+    {
         $this->requestOptions
             ->usePeriod(false)
             ->setMethod("SitesManager.getSitesFromId");
@@ -77,7 +82,8 @@ class SitesManagerModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSiteUrlsFromId() {
+    public function testGetSiteUrlsFromId()
+    {
         $this->requestOptions
             ->usePeriod(false)
             ->setMethod("SitesManager.getSiteUrlsFromId");
@@ -86,7 +92,8 @@ class SitesManagerModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSiteUrlsFromIdWithCustomSiteId() {
+    public function testGetSiteUrlsFromIdWithCustomSiteId()
+    {
         $siteId = "1";
         $this->requestOptions
             ->usePeriod(false)
@@ -97,7 +104,8 @@ class SitesManagerModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetAllSites() {
+    public function testGetAllSites()
+    {
         $this->requestOptions
             ->usePeriod(false)
             ->useSiteId(false)
@@ -107,7 +115,8 @@ class SitesManagerModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetAllSitesId() {
+    public function testGetAllSitesId()
+    {
         $this->requestOptions
             ->usePeriod(false)
             ->useSiteId(false)
@@ -117,7 +126,8 @@ class SitesManagerModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSitesWithAdminAccess() {
+    public function testGetSitesWithAdminAccess()
+    {
         $this->requestOptions
             ->usePeriod(false)
             ->useSiteId(false)
@@ -127,7 +137,8 @@ class SitesManagerModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSitesWithViewAccess() {
+    public function testGetSitesWithViewAccess()
+    {
         $this->requestOptions
             ->usePeriod(false)
             ->useSiteId(false)
@@ -137,7 +148,8 @@ class SitesManagerModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSitesWithAtLeastViewAccess() {
+    public function testGetSitesWithAtLeastViewAccess()
+    {
         $this->requestOptions
             ->usePeriod(false)
             ->useSiteId(false)
@@ -147,7 +159,8 @@ class SitesManagerModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSitesIdWithAdminAccess() {
+    public function testGetSitesIdWithAdminAccess()
+    {
         $this->requestOptions
             ->usePeriod(false)
             ->useSiteId(false)
@@ -157,7 +170,8 @@ class SitesManagerModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSitesIdWithViewAccess() {
+    public function testGetSitesIdWithViewAccess()
+    {
         $this->requestOptions
             ->usePeriod(false)
             ->useSiteId(false)
@@ -167,7 +181,8 @@ class SitesManagerModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSitesIdWithAtLeastViewAccess() {
+    public function testGetSitesIdWithAtLeastViewAccess()
+    {
         $this->requestOptions
             ->usePeriod(false)
             ->useSiteId(false)
@@ -177,7 +192,8 @@ class SitesManagerModuleTest extends TestCase {
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSitesIdFromSiteUrl() {
+    public function testGetSitesIdFromSiteUrl()
+    {
         $url = "http://website.url";
         $this->requestOptions
             ->usePeriod(false)
