@@ -2,7 +2,8 @@
 
 namespace RobBrazier\Piwik\Config;
 
-abstract class Option {
+abstract class Option
+{
 
     const PIWIK_URL = 'piwik_url';
     const SITE_ID = 'site_id';
