@@ -84,7 +84,7 @@ class UrlQueryBuilder
     public function add($key, $value)
     {
         if (!is_null($value)) {
-            $this->data = array_add($this->data, $key, $value);
+            $this->data[$key] = $value;
         }
         return $this;
     }

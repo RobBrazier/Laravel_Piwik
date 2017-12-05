@@ -4,6 +4,7 @@ namespace RobBrazier\Piwik\Module;
 
 use RobBrazier\Piwik\Exception\PiwikException;
 use RobBrazier\Piwik\Traits\FormatTrait;
+use Illuminate\Support\Arr;
 
 /**
  * Class LiveModule
@@ -23,7 +24,7 @@ class LiveModule extends Module
      */
     public function getCounters($lastMinutes, $arguments = [], $format = null)
     {
-        $arguments = array_add($arguments, "lastMinutes", $lastMinutes);
+        $arguments = Arr::add($arguments, "lastMinutes", $lastMinutes);
         $options = $this->getOptions($format)->setArguments($arguments);
         return $this->request->send($options);
     }
@@ -37,7 +38,7 @@ class LiveModule extends Module
     public function getLastVisitsDetails($count, $arguments = [], $format = null)
     {
         if ($count > 0) {
-            $arguments = array_add($arguments, "filter_limit", $count);
+            $arguments = Arr::add($arguments, "filter_limit", $count);
         }
         $options = $this->getOptions($format)->setArguments($arguments);
         return $this->request->send($options);
@@ -128,7 +129,7 @@ class LiveModule extends Module
      */
     public function getVisitorProfile($visitorId, $arguments = [], $format = null)
     {
-        $arguments = array_add($arguments, "visitorId", $visitorId);
+        $arguments = Arr::add($arguments, "visitorId", $visitorId);
         $options = $this->getOptions($format)->setArguments($arguments);
         return $this->request->send($options);
     }
