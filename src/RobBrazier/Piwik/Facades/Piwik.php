@@ -16,5 +16,4 @@ class Piwik extends Facade
     {
         return 'piwik';
     }
-
 }

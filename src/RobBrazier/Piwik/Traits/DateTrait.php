@@ -20,5 +20,4 @@ trait DateTrait
     {
         return QueryDates::getInstance()->get($period);
     }
-
 }

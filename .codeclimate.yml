@@ -8,11 +8,12 @@ plugins:
     enabled: true
     config:
       file_extensions: "php"
-      backward_compatibility_checks: true
+      backward-compatibility-checks: true
+      ignore-undeclared: true
   phpcodesniffer:
     enabled: true
     config:
-      standard: "PSR2"
+      standard: "PSR1,PSR2"
   phpmd:
     enabled: true
   shellcheck:

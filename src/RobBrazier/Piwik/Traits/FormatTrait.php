@@ -2,7 +2,6 @@
 
 namespace RobBrazier\Piwik\Traits;
 
-
 use RobBrazier\Piwik\Exception\PiwikException;
 
 trait FormatTrait
@@ -24,5 +23,4 @@ trait FormatTrait
         }
         return $format;
     }
-
 }

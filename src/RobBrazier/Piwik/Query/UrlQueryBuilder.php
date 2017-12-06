@@ -114,5 +114,4 @@ class UrlQueryBuilder
         }
         return $result;
     }
-
 }

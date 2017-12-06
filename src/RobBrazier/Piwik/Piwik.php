@@ -189,10 +189,11 @@ class Piwik
     public function getTag()
     {
         $piwikUrl = $this->getPiwikUrl();
-        return sprintf("<!-- Piwik -->
-<script type=\"text/javascript\">
+        $tag = <<<EOT
+<!-- Piwik -->
+<script type="text/javascript">
 var _paq = _paq || [];
-(function(){ var u=((\"https:\" == document.location.protocol) ? \"%s/\" : \"%s/\");
+(function(){ var u=(("https:" == document.location.protocol) ? "%s/" : "%s/");
 _paq.push(['setSiteId', %s]);
 _paq.push(['setTrackerUrl', u+'piwik.php']);
 _paq.push(['trackPageView']);
@@ -200,10 +201,14 @@ _paq.push(['enableLinkTracking']);
 var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript'; g.defer=true; g.async=true; g.src=u+'piwik.js';
 s.parentNode.insertBefore(g,s); })();
 </script>
-<!-- End Piwik Code -->",
+<!-- End Piwik Code -->
+EOT;
+        return sprintf(
+            $tag,
             $this->convertUrl($piwikUrl, true),
             $this->convertUrl($piwikUrl, false),
-            $this->getSiteId());
+            $this->getSiteId()
+        );
     }
 
     /**
@@ -273,7 +278,8 @@ s.parentNode.insertBefore(g,s); })();
     }
 
     /**
-     * Get information about last 10 visits (ip, time, country, pages, etc.) in a formatted array with GeoIP information if enabled
+     * Get information about last 10 visits (ip, time, country, pages, etc.) in a
+     * formatted array with GeoIP information if enabled
      *
      * @deprecated
      * @param   int $count Limit the number of visits returned by $count
@@ -369,7 +375,7 @@ s.parentNode.insertBefore(g,s); })();
      *
      * @deprecated
      * @see SEOModule::getRankFromSiteId()
-     * @param   string $siteId Override for ID, so you can specify one rather than fetching it from config
+     * @param   int $siteId Override for ID, so you can specify one rather than fetching it from config
      * @param   string $format Override string for the format of the API Query to be returned as
      * @return mixed
      */
@@ -403,5 +409,4 @@ s.parentNode.insertBefore(g,s); })();
     {
         return $this->getAPI()->getPiwikVersion($format);
     }
-
 }

@@ -20,7 +20,7 @@ class RequestOptions
     private $method;
 
     /**
-     * @var string
+     * @var int
      */
     private $siteId;
 
@@ -81,7 +81,7 @@ class RequestOptions
     }
 
     /**
-     * @param string $siteId
+     * @param int $siteId
      * @return RequestOptions
      */
     public function setSiteId($siteId)
@@ -208,6 +208,4 @@ class RequestOptions
         $builder->addAll($this->arguments);
         return $builder->build();
     }
-
-
 }

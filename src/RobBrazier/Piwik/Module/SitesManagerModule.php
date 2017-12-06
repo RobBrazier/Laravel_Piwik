@@ -182,6 +182,4 @@ class SitesManagerModule extends Module
             ->setArguments($arguments);
         return $this->request->send($options);
     }
-
-
 }

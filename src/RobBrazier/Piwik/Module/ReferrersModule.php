@@ -2,8 +2,6 @@
 
 namespace RobBrazier\Piwik\Module;
 
-use Illuminate\Support\Arr;
-
 /**
  * Class ReferrersModule
  * @package RobBrazier\Piwik\Module
@@ -53,7 +51,7 @@ class ReferrersModule extends Module
      */
     public function getKeywordsForPageUrl($pageUrl, $arguments = [], $format = null)
     {
-        $arguments = Arr::add($arguments, "url", $pageUrl);
+        $arguments = array_add($arguments, "url", $pageUrl);
         $options = $this->getOptions($format)->setArguments($arguments);
         return $this->request->send($options);
     }
@@ -66,7 +64,7 @@ class ReferrersModule extends Module
      */
     public function getKeywordsForPageTitle($pageTitle, $arguments = [], $format = null)
     {
-        $arguments = Arr::add($arguments, "title", $pageTitle);
+        $arguments = array_add($arguments, "title", $pageTitle);
         $options = $this->getOptions($format)->setArguments($arguments);
         return $this->request->send($options);
     }
@@ -224,5 +222,4 @@ class ReferrersModule extends Module
         $options = $this->getOptions($format)->setArguments($arguments);
         return $this->request->send($options);
     }
-
 }

@@ -2,7 +2,6 @@
 
 namespace RobBrazier\Piwik\Query;
 
-
 class QueryDate
 {
 
@@ -43,5 +42,4 @@ class QueryDate
     {
         return $this->date;
     }
-
 }

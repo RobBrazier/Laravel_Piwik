@@ -2,8 +2,6 @@
 
 namespace RobBrazier\Piwik\Module;
 
-use Illuminate\Support\Arr;
-
 /**
  * Class APIModule
  * @package RobBrazier\Piwik\Module
@@ -86,7 +84,7 @@ class APIModule extends Module
     public function getReportMetadata($siteIds, $arguments = [], $format = null)
     {
         $idSites = implode(",", $siteIds);
-        $arguments = Arr::add($arguments, "idSites", $idSites);
+        $arguments = array_add($arguments, "idSites", $idSites);
         $options = $this->getOptions($format)
             ->usePeriod(false)
             ->useSiteId(false)
@@ -103,8 +101,8 @@ class APIModule extends Module
      */
     public function getProcessedReport($apiModule, $apiAction, $arguments = [], $format = null)
     {
-        $arguments = Arr::add($arguments, "apiModule", $apiModule);
-        $arguments = Arr::add($arguments, "apiAction", $apiAction);
+        $arguments = array_add($arguments, "apiModule", $apiModule);
+        $arguments = array_add($arguments, "apiAction", $apiAction);
         $options = $this->getOptions($format)->setArguments($arguments);
         return $this->request->send($options);
     }
@@ -151,10 +149,9 @@ class APIModule extends Module
      */
     public function getRowEvolution($apiModule, $apiAction, $arguments = [], $format = null)
     {
-        $arguments = Arr::add($arguments, "apiModule", $apiModule);
-        $arguments = Arr::add($arguments, "apiAction", $apiAction);
+        $arguments = array_add($arguments, "apiModule", $apiModule);
+        $arguments = array_add($arguments, "apiAction", $apiAction);
         $options = $this->getOptions($format)->setArguments($arguments);
         return $this->request->send($options);
     }
-
 }

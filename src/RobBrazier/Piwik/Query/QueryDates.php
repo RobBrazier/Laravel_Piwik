@@ -66,5 +66,4 @@ class QueryDates
         }
         throw new PiwikException("Invalid period provided (" . $data . ")");
     }
-
 }
