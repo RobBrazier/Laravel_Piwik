@@ -2,8 +2,7 @@
 
 namespace RobBrazier\Piwik\Repository\Request;
 
-
-use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Client;
 use Lightools\Xml\XmlLoader;
 use RobBrazier\Piwik\Config\Option;
 use RobBrazier\Piwik\Repository\RequestRepository;
@@ -20,7 +19,7 @@ class GuzzleRequestRepository implements RequestRepository
     use FormatTrait;
 
     /**
-     * @var ClientInterface
+     * @var Client
      */
     private $client;
 

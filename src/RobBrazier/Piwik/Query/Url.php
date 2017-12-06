@@ -2,7 +2,6 @@
 
 namespace RobBrazier\Piwik\Query;
 
-
 use RobBrazier\Piwik\Exception\PiwikException;
 
 class Url
@@ -106,6 +105,4 @@ class Url
 
         return vsprintf($format, $args);
     }
-
-
 }

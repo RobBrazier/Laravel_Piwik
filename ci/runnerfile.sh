@@ -3,7 +3,6 @@
 containerNamePrefix="jenkins-laravelpiwik"
 appDir="/usr/src/app"
 snapshotVolume="$containerNamePrefix-snapshot-$BUILD_NUMBER"
-containerSize="s4"
 
 task_dir="./ci/common"
 source $task_dir/utils.sh
@@ -16,7 +15,7 @@ task_unitTest() {
     exit 1
   fi
   containerName="$containerNamePrefix-unit-${PHP_VERSION/\./-}"
-  run_container_with_snapshot_volume $containerName $appDir $appDir "robbrazier/php:$PHP_VERSION" "./ci/unit.sh"
+  run_container_with_snapshot_volume "$containerName" "$appDir" "$appDir" "robbrazier/php:$PHP_VERSION" "./ci/unit.sh"
 }
 
 task_integrationTest() {
@@ -25,25 +24,25 @@ task_integrationTest() {
     exit 1
   fi
   containerName="$containerNamePrefix-integration-${LARAVEL_VERSION/\./-}"
-  run_container_with_snapshot_volume $containerName "$appDir/plugin" $appDir "robbrazier/php:7.1" "./plugin/ci/integration.sh" "LARAVEL_VERSION"
+  run_container_with_snapshot_volume "$containerName" "$appDir/plugin" "$appDir" "robbrazier/php:7.1" "./plugin/ci/integration.sh" "LARAVEL_VERSION"
 }
 
 task_qa() {
   phpVersion="7.2"
   containerName="$containerNamePrefix-qa-${phpVersion/\./-}"
-  run_container_with_snapshot_volume $containerName $appDir $appDir "robbrazier/php:$phpVersion" "./ci/qa.sh" "CC_TEST_REPORTER_ID"
+  run_container_with_snapshot_volume "$containerName" "$appDir" "$appDir" "robbrazier/php:$phpVersion" "./ci/qa.sh" "CC_TEST_REPORTER_ID"
 }
 
 task_publish_docs() {
   snapshotContainerName="$containerNamePrefix-publish-docs"
   {
-    create_volume_from_snapshot $snapshotVolume $snapshotContainerName
+    create_volume_from_snapshot "$snapshotVolume" "$snapshotContainerName"
     runner_sequence daux sami netlify
   } && {
-    destroy_volume $snapshotContainerName
+    destroy_volume "$snapshotContainerName"
   } || {
     exit_code="$?"
-    destroy_volume $snapshotContainerName
+    destroy_volume "$snapshotContainerName"
     exit $exit_code
   }
 }
@@ -52,12 +51,12 @@ task_daux() {
   volumeName="$containerNamePrefix-publish-docs"
   containerName="$volumeName-daux"
   {
-    run_container $containerName $volumeName $appDir $appDir "robbrazier/php:7.1" "./ci/docs/daux.sh"
+    run_container "$containerName" "$volumeName" "$appDir" "$appDir" "robbrazier/php:7.1" "./ci/docs/daux.sh"
   } && {
-    destroy_container $containerName
+    destroy_container "$containerName"
   } || {
     exit_code="$?"
-    destroy_container $containerName
+    destroy_container "$containerName"
     exit $exit_code
   }
 }
@@ -66,12 +65,12 @@ task_sami() {
   volumeName="$containerNamePrefix-publish-docs"
   containerName="$volumeName-sami"
   {
-    run_container $containerName $volumeName $appDir $appDir "robbrazier/php:7.1" "./ci/docs/sami.sh"
+    run_container "$containerName" "$volumeName" "$appDir" "$appDir" "robbrazier/php:7.1" "./ci/docs/sami.sh"
   } && {
-    destroy_container $containerName
+    destroy_container "$containerName"
   } || {
     exit_code="$?"
-    destroy_container $containerName
+    destroy_container "$containerName"
     exit $exit_code
   }
 }
@@ -84,17 +83,17 @@ task_netlify() {
   volumeName="$containerNamePrefix-publish-docs"
   containerName="$volumeName-netlify"
   {
-    run_container $containerName $volumeName $appDir $appDir "node:6.11-alpine" "./ci/docs/netlify.sh" "NETLIFY_TOKEN"
+    run_container "$containerName" "$volumeName" "$appDir" "$appDir" "node:6.11-alpine" "./ci/docs/netlify.sh" "NETLIFY_TOKEN"
   } && {
-    destroy_container $containerName
+    destroy_container "$containerName"
   } || {
     exit_code="$?"
-    destroy_container $containerName
+    destroy_container "$containerName"
     exit $exit_code
   }
 }
 
 task_cleanup() {
-  destroy_snapshot $snapshotVolume
-  destroy_volume $snapshotVolume
+  destroy_snapshot "$snapshotVolume"
+  destroy_volume "$snapshotVolume"
 }

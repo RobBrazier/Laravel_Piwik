@@ -61,5 +61,4 @@ class PiwikServiceProvider extends ServiceProvider
     {
         return ['RobBrazier\Piwik\Piwik'];
     }
-
 }

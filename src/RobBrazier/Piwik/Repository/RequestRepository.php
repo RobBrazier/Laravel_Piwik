@@ -14,5 +14,4 @@ interface RequestRepository
      * @return mixed
      */
     public function send($requestOptions);
-
 }

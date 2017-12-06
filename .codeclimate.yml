@@ -1,0 +1,32 @@
+version: "2"
+plugins:
+  fixme:
+    enabled: true
+  markdownlint:
+    enabled: true
+  phan:
+    enabled: true
+    config:
+      file_extensions: "php"
+      backward-compatibility-checks: true
+      ignore-undeclared: true
+  phpcodesniffer:
+    enabled: true
+    config:
+      standard: "PSR1,PSR2"
+  phpmd:
+    enabled: true
+  shellcheck:
+    enabled: true
+  sonar-php:
+    enabled: true
+    config:
+      tests_patterns:
+        - "tests/**"
+
+exclude_patterns:
+  - ".sami.*"
+  - ".idea/**"
+  - "ci/common/**"
+  - "vendor/**"
+  - "tests/**"

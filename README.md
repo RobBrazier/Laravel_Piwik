@@ -13,6 +13,7 @@ An Interface to Piwik's Analytics API for Laravel (Composer Package)
 This is the Laravel 5 version of the Laravel-Piwik Bundle.
 
 ## Installation
+
 Add `RobBrazier/Piwik` to `composer.json`:
 
 ```json
@@ -23,7 +24,8 @@ Add `RobBrazier/Piwik` to `composer.json`:
 }
 ```
 
-Add `'RobBrazier\Piwik\PiwikServiceProvider'` and `'Piwik' => 'RobBrazier\Piwik\Facades\Piwik'` to `app/config/app.php`
+Add `'RobBrazier\Piwik\PiwikServiceProvider'` and
+`'Piwik' => 'RobBrazier\Piwik\Facades\Piwik'` to `app/config/app.php`
 
 ```php
 'providers' = array(
@@ -41,22 +43,33 @@ Add `'RobBrazier\Piwik\PiwikServiceProvider'` and `'Piwik' => 'RobBrazier\Piwik\
 );
 ```
 
-Then move the config file out of the package, so that it doesn't get replaced when you update, by doing `php artisan vendor:publish --provider="RobBrazier\Piwik\PiwikServiceProvider" --tag="config"`.
+Then move the config file out of the package, so that it doesn't get replaced
+when you update, by doing
+
+```bash
+php artisan vendor:publish --provider="RobBrazier\Piwik\PiwikServiceProvider" --tag="config"
+```
 
 Update your packages with `composer update` or install with `composer install`.
 
-Then go to `config/piwik.php` and add your config settings such as server, username, password, apikey etc.
+Then go to `config/piwik.php` and add your config settings such as server, apikey,
+site id etc.
 
 ## Development
-Common CI scripts are contained within a submodule, so to make use of them, the repository will need to be recursively cloned
-```
+
+Common CI scripts are contained within a submodule, so to make use of them, the
+repository will need to be recursively cloned
+
+```bash
 git clone --recursive git@github.com:RobBrazier/Laravel_Piwik.git
 git clone --recursive https://github.com/RobBrazier/Laravel_Piwik.git
 ```
 
-The scripts can be used locally for running tests, e.g. integration with laravel and unit tests across php versions.
+The scripts can be used locally for running tests, e.g. integration with laravel
+and unit tests across php versions.
 e.g.
-```
+
+```bash
 # unit tests
 PHP_VERSION=7.1 ./runner unitTest
 
@@ -65,14 +78,17 @@ LARAVEL_VERSION=5.5 ./runner integrationTest
 ```
 
 ## Documentation
-Usage Documentation is located at http://laravel-piwik.robbrazier.com/Usage.html
-API Documentation is located at http://laravel-piwik.robbrazier.com/API_Docs.html
+
+Usage Documentation is located at <http://laravel-piwik.robbrazier.com/Usage.html>
+API Documentation is located at <http://laravel-piwik.robbrazier.com/API_Docs.html>
 
 ## Contributing
+
 Pull requests are welcome. For major changes, please open an issue first
 to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
 
 ## License
+
 [MIT](https://choosealicense.com/licenses/mit/)

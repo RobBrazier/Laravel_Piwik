@@ -50,5 +50,4 @@ trait ConfigTrait
     {
         return $this->config->get($key);
     }
-
 }

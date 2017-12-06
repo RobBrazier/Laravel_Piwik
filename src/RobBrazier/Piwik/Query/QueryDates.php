@@ -60,10 +60,10 @@ class QueryDates
     {
         if (array_has($this->map, $data)) {
             return array_get($this->map, $data);
-        } else if (preg_match(self::DATE_REGEX, $data)) {
+        }
+        if (preg_match(self::DATE_REGEX, $data)) {
             return new QueryDate("range", $data);
         }
         throw new PiwikException("Invalid period provided (" . $data . ")");
     }
-
 }

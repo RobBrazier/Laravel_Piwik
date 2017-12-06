@@ -55,5 +55,4 @@ class SEOModule extends Module
         $url = $this->sitesManager->getSiteUrlsFromId($siteId)[0];
         return $this->getRank($url, $format);
     }
-
 }

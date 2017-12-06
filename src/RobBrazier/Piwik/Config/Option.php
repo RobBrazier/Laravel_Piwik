@@ -12,5 +12,4 @@ abstract class Option
     const PERIOD = 'period';
     const CURL_TIMEOUT = "http_timeout";
     const VERIFY_PEER = "verify_peer";
-
 }

@@ -119,5 +119,4 @@ class VisitsSummaryModule extends Module
         $options = $this->getOptions($format)->setArguments($arguments);
         return $this->request->send($options);
     }
-
 }

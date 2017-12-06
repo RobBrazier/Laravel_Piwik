@@ -145,5 +145,4 @@ class LiveModule extends Module
             ->setArguments($arguments);
         return $this->request->send($options);
     }
-
 }
