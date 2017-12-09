@@ -7,7 +7,8 @@ use Prophecy\Prophet;
 use RobBrazier\Piwik\Repository\RequestRepository;
 use RobBrazier\Piwik\Request\RequestOptions;
 
-class ReferrersModuleTest extends TestCase {
+class ReferrersModuleTest extends TestCase
+{
     /**
      * @var Prophet
      */
@@ -30,7 +31,8 @@ class ReferrersModuleTest extends TestCase {
      */
     private $expectedResponse;
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->prophet = new Prophet();
         $this->request = $this->prophet->prophesize(RequestRepository::class);
         $this->referrers = new ReferrersModule($this->request->reveal());
@@ -40,167 +42,185 @@ class ReferrersModuleTest extends TestCase {
             ->useSiteId(true)
             ->useFormat(true)
             ->useTokenAuth(true);
-        $this->expectedResponse = "foo";
+        $this->expectedResponse = 'foo';
     }
 
-    public function testGetReferrerType() {
+    public function testGetReferrerType()
+    {
         $this->requestOptions
-            ->setMethod("Referrers.getReferrerType");
+            ->setMethod('Referrers.getReferrerType');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->referrers->getReferrerType();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetAll() {
+    public function testGetAll()
+    {
         $this->requestOptions
-            ->setMethod("Referrers.getAll");
+            ->setMethod('Referrers.getAll');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->referrers->getAll();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetKeywords() {
+    public function testGetKeywords()
+    {
         $this->requestOptions
-            ->setMethod("Referrers.getKeywords");
+            ->setMethod('Referrers.getKeywords');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->referrers->getKeywords();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetKeywordsForPageUrl() {
-        $url = "http://page.url";
+    public function testGetKeywordsForPageUrl()
+    {
+        $url = 'http://page.url';
         $this->requestOptions
             ->setArguments([
-                "url" => $url
+                'url' => $url,
             ])
-            ->setMethod("Referrers.getKeywordsForPageUrl");
+            ->setMethod('Referrers.getKeywordsForPageUrl');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->referrers->getKeywordsForPageUrl($url);
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetKeywordsForPageTitle() {
-        $title = "page title";
+    public function testGetKeywordsForPageTitle()
+    {
+        $title = 'page title';
         $this->requestOptions
             ->setArguments([
-                "title" => $title
+                'title' => $title,
             ])
-            ->setMethod("Referrers.getKeywordsForPageTitle");
+            ->setMethod('Referrers.getKeywordsForPageTitle');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->referrers->getKeywordsForPageTitle($title);
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSearchEnginesFromKeywordId() {
+    public function testGetSearchEnginesFromKeywordId()
+    {
         $this->requestOptions
-            ->setMethod("Referrers.getSearchEnginesFromKeywordId");
+            ->setMethod('Referrers.getSearchEnginesFromKeywordId');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->referrers->getSearchEnginesFromKeywordId();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSearchEngines() {
+    public function testGetSearchEngines()
+    {
         $this->requestOptions
-            ->setMethod("Referrers.getSearchEngines");
+            ->setMethod('Referrers.getSearchEngines');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->referrers->getSearchEngines();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetKeywordsFromSearchEngineId() {
+    public function testGetKeywordsFromSearchEngineId()
+    {
         $this->requestOptions
-            ->setMethod("Referrers.getKeywordsFromSearchEngineId");
+            ->setMethod('Referrers.getKeywordsFromSearchEngineId');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->referrers->getKeywordsFromSearchEngineId();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetCampaigns() {
+    public function testGetCampaigns()
+    {
         $this->requestOptions
-            ->setMethod("Referrers.getCampaigns");
+            ->setMethod('Referrers.getCampaigns');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->referrers->getCampaigns();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetKeywordsFromCampaignId() {
+    public function testGetKeywordsFromCampaignId()
+    {
         $this->requestOptions
-            ->setMethod("Referrers.getKeywordsFromCampaignId");
+            ->setMethod('Referrers.getKeywordsFromCampaignId');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->referrers->getKeywordsFromCampaignId();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetWebsites() {
+    public function testGetWebsites()
+    {
         $this->requestOptions
-            ->setMethod("Referrers.getWebsites");
+            ->setMethod('Referrers.getWebsites');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->referrers->getWebsites();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetUrlsFromWebsiteId() {
+    public function testGetUrlsFromWebsiteId()
+    {
         $this->requestOptions
-            ->setMethod("Referrers.getUrlsFromWebsiteId");
+            ->setMethod('Referrers.getUrlsFromWebsiteId');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->referrers->getUrlsFromWebsiteId();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSocials() {
+    public function testGetSocials()
+    {
         $this->requestOptions
-            ->setMethod("Referrers.getSocials");
+            ->setMethod('Referrers.getSocials');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->referrers->getSocials();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetUrlsForSocial() {
+    public function testGetUrlsForSocial()
+    {
         $this->requestOptions
-            ->setMethod("Referrers.getUrlsForSocial");
+            ->setMethod('Referrers.getUrlsForSocial');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->referrers->getUrlsForSocial();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetNumberOfDistinctSearchEngines() {
+    public function testGetNumberOfDistinctSearchEngines()
+    {
         $this->requestOptions
-            ->setMethod("Referrers.getNumberOfDistinctSearchEngines");
+            ->setMethod('Referrers.getNumberOfDistinctSearchEngines');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->referrers->getNumberOfDistinctSearchEngines();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetNumberOfDistinctKeywords() {
+    public function testGetNumberOfDistinctKeywords()
+    {
         $this->requestOptions
-            ->setMethod("Referrers.getNumberOfDistinctKeywords");
+            ->setMethod('Referrers.getNumberOfDistinctKeywords');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->referrers->getNumberOfDistinctKeywords();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetNumberOfDistinctCampaigns() {
+    public function testGetNumberOfDistinctCampaigns()
+    {
         $this->requestOptions
-            ->setMethod("Referrers.getNumberOfDistinctCampaigns");
+            ->setMethod('Referrers.getNumberOfDistinctCampaigns');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->referrers->getNumberOfDistinctCampaigns();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetNumberOfDistinctWebsites() {
+    public function testGetNumberOfDistinctWebsites()
+    {
         $this->requestOptions
-            ->setMethod("Referrers.getNumberOfDistinctWebsites");
+            ->setMethod('Referrers.getNumberOfDistinctWebsites');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->referrers->getNumberOfDistinctWebsites();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetNumberOfDistinctWebsitesUrls() {
+    public function testGetNumberOfDistinctWebsitesUrls()
+    {
         $this->requestOptions
-            ->setMethod("Referrers.getNumberOfDistinctWebsitesUrls");
+            ->setMethod('Referrers.getNumberOfDistinctWebsitesUrls');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->referrers->getNumberOfDistinctWebsitesUrls();
         $this->assertEquals($this->expectedResponse, $response);
     }
-
 }

@@ -7,8 +7,8 @@ use Prophecy\Prophet;
 use RobBrazier\Piwik\Config\Option;
 use RobBrazier\Piwik\Repository\ConfigRepository;
 
-class RequestOptionsTest extends TestCase {
-
+class RequestOptionsTest extends TestCase
+{
     /**
      * @var Prophet
      */
@@ -21,7 +21,8 @@ class RequestOptionsTest extends TestCase {
 
     private $configRepository;
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->requestOptions = new RequestOptions();
         $this->requestOptions
             ->useSiteId(false)
@@ -32,16 +33,18 @@ class RequestOptionsTest extends TestCase {
         $this->configRepository = $this->prophet->prophesize(ConfigRepository::class);
     }
 
-    public function testSetMethod() {
-        $method = "methodName";
+    public function testSetMethod()
+    {
+        $method = 'methodName';
         $result = $this->requestOptions
             ->setMethod($method)
             ->build($this->configRepository->reveal());
         $this->assertContains($method, $result);
     }
 
-    public function testUsePeriod() {
-        $period = "yesterday";
+    public function testUsePeriod()
+    {
+        $period = 'yesterday';
         $this->configRepository->get(Option::PERIOD)->willReturn($period);
         $result = $this->requestOptions
             ->usePeriod(true)
@@ -49,16 +52,18 @@ class RequestOptionsTest extends TestCase {
         $this->assertContains($period, $result);
     }
 
-    public function testSetSiteId() {
-        $siteId = "siteId1";
+    public function testSetSiteId()
+    {
+        $siteId = 'siteId1';
         $result = $this->requestOptions
             ->setSiteId($siteId)
             ->build($this->configRepository->reveal());
         $this->assertContains($siteId, $result);
     }
 
-    public function testUseSiteId() {
-        $siteId = "siteId2";
+    public function testUseSiteId()
+    {
+        $siteId = 'siteId2';
         $this->configRepository->get(Option::SITE_ID)->willReturn($siteId);
         $result = $this->requestOptions
             ->useSiteId(true)
@@ -66,23 +71,26 @@ class RequestOptionsTest extends TestCase {
         $this->assertContains($siteId, $result);
     }
 
-    public function testSetFormat() {
-        $format = "json";
+    public function testSetFormat()
+    {
+        $format = 'json';
         $result = $this->requestOptions
             ->setFormat($format)
             ->build($this->configRepository->reveal());
         $this->assertContains($format, $result);
     }
 
-    public function testSetNullFormat() {
+    public function testSetNullFormat()
+    {
         $result = $this->requestOptions
             ->setFormat(null)
             ->build($this->configRepository->reveal());
-        $this->assertNotContains("format=", $result);
+        $this->assertNotContains('format=', $result);
     }
 
-    public function testUseFormat() {
-        $format = "xml";
+    public function testUseFormat()
+    {
+        $format = 'xml';
         $this->configRepository->get(Option::FORMAT)->willReturn($format);
         $result = $this->requestOptions
             ->useFormat(true)
@@ -90,8 +98,9 @@ class RequestOptionsTest extends TestCase {
         $this->assertContains($format, $result);
     }
 
-    public function testUseTokenAuth() {
-        $tokenAuth = "apikey123";
+    public function testUseTokenAuth()
+    {
+        $tokenAuth = 'apikey123';
         $this->configRepository->get(Option::API_KEY)->willReturn($tokenAuth);
         $result = $this->requestOptions
             ->useTokenAuth(true)
@@ -99,9 +108,10 @@ class RequestOptionsTest extends TestCase {
         $this->assertContains($tokenAuth, $result);
     }
 
-    public function testSetArguments() {
+    public function testSetArguments()
+    {
         $arguments = [
-            "foo" => "bar"
+            'foo' => 'bar',
         ];
         $result = $this->requestOptions
             ->setArguments($arguments)
@@ -112,12 +122,12 @@ class RequestOptionsTest extends TestCase {
         }
     }
 
-    public function testSetArgumentsWithNull() {
+    public function testSetArgumentsWithNull()
+    {
         $arguments = null;
         $result = $this->requestOptions
             ->setArguments($arguments)
             ->build($this->configRepository->reveal());
-        $this->assertEquals("?module=API", $result);
+        $this->assertEquals('?module=API', $result);
     }
-
 }

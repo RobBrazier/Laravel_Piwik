@@ -2,17 +2,16 @@
 
 namespace RobBrazier\Piwik\Repository\Request;
 
-
 use GuzzleHttp\ClientInterface;
 use Lightools\Xml\XmlLoader;
+use RobBrazier\Piwik\Config\Option;
 use RobBrazier\Piwik\Repository\RequestRepository;
 use RobBrazier\Piwik\Request\RequestOptions;
 use RobBrazier\Piwik\Traits\ConfigTrait;
 use RobBrazier\Piwik\Traits\FormatTrait;
-use RobBrazier\Piwik\Config\Option;
 
-class GuzzleRequestRepository implements RequestRepository {
-
+class GuzzleRequestRepository implements RequestRepository
+{
     use ConfigTrait {
         ConfigTrait::__construct as private __configConstruct;
     }
@@ -32,33 +31,40 @@ class GuzzleRequestRepository implements RequestRepository {
         $this->client = $client;
     }
 
-    public function send($requestOptions) {
+    public function send($requestOptions)
+    {
         $body = $this->getResponseBody($requestOptions);
+
         return $this->decode($body, $requestOptions);
     }
 
     /**
      * @param RequestOptions $requestOptions
+     *
      * @return string
      */
-    private function getResponseBody($requestOptions) {
+    private function getResponseBody($requestOptions)
+    {
         $url = 'index.php'.$requestOptions->build($this->config);
         $options = [
-            "timeout" => $this->config->get(Option::CURL_TIMEOUT, 5.0),
-            "verify" => $this->config->get(Option::VERIFY_PEER, true),
-            "base_uri" => $this->getPiwikUrl()
+            'timeout'  => $this->config->get(Option::CURL_TIMEOUT, 5.0),
+            'verify'   => $this->config->get(Option::VERIFY_PEER, true),
+            'base_uri' => $this->getPiwikUrl(),
         ];
-        $response = $this->client->request("get", $url, $options);
+        $response = $this->client->request('get', $url, $options);
         $body = $response->getBody();
+
         return $body->getContents();
     }
 
     /**
-     * @param string $result
+     * @param string         $result
      * @param RequestOptions $requestOptions
+     *
      * @return mixed
      */
-    private function decode($result, $requestOptions) {
+    private function decode($result, $requestOptions)
+    {
         $format = $requestOptions->getFormat($this->config);
         switch ($this->validateFormat($format)) {
             case 'php':
@@ -73,6 +79,7 @@ class GuzzleRequestRepository implements RequestRepository {
             default:
                 $result = json_decode($result);
         }
+
         return $result;
     }
 }

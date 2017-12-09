@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
 
     /*
      *  Server URL
@@ -13,7 +13,7 @@ return array(
      *  The bundle works much faster with the API Key, rather than username and password.
      */
 
-    'api_key'       =>  '',
+    'api_key'       => '',
 
     /*
      *  Format for API calls to be returned in
@@ -55,4 +55,4 @@ return array(
 
     'http_timeout' => 5.0,
 
-);
+];

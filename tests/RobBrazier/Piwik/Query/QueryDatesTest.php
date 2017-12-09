@@ -1,15 +1,16 @@
 <?php
 
 namespace RobBrazier\Piwik\Query;
+
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class QueryDatesTest
- * @package RobBrazier\Piwik\Query
+ * Class QueryDatesTest.
  */
-class QueryDatesTest extends TestCase {
-
-    public function testSingleton() {
+class QueryDatesTest extends TestCase
+{
+    public function testSingleton()
+    {
         $reflectionClass = new \ReflectionClass('\RobBrazier\Piwik\Query\QueryDates');
         $reflectionProperty = $reflectionClass->getProperty('instance');
         $reflectionProperty->setAccessible(true);
@@ -17,28 +18,29 @@ class QueryDatesTest extends TestCase {
         $this->assertEquals(QueryDates::getInstance(), QueryDates::getInstance());
     }
 
-    public function testGet() {
+    public function testGet()
+    {
         $dates = QueryDates::getInstance();
-        $date = $dates->get("yesterday");
-        $this->assertEquals("day", $date->getPeriod());
-        $this->assertEquals("yesterday", $date->getDate());
+        $date = $dates->get('yesterday');
+        $this->assertEquals('day', $date->getPeriod());
+        $this->assertEquals('yesterday', $date->getDate());
     }
 
-    public function testGetDate() {
+    public function testGetDate()
+    {
         $dates = QueryDates::getInstance();
-        $expectedDate = "2017-01-01,2017-01-02";
+        $expectedDate = '2017-01-01,2017-01-02';
         $date = $dates->get($expectedDate);
-        $this->assertEquals("range", $date->getPeriod());
+        $this->assertEquals('range', $date->getPeriod());
         $this->assertEquals($expectedDate, $date->getDate());
     }
 
     /**
      * @expectedException \RobBrazier\Piwik\Exception\PiwikException
      */
-    public function testGetInvalid() {
+    public function testGetInvalid()
+    {
         $dates = QueryDates::getInstance();
-        $dates->get("invalid");
-
+        $dates->get('invalid');
     }
-
 }
