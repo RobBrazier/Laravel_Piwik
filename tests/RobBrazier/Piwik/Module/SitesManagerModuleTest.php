@@ -7,8 +7,8 @@ use Prophecy\Prophet;
 use RobBrazier\Piwik\Repository\RequestRepository;
 use RobBrazier\Piwik\Request\RequestOptions;
 
-class SitesManagerModuleTest extends TestCase {
-
+class SitesManagerModuleTest extends TestCase
+{
     /**
      * @var Prophet
      */
@@ -31,7 +31,8 @@ class SitesManagerModuleTest extends TestCase {
      */
     private $expectedResponse;
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->prophet = new Prophet();
         $this->request = $this->prophet->prophesize(RequestRepository::class);
         $this->sitesManager = new SitesManagerModule($this->request->reveal());
@@ -41,154 +42,167 @@ class SitesManagerModuleTest extends TestCase {
             ->useSiteId(true)
             ->useFormat(true)
             ->useTokenAuth(true);
-        $this->expectedResponse = "foo";
+        $this->expectedResponse = 'foo';
     }
 
-    public function testGetProvider() {
-        $group = "groupName";
+    public function testGetProvider()
+    {
+        $group = 'groupName';
         $this->requestOptions
             ->useSiteId(false)
             ->usePeriod(false)
             ->setArguments([
-                "group" => $group
+                'group' => $group,
             ])
-            ->setMethod("SitesManager.getSitesFromGroup");
+            ->setMethod('SitesManager.getSitesFromGroup');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->sitesManager->getSitesFromGroup($group);
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSiteGroups() {
+    public function testGetSiteGroups()
+    {
         $this->requestOptions
             ->useSiteId(false)
             ->usePeriod(false)
-            ->setMethod("SitesManager.getSiteGroups");
+            ->setMethod('SitesManager.getSiteGroups');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->sitesManager->getSiteGroups();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSitesFromId() {
+    public function testGetSitesFromId()
+    {
         $this->requestOptions
             ->usePeriod(false)
-            ->setMethod("SitesManager.getSitesFromId");
+            ->setMethod('SitesManager.getSitesFromId');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->sitesManager->getSitesFromId();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSiteUrlsFromId() {
+    public function testGetSiteUrlsFromId()
+    {
         $this->requestOptions
             ->usePeriod(false)
-            ->setMethod("SitesManager.getSiteUrlsFromId");
+            ->setMethod('SitesManager.getSiteUrlsFromId');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->sitesManager->getSiteUrlsFromId();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSiteUrlsFromIdWithCustomSiteId() {
-        $siteId = "1";
+    public function testGetSiteUrlsFromIdWithCustomSiteId()
+    {
+        $siteId = '1';
         $this->requestOptions
             ->usePeriod(false)
             ->setSiteId($siteId)
-            ->setMethod("SitesManager.getSiteUrlsFromId");
+            ->setMethod('SitesManager.getSiteUrlsFromId');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->sitesManager->getSiteUrlsFromId($siteId);
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetAllSites() {
+    public function testGetAllSites()
+    {
         $this->requestOptions
             ->usePeriod(false)
             ->useSiteId(false)
-            ->setMethod("SitesManager.getAllSites");
+            ->setMethod('SitesManager.getAllSites');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->sitesManager->getAllSites();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetAllSitesId() {
+    public function testGetAllSitesId()
+    {
         $this->requestOptions
             ->usePeriod(false)
             ->useSiteId(false)
-            ->setMethod("SitesManager.getAllSitesId");
+            ->setMethod('SitesManager.getAllSitesId');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->sitesManager->getAllSitesId();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSitesWithAdminAccess() {
+    public function testGetSitesWithAdminAccess()
+    {
         $this->requestOptions
             ->usePeriod(false)
             ->useSiteId(false)
-            ->setMethod("SitesManager.getSitesWithAdminAccess");
+            ->setMethod('SitesManager.getSitesWithAdminAccess');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->sitesManager->getSitesWithAdminAccess();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSitesWithViewAccess() {
+    public function testGetSitesWithViewAccess()
+    {
         $this->requestOptions
             ->usePeriod(false)
             ->useSiteId(false)
-            ->setMethod("SitesManager.getSitesWithViewAccess");
+            ->setMethod('SitesManager.getSitesWithViewAccess');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->sitesManager->getSitesWithViewAccess();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSitesWithAtLeastViewAccess() {
+    public function testGetSitesWithAtLeastViewAccess()
+    {
         $this->requestOptions
             ->usePeriod(false)
             ->useSiteId(false)
-            ->setMethod("SitesManager.getSitesWithAtLeastViewAccess");
+            ->setMethod('SitesManager.getSitesWithAtLeastViewAccess');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->sitesManager->getSitesWithAtLeastViewAccess();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSitesIdWithAdminAccess() {
+    public function testGetSitesIdWithAdminAccess()
+    {
         $this->requestOptions
             ->usePeriod(false)
             ->useSiteId(false)
-            ->setMethod("SitesManager.getSitesIdWithAdminAccess");
+            ->setMethod('SitesManager.getSitesIdWithAdminAccess');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->sitesManager->getSitesIdWithAdminAccess();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSitesIdWithViewAccess() {
+    public function testGetSitesIdWithViewAccess()
+    {
         $this->requestOptions
             ->usePeriod(false)
             ->useSiteId(false)
-            ->setMethod("SitesManager.getSitesIdWithViewAccess");
+            ->setMethod('SitesManager.getSitesIdWithViewAccess');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->sitesManager->getSitesIdWithViewAccess();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSitesIdWithAtLeastViewAccess() {
+    public function testGetSitesIdWithAtLeastViewAccess()
+    {
         $this->requestOptions
             ->usePeriod(false)
             ->useSiteId(false)
-            ->setMethod("SitesManager.getSitesIdWithAtLeastViewAccess");
+            ->setMethod('SitesManager.getSitesIdWithAtLeastViewAccess');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->sitesManager->getSitesIdWithAtLeastViewAccess();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSitesIdFromSiteUrl() {
-        $url = "http://website.url";
+    public function testGetSitesIdFromSiteUrl()
+    {
+        $url = 'http://website.url';
         $this->requestOptions
             ->usePeriod(false)
             ->useSiteId(false)
             ->setArguments([
-                "url" => $url
+                'url' => $url,
             ])
-            ->setMethod("SitesManager.getSitesIdFromSiteUrl");
+            ->setMethod('SitesManager.getSitesIdFromSiteUrl');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->sitesManager->getSitesIdFromSiteUrl($url);
         $this->assertEquals($this->expectedResponse, $response);
     }
-
 }

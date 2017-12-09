@@ -7,9 +7,8 @@ use Prophecy\Prophet;
 use RobBrazier\Piwik\Repository\RequestRepository;
 use RobBrazier\Piwik\Request\RequestOptions;
 
-class APIModuleTest extends TestCase {
-
-
+class APIModuleTest extends TestCase
+{
     /**
      * @var Prophet
      */
@@ -32,7 +31,8 @@ class APIModuleTest extends TestCase {
      */
     private $expectedResponse;
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->prophet = new Prophet();
         $this->request = $this->prophet->prophesize(RequestRepository::class);
         $this->api = new APIModule($this->request->reveal());
@@ -42,128 +42,137 @@ class APIModuleTest extends TestCase {
             ->useSiteId(true)
             ->useFormat(true)
             ->useTokenAuth(true);
-        $this->expectedResponse = "foo";
+        $this->expectedResponse = 'foo';
     }
 
-    public function testGetPiwikVersion() {
+    public function testGetPiwikVersion()
+    {
         $this->requestOptions
             ->usePeriod(false)
             ->useSiteId(false)
-            ->setMethod("API.getPiwikVersion");
+            ->setMethod('API.getPiwikVersion');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->api->getPiwikVersion();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetIpFromHeader() {
+    public function testGetIpFromHeader()
+    {
         $this->requestOptions
             ->usePeriod(false)
             ->useSiteId(false)
-            ->setMethod("API.getIpFromHeader");
+            ->setMethod('API.getIpFromHeader');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->api->getIpFromHeader();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSettings() {
+    public function testGetSettings()
+    {
         $this->requestOptions
             ->usePeriod(false)
             ->useSiteId(false)
-            ->setMethod("API.getSettings");
+            ->setMethod('API.getSettings');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->api->getSettings();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetSegmentsMetadata() {
+    public function testGetSegmentsMetadata()
+    {
         $siteIds = [1, 2, 3];
         $this->requestOptions
             ->usePeriod(false)
             ->useSiteId(false)
             ->setArguments([
-                "idSites" => implode(",", $siteIds)
+                'idSites' => implode(',', $siteIds),
             ])
-            ->setMethod("API.getSegmentsMetadata");
+            ->setMethod('API.getSegmentsMetadata');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->api->getSegmentsMetadata($siteIds);
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetMetadata() {
+    public function testGetMetadata()
+    {
         $this->requestOptions
-            ->setMethod("API.getMetadata");
+            ->setMethod('API.getMetadata');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->api->getMetadata();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetReportMetadata() {
+    public function testGetReportMetadata()
+    {
         $siteIds = [1, 2, 3];
         $this->requestOptions
             ->usePeriod(false)
             ->useSiteId(false)
             ->setArguments([
-                "idSites" => implode(",", $siteIds)
+                'idSites' => implode(',', $siteIds),
             ])
-            ->setMethod("API.getReportMetadata");
+            ->setMethod('API.getReportMetadata');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->api->getReportMetadata($siteIds);
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetProcessedReport() {
-        $apiModule = "API";
-        $apiAction = "getProcessedReport";
+    public function testGetProcessedReport()
+    {
+        $apiModule = 'API';
+        $apiAction = 'getProcessedReport';
         $this->requestOptions
             ->setArguments([
-                "apiModule" => $apiModule,
-                "apiAction" => $apiAction
+                'apiModule' => $apiModule,
+                'apiAction' => $apiAction,
             ])
-            ->setMethod("API.getProcessedReport");
+            ->setMethod('API.getProcessedReport');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->api->getProcessedReport($apiModule, $apiAction);
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetReportPagesMetadata() {
+    public function testGetReportPagesMetadata()
+    {
         $this->requestOptions
             ->usePeriod(false)
-            ->setMethod("API.getReportPagesMetadata");
+            ->setMethod('API.getReportPagesMetadata');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->api->getReportPagesMetadata();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetWidgetMetadata() {
+    public function testGetWidgetMetadata()
+    {
         $this->requestOptions
             ->usePeriod(false)
-            ->setMethod("API.getWidgetMetadata");
+            ->setMethod('API.getWidgetMetadata');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->api->getWidgetMetadata();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGet() {
+    public function testGet()
+    {
         $this->requestOptions
-            ->setMethod("API.get");
+            ->setMethod('API.get');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->api->get();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetRowEvolution() {
-        $apiModule = "API";
-        $apiAction = "getRowEvolution";
+    public function testGetRowEvolution()
+    {
+        $apiModule = 'API';
+        $apiAction = 'getRowEvolution';
         $this->requestOptions
             ->setArguments([
-                "apiModule" => $apiModule,
-                "apiAction" => $apiAction
+                'apiModule' => $apiModule,
+                'apiAction' => $apiAction,
             ])
-            ->setMethod("API.getRowEvolution");
+            ->setMethod('API.getRowEvolution');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->api->getRowEvolution($apiModule, $apiAction);
         $this->assertEquals($this->expectedResponse, $response);
     }
-
-
 }

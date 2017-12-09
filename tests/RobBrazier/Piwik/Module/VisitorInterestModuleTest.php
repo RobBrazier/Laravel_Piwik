@@ -7,8 +7,8 @@ use Prophecy\Prophet;
 use RobBrazier\Piwik\Repository\RequestRepository;
 use RobBrazier\Piwik\Request\RequestOptions;
 
-class VisitorInterestModuleTest extends TestCase {
-
+class VisitorInterestModuleTest extends TestCase
+{
     /**
      * @var Prophet
      */
@@ -31,7 +31,8 @@ class VisitorInterestModuleTest extends TestCase {
      */
     private $expectedResponse;
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->prophet = new Prophet();
         $this->request = $this->prophet->prophesize(RequestRepository::class);
         $this->visitorInterest = new VisitorInterestModule($this->request->reveal());
@@ -41,39 +42,42 @@ class VisitorInterestModuleTest extends TestCase {
             ->useSiteId(true)
             ->useFormat(true)
             ->useTokenAuth(true);
-        $this->expectedResponse = "foo";
+        $this->expectedResponse = 'foo';
     }
 
-    public function testGetNumberOfVisitsPerVisitDuration() {
+    public function testGetNumberOfVisitsPerVisitDuration()
+    {
         $this->requestOptions
-            ->setMethod("VisitorInterest.getNumberOfVisitsPerVisitDuration");
+            ->setMethod('VisitorInterest.getNumberOfVisitsPerVisitDuration');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->visitorInterest->getNumberOfVisitsPerVisitDuration();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetNumberOfVisitsPerPage() {
+    public function testGetNumberOfVisitsPerPage()
+    {
         $this->requestOptions
-            ->setMethod("VisitorInterest.getNumberOfVisitsPerPage");
+            ->setMethod('VisitorInterest.getNumberOfVisitsPerPage');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->visitorInterest->getNumberOfVisitsPerPage();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetNumberOfVisitsByDaysSinceLast() {
+    public function testGetNumberOfVisitsByDaysSinceLast()
+    {
         $this->requestOptions
-            ->setMethod("VisitorInterest.getNumberOfVisitsByDaysSinceLast");
+            ->setMethod('VisitorInterest.getNumberOfVisitsByDaysSinceLast');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->visitorInterest->getNumberOfVisitsByDaysSinceLast();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetNumberOfVisitsByVisitCount() {
+    public function testGetNumberOfVisitsByVisitCount()
+    {
         $this->requestOptions
-            ->setMethod("VisitorInterest.getNumberOfVisitsByVisitCount");
+            ->setMethod('VisitorInterest.getNumberOfVisitsByVisitCount');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->visitorInterest->getNumberOfVisitsByVisitCount();
         $this->assertEquals($this->expectedResponse, $response);
     }
-
 }

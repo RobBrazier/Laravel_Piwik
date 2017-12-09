@@ -1,0 +1,51 @@
+# Testing
+
+unitTest:
+  desc: Run Unit Tests (specity PHP version by setting the environment variable PHP_VERSION)
+  cmds:
+    - docker run --rm -v "$PWD:/usr/src/app" -w /usr/src/app --entrypoint /bin/sh robbrazier/php:$PHP_VERSION ./ci/unit.sh
+
+integrationTest:
+  desc: Run Integration Tests (specity Laravel version by setting the environment variable LARAVEL_VERSION)
+  cmds:
+    - docker run --rm -v "$PWD:/usr/src/app/plugin" -w /usr/src/app --entrypoint /bin/sh -e LARAVEL_VERSION robbrazier/php:7.1 ./plugin/ci/integration.sh
+
+qa:
+  desc: Run QA tasks (code coverage and pushing results to CodeClimate)
+  cmds:
+    - docker run --rm -v "$PWD:/usr/src/app" -w /usr/src/app --entrypoint /bin/sh -e CC_TEST_REPORTER_ID robbrazier/php:7.2 ./ci/qa.sh
+
+# Deploy
+
+daux:
+  desc: Build documentation from ./docs
+  cmds:
+    - docker run --rm -v "$PWD:/usr/src/app" -w /usr/src/app --entrypoint /bin/sh robbrazier/php:7.1 ./ci/docs/daux.sh
+
+sami:
+  desc: Build API documentation
+  cmds:
+    - docker run --rm -v "$PWD:/usr/src/app" -w /usr/src/app --entrypoint /bin/sh robbrazier/php:7.1 ./ci/docs/sami.sh
+
+deploy:
+  cmds:
+    - task: daux
+    - task: sami
+    - docker run --rm -v "$PWD:/usr/src/app" -w /usr/src/app --entrypoint /bin/sh -e NETLIFY_TOKEN node:6.11-alpine ./ci/docs/netlify.sh
+
+# Utility
+
+clean:
+  desc: Clean temporary/build directories
+  cmds:
+    - rm -rf build reports
+
+codeclimate:install:
+  desc: Install CodeClimate docker containers for local quality analysis
+  cmds:
+    - docker run --rm -e CODECLIMATE_CODE="$PWD" -v "$PWD:/code" -v "/var/run/docker.sock:/var/run/docker.sock:ro" -v /tmp/cc:/tmp/cc codeclimate/codeclimate engines:install
+
+codeclimate:analyze:
+  desc: Run local CodeClimate quality analysis
+  cmds:
+    - docker run --rm -e CODECLIMATE_CODE="$PWD" -v "$PWD:/code" -v "/var/run/docker.sock:/var/run/docker.sock:ro" -v /tmp/cc:/tmp/cc codeclimate/codeclimate analyze

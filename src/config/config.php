@@ -1,11 +1,10 @@
 <?php
 
-return array(
+return [
 
     /*
      *  Server URL
      */
-
     'piwik_url'     => 'https://piwik.example.com',
 
     /*
@@ -13,7 +12,7 @@ return array(
      *  The bundle works much faster with the API Key, rather than username and password.
      */
 
-    'api_key'       =>  '',
+    'api_key'       => '',
 
     /*
      *  Format for API calls to be returned in
@@ -22,7 +21,6 @@ return array(
      *
      *  The default is 'json'
      */
-
     'format'        => 'json',
 
     /*
@@ -33,26 +31,21 @@ return array(
      *
      *  The default is 'yesterday'
      */
-
     'period'        => 'yesterday',
 
     /*
      *  The Site ID you want to use
      */
-
     'site_id'       => '1',
 
     /*
      * Indicates if cURL should verify the server certificate
      * Can be boolean or a path to a custom SSL certificate on disk
      */
-
     'verify_peer' => true,
 
     /*
      * HTTP timeout to be used when såending requests to the Piwik server. Defaults to 5 (seconds)
      */
-
     'http_timeout' => 5.0,
-
-);
+];

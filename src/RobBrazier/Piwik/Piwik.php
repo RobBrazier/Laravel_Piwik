@@ -19,11 +19,10 @@ use RobBrazier\Piwik\Request\RequestOptions;
 use RobBrazier\Piwik\Traits\ConfigTrait;
 
 /**
- * Class Piwik
- * @package RobBrazier\Piwik
+ * Class Piwik.
  */
-class Piwik {
-
+class Piwik
+{
     use ConfigTrait {
         ConfigTrait::__construct as private __configConstruct;
     }
@@ -35,150 +34,166 @@ class Piwik {
 
     /**
      * Piwik constructor.
-     * @param ConfigRepository $config
+     *
+     * @param ConfigRepository  $config
      * @param RequestRepository $request
      */
-    public function __construct($config, $request) {
+    public function __construct($config, $request)
+    {
         $this->__configConstruct($config);
         $this->request = $request;
     }
 
     /**
-     * Convert URL from HTTP to HTTPS and vice versa
+     * Convert URL from HTTP to HTTPS and vice versa.
      *
      * @param string $url
-     * @param bool $https
+     * @param bool   $https
+     *
      * @return string
      */
-    protected function convertUrl($url, $https) {
+    protected function convertUrl($url, $https)
+    {
         $scheme = ($https) ? 'https' : 'http';
         $parser = new Url($url);
         $parser->setScheme($scheme);
+
         return $parser->__toString();
     }
 
     /**
-     * Initialise the Actions module
+     * Initialise the Actions module.
      *
      * @see https://developer.piwik.org/api-reference/reporting-api#Actions for arguments
      *
      * @return ActionsModule
      */
-    public function getActions() {
+    public function getActions()
+    {
         return new ActionsModule($this->request);
     }
 
     /**
-     * Initialise the API Module
+     * Initialise the API Module.
      *
      * @see https://developer.piwik.org/api-reference/reporting-api#API for arguments
      *
      * @return APIModule
      */
-    public function getAPI() {
+    public function getAPI()
+    {
         return new APIModule($this->request);
     }
 
     /**
-     * Initialise the Events Module
+     * Initialise the Events Module.
      *
      * @see https://developer.piwik.org/api-reference/reporting-api#Events for arguments
      *
      * @return EventsModule
      */
-    public function getEvents() {
+    public function getEvents()
+    {
         return new EventsModule($this->request);
     }
 
     /**
-     * Initialise the Live Module
+     * Initialise the Live Module.
      *
      * @see https://developer.piwik.org/api-reference/reporting-api#Live for arguments
      *
      * @return LiveModule
      */
-    public function getLive() {
+    public function getLive()
+    {
         return new LiveModule($this->request);
     }
 
     /**
-     * Initialise the Provider Module
+     * Initialise the Provider Module.
      *
      * @see https://developer.piwik.org/api-reference/reporting-api#Provider for arguments
      *
      * @return ProviderModule
      */
-    public function getProvider() {
+    public function getProvider()
+    {
         return new ProviderModule($this->request);
     }
 
     /**
-     * Initialise the Referrers Module
+     * Initialise the Referrers Module.
      *
      * @see https://developer.piwik.org/api-reference/reporting-api#Referrers for arguments
      *
      * @return ReferrersModule
      */
-    public function getReferrers() {
+    public function getReferrers()
+    {
         return new ReferrersModule($this->request);
     }
 
     /**
-     * Initialise the SEO Module
+     * Initialise the SEO Module.
      *
      * @see https://developer.piwik.org/api-reference/reporting-api#SEO for arguments
      *
      * @return SEOModule
      */
-    public function getSEO() {
+    public function getSEO()
+    {
         return new SEOModule($this->request, $this->getSitesManager());
     }
 
     /**
-     * Initialise the SitesManager Module
+     * Initialise the SitesManager Module.
      *
      * @see https://developer.piwik.org/api-reference/reporting-api#SitesManager for arguments
      *
      * @return SitesManagerModule
      */
-    public function getSitesManager() {
+    public function getSitesManager()
+    {
         return new SitesManagerModule($this->request);
     }
 
     /**
-     * Initialise the VisitorInterest Module
+     * Initialise the VisitorInterest Module.
      *
      * @see https://developer.piwik.org/api-reference/reporting-api#VisitorInterest for arguments
      *
      * @return VisitorInterestModule
      */
-    public function getVisitorInterest() {
+    public function getVisitorInterest()
+    {
         return new VisitorInterestModule($this->request);
     }
 
     /**
-     * Initialise the VisitsSummary Module
+     * Initialise the VisitsSummary Module.
      *
      * @see https://developer.piwik.org/api-reference/reporting-api#VisitsSummary for arguments
      *
      * @return VisitsSummaryModule
      */
-    public function getVisitsSummary() {
+    public function getVisitsSummary()
+    {
         return new VisitsSummaryModule($this->request);
     }
 
     /**
-     * Get javascript tag for use in tracking the website
+     * Get javascript tag for use in tracking the website.
      *
-     * @return  string
+     * @return string
      */
-
-    public function getTag() {
+    public function getTag()
+    {
         $piwikUrl = $this->getPiwikUrl();
-        return sprintf("<!-- Piwik -->
-<script type=\"text/javascript\">
+
+        $tag = <<<'EOT'
+<script type="text/javascript">
 var _paq = _paq || [];
-(function(){ var u=((\"https:\" == document.location.protocol) ? \"%s/\" : \"%s/\");
+(function(){ var u=(("https:" == document.location.protocol) ? "%s/" : "%s/");
 _paq.push(['setSiteId', %s]);
 _paq.push(['setTrackerUrl', u+'piwik.php']);
 _paq.push(['trackPageView']);
@@ -186,193 +201,240 @@ _paq.push(['enableLinkTracking']);
 var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript'; g.defer=true; g.async=true; g.src=u+'piwik.js';
 s.parentNode.insertBefore(g,s); })();
 </script>
-<!-- End Piwik Code -->",
+<!-- End Piwik Code -->
+EOT;
+
+        return sprintf(
+            $tag,
             $this->convertUrl($piwikUrl, true),
             $this->convertUrl($piwikUrl, false),
-            $this->getSiteId());
+            $this->getSiteId()
+        );
     }
 
     /**
      * Create a custom request
-     * N.B. It is safer to raise a GitHub issue to request another API method
+     * N.B. It is safer to raise a GitHub issue to request another API method.
+     *
      * @see https://github.com/RobBrazier/Laravel_Piwik/issues
      *
      * @param RequestOptions $requestOptions
+     *
      * @return mixed
      */
-    public function getCustom($requestOptions) {
+    public function getCustom($requestOptions)
+    {
         return $this->request->send($requestOptions);
     }
 
     /**
-     * Get actions (hits) for the specific time period
+     * Get actions (hits) for the specific time period.
      *
      * @deprecated
      * @see VisitsSummaryModule::getActions()
-     * @param   string $format      Override string for the format of the API Query to be returned as
-     * @return  mixed
+     *
+     * @param string $format Override string for the format of the API Query to be returned as
+     *
+     * @return mixed
      */
-    public function actions($format = null) {
+    public function actions($format = null)
+    {
         return $this->getVisitsSummary()->getActions([], $format);
     }
 
     /**
-     * Get file downloads for the specific time period
+     * Get file downloads for the specific time period.
      *
      * @deprecated
      * @see ActionsModule::getDownloads()
-     * @param   string $format           Override string for the format of the API Query to be returned as
-     * @return  mixed
+     *
+     * @param string $format Override string for the format of the API Query to be returned as
+     *
+     * @return mixed
      */
-    public function downloads($format = null) {
+    public function downloads($format = null)
+    {
         return $this->getActions()->getDownloads([], $format);
     }
 
     /**
-     * Get search keywords for the specific time period
+     * Get search keywords for the specific time period.
      *
      * @deprecated
      * @see ReferrersModule::getKeywords()
-     * @param   string $format           Override string for the format of the API Query to be returned as
-     * @return  mixed
+     *
+     * @param string $format Override string for the format of the API Query to be returned as
+     *
+     * @return mixed
      */
-    public function keywords($format = null) {
+    public function keywords($format = null)
+    {
         return $this->getReferrers()->getKeywords([], $format);
     }
 
     /**
-     * Get information about last 10 visits (ip, time, country, pages, etc.)
+     * Get information about last 10 visits (ip, time, country, pages, etc.).
      *
      * @deprecated
      * @see LiveModule::getLastVisitsDetails()
-     * @param   int $count          Limit the number of visits returned by $count
-     * @param   string $format      Override string for the format of the API Query to be returned as
-     * @return  mixed
+     *
+     * @param int    $count  Limit the number of visits returned by $count
+     * @param string $format Override string for the format of the API Query to be returned as
+     *
+     * @return mixed
      */
-    public function last_visits($count, $format = null) {
+    public function last_visits($count, $format = null)
+    {
         return $this->getLive()->getLastVisitsDetails($count, [], $format);
     }
 
     /**
-     * Get information about last 10 visits (ip, time, country, pages, etc.) in a formatted array with GeoIP information if enabled
+     * Get information about last 10 visits (ip, time, country, pages, etc.)
+     * in a formatted array with GeoIP information if enabled.
      *
      * @deprecated
-     * @param   int $count          Limit the number of visits returned by $count
-     * @param   string $format      Override string for the format of the API Query to be returned as
-     * @return  mixed
+     *
+     * @param int    $count  Limit the number of visits returned by $count
+     * @param string $format Override string for the format of the API Query to be returned as
+     *
+     * @return mixed
      */
-    public function last_visits_parsed($count, $format = null) {
+    public function last_visits_parsed($count, $format = null)
+    {
         return $this->getLive()->getLastVisitsDetailsParsed($count, $format);
     }
 
     /**
-     * Get outlinks for the specific time period
+     * Get outlinks for the specific time period.
      *
      * @deprecated
      * @see ActionsModule::getOutlinks()
-     * @param   string $format      Override string for the format of the API Query to be returned as
-     * @return  mixed
+     *
+     * @param string $format Override string for the format of the API Query to be returned as
+     *
+     * @return mixed
      */
-    public function outlinks($format = null) {
+    public function outlinks($format = null)
+    {
         return $this->getActions()->getOutlinks([], $format);
     }
 
     /**
-     * Get page visit information for the specific time period
+     * Get page visit information for the specific time period.
      *
      * @deprecated
      * @see ActionsModule::getPageTitles()
-     * @param   string $format      Override string for the format of the API Query to be returned as
-     * @return  mixed
+     *
+     * @param string $format Override string for the format of the API Query to be returned as
+     *
+     * @return mixed
      */
-
-    public function page_titles($format = null) {
+    public function page_titles($format = null)
+    {
         return $this->getActions()->getPageTitles([], $format);
     }
 
     /**
-     * Get search engine referer information for the specific time period
+     * Get search engine referer information for the specific time period.
      *
      * @deprecated
      * @see ReferrersModule::getSearchEngines()
-     * @param   string $format         Override string for the format of the API Query to be returned as
-     * @return  mixed
+     *
+     * @param string $format Override string for the format of the API Query to be returned as
+     *
+     * @return mixed
      */
-    public function search_engines($format = null) {
+    public function search_engines($format = null)
+    {
         return $this->getReferrers()->getSearchEngines([], $format);
     }
 
     /**
-     * Get unique visitors for the specific time period
+     * Get unique visitors for the specific time period.
      *
      * @deprecated
      * @see VisitsSummaryModule::getUniqueVisitors()
-     * @param   string $format      Override string for the format of the API Query to be returned as
-     * @return  mixed
+     *
+     * @param string $format Override string for the format of the API Query to be returned as
+     *
+     * @return mixed
      */
-    public function unique_visitors($format = null) {
+    public function unique_visitors($format = null)
+    {
         return $this->getVisitsSummary()->getUniqueVisitors([], $format);
     }
 
     /**
-     * Get all visits for the specific time period
+     * Get all visits for the specific time period.
      *
      * @deprecated
      * @see VisitsSummaryModule::getVisits()
-     * @param   string $format      Override string for the format of the API Query to be returned as
-     * @return  mixed
+     *
+     * @param string $format Override string for the format of the API Query to be returned as
+     *
+     * @return mixed
      */
-    public function visits($format = null) {
+    public function visits($format = null)
+    {
         return $this->getVisitsSummary()->getVisits([], $format);
     }
 
     /**
-     * Get referring websites (traffic sources) for the specific time period
+     * Get referring websites (traffic sources) for the specific time period.
      *
      * @deprecated
      * @see ReferrersModule::getWebsites()
-     * @param   string $format      Override string for the format of the API Query to be returned as
-     * @return  mixed
+     *
+     * @param string $format Override string for the format of the API Query to be returned as
+     *
+     * @return mixed
      */
-    public function websites($format = null) {
+    public function websites($format = null)
+    {
         return $this->getReferrers()->getWebsites([], $format);
     }
 
     /**
-     * Get SEO Rank for the website
+     * Get SEO Rank for the website.
      *
      * @deprecated
      * @see SEOModule::getRankFromSiteId()
-     * @param   string $siteId          Override for ID, so you can specify one rather than fetching it from config
-     * @param   string $format      Override string for the format of the API Query to be returned as
+     *
+     * @param int    $siteId Override for ID, so you can specify one rather than fetching it from config
+     * @param string $format Override string for the format of the API Query to be returned as
+     *
      * @return mixed
      */
-    public function seo_rank($siteId, $format = null) {
+    public function seo_rank($siteId, $format = null)
+    {
         return $this->getSEO()->getRankFromSiteId($siteId, $format);
     }
 
     /**
-     * Get javascript tag for use in tracking the website
+     * Get javascript tag for use in tracking the website.
      *
      * @deprecated
      * @see Piwik::getTag()
-     * @return  string
+     *
+     * @return string
      */
-    public function tag() {
+    public function tag()
+    {
         return $this->getTag();
     }
 
-
     /**
-     * Get Version of the Piwik Server
+     * Get Version of the Piwik Server.
      *
      * @deprecated
      * @see APIModule::getPiwikVersion()
-     * @param   string $format      Override string for the format of the API Query to be returned as
-     * @return  mixed
+     *
+     * @param string $format Override string for the format of the API Query to be returned as
+     *
+     * @return mixed
      */
-    public function version($format = null) {
+    public function version($format = null)
+    {
         return $this->getAPI()->getPiwikVersion($format);
     }
-
 }

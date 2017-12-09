@@ -2,15 +2,15 @@
 
 namespace RobBrazier\Piwik\Repository;
 
-interface ConfigRepository {
-
+interface ConfigRepository
+{
     /**
-     * Retrieve a configuration item
+     * Retrieve a configuration item.
      *
-     * @param string $key configuration key
-     * @param mixed $default default value
+     * @param string     $key     configuration key
+     * @param mixed|null $default default value
+     *
      * @return mixed
      */
     public function get($key, $default = null);
-
 }

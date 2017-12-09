@@ -7,8 +7,8 @@ use Prophecy\Prophet;
 use RobBrazier\Piwik\Repository\RequestRepository;
 use RobBrazier\Piwik\Request\RequestOptions;
 
-class EventsModuleTest extends TestCase {
-
+class EventsModuleTest extends TestCase
+{
     /**
      * @var Prophet
      */
@@ -31,7 +31,8 @@ class EventsModuleTest extends TestCase {
      */
     private $expectedResponse;
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->prophet = new Prophet();
         $this->request = $this->prophet->prophesize(RequestRepository::class);
         $this->events = new EventsModule($this->request->reveal());
@@ -41,79 +42,87 @@ class EventsModuleTest extends TestCase {
             ->useSiteId(true)
             ->useFormat(true)
             ->useTokenAuth(true);
-        $this->expectedResponse = "foo";
+        $this->expectedResponse = 'foo';
     }
 
-    public function testGetCategory() {
+    public function testGetCategory()
+    {
         $this->requestOptions
-            ->setMethod("Events.getCategory");
+            ->setMethod('Events.getCategory');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->events->getCategory();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetAction() {
+    public function testGetAction()
+    {
         $this->requestOptions
-            ->setMethod("Events.getAction");
+            ->setMethod('Events.getAction');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->events->getAction();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetName() {
+    public function testGetName()
+    {
         $this->requestOptions
-            ->setMethod("Events.getName");
+            ->setMethod('Events.getName');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->events->getName();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetActionFromCategoryId() {
+    public function testGetActionFromCategoryId()
+    {
         $this->requestOptions
-            ->setMethod("Events.getActionFromCategoryId");
+            ->setMethod('Events.getActionFromCategoryId');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->events->getActionFromCategoryId();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetNameFromCategoryId() {
+    public function testGetNameFromCategoryId()
+    {
         $this->requestOptions
-            ->setMethod("Events.getNameFromCategoryId");
+            ->setMethod('Events.getNameFromCategoryId');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->events->getNameFromCategoryId();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetCategoryFromActionId() {
+    public function testGetCategoryFromActionId()
+    {
         $this->requestOptions
-            ->setMethod("Events.getCategoryFromActionId");
+            ->setMethod('Events.getCategoryFromActionId');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->events->getCategoryFromActionId();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetNameFromActionId() {
+    public function testGetNameFromActionId()
+    {
         $this->requestOptions
-            ->setMethod("Events.getNameFromActionId");
+            ->setMethod('Events.getNameFromActionId');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->events->getNameFromActionId();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetActionFromNameId() {
+    public function testGetActionFromNameId()
+    {
         $this->requestOptions
-            ->setMethod("Events.getActionFromNameId");
+            ->setMethod('Events.getActionFromNameId');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->events->getActionFromNameId();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testGetCategoryFromNameId() {
+    public function testGetCategoryFromNameId()
+    {
         $this->requestOptions
-            ->setMethod("Events.getCategoryFromNameId");
+            ->setMethod('Events.getCategoryFromNameId');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->events->getCategoryFromNameId();
         $this->assertEquals($this->expectedResponse, $response);
     }
-
 }
