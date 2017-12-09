@@ -289,7 +289,8 @@ EOT;
     }
 
     /**
-     * Get information about last 10 visits (ip, time, country, pages, etc.) in a formatted array with GeoIP information if enabled.
+     * Get information about last 10 visits (ip, time, country, pages, etc.)
+     * in a formatted array with GeoIP information if enabled.
      *
      * @deprecated
      *
