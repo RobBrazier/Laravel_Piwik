@@ -190,7 +190,7 @@ class Piwik
     {
         $piwikUrl = $this->getPiwikUrl();
 
-        $tag = <<<EOT
+        $tag = <<<'EOT'
 <script type="text/javascript">
 var _paq = _paq || [];
 (function(){ var u=(("https:" == document.location.protocol) ? "%s/" : "%s/");

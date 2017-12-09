@@ -101,14 +101,9 @@ class SitesManagerModule extends Module
     }
 
     /**
-<<<<<<< Updated upstream
      * @param array[string]mixed $arguments
      * @param string             $format
      *
-=======
-     * @param array [string]mixed $arguments
-     * @param string $format
->>>>>>> Stashed changes
      * @return mixed
      */
     public function getSitesWithAdminAccess($arguments = [], $format = null)
