@@ -9,8 +9,16 @@ plugins:
       standard: "PSR1,PSR2"
   shellcheck:
     enabled: true
+    checks:
+      SC1090:
+        enabled: false
   markdownlint:
     enabled: true
+    checks:
+      MD002:
+        enabled: false
+      MD013:
+        enabled: false
 
 exclude_patterns:
   - "**/vendor/"
