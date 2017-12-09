@@ -4,14 +4,14 @@ namespace RobBrazier\Piwik\Repository;
 
 use RobBrazier\Piwik\Request\RequestOptions;
 
-interface RequestRepository {
-
+interface RequestRepository
+{
     /**
-     * Send a request to the Piwik API
+     * Send a request to the Piwik API.
      *
      * @param RequestOptions $requestOptions
+     *
      * @return mixed
      */
     public function send($requestOptions);
-
 }

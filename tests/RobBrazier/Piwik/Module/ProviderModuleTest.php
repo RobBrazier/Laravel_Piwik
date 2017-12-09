@@ -7,8 +7,8 @@ use Prophecy\Prophet;
 use RobBrazier\Piwik\Repository\RequestRepository;
 use RobBrazier\Piwik\Request\RequestOptions;
 
-class ProviderModuleTest extends TestCase {
-
+class ProviderModuleTest extends TestCase
+{
     /**
      * @var Prophet
      */
@@ -31,7 +31,8 @@ class ProviderModuleTest extends TestCase {
      */
     private $expectedResponse;
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->prophet = new Prophet();
         $this->request = $this->prophet->prophesize(RequestRepository::class);
         $this->provider = new ProviderModule($this->request->reveal());
@@ -41,15 +42,15 @@ class ProviderModuleTest extends TestCase {
             ->useSiteId(true)
             ->useFormat(true)
             ->useTokenAuth(true);
-        $this->expectedResponse = "foo";
+        $this->expectedResponse = 'foo';
     }
 
-    public function testGetProvider() {
+    public function testGetProvider()
+    {
         $this->requestOptions
-            ->setMethod("Provider.getProvider");
+            ->setMethod('Provider.getProvider');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->provider->getProvider();
         $this->assertEquals($this->expectedResponse, $response);
     }
-
 }

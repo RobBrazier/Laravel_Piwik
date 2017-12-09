@@ -1,5 +1,7 @@
 <?php
+
 namespace RobBrazier\Piwik;
+
 use Orchestra\Testbench\TestCase;
 use Prophecy\Prophet;
 use RobBrazier\Piwik\Config\Option;
@@ -18,11 +20,10 @@ use RobBrazier\Piwik\Repository\RequestRepository;
 use RobBrazier\Piwik\Request\RequestOptions;
 
 /**
- * Class PiwikTest
- * @package RobBrazier\Piwik
+ * Class PiwikTest.
  */
-class PiwikTest extends TestCase {
-
+class PiwikTest extends TestCase
+{
     /**
      * @var Prophet
      */
@@ -46,7 +47,8 @@ class PiwikTest extends TestCase {
      */
     private $expectedResponse;
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->prophet = new Prophet();
         $this->request = $this->prophet->prophesize(RequestRepository::class);
         $this->config = $this->prophet->prophesize(ConfigRepository::class);
@@ -57,62 +59,73 @@ class PiwikTest extends TestCase {
             ->useSiteId(true)
             ->useFormat(true)
             ->useTokenAuth(true);
-        $this->expectedResponse = "foo";
+        $this->expectedResponse = 'foo';
     }
 
-    public function testGetActions() {
+    public function testGetActions()
+    {
         $actions = $this->piwik->getActions();
         $this->assertInstanceOf(ActionsModule::class, $actions);
     }
 
-    public function testGetAPI() {
+    public function testGetAPI()
+    {
         $api = $this->piwik->getAPI();
         $this->assertInstanceOf(APIModule::class, $api);
     }
 
-    public function testGetEvents() {
+    public function testGetEvents()
+    {
         $events = $this->piwik->getEvents();
         $this->assertInstanceOf(EventsModule::class, $events);
     }
 
-    public function testGetLive() {
+    public function testGetLive()
+    {
         $live = $this->piwik->getLive();
         $this->assertInstanceOf(LiveModule::class, $live);
     }
 
-    public function testGetProvider() {
+    public function testGetProvider()
+    {
         $provider = $this->piwik->getProvider();
         $this->assertInstanceOf(ProviderModule::class, $provider);
     }
 
-    public function testGetReferrers() {
+    public function testGetReferrers()
+    {
         $referrers = $this->piwik->getReferrers();
         $this->assertInstanceOf(ReferrersModule::class, $referrers);
     }
 
-    public function testGetSEO() {
+    public function testGetSEO()
+    {
         $seo = $this->piwik->getSEO();
         $this->assertInstanceOf(SEOModule::class, $seo);
     }
 
-    public function testGetSitesManager() {
+    public function testGetSitesManager()
+    {
         $sitesManager = $this->piwik->getSitesManager();
         $this->assertInstanceOf(SitesManagerModule::class, $sitesManager);
     }
 
-    public function testGetVisitorInterest() {
+    public function testGetVisitorInterest()
+    {
         $visitorInterest = $this->piwik->getVisitorInterest();
         $this->assertInstanceOf(VisitorInterestModule::class, $visitorInterest);
     }
 
-    public function testGetVisitsSummary() {
+    public function testGetVisitsSummary()
+    {
         $visitsSummary = $this->piwik->getVisitsSummary();
         $this->assertInstanceOf(VisitsSummaryModule::class, $visitsSummary);
     }
 
-    public function testGetTag() {
-        $siteId = "1";
-        $piwikUrl = "piwik.example.com";
+    public function testGetTag()
+    {
+        $siteId = '1';
+        $piwikUrl = 'piwik.example.com';
         $this->config->get(Option::PIWIK_URL)->willReturn("http://$piwikUrl");
         $this->config->get(Option::SITE_ID)->willReturn($siteId);
         $tag = $this->piwik->getTag();
@@ -120,146 +133,160 @@ class PiwikTest extends TestCase {
         $this->assertContains("'setSiteId', $siteId", $tag);
     }
 
-    public function testGetCustom() {
-        $expected = "custom result";
+    public function testGetCustom()
+    {
+        $expected = 'custom result';
         $this->request->send($this->requestOptions)->willReturn($expected);
         $response = $this->piwik->getCustom($this->requestOptions);
         $this->assertEquals($expected, $response);
     }
 
-    public function testActions() {
+    public function testActions()
+    {
         $this->requestOptions
-            ->setMethod("VisitsSummary.getActions");
+            ->setMethod('VisitsSummary.getActions');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->piwik->actions();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testDownloads() {
+    public function testDownloads()
+    {
         $this->requestOptions
-            ->setMethod("Actions.getDownloads");
+            ->setMethod('Actions.getDownloads');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->piwik->downloads();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testKeywords() {
+    public function testKeywords()
+    {
         $this->requestOptions
-            ->setMethod("Referrers.getKeywords");
+            ->setMethod('Referrers.getKeywords');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->piwik->keywords();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testLastVisits() {
+    public function testLastVisits()
+    {
         $count = 1;
         $this->requestOptions
             ->setArguments([
-                "filter_limit" => $count
+                'filter_limit' => $count,
             ])
-            ->setMethod("Live.getLastVisitsDetails");
+            ->setMethod('Live.getLastVisitsDetails');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->piwik->last_visits($count);
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testLastVisitsParsed() {
-        $contents = file_get_contents(__DIR__ . '/Module/resources/Live.getLastVisitsDetails.json');
+    public function testLastVisitsParsed()
+    {
+        $contents = file_get_contents(__DIR__.'/Module/resources/Live.getLastVisitsDetails.json');
         $this->expectedResponse = json_decode($contents);
-        $format = "json";
+        $format = 'json';
         $count = 1;
         $this->requestOptions
             ->setFormat($format)
             ->setArguments([
-                "filter_limit" => $count
+                'filter_limit' => $count,
             ])
-            ->setMethod("Live.getLastVisitsDetails");
+            ->setMethod('Live.getLastVisitsDetails');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->piwik->last_visits_parsed($count, $format)[0];
-        $this->assertNotNull($response["time"]);
-        $this->assertNotNull($response["title"]);
-        $this->assertNotNull($response["link"]);
-        $this->assertNotNull($response["provider"]);
-        $this->assertNotNull($response["country"]);
-        $this->assertNotNull($response["country_icon"]);
-        $this->assertNotNull($response["os"]);
-        $this->assertNotNull($response["os_icon"]);
-        $this->assertNotNull($response["browser"]);
-        $this->assertNotNull($response["browser_icon"]);
+        $this->assertNotNull($response['time']);
+        $this->assertNotNull($response['title']);
+        $this->assertNotNull($response['link']);
+        $this->assertNotNull($response['provider']);
+        $this->assertNotNull($response['country']);
+        $this->assertNotNull($response['country_icon']);
+        $this->assertNotNull($response['os']);
+        $this->assertNotNull($response['os_icon']);
+        $this->assertNotNull($response['browser']);
+        $this->assertNotNull($response['browser_icon']);
     }
 
-    public function testOutlinks() {
+    public function testOutlinks()
+    {
         $this->requestOptions
-            ->setMethod("Actions.getOutlinks");
+            ->setMethod('Actions.getOutlinks');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->piwik->outlinks();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testPageTitles() {
+    public function testPageTitles()
+    {
         $this->requestOptions
-            ->setMethod("Actions.getPageTitles");
+            ->setMethod('Actions.getPageTitles');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->piwik->page_titles();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testSearchEngines() {
+    public function testSearchEngines()
+    {
         $this->requestOptions
-            ->setMethod("Referrers.getSearchEngines");
+            ->setMethod('Referrers.getSearchEngines');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->piwik->search_engines();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testUniqueVisitors() {
+    public function testUniqueVisitors()
+    {
         $this->requestOptions
-            ->setMethod("VisitsSummary.getUniqueVisitors");
+            ->setMethod('VisitsSummary.getUniqueVisitors');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->piwik->unique_visitors();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testVisits() {
+    public function testVisits()
+    {
         $this->requestOptions
-            ->setMethod("VisitsSummary.getVisits");
+            ->setMethod('VisitsSummary.getVisits');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->piwik->visits();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testWebsites() {
+    public function testWebsites()
+    {
         $this->requestOptions
-            ->setMethod("Referrers.getWebsites");
+            ->setMethod('Referrers.getWebsites');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->piwik->websites();
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testSeoRank() {
+    public function testSeoRank()
+    {
         $siteId = 1;
-        $url = "http://website.url";
+        $url = 'http://website.url';
         $siteUrlRequestOptions = clone $this->requestOptions;
         $siteUrlRequestOptions->usePeriod(false)
             ->setSiteId($siteId)
-            ->setMethod("SitesManager.getSiteUrlsFromId");
+            ->setMethod('SitesManager.getSiteUrlsFromId');
         $this->request->send($siteUrlRequestOptions)->willReturn([$url]);
         $seoRequestOptions = clone $this->requestOptions;
         $seoRequestOptions
             ->usePeriod(false)
             ->useSiteId(false)
             ->setArguments([
-                "url" => $url
+                'url' => $url,
             ])
-            ->setMethod("SEO.getRank");
+            ->setMethod('SEO.getRank');
         $this->request->send($seoRequestOptions)->willReturn($this->expectedResponse);
         $response = $this->piwik->seo_rank($siteId);
         $this->assertEquals($this->expectedResponse, $response);
     }
 
-    public function testTag() {
-        $siteId = "1";
-        $piwikUrl = "piwik.example.com";
+    public function testTag()
+    {
+        $siteId = '1';
+        $piwikUrl = 'piwik.example.com';
         $this->config->get(Option::PIWIK_URL)->willReturn("http://$piwikUrl");
         $this->config->get(Option::SITE_ID)->willReturn($siteId);
         $tag = $this->piwik->tag();
@@ -267,14 +294,14 @@ class PiwikTest extends TestCase {
         $this->assertContains("'setSiteId', $siteId", $tag);
     }
 
-    public function testVersion() {
+    public function testVersion()
+    {
         $this->requestOptions
             ->usePeriod(false)
             ->useSiteId(false)
-            ->setMethod("API.getPiwikVersion");
+            ->setMethod('API.getPiwikVersion');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $version = $this->piwik->version();
         $this->assertEquals($this->expectedResponse, $version);
     }
-
 }
