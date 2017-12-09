@@ -203,6 +203,7 @@ s.parentNode.insertBefore(g,s); })();
 </script>
 <!-- End Piwik Code -->
 EOT;
+
         return sprintf(
             $tag,
             $this->convertUrl($piwikUrl, true),
