@@ -1,5 +1,4 @@
-Installation
-------------
+## Installation
 
 Add RobBrazier/Piwik to composer.json:
 
@@ -7,8 +6,7 @@ Add RobBrazier/Piwik to composer.json:
 composer require "robbrazier/piwik=~2.0"
 ```
 
-Setup Service Provider
-----------------------
+## Setup Service Provider
 
 ```php
 // app/config/app.php
@@ -25,10 +23,10 @@ Setup Service Provider
 );
 ```
 
+## Publish Configuration File
 
-Publish Configuration File
---------------------------
 This will create a `piwik.php` config file in `config/`
+
 ```bash
 php artisan vendor:publish --provider="RobBrazier\Piwik\PiwikServiceProvider"
 ```

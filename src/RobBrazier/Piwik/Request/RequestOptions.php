@@ -19,7 +19,7 @@ class RequestOptions
     private $method;
 
     /**
-     * @var string
+     * @var int
      */
     private $siteId;
 
@@ -84,7 +84,7 @@ class RequestOptions
     }
 
     /**
-     * @param string $siteId
+     * @param int $siteId
      *
      * @return RequestOptions
      */

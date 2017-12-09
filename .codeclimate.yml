@@ -1,0 +1,20 @@
+plugins:
+  phan:
+    enabled: true
+    config:
+      ignore-undeclared: true
+  phpcodesniffer:
+    enabled: true
+    config:
+      standard: "PSR1,PSR2"
+  shellcheck:
+    enabled: true
+  markdownlint:
+    enabled: true
+
+exclude_patterns:
+  - "**/vendor/"
+  - ".sami.*"
+  - "**/tests/"
+  - "**/build/"
+  - "**/reports/"

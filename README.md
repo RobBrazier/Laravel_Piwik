@@ -1,8 +1,8 @@
 # Laravel-Piwik v3.0.1
 
 [![Build Status](https://semaphoreci.com/api/v1/robbrazier/laravel_piwik/branches/master/shields_badge.svg)](https://semaphoreci.com/robbrazier/laravel_piwik)
-[![Codacy grade](https://img.shields.io/codacy/grade/b91611603d5141e79e5c596ae439242c.svg)](https://www.codacy.com/app/RobBrazier/Laravel_Piwik)
-[![Codacy coverage](https://img.shields.io/codacy/coverage/b91611603d5141e79e5c596ae439242c.svg)](https://www.codacy.com/app/RobBrazier/Laravel_Piwik)
+[![Code Climate](https://img.shields.io/codeclimate/maintainability/RobBrazier/Laravel_Piwik.svg)](https://codeclimate.com/github/RobBrazier/Laravel_Piwik)
+[![Code Climate](https://img.shields.io/codeclimate/c/RobBrazier/Laravel_Piwik.svg)](https://codeclimate.com/github/RobBrazier/Laravel_Piwik)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%205.6-8892BF.svg?style=flat)](https://php.net/)
 [![Packagist Version](https://img.shields.io/packagist/v/robbrazier/piwik.svg)](https://packagist.org/packages/robbrazier/piwik)
 [![Packagist Total Downloads](https://img.shields.io/packagist/dt/robbrazier/piwik.svg)](https://packagist.org/packages/robbrazier/piwik)
@@ -13,6 +13,7 @@ An Interface to Piwik's Analytics API for Laravel (Composer Package)
 This is the Laravel 5 version of the Laravel-Piwik Bundle.
 
 ## Installation
+
 Add `RobBrazier/Piwik` to `composer.json`:
 
 ```json
@@ -23,7 +24,8 @@ Add `RobBrazier/Piwik` to `composer.json`:
 }
 ```
 
-Add `'RobBrazier\Piwik\PiwikServiceProvider'` and `'Piwik' => 'RobBrazier\Piwik\Facades\Piwik'` to `app/config/app.php`
+Add `'RobBrazier\Piwik\PiwikServiceProvider'` and `'Piwik' => 'RobBrazier\Piwik\Facades\Piwik'`
+to `app/config/app.php`
 
 ```php
 'providers' = array(
@@ -41,38 +43,46 @@ Add `'RobBrazier\Piwik\PiwikServiceProvider'` and `'Piwik' => 'RobBrazier\Piwik\
 );
 ```
 
-Then move the config file out of the package, so that it doesn't get replaced when you update, by doing `php artisan vendor:publish --provider="RobBrazier\Piwik\PiwikServiceProvider" --tag="config"`.
+Then move the config file out of the package, so that it doesn't get replaced
+when you update, by running:
+
+```bash
+php artisan vendor:publish --provider="RobBrazier\Piwik\PiwikServiceProvider" --tag="config"
+```
 
 Update your packages with `composer update` or install with `composer install`.
 
-Then go to `config/piwik.php` and add your config settings such as server, username, password, apikey etc.
+Then go to `config/piwik.php` and add your config settings such as server,
+apikey, siteid etc.
 
 ## Development
-Common CI scripts are contained within a submodule, so to make use of them, the repository will need to be recursively cloned
-```
-git clone --recursive git@github.com:RobBrazier/Laravel_Piwik.git
-git clone --recursive https://github.com/RobBrazier/Laravel_Piwik.git
-```
 
-The scripts can be used locally for running tests, e.g. integration with laravel and unit tests across php versions.
-e.g.
-```
+Scripts such as running unit tests for various PHP versions and integration tests
+for multiple Laravel versions are configured via the `Taskfile.yml`.
+
+They can be run locally by installing [go-task/task](https://github.com/go-task/task#installation) and then running the
+commands as below:
+
+```bash
 # unit tests
-PHP_VERSION=7.1 ./runner unitTest
+PHP_VERSION=7.1 task unitTest
 
 # integration tests
-LARAVEL_VERSION=5.5 ./runner integrationTest
+LARAVEL_VERSION=5.5 task integrationTest
 ```
 
 ## Documentation
-Usage Documentation is located at http://laravel-piwik.robbrazier.com/Usage.html
-API Documentation is located at http://laravel-piwik.robbrazier.com/API_Docs.html
+
+Usage Documentation is located at <http://laravel-piwik.robbrazier.com/Usage.html>
+API Documentation is located at <http://laravel-piwik.robbrazier.com/API_Docs.html>
 
 ## Contributing
+
 Pull requests are welcome. For major changes, please open an issue first
 to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
 
 ## License
+
 [MIT](https://choosealicense.com/licenses/mit/)

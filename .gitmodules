@@ -1,3 +1,0 @@
-[submodule "ci/common"]
-	path = ci/common
-	url = https://github.com/RobBrazier/ci-scripts.git
