@@ -3,35 +3,41 @@
 unitTest:
   desc: Run Unit Tests (specity PHP version by setting the environment variable PHP_VERSION)
   cmds:
-    - docker run --rm -v "$PWD:/usr/src/app" -w /usr/src/app --entrypoint /bin/sh robbrazier/php:$PHP_VERSION ./ci/unit.sh
+    - ./ci/docker.sh robbrazier/php:$PHP_VERSION ./ci/unit.sh
 
 integrationTest:
   desc: Run Integration Tests (specity Laravel version by setting the environment variable LARAVEL_VERSION)
+  env:
+    envVars: LARAVEL_VERSION
   cmds:
-    - docker run --rm -v "$PWD:/usr/src/app/plugin" -w /usr/src/app --entrypoint /bin/sh -e LARAVEL_VERSION robbrazier/php:7.1 ./plugin/ci/integration.sh
+    - ./ci/docker.sh robbrazier/php:7.1 ./plugin/ci/integration.sh plugin
 
 qa:
   desc: Run QA tasks (code coverage and pushing results to CodeClimate)
+  env:
+    envVars: CC_TEST_REPORTER_ID
   cmds:
-    - docker run --rm -v "$PWD:/usr/src/app" -w /usr/src/app --entrypoint /bin/sh -e CC_TEST_REPORTER_ID robbrazier/php:7.2 ./ci/qa.sh
+    - ./ci/docker.sh robbrazier/php:7.1 ./ci/qa.sh
 
 # Deploy
 
 daux:
   desc: Build documentation from ./docs
   cmds:
-    - docker run --rm -v "$PWD:/usr/src/app" -w /usr/src/app --entrypoint /bin/sh robbrazier/php:7.1 ./ci/docs/daux.sh
+    - ./ci/docker.sh robbrazier/php:7.1 ./ci/docs/daux.sh
 
 sami:
   desc: Build API documentation
   cmds:
-    - docker run --rm -v "$PWD:/usr/src/app" -w /usr/src/app --entrypoint /bin/sh robbrazier/php:7.1 ./ci/docs/sami.sh
+    - ./ci/docker.sh robbrazier/php:7.1 ./ci/docs/sami.sh
 
 deploy:
+  env:
+    envVars: NETLIFY_TOKEN
   cmds:
     - task: daux
     - task: sami
-    - docker run --rm -v "$PWD:/usr/src/app" -w /usr/src/app --entrypoint /bin/sh -e NETLIFY_TOKEN node:6.11-alpine ./ci/docs/netlify.sh
+    - ./ci/docker.sh node:6.11-alpine ./ci/docs/netlify.sh
 
 # Utility
 
