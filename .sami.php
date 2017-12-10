@@ -16,7 +16,6 @@ $versions = GitVersionCollection::create($dir)
     ->addFromTags('2.1.*')
     ->addFromTags('3.0.*')
     ->add('master', 'master branch')
-    ->add('develop', 'develop branch');
 
 return new Sami($iterator, [
     'title'                => 'Laravel_Piwik',
