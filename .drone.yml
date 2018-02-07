@@ -1,8 +1,11 @@
 pipeline:
+  # Install dependencies
   install:
     image: robbrazier/php:5.6
     commands:
       - composer install --no-suggest --no-progress
+  
+  # Run unit tests
   php56:
     image: robbrazier/php:5.6
     group: test
@@ -24,6 +27,7 @@ pipeline:
     commands:
       - ./ci/unit.sh
 
+  # Run plugin integration tests
   laravel51:
     image: robbrazier/php:7.1
     group: integration
@@ -59,24 +63,10 @@ pipeline:
       - ./ci/integration.sh
     environment:
       LARAVEL_VERSION: '5.5'
-  
-#   integrationTest:
-#     image: robbrazier/php:${PHP_VERSION}
-#     commands:
-#       - ./ci/integration.sh
-#     when:
-#       matrix:
-#         PHP_VERSION: '7.1'
-      
-# matrix:
-#   PHP_VERSION:
-#     - 5.6
-#     - 7.0
-#     - 7.1
-#     - 7.2
-#   LARAVEL_VERSION:
-#     - 5.1
-#     - 5.2
-#     - 5.3
-#     - 5.4
-#     - 5.5
+
+  # Run quality assurance (CodeClimate)
+  qa:
+    image: robbrazier/php:7.1
+    commands:
+      - ./ci/qa.sh
+    secrets: [ cc_test_reporter_id ]
