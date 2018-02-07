@@ -1,0 +1,9 @@
+pipeline:
+  build:
+    image: robbrazier/php:${PHP_VERSION}
+matrix:
+  PHP_VERSION:
+    - 5.6
+    - 7.0
+    - 7.1
+    - 7.2
