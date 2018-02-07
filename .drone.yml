@@ -5,9 +5,8 @@ pipeline:
       - ./ci/unit.sh
 
   integrationTest:
-    image: robbrazier/php:7.1
+    image: robbrazier/php:${PHP_VERSION}
     commands:
-      - pwd
       - ./ci/integration.sh
     environment:
       LARAVEL_VERSION: '5.5'
