@@ -1,5 +1,5 @@
 #!/bin/sh
-cd ../laravel
+cd /tmp/integration
 contents="$(jq '.repositories = [{"packagist.org": false}, {"type": "path", "url": "../src"}, {"type": "composer", "url": "https://packagist.org"}]' < composer.json)"
 echo "$contents" > composer.json
 composer require robbrazier/piwik:* --no-suggest --no-progress --update-no-dev

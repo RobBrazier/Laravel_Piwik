@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd ../laravel
+cd /tmp/integration
 php -S localhost:8000 server.php &
 sleep 2
 result=$(curl http://localhost:8000)
