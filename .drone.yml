@@ -8,6 +8,9 @@ pipeline:
     image: robbrazier/php:${PHP_VERSION}
     commands:
       - ./ci/integration.sh
+    when:
+      matrix:
+        PHP_VERSION: '7.1'
       
 matrix:
   PHP_VERSION:
