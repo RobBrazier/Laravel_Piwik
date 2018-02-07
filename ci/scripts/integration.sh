@@ -9,7 +9,5 @@ filename="routes/web.php"
 if [ "${LARAVEL_VERSION}" = "5.1" ] || [ "${LARAVEL_VERSION}" = "5.2" ]; then
     filename="app/Http/routes.php"
 fi
-pwd
-ls -la ../src
-cat "../src/ci/scripts/routes.txt" > "$filename"
-cat "../src/ci/scripts/config.txt" > "config/piwik.php"
+cat "$SCRIPTS_DIR/routes.txt" > "$filename"
+cat "$SCRIPTS_DIR/config.txt" > "config/piwik.php"

@@ -7,9 +7,10 @@ pipeline:
   integrationTest:
     image: robbrazier/php:7.1
     commands:
+      - pwd
       - ./ci/integration.sh
-    # environment:
-    #   LARAVEL_VERSION: '5.5'
+    environment:
+      LARAVEL_VERSION: '5.5'
       
 matrix:
   PHP_VERSION:
