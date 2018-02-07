@@ -8,8 +8,6 @@ pipeline:
     image: robbrazier/php:${PHP_VERSION}
     commands:
       - ./ci/integration.sh
-    # environment:
-    #   LARAVEL_VERSION: '5.5'
       
 matrix:
   PHP_VERSION:
