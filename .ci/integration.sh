@@ -4,9 +4,9 @@ setup
 integration_dir="/tmp/integration"
 composer create-project laravel/laravel $integration_dir "${LARAVEL_VERSION}.*" --no-progress --no-dev
 cd $integration_dir
+
 # Prepare Laravel instance
-contents="$(jq '.repositories = [{"packagist.org": false}, {"type": "path", "url": "../src"}, {"type": "composer", "url": "https://packagist.org"}]' < composer.json)"
-echo "$contents" > composer.json
+jq -r '.repositories = [{"packagist.org": false}, {"type": "path", "url": "../src"}, {"type": "composer", "url": "https://packagist.org"}]' < composer.json 2>&1 composer.json
 composer require robbrazier/piwik:* --no-suggest --no-progress --update-no-dev
 
 app_config="config/app.php"
