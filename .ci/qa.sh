@@ -1,12 +1,8 @@
 #!/bin/sh
-set -e -x
-export SCRIPTS_DIR="ci/scripts"
-
 reporter="/tmp/cc-test-reporter"
-sh "$SCRIPTS_DIR/setup.sh"
-apk add --no-cache curl git
-curl -Lo $reporter https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
-chmod +x $reporter
+. $(dirname $0)/common.sh
+setup curl git
+download_executable $reporter "https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64"
 $reporter before-build
 exit_code="0"
 {
