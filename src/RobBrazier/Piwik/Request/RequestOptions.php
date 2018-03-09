@@ -208,6 +208,26 @@ class RequestOptions
     }
 
     /**
+     * @param array $array
+     *
+     * @return array
+     */
+    private function flattenArray($array) {
+        $result = array();
+
+        foreach ($array as $key => $value) {
+          if (is_array($value)) {
+            foreach($value as $k => $val) {
+              $result = array_merge($result, [sprintf("%s[%s]", $key, $k) => $val]);
+            }
+          } else {
+            $result = array_merge($result, array($key => $value));
+          }
+        }
+
+        return $result;
+      }
+    /**
      * @param ConfigRepository $config
      *
      * @return string
@@ -227,7 +247,7 @@ class RequestOptions
             $builder->setFormat($this->validateFormat($formatOverride));
         }
         $builder->setTokenAuth($this->getTokenAuth($config));
-        $builder->addAll($this->arguments);
+        $builder->addAll($this->flattenArray($this->arguments));
 
         return $builder->build();
     }

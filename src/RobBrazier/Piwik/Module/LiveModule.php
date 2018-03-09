@@ -8,7 +8,7 @@ use RobBrazier\Piwik\Traits\FormatTrait;
 /**
  * Class LiveModule.
  *
- * @see https://developer.piwik.org/api-reference/reporting-api#Live for arguments
+ * @see https://developer.matomo.org/api-reference/reporting-api#Live for arguments
  */
 class LiveModule extends Module
 {
