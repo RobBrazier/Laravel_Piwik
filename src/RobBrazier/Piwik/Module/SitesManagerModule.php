@@ -208,8 +208,10 @@ class SitesManagerModule extends Module
     }
 
     /**
-     * @param string        $siteName name of the site to be created
-     * @param array[string] $urls     list of urls associated with the new site
+     * @param string             $siteName  name of the site to be created
+     * @param array[string]      $urls      list of urls associated with the new site
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
