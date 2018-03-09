@@ -212,21 +212,23 @@ class RequestOptions
      *
      * @return array
      */
-    private function flattenArray($array) {
-        $result = array();
+    private function flattenArray($array)
+    {
+        $result = [];
 
         foreach ($array as $key => $value) {
-          if (is_array($value)) {
-            foreach($value as $k => $val) {
-              $result = array_merge($result, [sprintf("%s[%s]", $key, $k) => $val]);
+            if (is_array($value)) {
+                foreach ($value as $k => $val) {
+                    $result = array_merge($result, [sprintf('%s[%s]', $key, $k) => $val]);
+                }
+            } else {
+                $result = array_merge($result, [$key => $value]);
             }
-          } else {
-            $result = array_merge($result, array($key => $value));
-          }
         }
 
         return $result;
-      }
+    }
+
     /**
      * @param ConfigRepository $config
      *

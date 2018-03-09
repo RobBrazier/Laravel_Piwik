@@ -210,16 +210,16 @@ class SitesManagerModuleTest extends TestCase
     {
         $siteName = 'site name';
         $urls = [
-            "http://site.one",
-            "http://site.two"
+            'http://site.one',
+            'http://site.two',
         ];
         $this->requestOptions
             ->usePeriod(false)
             ->useSiteId(false)
             ->useFormat(false)
             ->setArguments([
-                "siteName" => $siteName,
-                "urls" => $urls
+                'siteName' => $siteName,
+                'urls'     => $urls,
             ])
             ->setMethod('SitesManager.addSite');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);

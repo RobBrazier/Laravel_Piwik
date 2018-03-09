@@ -138,8 +138,8 @@ class RequestOptionsTest extends TestCase
         $arguments = [
             'url' => [
                 $url1,
-                $url2
-            ]
+                $url2,
+            ],
         ];
         $result = $this->requestOptions
             ->setArguments($arguments)
@@ -157,8 +157,8 @@ class RequestOptionsTest extends TestCase
         $arguments = [
             'v' => [
                 $key1 => $val1,
-                $key2 => $val2
-            ]
+                $key2 => $val2,
+            ],
         ];
         $result = $this->requestOptions
             ->setArguments($arguments)

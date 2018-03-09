@@ -29,7 +29,7 @@ class SEOModule extends Module
     }
 
     /**
-     * @param string $url url to search for
+     * @param string $url    url to search for
      * @param string $format override format (defaults to one specified in config file)
      *
      * @return mixed

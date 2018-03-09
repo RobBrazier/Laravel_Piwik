@@ -10,7 +10,7 @@ namespace RobBrazier\Piwik\Module;
 class SitesManagerModule extends Module
 {
     /**
-     * @param string $group group to search for
+     * @param string $group  group to search for
      * @param string $format override format (defaults to one specified in config file)
      *
      * @return mixed
@@ -102,7 +102,7 @@ class SitesManagerModule extends Module
 
     /**
      * @param array[string]mixed $arguments extra arguments to be passed to the api call
-     * @param string $format override format (defaults to one specified in config file)
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -132,7 +132,7 @@ class SitesManagerModule extends Module
 
     /**
      * @param array[string]mixed $arguments extra arguments to be passed to the api call
-     * @param string $format override format (defaults to one specified in config file)
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -189,7 +189,7 @@ class SitesManagerModule extends Module
     }
 
     /**
-     * @param string $url site url
+     * @param string $url    site url
      * @param string $format override format (defaults to one specified in config file)
      *
      * @return mixed
@@ -208,11 +208,11 @@ class SitesManagerModule extends Module
     }
 
     /**
-     * @param string $siteName
+     * @param string        $siteName
      * @param array[string] $urls
      */
-    public function addSite($siteName, $urls = [], $arguments = []) {
-
+    public function addSite($siteName, $urls = [], $arguments = [])
+    {
         $arguments = array_add($arguments, 'siteName', $siteName);
         $arguments = array_add($arguments, 'urls', $urls);
 
