@@ -5,13 +5,13 @@ namespace RobBrazier\Piwik\Module;
 /**
  * Class VisitsSummaryModule.
  *
- * @see https://developer.piwik.org/api-reference/reporting-api#VisitsSummary for arguments
+ * @see https://developer.matomo.org/api-reference/reporting-api#VisitsSummary for arguments
  */
 class VisitsSummaryModule extends Module
 {
     /**
-     * @param array[string]mixed $arguments
-     * @param string             $format
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -23,8 +23,8 @@ class VisitsSummaryModule extends Module
     }
 
     /**
-     * @param array[string]mixed $arguments
-     * @param string             $format
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -36,8 +36,8 @@ class VisitsSummaryModule extends Module
     }
 
     /**
-     * @param array[string]mixed $arguments
-     * @param string             $format
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -49,8 +49,8 @@ class VisitsSummaryModule extends Module
     }
 
     /**
-     * @param array[string]mixed $arguments
-     * @param string             $format
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -62,8 +62,8 @@ class VisitsSummaryModule extends Module
     }
 
     /**
-     * @param array[string]mixed $arguments
-     * @param string             $format
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -75,8 +75,8 @@ class VisitsSummaryModule extends Module
     }
 
     /**
-     * @param array[string]mixed $arguments
-     * @param string             $format
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -88,8 +88,8 @@ class VisitsSummaryModule extends Module
     }
 
     /**
-     * @param array[string]mixed $arguments
-     * @param string             $format
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -101,8 +101,8 @@ class VisitsSummaryModule extends Module
     }
 
     /**
-     * @param array[string]mixed $arguments
-     * @param string             $format
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -114,8 +114,8 @@ class VisitsSummaryModule extends Module
     }
 
     /**
-     * @param array[string]mixed $arguments
-     * @param string             $format
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -127,8 +127,8 @@ class VisitsSummaryModule extends Module
     }
 
     /**
-     * @param array[string]mixed $arguments
-     * @param string             $format
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */

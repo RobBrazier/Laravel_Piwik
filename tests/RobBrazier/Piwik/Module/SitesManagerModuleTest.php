@@ -205,4 +205,24 @@ class SitesManagerModuleTest extends TestCase
         $response = $this->sitesManager->getSitesIdFromSiteUrl($url);
         $this->assertEquals($this->expectedResponse, $response);
     }
+
+    public function testAddSite()
+    {
+        $siteName = 'site name';
+        $urls = [
+            'http://site.one',
+            'http://site.two',
+        ];
+        $this->requestOptions
+            ->usePeriod(false)
+            ->useSiteId(false)
+            ->setArguments([
+                'siteName' => $siteName,
+                'urls'     => $urls,
+            ])
+            ->setMethod('SitesManager.addSite');
+        $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
+        $response = $this->sitesManager->addSite($siteName, $urls);
+        $this->assertEquals($this->expectedResponse, $response);
+    }
 }

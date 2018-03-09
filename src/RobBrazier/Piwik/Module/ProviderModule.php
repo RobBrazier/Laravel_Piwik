@@ -5,7 +5,7 @@ namespace RobBrazier\Piwik\Module;
 /**
  * Class ProviderModule.
  *
- * @see https://developer.piwik.org/api-reference/reporting-api#Provider for arguments
+ * @see https://developer.matomo.org/api-reference/reporting-api#Provider for arguments
  */
 class ProviderModule extends Module
 {

@@ -5,13 +5,13 @@ namespace RobBrazier\Piwik\Module;
 /**
  * Class ReferrersModule.
  *
- * @see https://developer.piwik.org/api-reference/reporting-api#Referrers for arguments
+ * @see https://developer.matomo.org/api-reference/reporting-api#Referrers for arguments
  */
 class ReferrersModule extends Module
 {
     /**
-     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
-     * @param string              $format    override format (defaults to one specified in config file)
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -23,8 +23,8 @@ class ReferrersModule extends Module
     }
 
     /**
-     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
-     * @param string              $format    override format (defaults to one specified in config file)
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -36,8 +36,8 @@ class ReferrersModule extends Module
     }
 
     /**
-     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
-     * @param string              $format    override format (defaults to one specified in config file)
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -49,9 +49,9 @@ class ReferrersModule extends Module
     }
 
     /**
-     * @param string              $pageUrl   page url to get keywords for
-     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
-     * @param string              $format    override format (defaults to one specified in config file)
+     * @param string             $pageUrl   page url to get keywords for
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -64,9 +64,9 @@ class ReferrersModule extends Module
     }
 
     /**
-     * @param string              $pageTitle page title to get keywords for
-     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
-     * @param string              $format    override format (defaults to one specified in config file)
+     * @param string             $pageTitle page title to get keywords for
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -79,8 +79,8 @@ class ReferrersModule extends Module
     }
 
     /**
-     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
-     * @param string              $format    override format (defaults to one specified in config file)
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -92,8 +92,8 @@ class ReferrersModule extends Module
     }
 
     /**
-     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
-     * @param string              $format    override format (defaults to one specified in config file)
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -105,8 +105,8 @@ class ReferrersModule extends Module
     }
 
     /**
-     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
-     * @param string              $format    override format (defaults to one specified in config file)
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -118,8 +118,8 @@ class ReferrersModule extends Module
     }
 
     /**
-     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
-     * @param string              $format    override format (defaults to one specified in config file)
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -131,8 +131,8 @@ class ReferrersModule extends Module
     }
 
     /**
-     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
-     * @param string              $format    override format (defaults to one specified in config file)
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -144,8 +144,8 @@ class ReferrersModule extends Module
     }
 
     /**
-     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
-     * @param string              $format    override format (defaults to one specified in config file)
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -157,8 +157,8 @@ class ReferrersModule extends Module
     }
 
     /**
-     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
-     * @param string              $format    override format (defaults to one specified in config file)
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -170,8 +170,8 @@ class ReferrersModule extends Module
     }
 
     /**
-     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
-     * @param string              $format    override format (defaults to one specified in config file)
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -183,8 +183,8 @@ class ReferrersModule extends Module
     }
 
     /**
-     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
-     * @param string              $format    override format (defaults to one specified in config file)
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -196,8 +196,8 @@ class ReferrersModule extends Module
     }
 
     /**
-     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
-     * @param string              $format    override format (defaults to one specified in config file)
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -209,8 +209,8 @@ class ReferrersModule extends Module
     }
 
     /**
-     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
-     * @param string              $format    override format (defaults to one specified in config file)
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -222,8 +222,8 @@ class ReferrersModule extends Module
     }
 
     /**
-     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
-     * @param string              $format    override format (defaults to one specified in config file)
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -235,8 +235,8 @@ class ReferrersModule extends Module
     }
 
     /**
-     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
-     * @param string              $format    override format (defaults to one specified in config file)
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -248,8 +248,8 @@ class ReferrersModule extends Module
     }
 
     /**
-     * @param array<string,mixed> $arguments extra arguments to be passed to the api call
-     * @param string              $format    override format (defaults to one specified in config file)
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */

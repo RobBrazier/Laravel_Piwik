@@ -5,13 +5,13 @@ namespace RobBrazier\Piwik\Module;
 /**
  * Class SitesManagerModule.
  *
- * @see https://developer.piwik.org/api-reference/reporting-api#SitesManager for arguments
+ * @see https://developer.matomo.org/api-reference/reporting-api#SitesManager for arguments
  */
 class SitesManagerModule extends Module
 {
     /**
-     * @param string $group
-     * @param string $format
+     * @param string $group  group to search for
+     * @param string $format override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -29,7 +29,7 @@ class SitesManagerModule extends Module
     }
 
     /**
-     * @param string $format
+     * @param string $format override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -43,7 +43,7 @@ class SitesManagerModule extends Module
     }
 
     /**
-     * @param string $format
+     * @param string $format override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -56,8 +56,8 @@ class SitesManagerModule extends Module
     }
 
     /**
-     * @param int    $siteId
-     * @param string $format
+     * @param int    $siteId Override for ID, so you can specify one rather than fetching it from config
+     * @param string $format override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -73,7 +73,7 @@ class SitesManagerModule extends Module
     }
 
     /**
-     * @param string $format
+     * @param string $format override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -87,7 +87,7 @@ class SitesManagerModule extends Module
     }
 
     /**
-     * @param string $format
+     * @param string $format override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -101,8 +101,8 @@ class SitesManagerModule extends Module
     }
 
     /**
-     * @param array[string]mixed $arguments
-     * @param string             $format
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -117,7 +117,7 @@ class SitesManagerModule extends Module
     }
 
     /**
-     * @param string $format
+     * @param string $format override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -131,8 +131,8 @@ class SitesManagerModule extends Module
     }
 
     /**
-     * @param array[string]mixed $arguments
-     * @param string             $format
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -147,7 +147,7 @@ class SitesManagerModule extends Module
     }
 
     /**
-     * @param string $format
+     * @param string $format override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -161,7 +161,7 @@ class SitesManagerModule extends Module
     }
 
     /**
-     * @param string $format
+     * @param string $format override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -175,7 +175,7 @@ class SitesManagerModule extends Module
     }
 
     /**
-     * @param string $format
+     * @param string $format override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -189,8 +189,8 @@ class SitesManagerModule extends Module
     }
 
     /**
-     * @param string $url
-     * @param string $format
+     * @param string $url    site url
+     * @param string $format override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -202,6 +202,27 @@ class SitesManagerModule extends Module
         $options = $this->getOptions($format)
             ->useSiteId(false)
             ->usePeriod(false)
+            ->setArguments($arguments);
+
+        return $this->request->send($options);
+    }
+
+    /**
+     * @param string             $siteName  name of the site to be created
+     * @param array[string]      $urls      list of urls associated with the new site
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
+     *
+     * @return mixed
+     */
+    public function addSite($siteName, $urls = [], $arguments = [], $format = null)
+    {
+        $arguments = array_add($arguments, 'siteName', $siteName);
+        $arguments = array_add($arguments, 'urls', $urls);
+
+        $options = $this->getOptions($format)
+            ->usePeriod(false)
+            ->useSiteId(false)
             ->setArguments($arguments);
 
         return $this->request->send($options);

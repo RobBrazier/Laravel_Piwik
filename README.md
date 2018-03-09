@@ -1,4 +1,4 @@
-# Laravel-Piwik v3.0.1
+# Laravel-Piwik v3.1.0
 
 [![Build Status](https://semaphoreci.com/api/v1/robbrazier/laravel_piwik/branches/master/shields_badge.svg)](https://semaphoreci.com/robbrazier/laravel_piwik)
 [![Code Climate](https://img.shields.io/codeclimate/maintainability/RobBrazier/Laravel_Piwik.svg)](https://codeclimate.com/github/RobBrazier/Laravel_Piwik)
@@ -19,7 +19,7 @@ Add `RobBrazier/Piwik` to `composer.json`:
 ```json
 {
     "require": {
-        "robbrazier/piwik": "~3.0"
+        "robbrazier/piwik": "~3.1"
     }
 }
 ```

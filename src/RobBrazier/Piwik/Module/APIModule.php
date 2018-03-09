@@ -5,7 +5,7 @@ namespace RobBrazier\Piwik\Module;
 /**
  * Class APIModule.
  *
- * @see https://developer.piwik.org/api-reference/reporting-api#API for arguments
+ * @see https://developer.matomo.org/api-reference/reporting-api#API for arguments
  */
 class APIModule extends Module
 {

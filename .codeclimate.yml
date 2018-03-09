@@ -25,5 +25,6 @@ exclude_patterns:
   - "**/vendor/"
   - ".sami.*"
   - "**/tests/"
+  - "**/cache/"
   - "**/build/"
   - "**/reports/"

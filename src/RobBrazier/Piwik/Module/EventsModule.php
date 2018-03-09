@@ -5,7 +5,7 @@ namespace RobBrazier\Piwik\Module;
 /**
  * Class EventsModule.
  *
- * @see https://developer.piwik.org/api-reference/reporting-api#Events for arguments
+ * @see https://developer.matomo.org/api-reference/reporting-api#Events for arguments
  */
 class EventsModule extends Module
 {
