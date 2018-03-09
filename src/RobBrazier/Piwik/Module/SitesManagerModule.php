@@ -208,18 +208,19 @@ class SitesManagerModule extends Module
     }
 
     /**
-     * @param string        $siteName
-     * @param array[string] $urls
+     * @param string        $siteName name of the site to be created
+     * @param array[string] $urls     list of urls associated with the new site
+     *
+     * @return mixed
      */
-    public function addSite($siteName, $urls = [], $arguments = [])
+    public function addSite($siteName, $urls = [], $arguments = [], $format = null)
     {
         $arguments = array_add($arguments, 'siteName', $siteName);
         $arguments = array_add($arguments, 'urls', $urls);
 
-        $options = $this->getOptions(null)
+        $options = $this->getOptions($format)
             ->usePeriod(false)
             ->useSiteId(false)
-            ->useFormat(false)
             ->setArguments($arguments);
 
         return $this->request->send($options);

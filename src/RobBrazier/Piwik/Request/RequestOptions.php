@@ -212,20 +212,30 @@ class RequestOptions
      *
      * @return array
      */
-    private function flattenArray($array)
+    public function flattenArray($array)
     {
         $result = [];
-
-        foreach ($array as $key => $value) {
-            if (is_array($value)) {
-                foreach ($value as $k => $val) {
-                    $result = array_merge($result, [sprintf('%s[%s]', $key, $k) => $val]);
-                }
-            } else {
-                $result = array_merge($result, [$key => $value]);
-            }
+        foreach (array_dot($array) as $key => $value) {
+            $splitKey = explode('.', $key);
+            $newKey = $this->createArrayKey($splitKey);
+            $result = array_merge($result, [ $newKey => $value ]);
         }
 
+        return $result;
+    }
+
+    private function createArrayKey($keyParts)
+    {
+        $result = "";
+        $i = 0;
+        foreach ($keyParts as $part) {
+            $format = "%s";
+            if ($i > 0) {
+                $format = "[%s]";
+            }
+            $result .= sprintf($format, $part);
+            $i++;
+        }
         return $result;
     }
 

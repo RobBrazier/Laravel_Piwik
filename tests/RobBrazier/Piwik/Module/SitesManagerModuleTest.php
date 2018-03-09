@@ -216,7 +216,6 @@ class SitesManagerModuleTest extends TestCase
         $this->requestOptions
             ->usePeriod(false)
             ->useSiteId(false)
-            ->useFormat(false)
             ->setArguments([
                 'siteName' => $siteName,
                 'urls'     => $urls,
