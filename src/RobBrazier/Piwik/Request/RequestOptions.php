@@ -218,7 +218,7 @@ class RequestOptions
         foreach (array_dot($array) as $key => $value) {
             $splitKey = explode('.', $key);
             $newKey = $this->createArrayKey($splitKey);
-            $result = array_merge($result, [ $newKey => $value ]);
+            $result = array_merge($result, [$newKey => $value]);
         }
 
         return $result;
@@ -226,16 +226,17 @@ class RequestOptions
 
     private function createArrayKey($keyParts)
     {
-        $result = "";
+        $result = '';
         $i = 0;
         foreach ($keyParts as $part) {
-            $format = "%s";
+            $format = '%s';
             if ($i > 0) {
-                $format = "[%s]";
+                $format = '[%s]';
             }
             $result .= sprintf($format, $part);
             $i++;
         }
+
         return $result;
     }
 
