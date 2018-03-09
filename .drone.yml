@@ -78,9 +78,12 @@ pipeline:
       - .ci/sami.sh
     when:
       branch: master
+      event: deployment
   deploy:
     image: node:6.11-alpine
     commands:
       - .ci/netlify.sh
+    secrets: [ netlify_token ]
     when:
       branch: master
+      event: deployment

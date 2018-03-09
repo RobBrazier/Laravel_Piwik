@@ -1,6 +1,6 @@
 # Laravel-Piwik v3.0.1
 
-[![Build Status](https://semaphoreci.com/api/v1/robbrazier/laravel_piwik/branches/master/shields_badge.svg)](https://semaphoreci.com/robbrazier/laravel_piwik)
+[![Build Status](https://ci.brazier.cloud/api/badges/RobBrazier/Laravel_Piwik/status.svg)](https://ci.brazier.cloud/RobBrazier/Laravel_Piwik)
 [![Code Climate](https://img.shields.io/codeclimate/maintainability/RobBrazier/Laravel_Piwik.svg)](https://codeclimate.com/github/RobBrazier/Laravel_Piwik)
 [![Code Climate](https://img.shields.io/codeclimate/c/RobBrazier/Laravel_Piwik.svg)](https://codeclimate.com/github/RobBrazier/Laravel_Piwik)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%205.6-8892BF.svg?style=flat)](https://php.net/)
