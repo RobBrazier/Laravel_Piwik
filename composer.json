@@ -2,7 +2,7 @@
     "name": "robbrazier/piwik",
     "description": "Piwik Package for Laravel",
     "license": "MIT",
-    "version": "3.0.1",
+    "version": "3.1.0",
     "keywords": ["laravel","piwik"],
     "authors": [
         {
