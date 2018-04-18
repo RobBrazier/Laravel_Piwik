@@ -8,6 +8,7 @@ echo "steps:"
 for phpver in ${PHP_VERSIONS[@]}; do
     echo "  - label: ':php: $phpver Unit'"
     echo "    command: .ci/unit.sh"
-    echo "    env:"
-    echo "      BUILDKITE_DOCKER_COMPOSE_CONTAINER: php${phpver//\./}"
+    echo "    plugins:"
+    echo "      docker-compose#v2.0.0:"
+    echo "        run: php${phpver//\./}"
 done
