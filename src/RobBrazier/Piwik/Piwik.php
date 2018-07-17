@@ -91,7 +91,7 @@ class Piwik
      *
      * @see https://developer.matomo.org/api-reference/reporting-api#Contents for arguments
      *
-     * @return APIModule
+     * @return ContentsModule
      */
     public function getContents()
     {
