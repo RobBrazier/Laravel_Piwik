@@ -2,12 +2,12 @@
     "name": "robbrazier/piwik",
     "description": "Piwik Package for Laravel",
     "license": "MIT",
-    "version": "3.0.1",
+    "version": "3.2.0",
     "keywords": ["laravel","piwik"],
     "authors": [
         {
             "name": "Rob Brazier",
-            "email": "github.laravelpiwik@rob.brzr.co"
+            "email": "laravelpiwik@brzr.co"
         }
     ],
     "require": {

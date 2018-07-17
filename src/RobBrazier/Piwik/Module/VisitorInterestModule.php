@@ -5,13 +5,13 @@ namespace RobBrazier\Piwik\Module;
 /**
  * Class VisitorInterestModule.
  *
- * @see https://developer.piwik.org/api-reference/reporting-api#VisitorInterest for arguments
+ * @see https://developer.matomo.org/api-reference/reporting-api#VisitorInterest for arguments
  */
 class VisitorInterestModule extends Module
 {
     /**
-     * @param array[string]mixed $arguments
-     * @param string             $format
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -23,8 +23,8 @@ class VisitorInterestModule extends Module
     }
 
     /**
-     * @param array[string]mixed $arguments
-     * @param string             $format
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -36,8 +36,8 @@ class VisitorInterestModule extends Module
     }
 
     /**
-     * @param array[string]mixed $arguments
-     * @param string             $format
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -49,8 +49,8 @@ class VisitorInterestModule extends Module
     }
 
     /**
-     * @param array[string]mixed $arguments
-     * @param string             $format
+     * @param array[string]mixed $arguments extra arguments to be passed to the api call
+     * @param string             $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */

@@ -130,4 +130,40 @@ class RequestOptionsTest extends TestCase
             ->build($this->configRepository->reveal());
         $this->assertEquals('?module=API', $result);
     }
+
+    public function testSetArgumentsWithSingleDimensionalArrayValue()
+    {
+        $url1 = 'url1';
+        $url2 = 'url2';
+        $arguments = [
+            'url' => [
+                $url1,
+                $url2,
+            ],
+        ];
+        $result = $this->requestOptions
+            ->setArguments($arguments)
+            ->build($this->configRepository->reveal());
+        $this->assertNotEmpty($arguments);
+        $this->assertEquals("?module=API&url[0]=$url1&url[1]=$url2", $result);
+    }
+
+    public function testSetArgumentsWithMultiDimensionalArrayValue()
+    {
+        $key1 = 'key1';
+        $key2 = 'key2';
+        $val1 = 'val1';
+        $val2 = 'val2';
+        $arguments = [
+            'v' => [
+                $key1 => $val1,
+                $key2 => $val2,
+            ],
+        ];
+        $result = $this->requestOptions
+            ->setArguments($arguments)
+            ->build($this->configRepository->reveal());
+        $this->assertNotEmpty($arguments);
+        $this->assertEquals("?module=API&v[$key1]=$val1&v[$key2]=$val2", $result);
+    }
 }

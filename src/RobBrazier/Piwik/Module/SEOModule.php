@@ -7,7 +7,7 @@ use RobBrazier\Piwik\Repository\RequestRepository;
 /**
  * Class SEOModule.
  *
- * @see https://developer.piwik.org/api-reference/reporting-api#SEO for arguments
+ * @see https://developer.matomo.org/api-reference/reporting-api#SEO for arguments
  */
 class SEOModule extends Module
 {
@@ -29,8 +29,8 @@ class SEOModule extends Module
     }
 
     /**
-     * @param string $url
-     * @param string $format
+     * @param string $url    url to search for
+     * @param string $format override format (defaults to one specified in config file)
      *
      * @return mixed
      */
@@ -48,8 +48,8 @@ class SEOModule extends Module
     }
 
     /**
-     * @param int    $siteId
-     * @param string $format
+     * @param int    $siteId Override for ID, so you can specify one rather than fetching it from config
+     * @param string $format override format (defaults to one specified in config file)
      *
      * @return mixed
      */

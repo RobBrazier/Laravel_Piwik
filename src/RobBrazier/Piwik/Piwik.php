@@ -4,6 +4,7 @@ namespace RobBrazier\Piwik;
 
 use RobBrazier\Piwik\Module\ActionsModule;
 use RobBrazier\Piwik\Module\APIModule;
+use RobBrazier\Piwik\Module\ContentsModule;
 use RobBrazier\Piwik\Module\EventsModule;
 use RobBrazier\Piwik\Module\LiveModule;
 use RobBrazier\Piwik\Module\ProviderModule;
@@ -64,7 +65,7 @@ class Piwik
     /**
      * Initialise the Actions module.
      *
-     * @see https://developer.piwik.org/api-reference/reporting-api#Actions for arguments
+     * @see https://developer.matomo.org/api-reference/reporting-api#Actions for arguments
      *
      * @return ActionsModule
      */
@@ -76,7 +77,7 @@ class Piwik
     /**
      * Initialise the API Module.
      *
-     * @see https://developer.piwik.org/api-reference/reporting-api#API for arguments
+     * @see https://developer.matomo.org/api-reference/reporting-api#API for arguments
      *
      * @return APIModule
      */
@@ -86,9 +87,21 @@ class Piwik
     }
 
     /**
+     * Initialise the Contents Module.
+     *
+     * @see https://developer.matomo.org/api-reference/reporting-api#Contents for arguments
+     *
+     * @return ContentsModule
+     */
+    public function getContents()
+    {
+        return new ContentsModule($this->request);
+    }
+
+    /**
      * Initialise the Events Module.
      *
-     * @see https://developer.piwik.org/api-reference/reporting-api#Events for arguments
+     * @see https://developer.matomo.org/api-reference/reporting-api#Events for arguments
      *
      * @return EventsModule
      */
@@ -100,7 +113,7 @@ class Piwik
     /**
      * Initialise the Live Module.
      *
-     * @see https://developer.piwik.org/api-reference/reporting-api#Live for arguments
+     * @see https://developer.matomo.org/api-reference/reporting-api#Live for arguments
      *
      * @return LiveModule
      */
@@ -112,7 +125,7 @@ class Piwik
     /**
      * Initialise the Provider Module.
      *
-     * @see https://developer.piwik.org/api-reference/reporting-api#Provider for arguments
+     * @see https://developer.matomo.org/api-reference/reporting-api#Provider for arguments
      *
      * @return ProviderModule
      */
@@ -124,7 +137,7 @@ class Piwik
     /**
      * Initialise the Referrers Module.
      *
-     * @see https://developer.piwik.org/api-reference/reporting-api#Referrers for arguments
+     * @see https://developer.matomo.org/api-reference/reporting-api#Referrers for arguments
      *
      * @return ReferrersModule
      */
@@ -136,7 +149,7 @@ class Piwik
     /**
      * Initialise the SEO Module.
      *
-     * @see https://developer.piwik.org/api-reference/reporting-api#SEO for arguments
+     * @see https://developer.matomo.org/api-reference/reporting-api#SEO for arguments
      *
      * @return SEOModule
      */
@@ -148,7 +161,7 @@ class Piwik
     /**
      * Initialise the SitesManager Module.
      *
-     * @see https://developer.piwik.org/api-reference/reporting-api#SitesManager for arguments
+     * @see https://developer.matomo.org/api-reference/reporting-api#SitesManager for arguments
      *
      * @return SitesManagerModule
      */
@@ -160,7 +173,7 @@ class Piwik
     /**
      * Initialise the VisitorInterest Module.
      *
-     * @see https://developer.piwik.org/api-reference/reporting-api#VisitorInterest for arguments
+     * @see https://developer.matomo.org/api-reference/reporting-api#VisitorInterest for arguments
      *
      * @return VisitorInterestModule
      */
@@ -172,7 +185,7 @@ class Piwik
     /**
      * Initialise the VisitsSummary Module.
      *
-     * @see https://developer.piwik.org/api-reference/reporting-api#VisitsSummary for arguments
+     * @see https://developer.matomo.org/api-reference/reporting-api#VisitsSummary for arguments
      *
      * @return VisitsSummaryModule
      */
