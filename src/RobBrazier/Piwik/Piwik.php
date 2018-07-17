@@ -4,6 +4,7 @@ namespace RobBrazier\Piwik;
 
 use RobBrazier\Piwik\Module\ActionsModule;
 use RobBrazier\Piwik\Module\APIModule;
+use RobBrazier\Piwik\Module\ContentsModule;
 use RobBrazier\Piwik\Module\EventsModule;
 use RobBrazier\Piwik\Module\LiveModule;
 use RobBrazier\Piwik\Module\ProviderModule;
@@ -83,6 +84,18 @@ class Piwik
     public function getAPI()
     {
         return new APIModule($this->request);
+    }
+
+    /**
+     * Initialise the Contents Module.
+     *
+     * @see https://developer.matomo.org/api-reference/reporting-api#Contents for arguments
+     *
+     * @return APIModule
+     */
+    public function getContents()
+    {
+        return new ContentsModule($this->request);
     }
 
     /**
