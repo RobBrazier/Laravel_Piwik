@@ -10,6 +10,6 @@ for phpver in ${PHP_VERSIONS[@]}; do
     echo "    command:"
     echo "      - .ci/unit.sh"
     echo "    plugins:"
-    echo "      docker-compose#v2.0.0:"
+    echo "      docker-compose#v2.5.0:"
     echo "        run: php${phpver//\./}"
 done
