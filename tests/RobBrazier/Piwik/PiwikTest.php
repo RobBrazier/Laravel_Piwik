@@ -7,6 +7,7 @@ use Prophecy\Prophet;
 use RobBrazier\Piwik\Config\Option;
 use RobBrazier\Piwik\Module\ActionsModule;
 use RobBrazier\Piwik\Module\APIModule;
+use RobBrazier\Piwik\Module\ContentsModule;
 use RobBrazier\Piwik\Module\EventsModule;
 use RobBrazier\Piwik\Module\LiveModule;
 use RobBrazier\Piwik\Module\ProviderModule;
@@ -72,6 +73,12 @@ class PiwikTest extends TestCase
     {
         $api = $this->piwik->getAPI();
         $this->assertInstanceOf(APIModule::class, $api);
+    }
+
+    public function testGetContents()
+    {
+        $api = $this->piwik->getContents();
+        $this->assertInstanceOf(ContentsModule::class, $api);
     }
 
     public function testGetEvents()
