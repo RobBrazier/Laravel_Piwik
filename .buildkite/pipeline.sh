@@ -21,5 +21,5 @@ for laravelver in ${LARAVEL_VERSIONS[@]}; do
     echo "      - .ci/integration.sh"
     echo "    plugins:"
     echo "      docker-compose#v2.5.0:"
-    echo "        run php72"
+    echo "        run: php72"
 done
