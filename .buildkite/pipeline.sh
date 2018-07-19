@@ -12,4 +12,7 @@ for phpver in ${PHP_VERSIONS[@]}; do
     echo "    plugins:"
     echo "      docker-compose#v2.5.0:"
     echo "        run: php${phpver//\./}"
+    echo "        env:"
+    echo "          - PUID"
+    echo "          - PGID"
 done
