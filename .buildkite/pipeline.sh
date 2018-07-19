@@ -14,8 +14,8 @@ for phpver in ${PHP_VERSIONS[@]}; do
     echo "      docker-compose#v2.5.0:"
     echo "        run: php${phpver//\./}"
     echo "        env:"
-    echo "          - PUID"
-    echo "          - PGID"
+    echo "          - PUID=999"
+    echo "          - PGID=999"
 done
 echo "  - wait"
 for laravelver in ${LARAVEL_VERSIONS[@]}; do
@@ -25,4 +25,7 @@ for laravelver in ${LARAVEL_VERSIONS[@]}; do
     echo "    plugins:"
     echo "      docker-compose#v2.5.0:"
     echo "        run: php72"
+    echo "        env:"
+    echo "          - PUID=999"
+    echo "          - PGID=999"
 done
