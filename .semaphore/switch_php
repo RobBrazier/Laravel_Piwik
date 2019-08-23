@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euxo pipefail
 phpVersion="${PHP_VERSION:-7.1}"
 PHPBREW_DIR="$HOME/.phpbrew/php/$phpVersion"
 PHPBREW_VERSION="phpbrew-$phpVersion"
