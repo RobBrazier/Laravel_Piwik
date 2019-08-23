@@ -47,7 +47,7 @@ blocks:
   - name: "Upload Test Coverage"
     task:
       secrets:
-        - name: codeclimate-repoter-id
+        - name: codeclimate-reporter-id
       jobs:
         - name: CodeClimate Test Coverage
           commands:
