@@ -18,6 +18,7 @@ blocks:
           - env_var: PHP_VERSION
             values: [ "5.6", "7.0", "7.1", "7.2", "7.3" ]
         commands:
+          - phpbrew --no-progress install $PHP_VERSION
           - sem-version php $PHP_VERSION
           - checkout
           - cache restore
