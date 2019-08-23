@@ -9,10 +9,6 @@ global_job_config:
     commands:
       - export PATH="$HOME/.composer/vendor/bin:$PATH"
 
-fail_fast:
-  cancel:
-    when: "branch == 'gh-pages'"
-
 blocks:
   - name: Build Docs
     task:

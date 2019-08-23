@@ -12,6 +12,10 @@ global_job_config:
       - bash .semaphore/switch_php
       - export COMPOSER_HASH="$(md5sum composer.lock | awk -F' ' '{ print $1 }')"
 
+fail_fast:
+  cancel:
+    when: "branch = 'gh-pages'"
+
 blocks:
   - name: "Install"
     task:
