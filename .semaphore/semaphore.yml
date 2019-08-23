@@ -20,8 +20,8 @@ blocks:
             values: [ "7.0", "7.1", "7.2", "7.3" ]
         commands:
           - export PHPBREW_DIR="$HOME/.phpbrew/php/$PHP_VERSION"
-          - cache restore phpbrew-$PHP_VERSION
-          - if [[ ! -f "$PHPBREW_DIR/bin/php" ]]; then phpbrew --no-progress install --name $PHP_VERSION $PHP_VERSION; cache store phpbrew-$PHP_VERSION $PHPBREW_DIR; fi
+          - export PHPBREW_VERSION="phpbrew-$PHP_VERSION"
+          - if cache has_key $PHPBREW_VERSION; then cache restore $PHPBREW_VERSION; else phpbrew --no-progress install --name $PHP_VERSION $PHP_VERSION; cache store $PHPBREW_VERSION $PHPBREW_DIR; fi
           - phpbrew switch $PHP_VERSION
           - checkout
           - cache restore
