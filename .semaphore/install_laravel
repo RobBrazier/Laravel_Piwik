@@ -11,10 +11,8 @@ else
     cache store $cacheKey $INTEGRATION_DIR
 fi
 
-sudo apt install -y jq
-
 # prepare laravel
-export PLUGIN_DIR="$SEMAPHORE_GIT_DIR"
+export PLUGIN_DIR="$HOME/$SEMAPHORE_GIT_DIR"
 contents="$(jq \".repositories = [{\\\"packagist.org\\\": false}, {\\\"type\\\": \\\"path\\\", \\\"url\\\": \\\"$PLUGIN_DIR\\\"}, {\\\"type\\\": \\\"composer\\\", \\\"url\\\": \\\"https://packagist.org\\\"}]\" < $PLUGIN_DIR/composer.json)"
 echo $contents
 # echo "$contents" > composer.json
