@@ -8,25 +8,31 @@ global_job_config:
   prologue:
     commands:
       - composer self-update
+      - checkout
+      - bash .semaphore/switch_php
 
 blocks:
   - name: "Install"
     task:
-      prologue:
-        commands: 
-          - checkout
-          - bash .semaphore/switch_php
       jobs:
-      - name: Build
+      - name: Install Dependencies
         matrix:
           - env_var: PHP_VERSION
             values: [ "7.0", "7.1", "7.2", "7.3" ]
         commands:
-          - php --version
-          - export COMPOSER_HASH="$(md5sum composer.lock | awk -F' ' '{ print $1 }')"
           - cache restore composer-semaphore-$COMPOSER_HASH-$PHP_VERSION
           - composer install
           - cache store composer-semaphore-$COMPOSER_HASH-$PHP_VERSION vendor/
+  - name: "Unit Tests"
+    task:
+      jobs:
+        - name: Run Unit Tests
+          matrix:
+            - env_var: PHP_VERSION
+              values: [ "7.0", "7.1", "7.2", "7.3" ]
+          commands:
+            - cache restore composer-semaphore-$COMPOSER_HASH-$PHP_VERSION
+            - composer run-script test
 
   # - name: "Smoke tests"
   #   task:
