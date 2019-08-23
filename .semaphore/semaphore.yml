@@ -41,7 +41,8 @@ blocks:
           matrix:
             - env_var: LARAVEL_VERSION
               values: [ "5.1", "5.2", "5.3", "5.4", "5.5" ]
-          commands_file: .semaphore/integration_test
+          commands: 
+            - bash .semaphore/integration_test
 
   # - name: "Smoke tests"
   #   task:
