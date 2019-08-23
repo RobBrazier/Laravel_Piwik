@@ -3,6 +3,11 @@ agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu1804
+
+global_job_config:
+  prologue:
+    commands:
+      - export PATH="$HOME/.composer/vendor/bin:$PATH"
 blocks:
   - name: Build Docs
     task:
