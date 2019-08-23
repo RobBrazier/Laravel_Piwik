@@ -69,3 +69,9 @@ promotions:
       - result: passed
         branch:
             - master
+  - name: GitHub Release
+    pipeline_file: github-release.yml
+    auto_promote_on:
+      - result: passed
+        branch:
+          - master
