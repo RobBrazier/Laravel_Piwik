@@ -25,12 +25,12 @@ sed -r -e 's/([[:space:]]+?)(App\\Providers\\RouteServiceProvider::class,)/\1\2\
     -e 's/([[:space:]]+?)(.*Illuminate\\Support\\Facades\\View::class,)/\1\2\n\1"Piwik" => RobBrazier\\Piwik\\Facades\\Piwik::class/g' \
     -i $app_config
 
-filename="routes/web.php"
+# Create routes
+routes_config="routes/web.php"
 if [ "${LARAVEL_VERSION}" = "5.1" ] || [ "${LARAVEL_VERSION}" = "5.2" ]; then
-    filename="app/Http/routes.php"
+    routes_config="app/Http/routes.php"
 fi
 
-# Create routes
 cat <<EOT >$routes_config
 <?php
 
