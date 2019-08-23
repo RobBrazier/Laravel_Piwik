@@ -34,6 +34,15 @@ blocks:
           commands:
             - cache restore composer-semaphore-$COMPOSER_HASH-$PHP_VERSION
             - composer run-script test
+  - name: "Integration Tests"
+    task:
+      jobs:
+        - name: Run Laravel Integration Test
+          matrix:
+            - env_var: LARAVEL_VERSION
+              values: [ "5.1", "5.2", "5.3", "5.4", "5.5" ]
+          commands:
+            - bash .semaphore/install_laravel
 
   # - name: "Smoke tests"
   #   task:

@@ -1,10 +1,11 @@
 #!/bin/bash
-export PHPBREW_DIR="$HOME/.phpbrew/php/$PHP_VERSION"
-export PHPBREW_VERSION="phpbrew-$PHP_VERSION"
+phpVersion="${PHP_VERSION:-7.1}"
+PHPBREW_DIR="$HOME/.phpbrew/php/$phpVersion"
+PHPBREW_VERSION="phpbrew-$phpVersion"
 if cache has_key $PHPBREW_VERSION; then 
     cache restore $PHPBREW_VERSION; 
 else 
-    phpbrew --no-progress install --name $PHP_VERSION $PHP_VERSION; 
+    phpbrew --no-progress install --name $phpVersion $phpVersion; 
     cache store $PHPBREW_VERSION $PHPBREW_DIR; 
 fi
-phpbrew switch $PHP_VERSION
+phpbrew switch $phpVersion
