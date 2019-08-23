@@ -8,18 +8,23 @@ global_job_config:
   prologue:
     commands:
       - composer self-update
+      - sudo apt install openssl -y
 
 blocks:
   - name: "Build"
     task:
+      env_vars:
+        - name: PHPBREW_DIR
+          value: "$HOME/.phpbrew/php/$PHP_VERSION"
       jobs:
       - name: Build
         matrix:
           - env_var: PHP_VERSION
-            values: [ "5.6", "7.0", "7.1", "7.2", "7.3" ]
+            values: [ "7.0", "7.1", "7.2", "7.3" ]
         commands:
-          - phpbrew --no-progress install $PHP_VERSION
-          - sem-version php $PHP_VERSION
+          - cache restore phpbrew-$PHP_VERSION
+          - if [[ ! -f "$PHPBREW_DIR/bin/php" ]]; then phpbrew --no-progress install --name $PHP_VERSION $PHP_VERSION; cache store phpbrew-$PHP_VERSION $PHPBREW_DIR; fi
+          - phpbrew switch $PHP_VERSION
           - checkout
           - cache restore
           - composer install
