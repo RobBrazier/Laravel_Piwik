@@ -30,8 +30,8 @@ blocks:
         #     - mv ../docs/api ./build/api
         #     - cache store $CACHE_KEY build/api/
   
-   - name: Publish to GitHub
-     task:
+  - name: Publish to GitHub
+    task:
       secrets:
         - name: gh-sshkey
       prologue:
