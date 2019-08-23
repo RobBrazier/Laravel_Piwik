@@ -14,14 +14,15 @@ blocks:
   - name: "Install"
     task:
       prologue:
-        commands_file: switch_php
+        commands: 
+          - checkout
+          - bash .semaphore/switch_php
       jobs:
       - name: Build
         matrix:
           - env_var: PHP_VERSION
             values: [ "7.0", "7.1", "7.2", "7.3" ]
         commands:
-          - checkout
           - php --version
           - export COMPOSER_HASH="$(md5sum composer.lock | awk -F' ' '{ print $1 }')"
           - cache restore composer-semaphore-$COMPOSER_HASH-$PHP_VERSION
