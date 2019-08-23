@@ -54,22 +54,6 @@ Update your packages with `composer update` or install with `composer install`.
 Then go to `config/piwik.php` and add your config settings such as server,
 apikey, siteid etc.
 
-## Development
-
-Scripts such as running unit tests for various PHP versions and integration tests
-for multiple Laravel versions are configured via the `Taskfile.yml`.
-
-They can be run locally by installing [go-task/task](https://github.com/go-task/task#installation) and then running the
-commands as below:
-
-```bash
-# unit tests
-PHP_VERSION=7.1 task unitTest
-
-# integration tests
-LARAVEL_VERSION=5.5 task integrationTest
-```
-
 ## Documentation
 
 Usage Documentation is located at <http://laravel-piwik.robbrazier.com/Usage.html>
