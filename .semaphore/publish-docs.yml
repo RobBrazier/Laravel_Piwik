@@ -28,6 +28,7 @@ blocks:
             - composer global require "sami/sami:4.0.*"
             - git pull --tags
             - sami.php update .sami.php || true
+            - mkdir -p build
             - mv ../docs/api ./build/api
             - cache store $CACHE_KEY build/api/
   
