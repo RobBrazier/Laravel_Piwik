@@ -13,16 +13,51 @@ fi
 
 # prepare laravel
 export PLUGIN_DIR="$HOME/$SEMAPHORE_GIT_DIR"
-repositoriesJson=""
-contents="$(jq ".repositories = [{\"packagist.org\": false}, {\"type\": \"path\", \"url\": \"$PLUGIN_DIR\"}, {\"type\": \"composer\", \"url\": \"https://packagist.org\"}]" < $PLUGIN_DIR/composer.json)"
-echo $contents
-# echo "$contents" > composer.json
-# composer require robbrazier/piwik:* --no-suggest --no-progress --update-no-dev
-# sed -e 's/App\\Providers\\RouteServiceProvider::class,/App\\Providers\\RouteServiceProvider::class, RobBrazier\\Piwik\\PiwikServiceProvider::class/g' -i.bak config/app.php
-# sed -e 's/Illuminate\\Support\\Facades\\View::class,/Illuminate\\Support\\Facades\\View::class, "Piwik" => RobBrazier\\Piwik\\Facades\\Piwik::class/g' -i.bak config/app.php
-# filename="routes/web.php"
-# if [ "${LARAVEL_VERSION}" = "5.1" ] || [ "${LARAVEL_VERSION}" = "5.2" ]; then
-#     filename="app/Http/routes.php"
-# fi
-# cat "$APP_DIR/plugin/ci/scripts/routes.txt" > "$filename"
-# cat "$APP_DIR/plugin/ci/scripts/config.txt" > "config/piwik.php"
+cd $INTEGRATION_DIR
+
+contents="$(jq ".repositories = [{\"packagist.org\": false}, {\"type\": \"path\", \"url\": \"$PLUGIN_DIR\"}, {\"type\": \"composer\", \"url\": \"https://packagist.org\"}]" < composer.json)"
+echo "$contents" > composer.json
+
+composer require robbrazier/piwik:* --no-suggest --no-progress --update-no-dev
+
+app_config="config/app.php"
+sed -r -e 's/([[:space:]]+?)(App\\Providers\\RouteServiceProvider::class,)/\1\2\n\1RobBrazier\\Piwik\\PiwikServiceProvider::class/g' \
+    -e 's/([[:space:]]+?)(.*Illuminate\\Support\\Facades\\View::class,)/\1\2\n\1"Piwik" => RobBrazier\\Piwik\\Facades\\Piwik::class/g' \
+    -i $app_config
+
+filename="routes/web.php"
+if [ "${LARAVEL_VERSION}" = "5.1" ] || [ "${LARAVEL_VERSION}" = "5.2" ]; then
+    filename="app/Http/routes.php"
+fi
+
+# Create routes
+cat <<EOT >$routes_config
+<?php
+
+Route::get("/", function() {
+    return json_encode(App::make('piwik')->getReferrers()->getKeywords());
+});
+EOT
+
+# Configure plugin
+piwik_config="config/piwik.php"
+cp "$SRC_DIR/src/config/config.php" $piwik_config
+sed -r -e "s@('piwik_url').*@\1 => 'https://demo.piwik.org',@g" \
+    -e "s@('api_key').*@\1 => 'anonymous',@g" \
+    -e "s@('site_id').*@\1 => '7',@g" \
+    -i $piwik_config
+
+# Run test (nasty, but works...)
+php -S localhost:8000 server.php &
+sleep 2
+output_file="/tmp/output"
+curl --silent --output $output_file http://localhost:8000 
+pkill -9 php
+if test $(grep -c nb_uniq_visitors $output_file) -gt 0; then
+    echo "valid result"
+    exit 0
+else
+    echo "invalid result"
+    cat $output_file
+    exit 1
+fi
