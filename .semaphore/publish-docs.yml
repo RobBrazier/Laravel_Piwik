@@ -26,7 +26,7 @@ blocks:
             - CACHE_KEY="sami-$SEMAPHORE_GIT_SHA"
             - if cache has_key $CACHE_KEY; then exit 0; fi
             - composer global require "sami/sami:4.0.*"
-            - sami.php update .sami.php
+            - sami.php update .sami.php || exit 0
             - mv ../docs/api ./build/api
             - cache store $CACHE_KEY build/api/
   
