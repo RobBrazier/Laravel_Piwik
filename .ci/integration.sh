@@ -1,6 +1,6 @@
 #!/bin/sh
 . $(dirname $0)/common.sh
-setup
+# setup
 integration_dir="/tmp/integration"
 composer create-project laravel/laravel $integration_dir "${LARAVEL_VERSION}.*" --no-progress --no-dev
 cd $integration_dir

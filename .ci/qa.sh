@@ -1,7 +1,7 @@
 #!/bin/sh
 reporter="/tmp/cc-test-reporter"
 . $(dirname $0)/common.sh
-setup curl git
+# setup curl git
 download_executable $reporter "https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64"
 $reporter before-build
 exit_code="0"
