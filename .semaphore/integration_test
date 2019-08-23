@@ -48,10 +48,10 @@ sed -r -e "s@('piwik_url').*@\1 => 'https://demo.piwik.org',@g" \
     -i $piwik_config
 
 # Run test (nasty, but works...)
-php -S localhost:8000 server.php &
+php -S localhost:8213 server.php &
 sleep 2
 output_file="/tmp/output"
-curl --silent --output $output_file http://localhost:8000 
+curl --silent --output $output_file http://localhost:8213 
 pkill -9 php
 if test $(grep -c nb_uniq_visitors $output_file) -gt 0; then
     echo "valid result"
