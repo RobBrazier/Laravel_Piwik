@@ -41,7 +41,7 @@ EOT
 
 # Configure plugin
 piwik_config="config/piwik.php"
-cp "$SRC_DIR/src/config/config.php" $piwik_config
+cp "$PLUGIN_DIR/src/config/config.php" $piwik_config
 sed -r -e "s@('piwik_url').*@\1 => 'https://demo.piwik.org',@g" \
     -e "s@('api_key').*@\1 => 'anonymous',@g" \
     -e "s@('site_id').*@\1 => '7',@g" \
