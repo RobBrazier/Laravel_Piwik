@@ -13,7 +13,8 @@ fi
 
 # prepare laravel
 export PLUGIN_DIR="$HOME/$SEMAPHORE_GIT_DIR"
-contents="$(jq \".repositories = [{\\\"packagist.org\\\": false}, {\\\"type\\\": \\\"path\\\", \\\"url\\\": \\\"$PLUGIN_DIR\\\"}, {\\\"type\\\": \\\"composer\\\", \\\"url\\\": \\\"https://packagist.org\\\"}]\" < $PLUGIN_DIR/composer.json)"
+repositoriesJson=""
+contents="$(jq ".repositories = [{\"packagist.org\": false}, {\"type\": \"path\", \"url\": \"$PLUGIN_DIR\"}, {\"type\": \"composer\", \"url\": \"https://packagist.org\"}]" < $PLUGIN_DIR/composer.json)"
 echo $contents
 # echo "$contents" > composer.json
 # composer require robbrazier/piwik:* --no-suggest --no-progress --update-no-dev
