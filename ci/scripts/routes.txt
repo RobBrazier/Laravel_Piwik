@@ -1,5 +1,0 @@
-<?php
-
-Route::get("/", function() {
-    return json_encode(App::make('piwik')->getReferrers()->getKeywords());
-});
