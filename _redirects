@@ -1,2 +1,0 @@
-/en/latest/*    /old/:splat
-/old/*          https://laravel-piwik.readthedocs.io/en/2.1.3/:splat    200
