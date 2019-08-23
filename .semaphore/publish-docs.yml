@@ -27,8 +27,7 @@ blocks:
             - if cache has_key $CACHE_KEY; then exit 0; fi
             - composer global require "sami/sami:4.0.*"
             - git pull --tags
-            - sami.php update .sami.php
-            - echo $?
+            - sami.php update .sami.php || true
             - mv ../docs/api ./build/api
             - cache store $CACHE_KEY build/api/
   
