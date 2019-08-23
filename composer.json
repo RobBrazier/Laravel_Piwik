@@ -6,8 +6,7 @@
     "keywords": ["laravel","piwik"],
     "authors": [
         {
-            "name": "Rob Brazier",
-            "email": "laravelpiwik@brzr.co"
+            "name": "Rob Brazier"
         }
     ],
     "require": {
@@ -24,7 +23,8 @@
     },
     "scripts": {
         "test": "phpunit",
-        "coverage": "phpdbg -qrr ./vendor/bin/phpunit"
+        "coverage": "phpdbg -qrr ./vendor/bin/phpunit",
+        "changelog": "sh .semaphore/changelog"
     },
     "autoload": {
         "psr-0": {
