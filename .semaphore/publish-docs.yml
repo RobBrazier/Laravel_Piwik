@@ -1,0 +1,49 @@
+version: v1.0
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+
+global_job_config:
+  prologue:
+    commands:
+      - export PATH="$HOME/.composer/vendor/bin:$PATH"
+blocks:
+  - name: Build Docs
+    task:
+      jobs:
+        - name: Build Daux
+          commands:
+            - checkout
+            - CACHE_KEY="daux-$SEMAPHORE_GIT_SHA"
+            - if cache has_key $CACHE_KEY; then exit 0; fi
+            - composer global require "justinwalsh/daux.io:0.3.*"
+            - daux generate --format html --source docs --destination build
+            - cache store $CACHE_KEY build/
+        - name: Build Sami
+          commands:
+            - checkout
+            - CACHE_KEY="sami-$SEMAPHORE_GIT_SHA"
+            - if cache has_key $CACHE_KEY; then exit 0; fi
+            - composer global require "sami/sami:4.0.*"
+            - sami.php update .sami.php || exit 0
+            - mv ../docs/api ./build/api
+            - cache store $CACHE_KEY build/api/
+  
+  - name: Publish to GitHub
+    task:
+      secrets:
+        - name: gh-sshkey
+      prologue:
+        commands:
+          - chmod 0600 ~/.keys/*
+          - ssh-add ~/.keys/*  
+      jobs:
+        - name: Publish to GitHub
+          commands:
+            - checkout
+            - cache restore daux-$SEMAPHORE_GIT_SHA
+            - cache restore sami-$SEMAPHORE_GIT_SHA
+            - git config --global user.name "Semaphore Runner"
+            - git config --global user.email "$(whoami)@$(hostname).dev"
+            - npx gh-pages -d build
