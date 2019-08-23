@@ -20,15 +20,15 @@ blocks:
             - composer global require "justinwalsh/daux.io:0.3.*"
             - daux generate --format html --source docs --destination build
             - cache store $CACHE_KEY build/
-        # - name: Build Sami
-        #   commands:
-        #     - checkout
-        #     - CACHE_KEY="sami-$SEMAPHORE_GIT_SHA"
-        #     - if cache has_key $CACHE_KEY; then exit 0; fi
-        #     - composer global require "sami/sami:4.0.*"
-        #     - sami.php update .sami.php
-        #     - mv ../docs/api ./build/api
-        #     - cache store $CACHE_KEY build/api/
+        - name: Build Sami
+          commands:
+            - checkout
+            - CACHE_KEY="sami-$SEMAPHORE_GIT_SHA"
+            - if cache has_key $CACHE_KEY; then exit 0; fi
+            - composer global require "sami/sami:4.0.*"
+            - sami.php update .sami.php
+            - mv ../docs/api ./build/api
+            - cache store $CACHE_KEY build/api/
   
   - name: Publish to GitHub
     task:

@@ -24,41 +24,41 @@ blocks:
           - cache restore composer-semaphore-$COMPOSER_HASH-$PHP_VERSION
           - composer install
           - cache store composer-semaphore-$COMPOSER_HASH-$PHP_VERSION vendor/
-      # - name: "Unit Tests"
-      #   task:
-      #     jobs:
-      #       - name: Run Unit Tests
-      #         matrix:
-      #           - env_var: PHP_VERSION
-      #             values: [ "7.0", "7.1", "7.2", "7.3" ]
-      #         commands:
-      #           - cache restore composer-semaphore-$COMPOSER_HASH-$PHP_VERSION
-      #           - composer run-script test
-      # - name: "Integration Tests"
-      #   task:
-      #     jobs:
-      #       - name: Run Laravel Integration Test
-      #         matrix:
-      #           - env_var: LARAVEL_VERSION
-      #             values: [ "5.1", "5.2", "5.3", "5.4", "5.5" ]
-      #         commands: 
-      #           - bash .semaphore/integration_test
+      - name: "Unit Tests"
+        task:
+          jobs:
+            - name: Run Unit Tests
+              matrix:
+                - env_var: PHP_VERSION
+                  values: [ "7.0", "7.1", "7.2", "7.3" ]
+              commands:
+                - cache restore composer-semaphore-$COMPOSER_HASH-$PHP_VERSION
+                - composer run-script test
+      - name: "Integration Tests"
+        task:
+          jobs:
+            - name: Run Laravel Integration Test
+              matrix:
+                - env_var: LARAVEL_VERSION
+                  values: [ "5.1", "5.2", "5.3", "5.4", "5.5" ]
+              commands: 
+                - bash .semaphore/integration_test
 
-      # - name: "Upload Test Coverage"
-      #   task:
-      #     secrets:
-      #       - name: codeclimate-reporter-id
-      #     jobs:
-      #       - name: CodeClimate Test Coverage
-      #         commands:
-      #           - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-      #           - chmod +x ./cc-test-reporter
-      #           - ./cc-test-reporter before-build
-      #           - cache restore composer-semaphore-$COMPOSER_HASH-$PHP_VERSION
-      #           - composer run-script coverage
-      #           - exitCode=$?
-      #           - cp reports/coverage.xml clover.xml
-      #           - ./cc-test-reporter after-build --exit-code $exitCode --coverage-input-type clover
+      - name: "Upload Test Coverage"
+        task:
+          secrets:
+            - name: codeclimate-reporter-id
+          jobs:
+            - name: CodeClimate Test Coverage
+              commands:
+                - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+                - chmod +x ./cc-test-reporter
+                - ./cc-test-reporter before-build
+                - cache restore composer-semaphore-$COMPOSER_HASH-$PHP_VERSION
+                - composer run-script coverage
+                - exitCode=$?
+                - cp reports/coverage.xml clover.xml
+                - ./cc-test-reporter after-build --exit-code $exitCode --coverage-input-type clover
 
 promotions:
   - name: Publish Docs
