@@ -8,4 +8,3 @@ else
     cache store $PHPBREW_VERSION $PHPBREW_DIR; 
 fi
 phpbrew switch $PHP_VERSION
-export COMPOSER_HASH="$(md5sum composer.lock | awk -F' ' '{ print $1 }')"
