@@ -10,7 +10,7 @@ global_job_config:
       - composer self-update
 
 blocks:
-  - name: "Build"
+  - name: "Install"
     task:
       jobs:
       - name: Build
@@ -24,9 +24,10 @@ blocks:
           - phpbrew switch $PHP_VERSION
           - php --version
           - checkout
-          - cache restore
+          - export COMPOSER_HASH="$(md5sum composer.lock | awk -F' ' '{ print $1 }')"
+          - cache restore composer-semaphore-$COMPOSER_HASH-$PHP_VERSION
           - composer install
-          - cache store
+          - cache store composer-semaphore-$COMPOSER_HASH-$PHP_VERSION vendor/
 
   # - name: "Smoke tests"
   #   task:
