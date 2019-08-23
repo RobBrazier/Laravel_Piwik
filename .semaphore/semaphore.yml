@@ -8,22 +8,21 @@ global_job_config:
   prologue:
     commands:
       - composer self-update
-      - composer global install prestissimo
 
 blocks:
   - name: "Build"
     task:
-      env_vars:
-        - name: APP_ENV
-          value: prod
       jobs:
-      - name: Docker build
+      - name: Build
+        matrix:
+          - env_var: PHP_VERSION
+            values: [ "5.6", "7.0", "7.1", "7.2", "7.3" ]
         commands:
+          - sem version php $PHP_VERSION
           - checkout
-          - ls -1
-          - echo $APP_ENV
-          - echo "Docker build..."
-          - echo "done"
+          - cache restore
+          - composer install
+          - cache store
 
   # - name: "Smoke tests"
   #   task:
