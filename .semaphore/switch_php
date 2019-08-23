@@ -3,8 +3,8 @@ set -euxo pipefail
 phpVersion="${PHP_VERSION:-7.2}"
 PHPBREW_DIR="$HOME/.phpbrew/php/$phpVersion"
 PHPBREW_VERSION="phpbrew-$phpVersion"
-if cache has_key $PHPBREW_VERSION; then 
-    cache restore $PHPBREW_VERSION; 
+if cache has_key "$PHPBREW_VERSION"; then 
+    cache restore "$PHPBREW_VERSION"
 else 
     if [[ "$phpVersion" == "5.6" ]]; then
         # because of this bug https://github.com/phpbrew/phpbrew/issues/861
@@ -37,12 +37,12 @@ else
         # this command doesn't work
         # phpbrew -d install php-5.6 +default +openssl=shared
         # to install default extensions and openssl, we have to use the following command
-        phpbrew -d install --name $phpVersion $phpVersion +default -- --with-openssl=shared
-        phpbrew switch $phpVersion
+        phpbrew -d install --name "$phpVersion" "$phpVersion" +default -- --with-openssl=shared
+        phpbrew switch "$phpVersion"
         phpbrew -d ext install openssl
     else
-        phpbrew --no-progress install --name $phpVersion $phpVersion; 
+        phpbrew --no-progress install --name "$phpVersion" "$phpVersion"
     fi
-    cache store $PHPBREW_VERSION $PHPBREW_DIR; 
+    cache store "$PHPBREW_VERSION" "$PHPBREW_DIR"
 fi
-phpbrew switch $phpVersion
+phpbrew switch "$phpVersion"

@@ -4,16 +4,16 @@ set -euxo pipefail
 # install laravel
 export INTEGRATION_DIR="$HOME/integration"
 cacheKey="laravel-semaphore-$LARAVEL_VERSION"
-if cache has_key $cacheKey; then
-    cache restore $cacheKey
+if cache has_key "$cacheKey"; then
+    cache restore "$cacheKey"
 else
-    composer create-project laravel/laravel $INTEGRATION_DIR "${LARAVEL_VERSION}.*" --no-progress --no-dev
-    cache store $cacheKey $INTEGRATION_DIR
+    composer create-project laravel/laravel "$INTEGRATION_DIR" "${LARAVEL_VERSION}.*" --no-progress --no-dev
+    cache store "$cacheKey" "$INTEGRATION_DIR"
 fi
 
 # prepare laravel
 export PLUGIN_DIR="$HOME/$SEMAPHORE_GIT_DIR"
-cd $INTEGRATION_DIR
+cd "$INTEGRATION_DIR"
 
 contents="$(jq ".repositories = [{\"packagist.org\": false}, {\"type\": \"path\", \"url\": \"$PLUGIN_DIR\"}, {\"type\": \"composer\", \"url\": \"https://packagist.org\"}]" < composer.json)"
 echo "$contents" > composer.json
@@ -53,7 +53,7 @@ sleep 2
 output_file="/tmp/output"
 curl --silent --output $output_file http://localhost:8213 
 pkill -9 php
-if test $(grep -c nb_uniq_visitors $output_file) -gt 0; then
+if test $(grep -c nb_uniq_visitors "$output_file") -gt 0; then
     echo "valid result"
     exit 0
 else
