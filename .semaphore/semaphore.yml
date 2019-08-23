@@ -7,7 +7,7 @@ agent:
 global_job_config:
   prologue:
     commands:
-      - composer update
+      - composer self-update
       - composer global install prestissimo
 
 blocks:
