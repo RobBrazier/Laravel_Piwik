@@ -1,0 +1,14 @@
+version: v1.0
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Build Docs
+    task:
+      jobs:
+        - name: Build Daux
+          commands:
+            - composer global require "justinwalsh/daux.io:0.3.*"
+            - which daux
+            - daux help

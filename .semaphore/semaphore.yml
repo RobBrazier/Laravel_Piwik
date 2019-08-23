@@ -44,59 +44,26 @@ blocks:
   #         commands: 
   #           - bash .semaphore/integration_test
 
-  - name: "Upload Test Coverage"
-    task:
-      secrets:
-        - name: codeclimate-reporter-id
-      jobs:
-        - name: CodeClimate Test Coverage
-          commands:
-            - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-            - chmod +x ./cc-test-reporter
-            - ./cc-test-reporter before-build
-            - cache restore composer-semaphore-$COMPOSER_HASH-$PHP_VERSION
-            - composer run-script coverage
-            - exitCode=$?
-            - cp reports/coverage.xml clover.xml
-            - ./cc-test-reporter after-build --exit-code $exitCode --coverage-input-type clover
-  # - name: "Smoke tests"
+  # - name: "Upload Test Coverage"
   #   task:
+  #     secrets:
+  #       - name: codeclimate-reporter-id
   #     jobs:
-  #     - name: Smoke
-  #       commands:
-  #         - checkout
-  #         - echo "make smoke"
+  #       - name: CodeClimate Test Coverage
+  #         commands:
+  #           - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  #           - chmod +x ./cc-test-reporter
+  #           - ./cc-test-reporter before-build
+  #           - cache restore composer-semaphore-$COMPOSER_HASH-$PHP_VERSION
+  #           - composer run-script coverage
+  #           - exitCode=$?
+  #           - cp reports/coverage.xml clover.xml
+  #           - ./cc-test-reporter after-build --exit-code $exitCode --coverage-input-type clover
 
-  # - name: "Unit tests"
-  #   task:
-  #     jobs:
-  #     - name: RSpec
-  #       commands:
-  #         - checkout
-  #         - echo "make rspec"
-
-  #     - name: Lint code
-  #       commands:
-  #         - checkout
-  #         - echo "make lint"
-
-  #     - name: Check security
-  #       commands:
-  #         - checkout
-  #         - echo "make security"
-
-  # - name: "Integration tests"
-  #   task:
-  #     jobs:
-  #     - name: Cucumber
-  #       commands:
-  #         - checkout
-  #         - echo "make cucumber"
-
-  # - name: "Push Image"
-  #   task:
-  #     jobs:
-  #     - name: Push
-  #       commands:
-  #         - checkout
-  #         - echo "make docker.push"
+promotions:
+  name: Publish Docs
+  pipeline_file: publish-docs.yml
+  auto_promote_on:
+    - result: passed
+      branch:
+          - semaphore
