@@ -4,6 +4,6 @@ cacheKey="laravel-semaphore-$LARAVEL_VERSION"
 if cache has_key $cacheKey; then
     composer restore $cacheKey
 else
-    composer create-project laravel/laravel integration "${LARAVEL_VERSION}.*" --no-progress --no-dev $INTEGRATION_DIR
+    composer create-project laravel/laravel $INTEGRATION_DIR "${LARAVEL_VERSION}.*" --no-progress --no-dev
     cache store $cacheKey $INTEGRATION_DIR
 fi
