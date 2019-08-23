@@ -1,12 +1,11 @@
 # Laravel-Piwik v3.2.0
 
-[![Build Status](https://ci.brazier.cloud/api/badges/RobBrazier/Laravel_Piwik/status.svg)](https://ci.brazier.cloud/RobBrazier/Laravel_Piwik)
+![Built with SemaphoreCI](https://img.shields.io/badge/Built%20With-SemaphoreCI-brightgreen)
 [![Code Climate](https://img.shields.io/codeclimate/maintainability/RobBrazier/Laravel_Piwik.svg)](https://codeclimate.com/github/RobBrazier/Laravel_Piwik)
 [![Code Climate](https://img.shields.io/codeclimate/c/RobBrazier/Laravel_Piwik.svg)](https://codeclimate.com/github/RobBrazier/Laravel_Piwik)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%205.6-8892BF.svg?style=flat)](https://php.net/)
 [![Packagist Version](https://img.shields.io/packagist/v/robbrazier/piwik.svg)](https://packagist.org/packages/robbrazier/piwik)
 [![Packagist Total Downloads](https://img.shields.io/packagist/dt/robbrazier/piwik.svg)](https://packagist.org/packages/robbrazier/piwik)
-[![Waffle.io](https://img.shields.io/waffle/label/RobBrazier/Laravel_Piwik/in%20progress.svg)](https://waffle.io/RobBrazier/Laravel_Piwik)
 
 An Interface to Piwik's Analytics API for Laravel (Composer Package)
 
