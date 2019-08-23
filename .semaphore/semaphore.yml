@@ -8,22 +8,21 @@ global_job_config:
   prologue:
     commands:
       - composer self-update
+      - 
 
 blocks:
   - name: "Install"
     task:
+      prologue:
+        commands_file: switch_php
       jobs:
       - name: Build
         matrix:
           - env_var: PHP_VERSION
             values: [ "7.0", "7.1", "7.2", "7.3" ]
         commands:
-          - export PHPBREW_DIR="$HOME/.phpbrew/php/$PHP_VERSION"
-          - export PHPBREW_VERSION="phpbrew-$PHP_VERSION"
-          - if cache has_key $PHPBREW_VERSION; then cache restore $PHPBREW_VERSION; else phpbrew --no-progress install --name $PHP_VERSION $PHP_VERSION; cache store $PHPBREW_VERSION $PHPBREW_DIR; fi
-          - phpbrew switch $PHP_VERSION
-          - php --version
           - checkout
+          - php --version
           - export COMPOSER_HASH="$(md5sum composer.lock | awk -F' ' '{ print $1 }')"
           - cache restore composer-semaphore-$COMPOSER_HASH-$PHP_VERSION
           - composer install
