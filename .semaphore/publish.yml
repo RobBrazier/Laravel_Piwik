@@ -28,6 +28,7 @@ blocks:
             - CACHE_KEY="daux-$SEMAPHORE_GIT_SHA"
             - if cache has_key $CACHE_KEY; then exit 0; fi
             - composer global require daux/daux.io
+            - phpbrew -d ext install iconv
             - daux generate --format html --source docs --destination build
             - cache store $CACHE_KEY build/
         - name: Build Sami
