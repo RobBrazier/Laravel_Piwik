@@ -13,6 +13,7 @@ use RobBrazier\Piwik\Module\SEOModule;
 use RobBrazier\Piwik\Module\SitesManagerModule;
 use RobBrazier\Piwik\Module\VisitorInterestModule;
 use RobBrazier\Piwik\Module\VisitsSummaryModule;
+use RobBrazier\Piwik\Module\UsersManagerModule;
 use RobBrazier\Piwik\Query\Url;
 use RobBrazier\Piwik\Repository\ConfigRepository;
 use RobBrazier\Piwik\Repository\RequestRepository;
@@ -168,6 +169,10 @@ class Piwik
     public function getSitesManager()
     {
         return new SitesManagerModule($this->request);
+    }
+    public function getUsersManager()
+    {
+        return new UsersManagerModule($this->request);
     }
 
     /**
