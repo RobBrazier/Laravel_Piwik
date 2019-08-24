@@ -1,7 +1,9 @@
 {
     "favicon": "<theme_url>img/favicon.png",
-    "fonts": ["https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700&subset=latin,cyrillic-ext,cyrillic"],
-    "js": [],
+    "js": [
+        "<theme_url>js/highlight.pack.js",
+        "<theme_url>js/daux.js"
+    ],
     "variants": {
         "blue": {
             "favicon": "<theme_url>img/favicon-blue.png",
