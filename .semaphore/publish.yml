@@ -51,6 +51,7 @@ blocks:
         commands:
           - chmod 0600 ~/.keys/*
           - ssh-add ~/.keys/*  
+          - sudo apt install tree -y
       jobs:
         - name: Publish to GitHub
           commands:
@@ -59,7 +60,5 @@ blocks:
             - cache restore sami-$SEMAPHORE_GIT_SHA
             - git config --global user.name "Semaphore Runner"
             - git config --global user.email "$(whoami)@$(hostname).dev"
-            - pushd build/api
-            - tree -H '.' -T "Laravel-Piwik API Docs" -L 1 --noreport -I index.html --charset utf-8 > index.html
-            - popd
+            - tree build/api -H 'api' -T "Laravel-Piwik API Docs" -L 1 --noreport -I index.html --charset utf-8 > build/api/index.html
             - npx gh-pages -d build
