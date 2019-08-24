@@ -28,3 +28,4 @@ exclude_patterns:
   - "**/cache/"
   - "**/build/"
   - "**/reports/"
+  - "CHANGELOG.md"
