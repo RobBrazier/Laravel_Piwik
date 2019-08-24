@@ -3,5 +3,5 @@ set -euxo pipefail
 version="$(jq -r .version composer.json)"
 if ! git rev-parse "$version" >/dev/null 2>&1; then
     echo "{}" | jq -r ". = {\"repository\": {\"type\": \"git\", \"url\": \"https://github.com/RobBrazier/Laravel_Piwik\"}, \"version\": \"$version\"}" > package.json
-    npx gh-release -n "$version" -t "$version" || rm package.json
+    npx gh-release -y -n "$version" -t "$version" || rm package.json
 fi

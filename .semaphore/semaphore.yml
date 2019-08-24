@@ -63,15 +63,9 @@ blocks:
             - bash .semaphore/integration_test
 
 promotions:
-  - name: Publish Docs
-    pipeline_file: publish-docs.yml
+  - name: Publish
+    pipeline_file: publish.yml
     auto_promote_on:
       - result: passed
         branch:
             - master
-  - name: GitHub Release
-    pipeline_file: github-release.yml
-    auto_promote_on:
-      - result: passed
-        branch:
-          - master

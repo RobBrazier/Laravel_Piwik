@@ -10,6 +10,15 @@ global_job_config:
       - export PATH="$HOME/.composer/vendor/bin:$PATH"
 
 blocks:
+  - name: Create new GitHub Release
+    task:
+      secrets:
+        - name: gh-token
+      jobs:
+        - name: Create Release
+          commands:
+            - checkout
+            - bash .semaphore/release
   - name: Build Docs
     task:
       jobs:
