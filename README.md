@@ -56,8 +56,8 @@ apikey, siteid etc.
 
 ## Documentation
 
-Usage Documentation is located at <http://laravel-piwik.robbrazier.com/Usage.html>
-API Documentation is located at <http://laravel-piwik.robbrazier.com/API_Docs.html>
+Usage Documentation is located at <https://robbrazier.github.io/Laravel_Piwik/Usage.html>
+API Documentation is located at <https://robbrazier.github.io/Laravel_Piwik/API_Docs.html>
 
 ## Contributing
 
