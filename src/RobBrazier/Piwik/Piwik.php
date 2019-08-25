@@ -170,6 +170,14 @@ class Piwik
     {
         return new SitesManagerModule($this->request);
     }
+
+    /**
+     * Initialise the UsersManager Module.
+     *
+     * @see https://developer.matomo.org/api-reference/reporting-api#UsersManager for arguments
+     *
+     * @return UsersManagerModule
+     */
     public function getUsersManager()
     {
         return new UsersManagerModule($this->request);
