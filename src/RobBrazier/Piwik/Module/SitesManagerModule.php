@@ -2,6 +2,8 @@
 
 namespace RobBrazier\Piwik\Module;
 
+use Illuminate\Support\Arr;
+
 /**
  * Class SitesManagerModule.
  *
@@ -217,8 +219,8 @@ class SitesManagerModule extends Module
      */
     public function addSite($siteName, $urls = [], $arguments = [], $format = null)
     {
-        $arguments = array_add($arguments, 'siteName', $siteName);
-        $arguments = array_add($arguments, 'urls', $urls);
+        $arguments = Arr::add($arguments, 'siteName', $siteName);
+        $arguments = Arr::add($arguments, 'urls', $urls);
 
         $options = $this->getOptions($format)
             ->usePeriod(false)

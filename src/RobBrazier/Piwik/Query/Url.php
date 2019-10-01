@@ -3,6 +3,7 @@
 namespace RobBrazier\Piwik\Query;
 
 use RobBrazier\Piwik\Exception\PiwikException;
+use Illuminate\Support\Arr;
 
 class Url
 {
@@ -52,7 +53,7 @@ class Url
      */
     private function getPart($parts, $part, $default = '')
     {
-        return array_get($parts, $part, $default);
+        return Arr::get($parts, $part, $default);
     }
 
     /**

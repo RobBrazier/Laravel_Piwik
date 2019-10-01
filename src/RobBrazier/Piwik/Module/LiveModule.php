@@ -4,6 +4,7 @@ namespace RobBrazier\Piwik\Module;
 
 use RobBrazier\Piwik\Exception\PiwikException;
 use RobBrazier\Piwik\Traits\FormatTrait;
+use Illuminate\Support\Arr;
 
 /**
  * Class LiveModule.
@@ -23,7 +24,7 @@ class LiveModule extends Module
      */
     public function getCounters($lastMinutes, $arguments = [], $format = null)
     {
-        $arguments = array_add($arguments, 'lastMinutes', $lastMinutes);
+        $arguments = Arr::add($arguments, 'lastMinutes', $lastMinutes);
         $options = $this->getOptions($format)->setArguments($arguments);
 
         return $this->request->send($options);
@@ -39,7 +40,7 @@ class LiveModule extends Module
     public function getLastVisitsDetails($count, $arguments = [], $format = null)
     {
         if ($count > 0) {
-            $arguments = array_add($arguments, 'filter_limit', $count);
+            $arguments = Arr::add($arguments, 'filter_limit', $count);
         }
         $options = $this->getOptions($format)->setArguments($arguments);
 
@@ -94,32 +95,32 @@ class LiveModule extends Module
     {
         $result = [];
         foreach ($visits as $visit) {
-            $actionDetails = (array) array_get($visit, 'actionDetails');
-            $actionDetail = (array) array_last($actionDetails);
-            $pageLink = array_get($actionDetail, 'url');
-            $pageTitle = array_get($actionDetail, 'pageTitle');
+            $actionDetails = (array) Arr::get($visit, 'actionDetails');
+            $actionDetail = (array) Arr::last($actionDetails);
+            $pageLink = Arr::get($actionDetail, 'url');
+            $pageTitle = Arr::get($actionDetail, 'pageTitle');
 
             // Get just the image names (API returns path to icons in piwik install)
-            $flag = explode('/', array_get($visit, 'countryFlag'));
+            $flag = explode('/', Arr::get($visit, 'countryFlag'));
             $flagIcon = end($flag);
 
-            $os = explode('/', array_get($visit, 'operatingSystemIcon'));
+            $os = explode('/', Arr::get($visit, 'operatingSystemIcon'));
             $osIcon = end($os);
 
-            $browser = explode('/', array_get($visit, 'browserIcon'));
+            $browser = explode('/', Arr::get($visit, 'browserIcon'));
             $browserIcon = end($browser);
 
             array_push($result, [
-                'time'         => date('M j Y, g:i a', array_get($visit, 'lastActionTimestamp')),
+                'time'         => date('M j Y, g:i a', Arr::get($visit, 'lastActionTimestamp')),
                 'title'        => $pageTitle,
                 'link'         => $pageLink,
-                'ip_address'   => array_get($visit, 'visitIp'),
-                'provider'     => array_get($visit, 'provider'),
-                'country'      => array_get($visit, 'country'),
+                'ip_address'   => Arr::get($visit, 'visitIp'),
+                'provider'     => Arr::get($visit, 'provider'),
+                'country'      => Arr::get($visit, 'country'),
                 'country_icon' => $flagIcon,
-                'os'           => array_get($visit, 'operatingSystem'),
+                'os'           => Arr::get($visit, 'operatingSystem'),
                 'os_icon'      => $osIcon,
-                'browser'      => array_get($visit, 'browserName'),
+                'browser'      => Arr::get($visit, 'browserName'),
                 'browser_icon' => $browserIcon,
             ]);
         }
@@ -136,7 +137,7 @@ class LiveModule extends Module
      */
     public function getVisitorProfile($visitorId, $arguments = [], $format = null)
     {
-        $arguments = array_add($arguments, 'visitorId', $visitorId);
+        $arguments = Arr::add($arguments, 'visitorId', $visitorId);
         $options = $this->getOptions($format)->setArguments($arguments);
 
         return $this->request->send($options);
