@@ -31,7 +31,7 @@ blocks:
         - name: Run Unit Tests
           matrix:
             - env_var: PHP_VERSION
-              values: [ "5.6", "7.0", "7.1", "7.2", "7.3" ]
+              values: [ "5.6", "7.0", "7.1", "7.2", "7.3"]
           commands:
             - cache restore composer-semaphore-$COMPOSER_HASH-$PHP_VERSION
             - composer run-script test
@@ -58,7 +58,7 @@ blocks:
         - name: Run Laravel Integration Test
           matrix:
             - env_var: LARAVEL_VERSION
-              values: [ "5.1", "5.2", "5.3", "5.4", "5.5", "5.6", "5.7", "5.8" ]
+              values: [ "5.1", "5.2", "5.3", "5.4", "5.5", "5.6", "5.7", "5.8", "6.0" ]
           commands: 
             - bash .semaphore/integration_test
 

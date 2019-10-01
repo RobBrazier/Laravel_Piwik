@@ -2,6 +2,8 @@
 
 namespace RobBrazier\Piwik\Module;
 
+use Illuminate\Support\Arr;
+
 /**
  * Class UsersManagerModule.
  *
@@ -77,10 +79,10 @@ class UsersManagerModule extends Module
                 'email' => $email,
             ];
             if (isset($alias)) {
-                $arguments = array_add($arguments, 'alias', $alias);
+                $arguments = Arr::add($arguments, 'alias', $alias);
             }
             if (isset($initialIdSite)) {
-                $arguments = array_add($arguments, 'initialIdSite', $initialIdSite);
+                $arguments = Arr::add($arguments, 'initialIdSite', $initialIdSite);
             }
             $options = $this->getOptions($format)
                 ->useSiteId(false)

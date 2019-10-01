@@ -7,6 +7,7 @@ use RobBrazier\Piwik\Query\UrlQueryBuilder;
 use RobBrazier\Piwik\Repository\ConfigRepository;
 use RobBrazier\Piwik\Traits\DateTrait;
 use RobBrazier\Piwik\Traits\FormatTrait;
+use Illuminate\Support\Arr;
 
 class RequestOptions
 {
@@ -215,7 +216,7 @@ class RequestOptions
     public function flattenArray($array)
     {
         $result = [];
-        foreach (array_dot($array) as $key => $value) {
+        foreach (Arr::dot($array) as $key => $value) {
             $splitKey = explode('.', $key);
             $newKey = $this->createArrayKey($splitKey);
             $result = array_merge($result, [$newKey => $value]);
