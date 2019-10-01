@@ -1,4 +1,4 @@
-# Laravel-Piwik v3.3.0
+# Laravel-Piwik v3.3.1
 
 ![Built with SemaphoreCI](https://img.shields.io/badge/Built%20With-SemaphoreCI-brightgreen)
 [![Code Climate](https://img.shields.io/codeclimate/maintainability/RobBrazier/Laravel_Piwik.svg)](https://codeclimate.com/github/RobBrazier/Laravel_Piwik)
