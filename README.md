@@ -1,6 +1,6 @@
 # Laravel-Piwik v3.3.1
 
-![Built with SemaphoreCI](https://badgen.net/badge/Built%20With/SemaphoreCI/green)
+[![Semaphore CI](https://robbrazier.semaphoreci.com/badges/Laravel_Piwik.svg)](https://robbrazier.semaphoreci.com/projects/Laravel_Piwik)
 [![Code Climate](https://badgen.net/codeclimate/maintainability/RobBrazier/Laravel_Piwik)](https://codeclimate.com/github/RobBrazier/Laravel_Piwik)
 [![Code Climate](https://badgen.net/codeclimate/coverage/RobBrazier/Laravel_Piwik)](https://codeclimate.com/github/RobBrazier/Laravel_Piwik)
 [![Minimum PHP Version](https://badgen.net/badge/PHP/>=5.6/8892BF)](https://php.net/)
