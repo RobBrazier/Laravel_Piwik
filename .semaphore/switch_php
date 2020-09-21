@@ -1,8 +1,8 @@
 #!/bin/bash
 set -euxo pipefail
+export PHPBREW_SKIP_INIT=""
 source ~/.phpbrew/bashrc
 phpVersion="${PHP_VERSION:-7.2}"
-export PHPBREW_SKIP_INIT=""
 PHPBREW_DIR="$HOME/.phpbrew/php/$phpVersion"
 PHPBREW_VERSION="phpbrew-$phpVersion"
 if cache has_key "$PHPBREW_VERSION"; then 
