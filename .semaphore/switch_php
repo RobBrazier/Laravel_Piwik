@@ -1,10 +1,5 @@
 #!/bin/bash
 set -euxo pipefail
-export PHPBREW_SKIP_INIT=""
-export PHPBREW_SET_PROMPT=""
-export PHPBREW_RC_ENABLE=""
-export PHPBREW_SYSTEM_PHP=""
-source ~/.phpbrew/bashrc
 phpVersion="${PHP_VERSION:-7.2}"
 PHPBREW_DIR="$HOME/.phpbrew/php/$phpVersion"
 PHPBREW_VERSION="phpbrew-$phpVersion"
@@ -50,4 +45,3 @@ else
     fi
     cache store "$PHPBREW_VERSION" "$PHPBREW_DIR"
 fi
-phpbrew switch "$phpVersion"
