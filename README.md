@@ -1,4 +1,4 @@
-# Laravel-Piwik v3.3.1
+# Laravel-Piwik v4.0.0
 
 [![Semaphore CI](https://robbrazier.semaphoreci.com/badges/Laravel_Piwik.svg)](https://robbrazier.semaphoreci.com/projects/Laravel_Piwik)
 [![Code Climate](https://badgen.net/codeclimate/maintainability/RobBrazier/Laravel_Piwik)](https://codeclimate.com/github/RobBrazier/Laravel_Piwik)
