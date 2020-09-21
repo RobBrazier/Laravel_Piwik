@@ -30,5 +30,15 @@
         "psr-0": {
             "RobBrazier\\Piwik": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "RobBrazier\\Piwik\\PiwikServiceProvider"
+            ],
+            "aliases": {
+                "Piwik": "RobBrazier\\Piwik\\Facades\\Piwik"
+            }
+        }
     }
 }
