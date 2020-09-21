@@ -7,11 +7,11 @@ agent:
 global_job_config:
   prologue:
     commands:
-      - composer self-update
       - checkout
       - source ~/.phpbrew/bashrc
       - bash .semaphore/switch_php
       - phpbrew switch $PHP_VERSION
+      - phpbrew app get composer
       - export COMPOSER_HASH="$(md5sum composer.lock | awk -F' ' '{ print $1 }')"
 
 blocks:
