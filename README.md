@@ -3,13 +3,13 @@
 [![Semaphore CI](https://robbrazier.semaphoreci.com/badges/Laravel_Piwik.svg)](https://robbrazier.semaphoreci.com/projects/Laravel_Piwik)
 [![Code Climate](https://badgen.net/codeclimate/maintainability/RobBrazier/Laravel_Piwik)](https://codeclimate.com/github/RobBrazier/Laravel_Piwik)
 [![Code Climate](https://badgen.net/codeclimate/coverage/RobBrazier/Laravel_Piwik)](https://codeclimate.com/github/RobBrazier/Laravel_Piwik)
-[![Minimum PHP Version](https://badgen.net/badge/PHP/>=5.6/8892BF)](https://php.net/)
+[![Minimum PHP Version](https://badgen.net/badge/PHP/>=7.2/8892BF)](https://php.net/)
 [![Packagist Version](https://badgen.net/packagist/v/robbrazier/piwik)](https://packagist.org/packages/robbrazier/piwik)
 [![Packagist Total Downloads](https://badgen.net/packagist/dt/robbrazier/piwik)](https://packagist.org/packages/robbrazier/piwik)
 
 An Interface to Piwik's Analytics API for Laravel (Composer Package)
 
-This is the Laravel 5 version of the Laravel-Piwik Bundle.
+This is the Laravel 5+ version of the Laravel-Piwik Bundle.
 
 ## Installation
 
@@ -18,11 +18,11 @@ Add `RobBrazier/Piwik` to `composer.json`:
 ```json
 {
     "require": {
-        "robbrazier/piwik": "~3.3"
+        "robbrazier/piwik": "~4.0"
     }
 }
 ```
-For Laravel 5.4 and below:
+### For Laravel 5.4 and below:
 
 Add `'RobBrazier\Piwik\PiwikServiceProvider'` and `'Piwik' => 'RobBrazier\Piwik\Facades\Piwik'`
 to `app/config/app.php`
@@ -43,7 +43,7 @@ to `app/config/app.php`
 );
 ```
 
-For Laravel 5.5 and above, no app.php changes are required as the autoloader will pick up the required configuration
+### For Laravel 5.5 and above, no app.php changes are required as the autoloader will pick up the required configuration
 
 Then move the config file out of the package, so that it doesn't get replaced
 when you update, by running:

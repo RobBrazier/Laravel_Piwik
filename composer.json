@@ -2,7 +2,7 @@
     "name": "robbrazier/piwik",
     "description": "Piwik Package for Laravel",
     "license": "MIT",
-    "version": "3.3.1",
+    "version": "4.0.0",
     "keywords": ["laravel","piwik"],
     "authors": [
         {
@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "php": ">=5.6.0",
+        "php": ">=7.2",
         "guzzlehttp/guzzle": "~6.2 | ^7.0.1",
         "lightools/xml": "^1.0",
         "illuminate/support": ">=5.2 | <= 5.5"
