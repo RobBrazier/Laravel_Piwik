@@ -63,4 +63,4 @@ blocks:
             - git config --global user.name "Semaphore Runner"
             - git config --global user.email "$(whoami)@$(hostname).dev"
             - tree build/api -H '.' -T "Laravel-Piwik API Docs" -L 1 --noreport -I index.html --charset utf-8 > build/api/index.html
-            - npx gh-pages -d build -m "[skip ci]  Updates"
+            - npx gh-pages@3.0.0 -d build -m "[skip ci]  Updates"
