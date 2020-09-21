@@ -7,7 +7,7 @@ agent:
 global_job_config:
   prologue:
     commands:
-      - export PATH="$HOME/.composer/vendor/bin:$PATH"
+      - export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 
 blocks:
   - name: Create new GitHub Release
