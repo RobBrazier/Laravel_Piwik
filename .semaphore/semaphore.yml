@@ -7,9 +7,12 @@ agent:
 global_job_config:
   prologue:
     commands:
-      - composer self-update
       - checkout
-      - bash .semaphore/switch_php
+      - source ~/.phpbrew/bashrc
+      - export PATH="$PATH:~/.local/bin"
+      - bash .semaphore/install_php
+      - phpbrew switch $PHP_VERSION +default
+      - bash .semaphore/install_composer
       - export COMPOSER_HASH="$(md5sum composer.lock | awk -F' ' '{ print $1 }')"
 
 blocks:
@@ -19,7 +22,7 @@ blocks:
       - name: Install Dependencies
         matrix:
           - env_var: PHP_VERSION
-            values: [ "5.6", "7.0", "7.1", "7.2", "7.3" ]
+            values: [ "5.6", "7.0", "7.1", "7.2", "7.3", "7.4" ]
         commands:
           - cache restore composer-semaphore-$COMPOSER_HASH-$PHP_VERSION
           - composer install
@@ -38,6 +41,9 @@ blocks:
 
   - name: "Upload Test Coverage"
     task:
+      env_vars:
+        - name: PHP_VERSION
+          value: "7.3"
       secrets:
         - name: codeclimate-reporter-id
       jobs:
@@ -54,6 +60,9 @@ blocks:
 
   - name: "Integration Tests"
     task:
+      env_vars:
+        - name: PHP_VERSION
+          value: "7.3"
       jobs:
         - name: Run Laravel Integration Test
           matrix:

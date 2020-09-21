@@ -1,6 +1,6 @@
 #!/bin/bash
 set -euxo pipefail
-phpVersion="${PHP_VERSION:-7.2}"
+phpVersion="${PHP_VERSION:-7.3}"
 PHPBREW_DIR="$HOME/.phpbrew/php/$phpVersion"
 PHPBREW_VERSION="phpbrew-$phpVersion"
 if cache has_key "$PHPBREW_VERSION"; then 
@@ -45,4 +45,3 @@ else
     fi
     cache store "$PHPBREW_VERSION" "$PHPBREW_DIR"
 fi
-phpbrew switch "$phpVersion"
