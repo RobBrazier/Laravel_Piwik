@@ -9,6 +9,7 @@ global_job_config:
     commands:
       - composer self-update
       - checkout
+      - source ~/.phpbrew/bashrc
       - bash .semaphore/switch_php
       - export COMPOSER_HASH="$(md5sum composer.lock | awk -F' ' '{ print $1 }')"
 
@@ -19,7 +20,7 @@ blocks:
       - name: Install Dependencies
         matrix:
           - env_var: PHP_VERSION
-            values: [ "5.6", "7.0", "7.1", "7.2", "7.3" ]
+            values: [ "5.6", "7.0", "7.1", "7.2", "7.3", "7.4" ]
         commands:
           - cache restore composer-semaphore-$COMPOSER_HASH-$PHP_VERSION
           - composer install
