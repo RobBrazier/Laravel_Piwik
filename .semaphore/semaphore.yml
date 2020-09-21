@@ -9,7 +9,6 @@ global_job_config:
     commands:
       - composer self-update
       - checkout
-      - source ~/.phpbrew/bashrc
       - bash .semaphore/switch_php
       - export COMPOSER_HASH="$(md5sum composer.lock | awk -F' ' '{ print $1 }')"
 
