@@ -1,0 +1,12 @@
+#!/bin/bash
+
+COMPOSER_KEY="composer-$PHP_VERSION"
+
+if cache has_key "$COMPOSER_KEY"; then 
+    cache restore "$COMPOSER_KEY"
+else
+    mkdir -p $HOME/.local/bin
+    php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+    php composer-setup.php --install-dir="$HOME/.local/bin" --filename=composer
+    cache store "$COMPOSER_KEY" "$HOME/.local/bin/composer"
+fi
