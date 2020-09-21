@@ -45,7 +45,7 @@ else
         phpbrew switch "$phpVersion"
         phpbrew -d ext install openssl
     else
-        if [ -z "$(phpbrew list | grep $phpVersion)" ]
+        if [ -z "$(phpbrew list | grep $phpVersion)" ]; then
             phpbrew --no-progress install --name "$phpVersion" "$phpVersion"
         fi
     fi
