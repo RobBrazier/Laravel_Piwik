@@ -2,6 +2,7 @@
 set -euxo pipefail
 export PHPBREW_SKIP_INIT=""
 export PHPBREW_SET_PROMPT=""
+export PHPBREW_RC_ENABLE=""
 source ~/.phpbrew/bashrc
 phpVersion="${PHP_VERSION:-7.2}"
 PHPBREW_DIR="$HOME/.phpbrew/php/$phpVersion"
