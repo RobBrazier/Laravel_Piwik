@@ -11,7 +11,7 @@ global_job_config:
       - checkout
       - source ~/.phpbrew/bashrc
       - bash .semaphore/switch_php
-      - phpbrew switch ${PHP_VERSION:-7.2}
+      - phpbrew switch ${PHP_VERSION:-7.3}
       - export COMPOSER_HASH="$(md5sum composer.lock | awk -F' ' '{ print $1 }')"
 
 blocks:
