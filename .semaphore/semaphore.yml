@@ -41,6 +41,9 @@ blocks:
 
   - name: "Upload Test Coverage"
     task:
+      env_vars:
+        - name: PHP_VERSION
+          value: "7.3"
       secrets:
         - name: codeclimate-reporter-id
       jobs:
