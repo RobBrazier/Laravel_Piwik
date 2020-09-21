@@ -20,10 +20,12 @@ echo "$contents" > composer.json
 
 composer require robbrazier/piwik:* --no-suggest --no-progress --update-no-dev
 
-app_config="config/app.php"
-sed -r -e 's/([[:space:]]+?)(App\\Providers\\RouteServiceProvider::class,)/\1\2\n\1RobBrazier\\Piwik\\PiwikServiceProvider::class/g' \
-    -e 's/([[:space:]]+?)(.*Illuminate\\Support\\Facades\\View::class,)/\1\2\n\1"Piwik" => RobBrazier\\Piwik\\Facades\\Piwik::class/g' \
-    -i $app_config
+if [ "${LARAVEL_VERSION}" = "5.1" ] || [ "${LARAVEL_VERSION}" = "5.2" ] || [ "${LARAVEL_VERSION}" = "5.3" ] || [ "${LARAVEL_VERSION}" = "5.4" ]; then
+    app_config="config/app.php"
+    sed -r -e 's/([[:space:]]+?)(App\\Providers\\RouteServiceProvider::class,)/\1\2\n\1RobBrazier\\Piwik\\PiwikServiceProvider::class/g' \
+        -e 's/([[:space:]]+?)(.*Illuminate\\Support\\Facades\\View::class,)/\1\2\n\1"Piwik" => RobBrazier\\Piwik\\Facades\\Piwik::class/g' \
+        -i $app_config
+fi
 
 # Create routes
 routes_config="routes/web.php"

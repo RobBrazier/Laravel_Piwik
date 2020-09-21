@@ -22,6 +22,7 @@ Add `RobBrazier/Piwik` to `composer.json`:
     }
 }
 ```
+For Laravel 5.4 and below:
 
 Add `'RobBrazier\Piwik\PiwikServiceProvider'` and `'Piwik' => 'RobBrazier\Piwik\Facades\Piwik'`
 to `app/config/app.php`
@@ -41,6 +42,8 @@ to `app/config/app.php`
     ...
 );
 ```
+
+For Laravel 5.5 and above, no app.php changes are required as the autoloader will pick up the required configuration
 
 Then move the config file out of the package, so that it doesn't get replaced
 when you update, by running:

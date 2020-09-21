@@ -22,7 +22,7 @@ blocks:
       - name: Install Dependencies
         matrix:
           - env_var: PHP_VERSION
-            values: [ "5.6", "7.0", "7.1", "7.2", "7.3", "7.4" ]
+            values: [ "7.2", "7.3", "7.4" ]
         commands:
           - cache restore composer-semaphore-$COMPOSER_HASH-$PHP_VERSION
           - composer install
@@ -34,7 +34,7 @@ blocks:
         - name: Run Unit Tests
           matrix:
             - env_var: PHP_VERSION
-              values: [ "5.6", "7.0", "7.1", "7.2", "7.3", "7.4" ]
+              values: [ "7.2", "7.3", "7.4" ]
           commands:
             - cache restore composer-semaphore-$COMPOSER_HASH-$PHP_VERSION
             - composer run-script test
