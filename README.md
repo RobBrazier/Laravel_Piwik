@@ -11,6 +11,8 @@ An Interface to Piwik's Analytics API for Laravel (Composer Package)
 
 This is the Laravel 5+ version of the Laravel-Piwik Bundle.
 
+> Version 4.0.0 and onwards have dropped support for PHP 5.6, 7.0 and 7.1
+
 ## Installation
 
 Add `RobBrazier/Piwik` to `composer.json`:
