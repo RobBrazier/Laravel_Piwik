@@ -9,7 +9,7 @@
 * [Laravel 5 and above](installation/laravel-5+.md)
 * [Laravel 4](installation/laravel-4.md)
 
-## supported modules
+## Supported Modules
 
 * [Overview](supported-modules/overview.md)
 * [ActionsModule](supported-modules/actionsmodule.md)
