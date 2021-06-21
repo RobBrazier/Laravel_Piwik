@@ -1,29 +1,34 @@
-ActionsModule
-=============
+# ActionsModule
 
 ## Documentation
-https://developer.matomo.org/api-reference/reporting-api#Actions
+
+[https://developer.matomo.org/api-reference/reporting-api\#Actions](https://developer.matomo.org/api-reference/reporting-api#Actions)
 
 ## Module Usage
-All the below methods can be called in the following manner: 
+
+All the below methods can be called in the following manner:
+
 ```php
 $actionsModule = Piwik::getActions();
 $actionsModule->get($arguments, $format);
 ```
 
 If you are using the format from configuration, it does not need to be specified
+
 ```php
 $actionsModule = Piwik::getActions();
 $actionsModule->get($arguments);
 ```
 
 If you are not specifying additional arguments or a format, neither parameters need to be passed in
+
 ```php
 $actionsModule = Piwik::getActions();
 $actionsModule->get();
 ```
 
 If you are using a method which has an additional required parameter and don't need to specify additional arguments or a format, it can be called as below
+
 ```php
 $actionsModule = Piwik::getActions();
 $actionsModule->getPageTitle($pageName);
@@ -32,11 +37,14 @@ $actionsModule->getPageTitle($pageName);
 ## Methods
 
 ### `get(...)`
+
 #### Parameters
-* arguments ([optional](#module-usage))
-* format ([optional](#module-usage))
+
+* arguments \([optional](01-actionsmodule.md#module-usage)\)
+* format \([optional](01-actionsmodule.md#module-usage)\)
 
 #### Verbose Example
+
 ```php
 $arguments = [
   'idSite' => 1, // if not specified, idSite from global config will be used
@@ -50,6 +58,7 @@ $actions = Piwik::getActions()->get($arguments, $format);
 ```
 
 #### Simplified Example
+
 ```php
 $arguments = []; // will use idSite, period and date from config
 $format = 'json';
@@ -57,11 +66,14 @@ $actions = Piwik::getActions()->get($arguments, $format);
 ```
 
 ### `getPageUrls(...)`
+
 #### Parameters
-* arguments ([optional](#module-usage))
-* format ([optional](#module-usage))
+
+* arguments \([optional](01-actionsmodule.md#module-usage)\)
+* format \([optional](01-actionsmodule.md#module-usage)\)
 
 #### Verbose Example
+
 ```php
 $arguments = [
   'idSite' => 1,
@@ -78,6 +90,7 @@ $pageUrls = Piwik::getActions()->getPageUrls($arguments, $format);
 ```
 
 #### Simplified Example
+
 ```php
 $arguments = []; // will use idSite, period and date from config
 $format = 'json';
@@ -85,11 +98,14 @@ $pageUrls = Piwik::getActions()->getPageUrls($arguments, $format);
 ```
 
 ### `getPageUrlsFollowingSiteSearch(...)`
+
 #### Parameters
-* arguments ([optional](#module-usage))
-* format ([optional](#module-usage))
+
+* arguments \([optional](01-actionsmodule.md#module-usage)\)
+* format \([optional](01-actionsmodule.md#module-usage)\)
 
 #### Verbose Example
+
 ```php
 $arguments = [
   'idSite' => 1,
@@ -104,6 +120,7 @@ $pageUrls = Piwik::getActions()->getPageUrlsFollowingSiteSearch($arguments, $for
 ```
 
 #### Simplified Example
+
 ```php
 $arguments = []; // will use idSite, period and date from config
 $format = 'json';
@@ -111,11 +128,14 @@ $pageUrls = Piwik::getActions()->getPageUrlsFollowingSiteSearch($arguments, $for
 ```
 
 ### `getPageTitlesFollowingSiteSearch(...)`
+
 #### Parameters
-* arguments ([optional](#module-usage))
-* format ([optional](#module-usage))
+
+* arguments \([optional](01-actionsmodule.md#module-usage)\)
+* format \([optional](01-actionsmodule.md#module-usage)\)
 
 #### Verbose Example
+
 ```php
 $arguments = [
   'idSite' => 1,
@@ -130,6 +150,7 @@ $pageTitles = Piwik::getActions()->getPageTitlesFollowingSiteSearch($arguments, 
 ```
 
 #### Simplified Example
+
 ```php
 $arguments = []; // will use idSite, period and date from config
 $format = 'json';
@@ -137,11 +158,14 @@ $pageTitles = Piwik::getActions()->getPageTitlesFollowingSiteSearch($arguments, 
 ```
 
 ### `getEntryPageUrls(...)`
+
 #### Parameters
-* arguments ([optional](#module-usage))
-* format ([optional](#module-usage))
+
+* arguments \([optional](01-actionsmodule.md#module-usage)\)
+* format \([optional](01-actionsmodule.md#module-usage)\)
 
 #### Verbose Example
+
 ```php
 $arguments = [
   'idSite' => 1,
@@ -157,6 +181,7 @@ $entryPageUrls = Piwik::getActions()->getEntryPageUrls($arguments, $format);
 ```
 
 #### Simplified Example
+
 ```php
 $arguments = []; // will use idSite, period and date from config
 $format = 'json';
@@ -164,11 +189,14 @@ $entryPageUrls = Piwik::getActions()->getEntryPageUrls($arguments, $format);
 ```
 
 ### `getExitPageUrls(...)`
+
 #### Parameters
-* arguments ([optional](#module-usage))
-* format ([optional](#module-usage))
+
+* arguments \([optional](01-actionsmodule.md#module-usage)\)
+* format \([optional](01-actionsmodule.md#module-usage)\)
 
 #### Verbose Example
+
 ```php
 $arguments = [
   'idSite' => 1,
@@ -184,6 +212,7 @@ $exitPageUrls = Piwik::getActions()->getExitPageUrls($arguments, $format);
 ```
 
 #### Simplified Example
+
 ```php
 $arguments = []; // will use idSite, period and date from config
 $format = 'json';
@@ -191,12 +220,15 @@ $exitPageUrls = Piwik::getActions()->getExitPageUrls($arguments, $format);
 ```
 
 ### `getPageUrl(...)`
+
 #### Parameters
-* pageUrl (**required**)
-* arguments ([optional](#module-usage))
-* format ([optional](#module-usage))
+
+* pageUrl \(**required**\)
+* arguments \([optional](01-actionsmodule.md#module-usage)\)
+* format \([optional](01-actionsmodule.md#module-usage)\)
 
 #### Verbose Example
+
 ```php
 $pageUrl = 'https://example.com/test';
 $arguments = [
@@ -210,6 +242,7 @@ $pageUrl = Piwik::getActions()->getPageUrl($pageUrl, $arguments, $format);
 ```
 
 #### Simplified Example
+
 ```php
 $pageUrl = 'https://example.com/test';
 $arguments = []; // will use idSite, period and date from config
@@ -218,11 +251,14 @@ $pageUrl = Piwik::getActions()->getPageUrl($pageUrl, $arguments, $format);
 ```
 
 ### `getPageTitles(...)`
+
 #### Parameters
-* arguments ([optional](#module-usage))
-* format ([optional](#module-usage))
+
+* arguments \([optional](01-actionsmodule.md#module-usage)\)
+* format \([optional](01-actionsmodule.md#module-usage)\)
 
 #### Verbose Example
+
 ```php
 $arguments = [
   'idSite' => 1,
@@ -238,6 +274,7 @@ $pageTitles = Piwik::getActions()->getPageTitles($arguments, $format);
 ```
 
 #### Simplified Example
+
 ```php
 $arguments = []; // will use idSite, period and date from config
 $format = 'json';
@@ -245,11 +282,14 @@ $pageTitles = Piwik::getActions()->getPageTitles($arguments, $format);
 ```
 
 ### `getEntryPageTitles(...)`
+
 #### Parameters
-* arguments ([optional](#module-usage))
-* format ([optional](#module-usage))
+
+* arguments \([optional](01-actionsmodule.md#module-usage)\)
+* format \([optional](01-actionsmodule.md#module-usage)\)
 
 #### Verbose Example
+
 ```php
 $arguments = [
   'idSite' => 1,
@@ -265,6 +305,7 @@ $entryPageTitles = Piwik::getActions()->getEntryPageTitles($arguments, $format);
 ```
 
 #### Simplified Example
+
 ```php
 $arguments = []; // will use idSite, period and date from config
 $format = 'json';
@@ -272,11 +313,14 @@ $entryPageTitles = Piwik::getActions()->getEntryPageTitles($arguments, $format);
 ```
 
 ### `getExitPageTitles(...)`
+
 #### Parameters
-* arguments ([optional](#module-usage))
-* format ([optional](#module-usage))
+
+* arguments \([optional](01-actionsmodule.md#module-usage)\)
+* format \([optional](01-actionsmodule.md#module-usage)\)
 
 #### Verbose Example
+
 ```php
 $arguments = [
   'idSite' => 1,
@@ -292,6 +336,7 @@ $exitPageTitles = Piwik::getActions()->getExitPageTitles($arguments, $format);
 ```
 
 #### Simplified Example
+
 ```php
 $arguments = []; // will use idSite, period and date from config
 $format = 'json';
@@ -299,12 +344,15 @@ $exitPageTitles = Piwik::getActions()->getExitPageTitles($arguments, $format);
 ```
 
 ### `getPageTitle(...)`
+
 #### Parameters
-* pageName (**required**)
-* arguments ([optional](#module-usage))
-* format ([optional](#module-usage))
+
+* pageName \(**required**\)
+* arguments \([optional](01-actionsmodule.md#module-usage)\)
+* format \([optional](01-actionsmodule.md#module-usage)\)
 
 #### Verbose Example
+
 ```php
 $pageName = 'test';
 $arguments = [
@@ -318,6 +366,7 @@ $pageTitle = Piwik::getActions()->getPageTitle($pageName, $arguments, $format);
 ```
 
 #### Simplified Example
+
 ```php
 $pageName = 'test';
 $arguments = []; // will use idSite, period and date from config
@@ -326,11 +375,14 @@ $pageTitle = Piwik::getActions()->getPageTitle($pageName, $arguments, $format);
 ```
 
 ### `getDownloads(...)`
+
 #### Parameters
-* arguments ([optional](#module-usage))
-* format ([optional](#module-usage))
+
+* arguments \([optional](01-actionsmodule.md#module-usage)\)
+* format \([optional](01-actionsmodule.md#module-usage)\)
 
 #### Verbose Example
+
 ```php
 $arguments = [
   'idSite' => 1,
@@ -346,6 +398,7 @@ $downloads = Piwik::getActions()->getDownloads($arguments, $format);
 ```
 
 #### Simplified Example
+
 ```php
 $arguments = []; // will use idSite, period and date from config
 $format = 'json';
@@ -353,12 +406,15 @@ $downloads = Piwik::getActions()->getDownloads($arguments, $format);
 ```
 
 ### `getDownload(...)`
+
 #### Parameters
-* downloadUrl (**required**)
-* arguments ([optional](#module-usage))
-* format ([optional](#module-usage))
+
+* downloadUrl \(**required**\)
+* arguments \([optional](01-actionsmodule.md#module-usage)\)
+* format \([optional](01-actionsmodule.md#module-usage)\)
 
 #### Verbose Example
+
 ```php
 $downloadUrl = 'https://example.com/test';
 $arguments = [
@@ -372,6 +428,7 @@ $download = Piwik::getActions()->getDownload($downloadUrl, $arguments, $format);
 ```
 
 #### Simplified Example
+
 ```php
 $downloadUrl = 'https://example.com/test';
 $arguments = []; // will use idSite, period and date from config
@@ -380,11 +437,14 @@ $download = Piwik::getActions()->getDownload($downloadUrl, $arguments, $format);
 ```
 
 ### `getOutlinks(...)`
+
 #### Parameters
-* arguments ([optional](#module-usage))
-* format ([optional](#module-usage))
+
+* arguments \([optional](01-actionsmodule.md#module-usage)\)
+* format \([optional](01-actionsmodule.md#module-usage)\)
 
 #### Verbose Example
+
 ```php
 $arguments = [
   'idSite' => 1,
@@ -400,6 +460,7 @@ $outlinks = Piwik::getActions()->getOutlinks($arguments, $format);
 ```
 
 #### Simplified Example
+
 ```php
 $arguments = []; // will use idSite, period and date from config
 $format = 'json';
@@ -407,12 +468,15 @@ $outlinks = Piwik::getActions()->getOutlinks($arguments, $format);
 ```
 
 ### `getOutlink(...)`
+
 #### Parameters
-* outlinkUrl (**required**)
-* arguments ([optional](#module-usage))
-* format ([optional](#module-usage))
+
+* outlinkUrl \(**required**\)
+* arguments \([optional](01-actionsmodule.md#module-usage)\)
+* format \([optional](01-actionsmodule.md#module-usage)\)
 
 #### Verbose Example
+
 ```php
 $outlinkUrl = 'https://example.com/test';
 $arguments = [
@@ -426,6 +490,7 @@ $outlink = Piwik::getActions()->getOutlink($outlinkUrl, $arguments, $format);
 ```
 
 #### Simplified Example
+
 ```php
 $outlinkUrl = 'https://example.com/test';
 $arguments = []; // will use idSite, period and date from config
@@ -434,11 +499,14 @@ $outlink = Piwik::getActions()->getOutlink($outlinkUrl, $arguments, $format);
 ```
 
 ### `getSiteSearchKeywords(...)`
+
 #### Parameters
-* arguments ([optional](#module-usage))
-* format ([optional](#module-usage))
+
+* arguments \([optional](01-actionsmodule.md#module-usage)\)
+* format \([optional](01-actionsmodule.md#module-usage)\)
 
 #### Verbose Example
+
 ```php
 $arguments = [
   'idSite' => 1,
@@ -451,6 +519,7 @@ $siteSearchKeywords = Piwik::getActions()->getSiteSearchKeywords($arguments, $fo
 ```
 
 #### Simplified Example
+
 ```php
 $arguments = []; // will use idSite, period and date from config
 $format = 'json';
@@ -458,11 +527,14 @@ $siteSearchKeywords = Piwik::getActions()->getSiteSearchKeywords($arguments, $fo
 ```
 
 ### `getSiteSearchNoResultKeywords(...)`
+
 #### Parameters
-* arguments ([optional](#module-usage))
-* format ([optional](#module-usage))
+
+* arguments \([optional](01-actionsmodule.md#module-usage)\)
+* format \([optional](01-actionsmodule.md#module-usage)\)
 
 #### Verbose Example
+
 ```php
 $arguments = [
   'idSite' => 1,
@@ -475,6 +547,7 @@ $siteSearchNoResultKeywords = Piwik::getActions()->getSiteSearchNoResultKeywords
 ```
 
 #### Simplified Example
+
 ```php
 $arguments = []; // will use idSite, period and date from config
 $format = 'json';
@@ -482,11 +555,14 @@ $siteSearchNoResultKeywords = Piwik::getActions()->getSiteSearchNoResultKeywords
 ```
 
 ### `getSiteSearchCategories(...)`
+
 #### Parameters
-* arguments ([optional](#module-usage))
-* format ([optional](#module-usage))
+
+* arguments \([optional](01-actionsmodule.md#module-usage)\)
+* format \([optional](01-actionsmodule.md#module-usage)\)
 
 #### Verbose Example
+
 ```php
 $arguments = [
   'idSite' => 1,
@@ -499,8 +575,10 @@ $siteSearchCategories = Piwik::getActions()->getSiteSearchCategories($arguments,
 ```
 
 #### Simplified Example
+
 ```php
 $arguments = []; // will use idSite, period and date from config
 $format = 'json';
 $siteSearchCategories = Piwik::getActions()->getSiteSearchCategories($arguments, $format);
 ```
+

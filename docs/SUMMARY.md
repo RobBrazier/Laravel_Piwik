@@ -10,5 +10,7 @@
 * [Laravel 4](installation/02-laravel-4.md)
 
 ## supported modules
-* [Overview](supported-modules/00-Overview.md)
-* [ActionsModule](supported-modules/01-ActionsModule.md)
+
+* [Overview](supported-modules/overview.md)
+* [ActionsModule](supported-modules/01-actionsmodule.md)
+
