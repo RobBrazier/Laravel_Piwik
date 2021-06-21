@@ -1,3 +1,6 @@
+Laravel 5 and above
+===================
+
 ## Installation
 
 Add RobBrazier/Piwik to composer.json:
