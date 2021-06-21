@@ -15,6 +15,7 @@ If you want to request a module to be supported,  please either raise a [GitHub 
 
 ## Common Arguments
 Within the `arguments` parameter that 99% of the methods accept, the following parameters are purely available to override the configuration specified in the package config
+
 1. `idSite` 
 2. `period` 
 3. `date`
