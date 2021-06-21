@@ -1,3 +1,7 @@
+---
+description: Matomo Reporting API Actions Module
+---
+
 # ActionsModule
 
 ## Documentation
