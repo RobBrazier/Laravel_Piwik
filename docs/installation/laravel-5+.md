@@ -5,7 +5,7 @@
 Add RobBrazier/Piwik to composer.json:
 
 ```bash
-composer require "robbrazier/piwik=~2.1"
+composer require "robbrazier/piwik=~4.0"
 ```
 
 ## Setup Service Provider
