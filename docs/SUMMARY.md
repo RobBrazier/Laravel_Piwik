@@ -1,16 +1,16 @@
 # Table of contents
 
 * [Initial page](README.md)
-* [Usage](01-usage.md)
+* [Usage](usage.md)
 * [Old Documentation](https://laravel-piwik.readthedocs.io/en/2.1.3/)
 
 ## Installation
 
-* [Laravel 5 and above](installation/01-laravel-5+.md)
-* [Laravel 4](installation/02-laravel-4.md)
+* [Laravel 5 and above](installation/laravel-5+.md)
+* [Laravel 4](installation/laravel-4.md)
 
 ## supported modules
 
 * [Overview](supported-modules/overview.md)
-* [ActionsModule](supported-modules/01-actionsmodule.md)
+* [ActionsModule](supported-modules/actionsmodule.md)
 
