@@ -4,9 +4,16 @@ ActionsModule
 ## Documentation
 https://developer.matomo.org/api-reference/reporting-api#Actions
 
+## Module Usage
+All the below methods can be called in the following manner: 
+```php
+$actionsModule = Piwik::getActions()
+$actionsModule->get($arguments, $format)
+```
+
 ## Methods
 
-### `Piwik::getActions()->get(...)`
+### `get(...)`
 #### Parameters
 * arguments
 * format (optional)
@@ -31,7 +38,7 @@ $format = 'json'
 $actions = Piwik::getActions()->get($arguments, $format)
 ```
 
-### `Piwik::getActions()->getPageUrls(...)`
+### `getPageUrls(...)`
 #### Parameters
 * arguments
 * format (optional)
@@ -59,7 +66,7 @@ $format = 'json'
 $pageUrls = Piwik::getActions()->getPageUrls($arguments, $format)
 ```
 
-### `Piwik::getActions()->getPageUrlsFollowingSiteSearch(...)`
+### `getPageUrlsFollowingSiteSearch(...)`
 #### Parameters
 * arguments
 * format (optional)
@@ -85,7 +92,7 @@ $format = 'json'
 $pageUrls = Piwik::getActions()->getPageUrlsFollowingSiteSearch($arguments, $format)
 ```
 
-### `Piwik::getActions()->getPageTitlesFollowingSiteSearch(...)`
+### `getPageTitlesFollowingSiteSearch(...)`
 #### Parameters
 * arguments
 * format (optional)
@@ -111,7 +118,7 @@ $format = 'json'
 $pageTitles = Piwik::getActions()->getPageTitlesFollowingSiteSearch($arguments, $format)
 ```
 
-### `Piwik::getActions()->getEntryPageUrls(...)`
+### `getEntryPageUrls(...)`
 #### Parameters
 * arguments
 * format (optional)
