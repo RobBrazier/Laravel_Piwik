@@ -3,6 +3,7 @@
 * [Initial page](README.md)
 * [Usage](usage.md)
 * [Old Documentation](https://laravel-piwik.readthedocs.io/en/2.1.3/)
+* [Changelog](changelog.md)
 
 ## Installation
 
