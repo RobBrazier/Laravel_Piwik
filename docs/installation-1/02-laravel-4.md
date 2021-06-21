@@ -1,5 +1,4 @@
-Laravel 4
-=========
+# Laravel 4
 
 ## Installation
 
@@ -33,3 +32,4 @@ This will create a `piwik.php` config file in `config/`
 ```bash
 php artisan vendor:publish --provider="RobBrazier\Piwik\PiwikServiceProvider"
 ```
+
