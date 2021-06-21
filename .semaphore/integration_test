@@ -44,7 +44,7 @@ EOT
 # Configure plugin
 piwik_config="config/piwik.php"
 cp "$PLUGIN_DIR/src/config/config.php" $piwik_config
-sed -r -e "s@('piwik_url').*@\1 => 'https://demo.matomo.org',@g" \
+sed -r -e "s@('piwik_url').*@\1 => 'https://demo.matomo.cloud',@g" \
     -e "s@('api_key').*@\1 => 'anonymous',@g" \
     -e "s@('site_id').*@\1 => '62',@g" \
     -i $piwik_config
