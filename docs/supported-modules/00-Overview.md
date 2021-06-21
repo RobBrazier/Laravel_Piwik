@@ -20,4 +20,4 @@ Within the `arguments` parameter that 99% of the methods accept, the following p
 2. `period` 
 3. `date`
 
-If you do not have a need to override the values, these do not need to be specified in each method call. This is useful when you need to manage multiple Matomo sites.
+If you do not have a need to override the values, you do not need to be specify them in each method call. This is useful when you need to manage multiple Matomo sites.
