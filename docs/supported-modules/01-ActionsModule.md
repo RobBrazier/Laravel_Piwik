@@ -23,6 +23,12 @@ $actionsModule = Piwik::getActions();
 $actionsModule->get();
 ```
 
+If you are using a method which has an additional required parameter and don't need to specify additional arguments or a format, it can be called as below
+```php
+$actionsModule = Piwik::getActions();
+$actionsModule->getPageTitle($pageName);
+```
+
 ## Methods
 
 ### `get(...)`
@@ -402,7 +408,7 @@ $outlinks = Piwik::getActions()->getOutlinks($arguments, $format);
 
 ### `getOutlink(...)`
 #### Parameters
-* downloadUrl (**required**)
+* outlinkUrl (**required**)
 * arguments ([optional](#module-usage))
 * format ([optional](#module-usage))
 

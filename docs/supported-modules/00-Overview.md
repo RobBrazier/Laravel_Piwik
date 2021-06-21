@@ -9,3 +9,14 @@ Unless otherwise specified, the methods will accept the following arguments:
 ## Disclaimer
 * For simplicity's sake, the documentation will be showing the Facade method of usage
 * All API arguments used in the examples were correct at the time of writing, new parameters may be added in the future, please reference the API docs link at the top of each page for more information
+
+## Request a Module to be supported
+If you want to request a module to be supported,  please either raise a [GitHub Issue](https://github.com/RobBrazier/Laravel_Piwik/issues/new) or raise a [Pull Request](https://github.com/RobBrazier/Laravel_Piwik/pulls) with the new module (and unit tests)
+
+## Common Arguments
+Within the `arguments` parameter that 99% of the methods accept, the following parameters are purely available to override the configuration specified in the package config
+1. `idSite` 
+2. `period` 
+3. `date`
+
+If you do not have a need to override the values, these do not need to be specified in each method call. This is useful when you need to manage multiple Matomo sites.
