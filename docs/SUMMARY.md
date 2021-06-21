@@ -12,5 +12,16 @@
 ## supported modules
 
 * [Overview](supported-modules/overview.md)
-* [ActionsModule](supported-modules/01-actionsmodule.md)
+* [ActionsModule](supported-modules/actionsmodule.md)
+* [APIModule](supported-modules/apimodule.md)
+* [ContentsModule](supported-modules/contentsmodule.md)
+* [EventsModule](supported-modules/eventsmodule.md)
+* [LiveModule](supported-modules/livemodule.md)
+* [ProviderModule](supported-modules/providermodule.md)
+* [ReferrersModule](supported-modules/referrersmodule.md)
+* [SEOModule](supported-modules/seomodule.md)
+* [SitesManagerModule](supported-modules/sitesmanagermodule.md)
+* [UsersManagerModule](supported-modules/usersmanagermodule.md)
+* [VisitorInterestModule](supported-modules/visitorinterestmodule.md)
+* [VisitsSummaryModule](supported-modules/visitssumarymodule.md)
 
