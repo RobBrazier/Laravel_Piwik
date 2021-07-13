@@ -13,11 +13,6 @@ class QueryDates
     const TODAY = 'today';
 
     /**
-     * @var QueryDates
-     */
-    private static $instance;
-
-    /**
      * @var array
      */
     private $map;
@@ -25,7 +20,7 @@ class QueryDates
     /**
      * QueryDates constructor.
      */
-    private function __construct()
+    public function __construct()
     {
         $this->map = [
             self::TODAY    => new QueryDate(self::DAY, self::TODAY),
@@ -41,23 +36,11 @@ class QueryDates
     }
 
     /**
-     * @return QueryDates
-     */
-    public static function getInstance()
-    {
-        if (is_null(self::$instance)) {
-            self::$instance = new self();
-        }
-
-        return self::$instance;
-    }
-
-    /**
      * @param string $data
      *
      * @return QueryDate
      */
-    public function get($data)
+    public function get(string $data): QueryDate
     {
         if (Arr::has($this->map, $data)) {
             return Arr::get($this->map, $data);

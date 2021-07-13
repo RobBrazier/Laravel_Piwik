@@ -10,20 +10,25 @@
         }
     ],
     "require": {
-        "php": ">=7.2",
-        "guzzlehttp/guzzle": "~6.2 | ^7.0.1",
-        "lightools/xml": "^1.0",
-        "illuminate/support": ">=5.2 | <= 5.5"
+        "php": ">=7.3",
+        "guzzlehttp/guzzle": "^7.3",
+        "illuminate/support": "5.*|6.*|7.*|>=8.0"
     },
     "require-dev": {
-        "orchestra/testbench": "3.2.*",
-        "phpunit/phpunit": "5.7.*",
-        "phpunit/phpcov": "3.1.*",
-        "phpspec/prophecy": "^1.7"
+        "orchestra/testbench": "^6.19",
+        "phpunit/phpunit": "^9.5",
+        "phpunit/phpcov": "^8.2",
+        "phpspec/prophecy": "^1.13",
+        "ext-json": "*",
+        "ext-simplexml": "*"
+    },
+    "suggest": {
+        "ext-json": "Needed to support JSON formatting",
+        "ext-simplexml": "Needed to support XML formatting"
     },
     "scripts": {
         "test": "phpunit",
-        "coverage": "phpdbg -qrr ./vendor/bin/phpunit",
+        "coverage": "phpdbg -qrr ./vendor/bin/phpunit --coverage-clover reports/coverage.xml --coverage-html reports/html",
         "changelog": "sh .semaphore/changelog"
     },
     "autoload": {

@@ -24,7 +24,7 @@ class LiveModule extends Module
      */
     public function getCounters($lastMinutes, $arguments = [], $format = null)
     {
-        $arguments = Arr::add($arguments, 'lastMinutes', $lastMinutes);
+        $arguments += ['lastMinutes' => $lastMinutes];
         $options = $this->getOptions($format)->setArguments($arguments);
 
         return $this->request->send($options);
@@ -40,7 +40,7 @@ class LiveModule extends Module
     public function getLastVisitsDetails($count, $arguments = [], $format = null)
     {
         if ($count > 0) {
-            $arguments = Arr::add($arguments, 'filter_limit', $count);
+            $arguments += ['filter_limit' => $count];
         }
         $options = $this->getOptions($format)->setArguments($arguments);
 
@@ -137,7 +137,7 @@ class LiveModule extends Module
      */
     public function getVisitorProfile($visitorId, $arguments = [], $format = null)
     {
-        $arguments = Arr::add($arguments, 'visitorId', $visitorId);
+        $arguments += ['visitorId' => $visitorId];
         $options = $this->getOptions($format)->setArguments($arguments);
 
         return $this->request->send($options);

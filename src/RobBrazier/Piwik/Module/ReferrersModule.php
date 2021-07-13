@@ -59,7 +59,7 @@ class ReferrersModule extends Module
      */
     public function getKeywordsForPageUrl($pageUrl, $arguments = [], $format = null)
     {
-        $arguments = Arr::add($arguments, 'url', $pageUrl);
+        $arguments += ['url' => $pageUrl];
         $options = $this->getOptions($format)->setArguments($arguments);
 
         return $this->request->send($options);
@@ -74,7 +74,7 @@ class ReferrersModule extends Module
      */
     public function getKeywordsForPageTitle($pageTitle, $arguments = [], $format = null)
     {
-        $arguments = Arr::add($arguments, 'title', $pageTitle);
+        $arguments += ['title' => $pageTitle];
         $options = $this->getOptions($format)->setArguments($arguments);
 
         return $this->request->send($options);
