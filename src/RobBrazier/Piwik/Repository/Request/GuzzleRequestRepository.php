@@ -71,9 +71,7 @@ class GuzzleRequestRepository implements RequestRepository
                 $result = unserialize($result);
                 break;
             case 'xml':
-                $loader = new XmlLoader();
-                $domDocument = $loader->loadXml($result);
-                $result = simplexml_import_dom($domDocument);
+                $result = simplexml_load_string($result);
                 break;
             case 'json':
             default:
