@@ -2,7 +2,6 @@
 
 namespace RobBrazier\Piwik\Module;
 
-use Lightools\Xml\XmlLoader;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Prophet;
 use RobBrazier\Piwik\Exception\PiwikException;
@@ -128,8 +127,7 @@ class LiveModuleTest extends TestCase
     public function testGetLastVisitsParsedXml()
     {
         $contents = file_get_contents(__DIR__.'/resources/Live.getLastVisitsDetails.xml');
-        $loader = new XmlLoader();
-        $this->expectedResponse = simplexml_import_dom($loader->loadXml($contents));
+        $this->expectedResponse = simplexml_load_string($contents);
         $format = 'xml';
         $count = 1;
         $this->requestOptions
