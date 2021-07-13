@@ -22,7 +22,7 @@ blocks:
       - name: Install Dependencies
         matrix:
           - env_var: PHP_VERSION
-            values: [ "7.2", "7.3", "7.4" ]
+            values: [ "7.3", "7.4", "8.0" ]
         commands:
           - cache restore composer-semaphore-$COMPOSER_HASH-$PHP_VERSION
           - composer install
@@ -34,7 +34,7 @@ blocks:
         - name: Run Unit Tests
           matrix:
             - env_var: PHP_VERSION
-              values: [ "7.2", "7.3", "7.4" ]
+              values: [ "7.3", "7.4", "8.0" ]
           commands:
             - cache restore composer-semaphore-$COMPOSER_HASH-$PHP_VERSION
             - composer run-script test
@@ -43,7 +43,7 @@ blocks:
     task:
       env_vars:
         - name: PHP_VERSION
-          value: "7.3"
+          value: "7.4"
       secrets:
         - name: codeclimate-reporter-id
         - name: codacy-laravel-piwik
@@ -70,7 +70,7 @@ blocks:
     task:
       env_vars:
         - name: PHP_VERSION
-          value: "7.3"
+          value: "7.4"
       jobs:
         - name: Run Laravel Integration Test
           matrix:

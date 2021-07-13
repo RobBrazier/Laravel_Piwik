@@ -5,43 +5,7 @@ PHPBREW_DIR="$HOME/.phpbrew/php/$phpVersion"
 PHPBREW_VERSION="phpbrew-$phpVersion"
 if cache has_key "$PHPBREW_VERSION"; then 
     cache restore "$PHPBREW_VERSION"
-else 
-    if [[ "$phpVersion" == "5.6" ]]; then
-        # because of this bug https://github.com/phpbrew/phpbrew/issues/861
-        # we need to do this
-        sudo ln -s /usr/include/x86_64-linux-gnu/curl /usr/include/curl
-
-        # download openssl
-        wget https://www.openssl.org/source/openssl-1.0.2o.tar.gz
-
-        tar -xzvf openssl-1.0.2o.tar.gz
-        pushd openssl-1.0.2o
-
-        # we will install it in /usr/local/openssl so it don't interfere with openssl from apt
-        # we will compile it as dynamic library
-        ./config -fPIC shared --prefix=/usr/local --openssldir=/usr/local/openssl
-
-        # classic make
-        make
-
-        # test it
-        make test
-
-        # install
-        sudo make install
-
-        popd
-
-        # build php with shared openssl dependency
-        export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
-        # this command doesn't work
-        # phpbrew -d install php-5.6 +default +openssl=shared
-        # to install default extensions and openssl, we have to use the following command
-        phpbrew -d install --name "$phpVersion" "$phpVersion" +default -- --with-openssl=shared
-        phpbrew switch "$phpVersion"
-        phpbrew -d ext install openssl
-    else
-        phpbrew --no-progress install --name "$phpVersion" "$phpVersion"
-    fi
+else
+    phpbrew --no-progress install --name "$phpVersion" "$phpVersion"
     cache store "$PHPBREW_VERSION" "$PHPBREW_DIR"
 fi
