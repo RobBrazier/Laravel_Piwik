@@ -4,7 +4,7 @@ namespace RobBrazier\Piwik\Repository\Request;
 
 use GuzzleHttp\ClientInterface;
 use PHPUnit\Framework\TestCase;
-use Prophecy\Argument;
+use Prophecy\Argument\Token\TypeToken;
 use Prophecy\Prophet;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
@@ -81,13 +81,13 @@ class GuzzleRequestRepositoryTest extends TestCase
         $this->configRepository->get(Option::PIWIK_URL)->willReturn('http://piwik.url');
         $this->configRepository->get(Option::PERIOD)->willReturn('yesterday');
         $this->configRepository->get(Option::SITE_ID)->willReturn('1');
-        $this->configRepository->get(Option::CURL_TIMEOUT, Argument::type('double'))->willReturn(5);
-        $this->configRepository->get(Option::VERIFY_PEER, Argument::type('bool'))->willReturn(5);
+        $this->configRepository->get(Option::CURL_TIMEOUT, new TypeToken('double'))->willReturn(5);
+        $this->configRepository->get(Option::VERIFY_PEER, new TypeToken('bool'))->willReturn(5);
     }
 
     private function givenRequest($response)
     {
-        $this->client->request(Argument::type('string'), Argument::type('string'), Argument::type('array'))->willReturn($this->response->reveal());
+        $this->client->request(new TypeToken('string'), new TypeToken('string'), new TypeToken('array'))->willReturn($this->response->reveal());
         $this->response->getBody()->willReturn($this->stream->reveal());
         $this->stream->getContents()->willReturn($response);
     }
