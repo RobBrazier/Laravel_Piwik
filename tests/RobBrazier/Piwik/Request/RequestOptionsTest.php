@@ -30,7 +30,7 @@ class RequestOptionsTest extends TestCase
             ->useTokenAuth(false)
             ->useFormat(false);
         $this->prophet = new Prophet();
-        $this->configRepository = $this->prophet->prophesize(ConfigRepository::class);
+        $this->configRepository = $this->prophet->prophesize('RobBrazier\Piwik\Repository\ConfigRepository');
     }
 
     public function testSetMethod()
@@ -54,7 +54,7 @@ class RequestOptionsTest extends TestCase
 
     public function testSetSiteId()
     {
-        $siteId = 'siteId1';
+        $siteId = 1;
         $result = $this->requestOptions
             ->setSiteId($siteId)
             ->build($this->configRepository->reveal());
@@ -63,7 +63,7 @@ class RequestOptionsTest extends TestCase
 
     public function testUseSiteId()
     {
-        $siteId = 'siteId2';
+        $siteId = 2;
         $this->configRepository->get(Option::SITE_ID)->willReturn($siteId);
         $result = $this->requestOptions
             ->useSiteId(true)

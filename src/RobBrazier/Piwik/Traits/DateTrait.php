@@ -7,6 +7,7 @@ use RobBrazier\Piwik\Query\QueryDates;
 
 trait DateTrait
 {
+    private $instance;
     /**
      * Get QueryDate object from period name.
      *
@@ -16,8 +17,11 @@ trait DateTrait
      *
      * @return QueryDate
      */
-    public function getDate($period)
+    public function getDate(string $period): QueryDate
     {
-        return QueryDates::getInstance()->get($period);
+        if ($this->instance === null) {
+            $this->instance = new QueryDates();
+        }
+        return $this->instance->get($period);
     }
 }
