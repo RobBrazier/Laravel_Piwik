@@ -3,6 +3,7 @@
 namespace RobBrazier\Piwik\Query;
 
 use PHPUnit\Framework\TestCase;
+use RobBrazier\Piwik\Exception\PiwikException;
 
 /**
  * Class QueryDatesTest.
@@ -35,11 +36,9 @@ class QueryDatesTest extends TestCase
         $this->assertEquals($expectedDate, $date->getDate());
     }
 
-    /**
-     * @expectedException \RobBrazier\Piwik\Exception\PiwikException
-     */
     public function testGetInvalid()
     {
+        $this->expectException(PiwikException::class);
         $dates = QueryDates::getInstance();
         $dates->get('invalid');
     }
