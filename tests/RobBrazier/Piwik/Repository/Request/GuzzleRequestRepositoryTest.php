@@ -3,7 +3,6 @@
 namespace RobBrazier\Piwik\Repository\Request;
 
 use GuzzleHttp\ClientInterface;
-use Lightools\Xml\XmlLoader;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Prophecy\Prophet;
@@ -51,8 +50,7 @@ class GuzzleRequestRepositoryTest extends TestCase
         $this->givenConfig('xml');
         $this->givenRequest($response);
         $result = $this->whenRequestIsSent();
-        $loader = new XmlLoader();
-        $expected = simplexml_import_dom($loader->loadXml($response));
+        $expected = simplexml_load_string($response);
         $this->assertEquals($expected, $result);
     }
 
