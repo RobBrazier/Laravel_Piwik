@@ -28,7 +28,7 @@
     },
     "scripts": {
         "test": "phpunit",
-        "coverage": "XDEBUG_MODE=coverage phpunit --coverage-clover reports/coverage.xml --coverage-html reports/html",
+        "coverage": "phpdbg -qrr ./vendor/bin/phpunit --coverage-clover reports/coverage.xml --coverage-html reports/html",
         "changelog": "sh .semaphore/changelog"
     },
     "autoload": {
