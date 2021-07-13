@@ -46,6 +46,7 @@ blocks:
           value: "7.3"
       secrets:
         - name: codeclimate-reporter-id
+        - name: codacy-laravel-piwik
       jobs:
         - name: CodeClimate Test Coverage
           commands:
@@ -57,6 +58,13 @@ blocks:
             - exitCode=$?
             - cp reports/coverage.xml clover.xml
             - ./cc-test-reporter after-build --exit-code $exitCode --coverage-input-type clover
+        - name: Codacy Test Coverage
+          commands:
+            - cache restore composer-semaphore-$COMPOSER_HASH-$PHP_VERSION
+            - composer run-script coverage
+            - exitCode=$?
+            - cp reports/coverage.xml clover.xml
+            - bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r clover.xml
 
   - name: "Integration Tests"
     task:
