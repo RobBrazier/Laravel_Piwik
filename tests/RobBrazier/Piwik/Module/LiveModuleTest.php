@@ -105,7 +105,7 @@ class LiveModuleTest extends TestCase
                 'filter_limit' => $count,
             ])
             ->setMethod('Live.getLastVisitsDetails');
-        $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
+        $this->request->send($this->requestOptions)->willReturn($expectedResponse);
         $response = $this->live->getLastVisitsDetailsParsed($count, $format)[0];
         $this->assertNotNull($response['time']);
         $this->assertNotNull($response['title']);
