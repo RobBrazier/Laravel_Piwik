@@ -131,7 +131,7 @@ class RequestOptions
      */
     public function setFormat($format)
     {
-        if (!is_null($format)) {
+        if ($format !== null) {
             $this->format = $format;
             $this->useFormat(false);
         }
@@ -200,7 +200,7 @@ class RequestOptions
      */
     public function setArguments($arguments)
     {
-        if (is_null($arguments)) {
+        if ($arguments === null) {
             $arguments = [];
         }
         $this->arguments = $arguments;
@@ -257,7 +257,7 @@ class RequestOptions
         }
         $builder->setSiteId($this->getSiteId($config));
         $formatOverride = $this->getFormat($config);
-        if (!is_null($formatOverride)) {
+        if ($formatOverride !== null) {
             $builder->setFormat($this->validateFormat($formatOverride));
         }
         $builder->setTokenAuth($this->getTokenAuth($config));

@@ -3,6 +3,7 @@
 namespace RobBrazier\Piwik\Query;
 
 use PHPUnit\Framework\TestCase;
+use RobBrazier\Piwik\Exception\PiwikException;
 
 /**
  * Class UrlTest.
@@ -15,17 +16,15 @@ class UrlTest extends TestCase
      */
     private $testClass;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->testClass = new Url($this->url);
     }
 
-    /**
-     * @expectedException \RobBrazier\Piwik\Exception\PiwikException
-     */
     public function testInvalidUrl()
     {
+        $this->expectException(PiwikException::class);
         $this->testClass = new Url('http:///example.com');
     }
 
@@ -48,7 +47,7 @@ class UrlTest extends TestCase
     public function testSetPort()
     {
         $port = 443;
-        $expectedUrl = str_replace('8080', strval($port), $this->url);
+        $expectedUrl = str_replace('8080', (string) $port, $this->url);
         $this->testClass->setPort($port);
         $this->assertEquals($expectedUrl, $this->testClass->__toString());
     }
