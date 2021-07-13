@@ -21,7 +21,7 @@ class RequestOptionsTest extends TestCase
 
     private $configRepository;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->requestOptions = new RequestOptions();
         $this->requestOptions
@@ -39,7 +39,7 @@ class RequestOptionsTest extends TestCase
         $result = $this->requestOptions
             ->setMethod($method)
             ->build($this->configRepository->reveal());
-        $this->assertContains($method, $result);
+        $this->assertStringContainsString($method, $result);
     }
 
     public function testUsePeriod()
@@ -49,7 +49,7 @@ class RequestOptionsTest extends TestCase
         $result = $this->requestOptions
             ->usePeriod(true)
             ->build($this->configRepository->reveal());
-        $this->assertContains($period, $result);
+        $this->assertStringContainsString($period, $result);
     }
 
     public function testSetSiteId()
@@ -58,7 +58,7 @@ class RequestOptionsTest extends TestCase
         $result = $this->requestOptions
             ->setSiteId($siteId)
             ->build($this->configRepository->reveal());
-        $this->assertContains($siteId, $result);
+        $this->assertStringContainsString($siteId, $result);
     }
 
     public function testUseSiteId()
@@ -68,7 +68,7 @@ class RequestOptionsTest extends TestCase
         $result = $this->requestOptions
             ->useSiteId(true)
             ->build($this->configRepository->reveal());
-        $this->assertContains($siteId, $result);
+        $this->assertStringContainsString($siteId, $result);
     }
 
     public function testSetFormat()
@@ -77,7 +77,7 @@ class RequestOptionsTest extends TestCase
         $result = $this->requestOptions
             ->setFormat($format)
             ->build($this->configRepository->reveal());
-        $this->assertContains($format, $result);
+        $this->assertStringContainsString($format, $result);
     }
 
     public function testSetNullFormat()
@@ -85,7 +85,7 @@ class RequestOptionsTest extends TestCase
         $result = $this->requestOptions
             ->setFormat(null)
             ->build($this->configRepository->reveal());
-        $this->assertNotContains('format=', $result);
+        $this->assertStringNotContainsString('format=', $result);
     }
 
     public function testUseFormat()
@@ -95,7 +95,7 @@ class RequestOptionsTest extends TestCase
         $result = $this->requestOptions
             ->useFormat(true)
             ->build($this->configRepository->reveal());
-        $this->assertContains($format, $result);
+        $this->assertStringContainsString($format, $result);
     }
 
     public function testUseTokenAuth()
@@ -105,7 +105,7 @@ class RequestOptionsTest extends TestCase
         $result = $this->requestOptions
             ->useTokenAuth(true)
             ->build($this->configRepository->reveal());
-        $this->assertContains($tokenAuth, $result);
+        $this->assertStringContainsString($tokenAuth, $result);
     }
 
     public function testSetArguments()
@@ -118,7 +118,7 @@ class RequestOptionsTest extends TestCase
             ->build($this->configRepository->reveal());
         $this->assertNotEmpty($arguments);
         foreach ($arguments as $key => $value) {
-            $this->assertContains("$key=$value", $result);
+            $this->assertStringContainsString("$key=$value", $result);
         }
     }
 

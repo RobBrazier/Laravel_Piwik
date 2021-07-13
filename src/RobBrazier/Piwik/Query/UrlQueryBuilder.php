@@ -95,7 +95,7 @@ class UrlQueryBuilder
      */
     public function add($key, $value)
     {
-        if (!is_null($value)) {
+        if ($value !== null) {
             $this->data[$key] = $value;
         }
 
