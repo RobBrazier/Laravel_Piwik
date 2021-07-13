@@ -5,14 +5,15 @@ namespace RobBrazier\Piwik\Request;
 use RobBrazier\Piwik\Config\Option;
 use RobBrazier\Piwik\Query\UrlQueryBuilder;
 use RobBrazier\Piwik\Repository\ConfigRepository;
+use RobBrazier\Piwik\Traits\ArrayAccessTrait;
 use RobBrazier\Piwik\Traits\DateTrait;
 use RobBrazier\Piwik\Traits\FormatTrait;
-use Illuminate\Support\Arr;
 
 class RequestOptions
 {
     use DateTrait;
     use FormatTrait;
+    use ArrayAccessTrait;
 
     /**
      * @var string
@@ -216,7 +217,7 @@ class RequestOptions
     public function flattenArray(array $array): array
     {
         $result = [];
-        foreach (Arr::dot($array) as $key => $value) {
+        foreach ($this->flattenArrayByDot($array) as $key => $value) {
             $splitKey = explode('.', $key);
             $newKey = $this->createArrayKey($splitKey);
             $result = array_merge($result, [$newKey => $value]);

@@ -24,7 +24,7 @@ Add `RobBrazier/Piwik` to `composer.json`:
     }
 }
 ```
-### For Laravel 5.4 and below:
+### For Laravel 5.4 and below
 
 Add `'RobBrazier\Piwik\PiwikServiceProvider'` and `'Piwik' => 'RobBrazier\Piwik\Facades\Piwik'`
 to `app/config/app.php`

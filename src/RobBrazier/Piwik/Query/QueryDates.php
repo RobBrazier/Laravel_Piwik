@@ -3,7 +3,6 @@
 namespace RobBrazier\Piwik\Query;
 
 use RobBrazier\Piwik\Exception\PiwikException;
-use Illuminate\Support\Arr;
 
 class QueryDates
 {
@@ -16,6 +15,11 @@ class QueryDates
      * @var array
      */
     private $map;
+
+    /**
+     * @var array
+     */
+    private $keys;
 
     /**
      * QueryDates constructor.
@@ -33,6 +37,7 @@ class QueryDates
             'currentmonth' => new QueryDate('month', self::TODAY),
             'currentyear'  => new QueryDate('year', self::TODAY),
         ];
+        $this->keys = array_keys($this->map);
     }
 
     /**
@@ -42,8 +47,8 @@ class QueryDates
      */
     public function get(string $data): QueryDate
     {
-        if (Arr::has($this->map, $data)) {
-            return Arr::get($this->map, $data);
+        if (in_array($data, $this->keys)) {
+            return $this->map[$data];
         } elseif (preg_match(self::DATE_REGEX, $data)) {
             return new QueryDate('range', $data);
         }

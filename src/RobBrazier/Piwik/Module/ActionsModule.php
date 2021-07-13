@@ -2,7 +2,6 @@
 
 namespace RobBrazier\Piwik\Module;
 
-use Illuminate\Support\Arr;
 
 /**
  * Class ActionsModule.
