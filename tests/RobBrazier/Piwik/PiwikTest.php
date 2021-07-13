@@ -272,20 +272,20 @@ class PiwikTest extends TestCase
     {
         $siteId = 1;
         $url = 'http://website.url';
-        $siteUrlRequestOptions = clone $this->requestOptions;
-        $siteUrlRequestOptions->usePeriod(false)
+        $siteUrlOptions = clone $this->requestOptions;
+        $siteUrlOptions->usePeriod(false)
             ->setSiteId($siteId)
             ->setMethod('SitesManager.getSiteUrlsFromId');
-        $this->request->send($siteUrlRequestOptions)->willReturn([$url]);
-        $seoRequestOptions = clone $this->requestOptions;
-        $seoRequestOptions
+        $this->request->send($siteUrlOptions)->willReturn([$url]);
+        $seoOptions = clone $this->requestOptions;
+        $seoOptions
             ->usePeriod(false)
             ->useSiteId(false)
             ->setArguments([
                 'url' => $url,
             ])
             ->setMethod('SEO.getRank');
-        $this->request->send($seoRequestOptions)->willReturn($this->expectedResponse);
+        $this->request->send($seoOptions)->willReturn($this->expectedResponse);
         $response = $this->piwik->seo_rank($siteId);
         $this->assertEquals($this->expectedResponse, $response);
     }

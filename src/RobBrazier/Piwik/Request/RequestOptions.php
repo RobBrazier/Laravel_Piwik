@@ -85,11 +85,11 @@ class RequestOptions
     }
 
     /**
-     * @param int|null $siteId
+     * @param int|string|null $siteId
      *
      * @return RequestOptions
      */
-    public function setSiteId(?int $siteId): RequestOptions
+    public function setSiteId($siteId): RequestOptions
     {
         $this->siteId = $siteId;
         $this->useSiteId(false);
