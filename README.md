@@ -3,7 +3,7 @@
 [![Semaphore CI](https://robbrazier.semaphoreci.com/badges/Laravel_Piwik.svg)](https://robbrazier.semaphoreci.com/projects/Laravel_Piwik)
 [![Code Climate](https://badgen.net/codeclimate/maintainability/RobBrazier/Laravel_Piwik)](https://codeclimate.com/github/RobBrazier/Laravel_Piwik)
 [![Code Climate](https://badgen.net/codeclimate/coverage/RobBrazier/Laravel_Piwik)](https://codeclimate.com/github/RobBrazier/Laravel_Piwik)
-[![Minimum PHP Version](https://badgen.net/badge/PHP/>=7.2/8892BF)](https://php.net/)
+[![Minimum PHP Version](https://badgen.net/badge/PHP/>=7.3/8892BF)](https://php.net/)
 [![Packagist Version](https://badgen.net/packagist/v/robbrazier/piwik)](https://packagist.org/packages/robbrazier/piwik)
 [![Packagist Total Downloads](https://badgen.net/packagist/dt/robbrazier/piwik)](https://packagist.org/packages/robbrazier/piwik)
 
@@ -24,7 +24,7 @@ Add `RobBrazier/Piwik` to `composer.json`:
     }
 }
 ```
-### For Laravel 5.4 and below:
+### For Laravel 5.4 and below
 
 Add `'RobBrazier\Piwik\PiwikServiceProvider'` and `'Piwik' => 'RobBrazier\Piwik\Facades\Piwik'`
 to `app/config/app.php`
