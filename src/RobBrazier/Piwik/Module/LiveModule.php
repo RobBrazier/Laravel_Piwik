@@ -3,8 +3,8 @@
 namespace RobBrazier\Piwik\Module;
 
 use RobBrazier\Piwik\Exception\PiwikException;
+use RobBrazier\Piwik\Traits\ArrayAccessTrait;
 use RobBrazier\Piwik\Traits\FormatTrait;
-use Illuminate\Support\Arr;
 
 /**
  * Class LiveModule.
@@ -14,33 +14,34 @@ use Illuminate\Support\Arr;
 class LiveModule extends Module
 {
     use FormatTrait;
+    use ArrayAccessTrait;
 
     /**
-     * @param int                $lastMinutes number of minutes to filter counters by (e.g. get counters for the last 30 minutes)
+     * @param int $lastMinutes number of minutes to filter counters by (e.g. get counters for the last 30 minutes)
      * @param array[string]mixed $arguments   extra arguments to be passed to the api call
-     * @param string             $format      override format (defaults to one specified in config file)
+     * @param string|null $format      override format (defaults to one specified in config file)
      *
      * @return mixed
      */
-    public function getCounters($lastMinutes, $arguments = [], $format = null)
+    public function getCounters(int $lastMinutes, $arguments = [], string $format = null)
     {
-        $arguments = Arr::add($arguments, 'lastMinutes', $lastMinutes);
+        $arguments += ['lastMinutes' => $lastMinutes];
         $options = $this->getOptions($format)->setArguments($arguments);
 
         return $this->request->send($options);
     }
 
     /**
-     * @param int                $count     number of last visits to get (if set to `0`, retrieves all results)
+     * @param int $count     number of last visits to get (if set to `0`, retrieves all results)
      * @param array[string]mixed $arguments extra arguments to be passed to the api call
-     * @param string             $format    override format (defaults to one specified in config file)
+     * @param string|null $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
-    public function getLastVisitsDetails($count, $arguments = [], $format = null)
+    public function getLastVisitsDetails(int $count, $arguments = [], string $format = null)
     {
         if ($count > 0) {
-            $arguments = Arr::add($arguments, 'filter_limit', $count);
+            $arguments += ['filter_limit' => $count];
         }
         $options = $this->getOptions($format)->setArguments($arguments);
 
@@ -52,12 +53,12 @@ class LiveModule extends Module
      * Get information about last 10 visits (ip, time, country, pages, etc.) in a formatted array
      * with GeoIP information if enabled.
      *
-     * @param int    $count  number of last visits to get (if set to `0`, retrieves all results)
-     * @param string $format override format (defaults to one specified in config file)
+     * @param int $count  number of last visits to get (if set to `0`, retrieves all results)
+     * @param string|null $format override format (defaults to one specified in config file)
      *
      * @return array
      */
-    public function getLastVisitsDetailsParsed($count, $format = null)
+    public function getLastVisitsDetailsParsed(int $count, string $format = null): array
     {
         $visits = $this->getLastVisitsDetails($count, [], $format);
 
@@ -91,36 +92,36 @@ class LiveModule extends Module
      *
      * @return array[string]string[]
      */
-    private function getParsedLastVisitsDetails($visits)
+    private function getParsedLastVisitsDetails(array $visits): array
     {
         $result = [];
         foreach ($visits as $visit) {
-            $actionDetails = (array) Arr::get($visit, 'actionDetails');
-            $actionDetail = (array) Arr::last($actionDetails);
-            $pageLink = Arr::get($actionDetail, 'url');
-            $pageTitle = Arr::get($actionDetail, 'pageTitle');
+            $actionDetails = (array) $this->safeGetArrayEntry($visit, 'actionDetails');
+            $actionDetail = (array) end($actionDetails);
+            $pageLink = $this->safeGetArrayEntry($actionDetail, 'url');
+            $pageTitle = $this->safeGetArrayEntry($actionDetail, 'pageTitle');
 
             // Get just the image names (API returns path to icons in piwik install)
-            $flag = explode('/', Arr::get($visit, 'countryFlag'));
+            $flag = explode('/', $this->safeGetArrayEntry($visit, 'countryFlag'));
             $flagIcon = end($flag);
 
-            $os = explode('/', Arr::get($visit, 'operatingSystemIcon'));
+            $os = explode('/', $this->safeGetArrayEntry($visit, 'operatingSystemIcon'));
             $osIcon = end($os);
 
-            $browser = explode('/', Arr::get($visit, 'browserIcon'));
+            $browser = explode('/', $this->safeGetArrayEntry($visit, 'browserIcon'));
             $browserIcon = end($browser);
 
             array_push($result, [
-                'time'         => date('M j Y, g:i a', Arr::get($visit, 'lastActionTimestamp')),
+                'time'         => date('M j Y, g:i a', $this->safeGetArrayEntry($visit, 'lastActionTimestamp')),
                 'title'        => $pageTitle,
                 'link'         => $pageLink,
-                'ip_address'   => Arr::get($visit, 'visitIp'),
-                'provider'     => Arr::get($visit, 'provider'),
-                'country'      => Arr::get($visit, 'country'),
+                'ip_address'   => $this->safeGetArrayEntry($visit, 'visitIp'),
+                'provider'     => $this->safeGetArrayEntry($visit, 'provider'),
+                'country'      => $this->safeGetArrayEntry($visit, 'country'),
                 'country_icon' => $flagIcon,
-                'os'           => Arr::get($visit, 'operatingSystem'),
+                'os'           => $this->safeGetArrayEntry($visit, 'operatingSystem'),
                 'os_icon'      => $osIcon,
-                'browser'      => Arr::get($visit, 'browserName'),
+                'browser'      => $this->safeGetArrayEntry($visit, 'browserName'),
                 'browser_icon' => $browserIcon,
             ]);
         }
@@ -129,15 +130,15 @@ class LiveModule extends Module
     }
 
     /**
-     * @param string             $visitorId visitor id to search for
+     * @param string $visitorId visitor id to search for
      * @param array[string]mixed $arguments extra arguments to be passed to the api call
-     * @param string             $format    override format (defaults to one specified in config file)
+     * @param string|null $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
-    public function getVisitorProfile($visitorId, $arguments = [], $format = null)
+    public function getVisitorProfile(string $visitorId, $arguments = [], string $format = null)
     {
-        $arguments = Arr::add($arguments, 'visitorId', $visitorId);
+        $arguments += ['visitorId' => $visitorId];
         $options = $this->getOptions($format)->setArguments($arguments);
 
         return $this->request->send($options);
@@ -145,11 +146,11 @@ class LiveModule extends Module
 
     /**
      * @param array[string]mixed $arguments extra arguments to be passed to the api call
-     * @param string             $format    override format (defaults to one specified in config file)
+     * @param string|null $format    override format (defaults to one specified in config file)
      *
      * @return mixed
      */
-    public function getMostRecentVisitorId($arguments = [], $format = null)
+    public function getMostRecentVisitorId($arguments = [], string $format = null)
     {
         $options = $this->getOptions($format)
             ->usePeriod(false)

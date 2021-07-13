@@ -31,7 +31,7 @@ class EventsModuleTest extends TestCase
      */
     private $expectedResponse;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->prophet = new Prophet();
         $this->request = $this->prophet->prophesize(RequestRepository::class);

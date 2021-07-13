@@ -3,9 +3,8 @@
 namespace RobBrazier\Piwik\Repository\Request;
 
 use GuzzleHttp\ClientInterface;
-use Lightools\Xml\XmlLoader;
 use PHPUnit\Framework\TestCase;
-use Prophecy\Argument;
+use Prophecy\Argument\Token\TypeToken;
 use Prophecy\Prophet;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
@@ -30,7 +29,7 @@ class GuzzleRequestRepositoryTest extends TestCase
     private $response;
     private $stream;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->prophet = new Prophet();
         $this->configRepository = $this->prophet->prophesize(ConfigRepository::class);
@@ -51,8 +50,7 @@ class GuzzleRequestRepositoryTest extends TestCase
         $this->givenConfig('xml');
         $this->givenRequest($response);
         $result = $this->whenRequestIsSent();
-        $loader = new XmlLoader();
-        $expected = simplexml_import_dom($loader->loadXml($response));
+        $expected = simplexml_load_string($response);
         $this->assertEquals($expected, $result);
     }
 
@@ -83,13 +81,13 @@ class GuzzleRequestRepositoryTest extends TestCase
         $this->configRepository->get(Option::PIWIK_URL)->willReturn('http://piwik.url');
         $this->configRepository->get(Option::PERIOD)->willReturn('yesterday');
         $this->configRepository->get(Option::SITE_ID)->willReturn('1');
-        $this->configRepository->get(Option::CURL_TIMEOUT, Argument::type('double'))->willReturn(5);
-        $this->configRepository->get(Option::VERIFY_PEER, Argument::type('bool'))->willReturn(5);
+        $this->configRepository->get(Option::CURL_TIMEOUT, new TypeToken('double'))->willReturn(5);
+        $this->configRepository->get(Option::VERIFY_PEER, new TypeToken('bool'))->willReturn(5);
     }
 
     private function givenRequest($response)
     {
-        $this->client->request(Argument::type('string'), Argument::type('string'), Argument::type('array'))->willReturn($this->response->reveal());
+        $this->client->request(new TypeToken('string'), new TypeToken('string'), new TypeToken('array'))->willReturn($this->response->reveal());
         $this->response->getBody()->willReturn($this->stream->reveal());
         $this->stream->getContents()->willReturn($response);
     }
