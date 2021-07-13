@@ -45,19 +45,8 @@ blocks:
         - name: PHP_VERSION
           value: "7.4"
       secrets:
-        - name: codeclimate-reporter-id
         - name: codacy-laravel-piwik
       jobs:
-        - name: CodeClimate Test Coverage
-          commands:
-            - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-            - chmod +x ./cc-test-reporter
-            - ./cc-test-reporter before-build
-            - cache restore composer-semaphore-$COMPOSER_HASH-$PHP_VERSION
-            - composer run-script coverage
-            - exitCode=$?
-            - cp reports/coverage.xml clover.xml
-            - ./cc-test-reporter after-build --exit-code $exitCode --coverage-input-type clover
         - name: Codacy Test Coverage
           commands:
             - cache restore composer-semaphore-$COMPOSER_HASH-$PHP_VERSION

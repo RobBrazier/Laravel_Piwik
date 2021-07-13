@@ -1,8 +1,8 @@
 # Laravel-Piwik v4.0.0
 
 [![Semaphore CI](https://robbrazier.semaphoreci.com/badges/Laravel_Piwik.svg)](https://robbrazier.semaphoreci.com/projects/Laravel_Piwik)
-[![Code Climate](https://badgen.net/codeclimate/maintainability/RobBrazier/Laravel_Piwik)](https://codeclimate.com/github/RobBrazier/Laravel_Piwik)
-[![Code Climate](https://badgen.net/codeclimate/coverage/RobBrazier/Laravel_Piwik)](https://codeclimate.com/github/RobBrazier/Laravel_Piwik)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/6e05c91a199a4ffbb2723cec35e57019)](https://www.codacy.com/gh/RobBrazier/Laravel_Piwik/dashboard)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/6e05c91a199a4ffbb2723cec35e57019)](https://www.codacy.com/gh/RobBrazier/Laravel_Piwik/dashboard)
 [![Minimum PHP Version](https://badgen.net/badge/PHP/>=7.3/8892BF)](https://php.net/)
 [![Packagist Version](https://badgen.net/packagist/v/robbrazier/piwik)](https://packagist.org/packages/robbrazier/piwik)
 [![Packagist Total Downloads](https://badgen.net/packagist/dt/robbrazier/piwik)](https://packagist.org/packages/robbrazier/piwik)
