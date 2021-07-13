@@ -67,7 +67,7 @@ class SitesManagerModule extends Module
     {
         $options = $this->getOptions($format)
             ->usePeriod(false);
-        if (!is_null($siteId)) {
+        if ($siteId !== null) {
             $options->setSiteId($siteId);
         }
 

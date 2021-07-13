@@ -47,7 +47,7 @@ class UrlTest extends TestCase
     public function testSetPort()
     {
         $port = 443;
-        $expectedUrl = str_replace('8080', strval($port), $this->url);
+        $expectedUrl = str_replace('8080', (string) $port, $this->url);
         $this->testClass->setPort($port);
         $this->assertEquals($expectedUrl, $this->testClass->__toString());
     }
