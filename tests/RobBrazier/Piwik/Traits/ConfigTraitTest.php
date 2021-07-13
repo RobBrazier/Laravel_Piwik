@@ -24,7 +24,7 @@ class ConfigTraitTest extends TestCase
      */
     private $configTrait;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->prophet = new Prophet();
         $this->configRepository = $this->prophet->prophesize(ConfigRepository::class);

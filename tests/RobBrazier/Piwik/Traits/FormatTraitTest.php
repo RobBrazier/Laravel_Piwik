@@ -3,6 +3,7 @@
 namespace RobBrazier\Piwik\Traits;
 
 use PHPUnit\Framework\TestCase;
+use RobBrazier\Piwik\Exception\PiwikException;
 
 class FormatTraitTest extends TestCase
 {
@@ -11,7 +12,7 @@ class FormatTraitTest extends TestCase
      */
     private $formatTrait;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->formatTrait = new FormatTraitStub();
     }
@@ -23,12 +24,10 @@ class FormatTraitTest extends TestCase
         $this->assertEquals($input, $output);
     }
 
-    /**
-     * @expectedException \RobBrazier\Piwik\Exception\PiwikException
-     * @expectedExceptionMessage Invalid format [foo]
-     */
     public function testValidateFormatForInvalid()
     {
+        $this->expectExceptionMessage("Invalid format [foo]");
+        $this->expectException(PiwikException::class);
         $input = 'foo';
         $this->formatTrait->validateFormat($input);
     }

@@ -48,7 +48,7 @@ class PiwikTest extends TestCase
      */
     private $expectedResponse;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->prophet = new Prophet();
         $this->request = $this->prophet->prophesize(RequestRepository::class);
@@ -136,8 +136,8 @@ class PiwikTest extends TestCase
         $this->config->get(Option::PIWIK_URL)->willReturn("http://$piwikUrl");
         $this->config->get(Option::SITE_ID)->willReturn($siteId);
         $tag = $this->piwik->getTag();
-        $this->assertContains($piwikUrl, $tag);
-        $this->assertContains("'setSiteId', $siteId", $tag);
+        $this->assertStringContainsString($piwikUrl, $tag);
+        $this->assertStringContainsString("'setSiteId', $siteId", $tag);
     }
 
     public function testGetCustom()
@@ -297,8 +297,8 @@ class PiwikTest extends TestCase
         $this->config->get(Option::PIWIK_URL)->willReturn("http://$piwikUrl");
         $this->config->get(Option::SITE_ID)->willReturn($siteId);
         $tag = $this->piwik->tag();
-        $this->assertContains($piwikUrl, $tag);
-        $this->assertContains("'setSiteId', $siteId", $tag);
+        $this->assertStringContainsString($piwikUrl, $tag);
+        $this->assertStringContainsString("'setSiteId', $siteId", $tag);
     }
 
     public function testVersion()

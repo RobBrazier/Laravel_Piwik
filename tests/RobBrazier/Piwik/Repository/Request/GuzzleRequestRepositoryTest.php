@@ -30,7 +30,7 @@ class GuzzleRequestRepositoryTest extends TestCase
     private $response;
     private $stream;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->prophet = new Prophet();
         $this->configRepository = $this->prophet->prophesize(ConfigRepository::class);

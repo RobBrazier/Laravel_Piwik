@@ -5,6 +5,7 @@ namespace RobBrazier\Piwik\Module;
 use Lightools\Xml\XmlLoader;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Prophet;
+use RobBrazier\Piwik\Exception\PiwikException;
 use RobBrazier\Piwik\Repository\RequestRepository;
 use RobBrazier\Piwik\Request\RequestOptions;
 
@@ -32,7 +33,7 @@ class LiveModuleTest extends TestCase
      */
     private $expectedResponse;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->prophet = new Prophet();
         $this->request = $this->prophet->prophesize(RequestRepository::class);
@@ -151,12 +152,10 @@ class LiveModuleTest extends TestCase
         $this->assertNotNull($response['browser_icon']);
     }
 
-    /**
-     * @expectedException \RobBrazier\Piwik\Exception\PiwikException
-     * @expectedExceptionMessage Format [rss] is not yet supported.
-     */
     public function testGetLastVisitsParsedRss()
     {
+        $this->expectExceptionMessage("Format [rss] is not yet supported.");
+        $this->expectException(PiwikException::class);
         $format = 'rss';
         $count = 1;
         $this->requestOptions
