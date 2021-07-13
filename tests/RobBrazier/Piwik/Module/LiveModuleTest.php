@@ -77,25 +77,7 @@ class LiveModuleTest extends TestCase
         $contents = file_get_contents(__DIR__.'/resources/Live.getLastVisitsDetails.json');
         $this->expectedResponse = json_decode($contents);
         $format = 'json';
-        $count = 1;
-        $this->requestOptions
-            ->setFormat($format)
-            ->setArguments([
-                'filter_limit' => $count,
-            ])
-            ->setMethod('Live.getLastVisitsDetails');
-        $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
-        $response = $this->live->getLastVisitsDetailsParsed($count, $format)[0];
-        $this->assertNotNull($response['time']);
-        $this->assertNotNull($response['title']);
-        $this->assertNotNull($response['link']);
-        $this->assertNotNull($response['provider']);
-        $this->assertNotNull($response['country']);
-        $this->assertNotNull($response['country_icon']);
-        $this->assertNotNull($response['os']);
-        $this->assertNotNull($response['os_icon']);
-        $this->assertNotNull($response['browser']);
-        $this->assertNotNull($response['browser_icon']);
+        $this->testGetLastVisitsParsed($format, $this->expectedResponse);
     }
 
     public function testGetLastVisitsParsedPhp()
@@ -103,25 +85,7 @@ class LiveModuleTest extends TestCase
         $contents = file_get_contents(__DIR__.'/resources/Live.getLastVisitsDetails.php');
         $this->expectedResponse = unserialize($contents);
         $format = 'php';
-        $count = 1;
-        $this->requestOptions
-            ->setFormat($format)
-            ->setArguments([
-                'filter_limit' => $count,
-            ])
-            ->setMethod('Live.getLastVisitsDetails');
-        $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
-        $response = $this->live->getLastVisitsDetailsParsed($count, $format)[0];
-        $this->assertNotNull($response['time']);
-        $this->assertNotNull($response['title']);
-        $this->assertNotNull($response['link']);
-        $this->assertNotNull($response['provider']);
-        $this->assertNotNull($response['country']);
-        $this->assertNotNull($response['country_icon']);
-        $this->assertNotNull($response['os']);
-        $this->assertNotNull($response['os_icon']);
-        $this->assertNotNull($response['browser']);
-        $this->assertNotNull($response['browser_icon']);
+        $this->testGetLastVisitsParsed($format, $this->expectedResponse);
     }
 
     public function testGetLastVisitsParsedXml()
@@ -129,6 +93,11 @@ class LiveModuleTest extends TestCase
         $contents = file_get_contents(__DIR__.'/resources/Live.getLastVisitsDetails.xml');
         $this->expectedResponse = simplexml_load_string($contents);
         $format = 'xml';
+        $this->testGetLastVisitsParsed($format, $this->expectedResponse);
+    }
+
+    private function testGetLastVisitsParsed($format, $expectedResponse)
+    {
         $count = 1;
         $this->requestOptions
             ->setFormat($format)
