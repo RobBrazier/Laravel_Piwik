@@ -169,3 +169,4 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/linux,macos,windows,composer,phpstorm+all
+.phpunit.result.cache
