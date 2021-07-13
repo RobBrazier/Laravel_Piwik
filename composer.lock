@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "46348c2a969c0269fcac0ef2799eb5ef",
+    "content-hash": "3947853812c0ae476b6f24f63b8c9892",
     "packages": [
         {
             "name": "brick/math",
@@ -1091,25 +1091,24 @@
         },
         {
             "name": "lightools/xml",
-            "version": "v1.0.2",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lightools/xml.git",
-                "reference": "b4269bab9645eddc6731970f31b8e4aec30c57c3"
+                "reference": "ecb30eebb6a37909709eab9c2374ed35d0773dec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lightools/xml/zipball/b4269bab9645eddc6731970f31b8e4aec30c57c3",
-                "reference": "b4269bab9645eddc6731970f31b8e4aec30c57c3",
+                "url": "https://api.github.com/repos/lightools/xml/zipball/ecb30eebb6a37909709eab9c2374ed35d0773dec",
+                "reference": "ecb30eebb6a37909709eab9c2374ed35d0773dec",
                 "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
-                "php": ">=5.4"
+                "php": ">=7.1"
             },
             "require-dev": {
-                "nette/tester": "1.*",
-                "php": ">=5.5"
+                "nette/tester": "1.*"
             },
             "type": "library",
             "autoload": {
@@ -1126,7 +1125,7 @@
                 "issues": "https://github.com/lightools/xml/issues",
                 "source": "https://github.com/lightools/xml/tree/master"
             },
-            "time": "2017-02-05T11:52:42+00:00"
+            "time": "2017-02-05T12:40:06+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -7510,7 +7509,8 @@
         "php": ">=7.3"
     },
     "platform-dev": {
-        "ext-json": "*"
+        "ext-json": "*",
+        "ext-simplexml": "*"
     },
     "plugin-api-version": "2.1.0"
 }

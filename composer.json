@@ -12,7 +12,7 @@
     "require": {
         "php": ">=7.3",
         "guzzlehttp/guzzle": "~6.2 | ^7.0.1",
-        "lightools/xml": "^1.0",
+        "lightools/xml": "^2.0",
         "illuminate/support": ">=5.2 | <= 5.5"
     },
     "require-dev": {
@@ -20,7 +20,12 @@
         "phpunit/phpunit": "^9.5",
         "phpunit/phpcov": "^8.2",
         "phpspec/prophecy": "^1.13",
-        "ext-json": "*"
+        "ext-json": "*",
+        "ext-simplexml": "*"
+    },
+    "suggest": {
+        "ext-json": "Needed to support JSON formatting",
+        "ext-simplexml": "Needed to support XML formatting"
     },
     "scripts": {
         "test": "phpunit",
