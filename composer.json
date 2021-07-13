@@ -11,9 +11,8 @@
     ],
     "require": {
         "php": ">=7.3",
-        "guzzlehttp/guzzle": "~6.2 | ^7.0.1",
-        "lightools/xml": "^2.0",
-        "illuminate/support": ">=5.2 | <= 5.5"
+        "guzzlehttp/guzzle": "^7.3",
+        "illuminate/support": "^8.50"
     },
     "require-dev": {
         "orchestra/testbench": "^6.19",

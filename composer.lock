@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3947853812c0ae476b6f24f63b8c9892",
+    "content-hash": "8e6b5c88ea73b21ea225ca51eff07bdb",
     "packages": [
         {
             "name": "brick/math",
@@ -1088,44 +1088,6 @@
                 }
             ],
             "time": "2021-01-18T20:58:21+00:00"
-        },
-        {
-            "name": "lightools/xml",
-            "version": "v2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/lightools/xml.git",
-                "reference": "ecb30eebb6a37909709eab9c2374ed35d0773dec"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/lightools/xml/zipball/ecb30eebb6a37909709eab9c2374ed35d0773dec",
-                "reference": "ecb30eebb6a37909709eab9c2374ed35d0773dec",
-                "shasum": ""
-            },
-            "require": {
-                "ext-dom": "*",
-                "php": ">=7.1"
-            },
-            "require-dev": {
-                "nette/tester": "1.*"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Simple and safe parsing of XML and HTML sources.",
-            "support": {
-                "issues": "https://github.com/lightools/xml/issues",
-                "source": "https://github.com/lightools/xml/tree/master"
-            },
-            "time": "2017-02-05T12:40:06+00:00"
         },
         {
             "name": "monolog/monolog",

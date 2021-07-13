@@ -219,8 +219,8 @@ class SitesManagerModule extends Module
      */
     public function addSite($siteName, $urls = [], $arguments = [], $format = null)
     {
-        $arguments = Arr::add($arguments, 'siteName', $siteName);
-        $arguments = Arr::add($arguments, 'urls', $urls);
+        $arguments += ['siteName' => $siteName];
+        $arguments += ['urls' => $urls];
 
         $options = $this->getOptions($format)
             ->usePeriod(false)
