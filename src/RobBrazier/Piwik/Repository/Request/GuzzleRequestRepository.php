@@ -3,7 +3,6 @@
 namespace RobBrazier\Piwik\Repository\Request;
 
 use GuzzleHttp\Client;
-use Lightools\Xml\XmlLoader;
 use RobBrazier\Piwik\Config\Option;
 use RobBrazier\Piwik\Repository\RequestRepository;
 use RobBrazier\Piwik\Request\RequestOptions;
