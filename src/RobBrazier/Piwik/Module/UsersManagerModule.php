@@ -10,6 +10,35 @@ namespace RobBrazier\Piwik\Module;
  */
 class UsersManagerModule extends Module
 {
+	/**
+     * Gets the user's Authentication Token for Matomo V4
+     *
+     * @param string $userLogin user login
+     * @param string $password user password
+     * @param string $description description of the token, e.g. its usage
+     * @param string $expireDate expire date of the token default: null
+     * @param int $expireHours expire hours of the token default: 0
+     * @param null $format override format (defaults to one specified in config file)
+     *
+     * @return mixed
+     */
+    public function createAppSpecificTokenAuth($userLogin, $password, $description, $expireDate = '', $expireHours = 0, $format = null)
+    {
+        $arguments = [
+            'userLogin' => $userLogin,
+            'passwordConfirmation' => $password,
+            'description' => $description,
+            'expireDate' => $expireDate,
+            'expireHours' => $expireHours
+        ];
+        $options = $this->getOptions($format)
+            ->useSiteId(false)
+            ->usePeriod(false)
+            ->setArguments($arguments);
+
+        return $this->request->send($options);
+    }
+	
     /**
      * Gets the user's Authentication Token
      *
