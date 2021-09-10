@@ -1,4 +1,4 @@
-# Laravel-Piwik v4.0.0
+# Laravel-Piwik v4.1.0
 
 [![Semaphore CI](https://robbrazier.semaphoreci.com/badges/Laravel_Piwik.svg)](https://robbrazier.semaphoreci.com/projects/Laravel_Piwik)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/6e05c91a199a4ffbb2723cec35e57019)](https://www.codacy.com/gh/RobBrazier/Laravel_Piwik/dashboard)
@@ -20,7 +20,7 @@ Add `RobBrazier/Piwik` to `composer.json`:
 ```json
 {
     "require": {
-        "robbrazier/piwik": "~4.0"
+        "robbrazier/piwik": "~4.1"
     }
 }
 ```
