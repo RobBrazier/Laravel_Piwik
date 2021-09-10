@@ -149,6 +149,16 @@
                     mixed
                 </div>
                 <div class="col-md-8 type">
+                    <a href="#method_createAppSpecificTokenAuth">createAppSpecificTokenAuth</a>(string $userLogin, string $password, string $description, string $expireDate = &#039;&#039;, int $expireHours = 0, null $format = null)
+        
+                                            <p>Gets the user's Authentication Token for Matomo V4</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_getTokenAuth">getTokenAuth</a>(string $userLogin, string $md5Password, string $format = null)
         
                                             <p>Gets the user's Authentication Token</p>                </div>
@@ -250,8 +260,73 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_createAppSpecificTokenAuth">
+        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/mastersrc/RobBrazier/Piwik/Module/UsersManagerModulephp#L25">line 25</a></div>
+        <code>                    mixed
+    <strong>createAppSpecificTokenAuth</strong>(string $userLogin, string $password, string $description, string $expireDate = &#039;&#039;, int $expireHours = 0, null $format = null)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Gets the user's Authentication Token for Matomo V4</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$userLogin</td>
+                <td>user login</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$password</td>
+                <td>user password</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$description</td>
+                <td>description of the token, e.g. its usage</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$expireDate</td>
+                <td>expire date of the token default: null</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$expireHours</td>
+                <td>expire hours of the token default: 0</td>
+            </tr>
+                    <tr>
+                <td>null</td>
+                <td>$format</td>
+                <td>override format (defaults to one specified in config file)</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_getTokenAuth">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/mastersrc/RobBrazier/Piwik/Module/UsersManagerModulephp#L22">line 22</a></div>
+        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/mastersrc/RobBrazier/Piwik/Module/UsersManagerModulephp#L51">line 51</a></div>
         <code>                    mixed
     <strong>getTokenAuth</strong>(string $userLogin, string $md5Password, string $format = null)
         </code>
@@ -301,7 +376,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setUserAccess">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/mastersrc/RobBrazier/Piwik/Module/UsersManagerModulephp#L44">line 44</a></div>
+        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/mastersrc/RobBrazier/Piwik/Module/UsersManagerModulephp#L73">line 73</a></div>
         <code>                    
     <strong>setUserAccess</strong>(string $userLogin, string $access, array $idSites, string $format = null)
         </code>
@@ -347,7 +422,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_addUser">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/mastersrc/RobBrazier/Piwik/Module/UsersManagerModulephp#L72">line 72</a></div>
+        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/mastersrc/RobBrazier/Piwik/Module/UsersManagerModulephp#L101">line 101</a></div>
         <code>                    
     <strong>addUser</strong>(string $userLogin, string $password, string $email, string $alias = null, string $initialIdSite = null, string $format = null)
         </code>
