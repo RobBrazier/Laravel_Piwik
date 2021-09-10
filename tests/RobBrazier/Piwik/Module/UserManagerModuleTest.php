@@ -141,4 +141,27 @@ class UsersManagerModuleTest extends TestCase
         $response = $this->usersManager->addUser($userLogin, $password, $email, null, $initialIdSite);
         $this->assertEquals($this->expectedResponse, $response);
     }
+
+    public function testCreateAppSpecificTokenAuth()
+    {
+        $userLogin = 'user';
+        $password = 'password';
+        $description = 'description';
+        $expireDate = '2020-01-01';
+        $expireHours = 0;
+        $this->requestOptions
+            ->useSiteId(false)
+            ->usePeriod(false)
+            ->setArguments([
+                'userLogin' => $userLogin,
+                'passwordConfirmation' => $password,
+                'description' => $description,
+                'expireDate' => $expireDate,
+                'expireHours' => $expireHours
+            ])
+            ->setMethod('UsersManager.createAppSpecificTokenAuth');
+        $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
+        $response = $this->usersManager->createAppSpecificTokenAuth($userLogin, $password, $description, $expireDate, $expireHours);
+        $this->assertEquals($this->expectedResponse, $response);
+    }
 }
