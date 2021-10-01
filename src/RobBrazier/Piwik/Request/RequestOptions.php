@@ -5,14 +5,15 @@ namespace RobBrazier\Piwik\Request;
 use RobBrazier\Piwik\Config\Option;
 use RobBrazier\Piwik\Query\UrlQueryBuilder;
 use RobBrazier\Piwik\Repository\ConfigRepository;
+use RobBrazier\Piwik\Traits\ArrayAccessTrait;
 use RobBrazier\Piwik\Traits\DateTrait;
 use RobBrazier\Piwik\Traits\FormatTrait;
-use Illuminate\Support\Arr;
 
 class RequestOptions
 {
     use DateTrait;
     use FormatTrait;
+    use ArrayAccessTrait;
 
     /**
      * @var string
@@ -65,7 +66,7 @@ class RequestOptions
      *
      * @return RequestOptions
      */
-    public function setMethod($method)
+    public function setMethod(string $method): RequestOptions
     {
         $this->method = $method;
 
@@ -77,7 +78,7 @@ class RequestOptions
      *
      * @return RequestOptions
      */
-    public function usePeriod($period)
+    public function usePeriod(bool $period): RequestOptions
     {
         $this->usePeriod = $period;
 
@@ -85,11 +86,11 @@ class RequestOptions
     }
 
     /**
-     * @param int $siteId
+     * @param int|string|null $siteId
      *
      * @return RequestOptions
      */
-    public function setSiteId($siteId)
+    public function setSiteId($siteId): RequestOptions
     {
         $this->siteId = $siteId;
         $this->useSiteId(false);
@@ -102,7 +103,7 @@ class RequestOptions
      *
      * @return RequestOptions
      */
-    public function useSiteId($siteId)
+    public function useSiteId(bool $siteId): RequestOptions
     {
         $this->useSiteId = $siteId;
 
@@ -114,7 +115,7 @@ class RequestOptions
      *
      * @return string
      */
-    private function getSiteId($config)
+    private function getSiteId(ConfigRepository $config): ?string
     {
         $result = $this->siteId;
         if ($this->useSiteId) {
@@ -125,13 +126,13 @@ class RequestOptions
     }
 
     /**
-     * @param string $format
+     * @param string|null $format
      *
      * @return RequestOptions
      */
-    public function setFormat($format)
+    public function setFormat(?string $format): RequestOptions
     {
-        if (!is_null($format)) {
+        if ($format !== null) {
             $this->format = $format;
             $this->useFormat(false);
         }
@@ -144,7 +145,7 @@ class RequestOptions
      *
      * @return RequestOptions
      */
-    public function useFormat($format)
+    public function useFormat(bool $format): RequestOptions
     {
         $this->useFormat = $format;
 
@@ -156,7 +157,7 @@ class RequestOptions
      *
      * @return string
      */
-    public function getFormat($config)
+    public function getFormat(ConfigRepository $config): ?string
     {
         $result = $this->format;
         if ($this->useFormat) {
@@ -171,7 +172,7 @@ class RequestOptions
      *
      * @return RequestOptions
      */
-    public function useTokenAuth($tokenAuth)
+    public function useTokenAuth(bool $tokenAuth): RequestOptions
     {
         $this->tokenAuth = $tokenAuth;
 
@@ -183,7 +184,7 @@ class RequestOptions
      *
      * @return string
      */
-    private function getTokenAuth($config)
+    private function getTokenAuth(ConfigRepository $config): ?string
     {
         $result = null;
         if ($this->tokenAuth) {
@@ -198,9 +199,9 @@ class RequestOptions
      *
      * @return RequestOptions
      */
-    public function setArguments($arguments)
+    public function setArguments($arguments): RequestOptions
     {
-        if (is_null($arguments)) {
+        if ($arguments === null) {
             $arguments = [];
         }
         $this->arguments = $arguments;
@@ -213,10 +214,10 @@ class RequestOptions
      *
      * @return array
      */
-    public function flattenArray($array)
+    public function flattenArray(array $array): array
     {
         $result = [];
-        foreach (Arr::dot($array) as $key => $value) {
+        foreach ($this->flattenArrayByDot($array) as $key => $value) {
             $splitKey = explode('.', $key);
             $newKey = $this->createArrayKey($splitKey);
             $result = array_merge($result, [$newKey => $value]);
@@ -225,7 +226,7 @@ class RequestOptions
         return $result;
     }
 
-    private function createArrayKey($keyParts)
+    private function createArrayKey($keyParts): string
     {
         $result = '';
         $i = 0;
@@ -246,7 +247,7 @@ class RequestOptions
      *
      * @return string
      */
-    public function build($config)
+    public function build(ConfigRepository $config): string
     {
         $builder = new UrlQueryBuilder();
         $builder->setModule('API');
@@ -257,7 +258,7 @@ class RequestOptions
         }
         $builder->setSiteId($this->getSiteId($config));
         $formatOverride = $this->getFormat($config);
-        if (!is_null($formatOverride)) {
+        if ($formatOverride !== null) {
             $builder->setFormat($this->validateFormat($formatOverride));
         }
         $builder->setTokenAuth($this->getTokenAuth($config));

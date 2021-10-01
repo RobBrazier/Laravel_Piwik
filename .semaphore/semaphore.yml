@@ -22,7 +22,7 @@ blocks:
       - name: Install Dependencies
         matrix:
           - env_var: PHP_VERSION
-            values: [ "7.2", "7.3", "7.4" ]
+            values: [ "7.3", "7.4", "8.0" ]
         commands:
           - cache restore composer-semaphore-$COMPOSER_HASH-$PHP_VERSION
           - composer install
@@ -34,7 +34,7 @@ blocks:
         - name: Run Unit Tests
           matrix:
             - env_var: PHP_VERSION
-              values: [ "7.2", "7.3", "7.4" ]
+              values: [ "7.3", "7.4", "8.0" ]
           commands:
             - cache restore composer-semaphore-$COMPOSER_HASH-$PHP_VERSION
             - composer run-script test
@@ -43,26 +43,23 @@ blocks:
     task:
       env_vars:
         - name: PHP_VERSION
-          value: "7.3"
+          value: "7.4"
       secrets:
-        - name: codeclimate-reporter-id
+        - name: codacy-laravel-piwik
       jobs:
-        - name: CodeClimate Test Coverage
+        - name: Codacy Test Coverage
           commands:
-            - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-            - chmod +x ./cc-test-reporter
-            - ./cc-test-reporter before-build
             - cache restore composer-semaphore-$COMPOSER_HASH-$PHP_VERSION
             - composer run-script coverage
             - exitCode=$?
             - cp reports/coverage.xml clover.xml
-            - ./cc-test-reporter after-build --exit-code $exitCode --coverage-input-type clover
+            - bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r clover.xml
 
   - name: "Integration Tests"
     task:
       env_vars:
         - name: PHP_VERSION
-          value: "7.3"
+          value: "7.4"
       jobs:
         - name: Run Laravel Integration Test
           matrix:

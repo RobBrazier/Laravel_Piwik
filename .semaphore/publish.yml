@@ -18,7 +18,7 @@ blocks:
         - name: Create Release
           commands:
             - checkout
-            - sem-version node 10.13.0
+            - sem-version node 12
             - bash .semaphore/release
   - name: Build Docs
     task:
@@ -53,7 +53,7 @@ blocks:
           - chmod 0600 ~/.keys/*
           - ssh-add ~/.keys/*  
           - sudo apt install tree -y
-          - sem-version node 10.13.0
+          - sem-version node 12
       jobs:
         - name: Publish to GitHub
           commands:

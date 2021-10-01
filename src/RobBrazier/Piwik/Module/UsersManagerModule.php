@@ -2,7 +2,6 @@
 
 namespace RobBrazier\Piwik\Module;
 
-use Illuminate\Support\Arr;
 
 /**
  * Class UsersManagerModule.
@@ -11,9 +10,38 @@ use Illuminate\Support\Arr;
  */
 class UsersManagerModule extends Module
 {
+	/**
+     * Gets the user's Authentication Token for Matomo V4
+     *
+     * @param string $userLogin user login
+     * @param string $password user password
+     * @param string $description description of the token, e.g. its usage
+     * @param string $expireDate expire date of the token default: null
+     * @param int $expireHours expire hours of the token default: 0
+     * @param null $format override format (defaults to one specified in config file)
+     *
+     * @return mixed
+     */
+    public function createAppSpecificTokenAuth($userLogin, $password, $description, $expireDate = '', $expireHours = 0, $format = null)
+    {
+        $arguments = [
+            'userLogin' => $userLogin,
+            'passwordConfirmation' => $password,
+            'description' => $description,
+            'expireDate' => $expireDate,
+            'expireHours' => $expireHours
+        ];
+        $options = $this->getOptions($format)
+            ->useSiteId(false)
+            ->usePeriod(false)
+            ->setArguments($arguments);
+
+        return $this->request->send($options);
+    }
+	
     /**
      * Gets the user's Authentication Token
-     * 
+     *
      * @param string $userLogin   user login
      * @param string $md5Password md5 hashed password
      * @param string $format      override format (defaults to one specified in config file)
@@ -36,7 +64,7 @@ class UsersManagerModule extends Module
 
     /**
      * Assign an access role to a specified user for one or many site ids
-     * 
+     *
      * @param string $userLogin  user login
      * @param string $access     user access role ({@see https://matomo.org/docs/manage-users/#advanced-user-management})
      * @param array $idSites     site ids to give the user access to
@@ -62,7 +90,7 @@ class UsersManagerModule extends Module
 
     /**
      * Create a user
-      * 
+      *
      * @param string $userLogin     user login
      * @param string $password      user password
      * @param string $email         user email
@@ -79,10 +107,10 @@ class UsersManagerModule extends Module
                 'email' => $email,
             ];
             if (isset($alias)) {
-                $arguments = Arr::add($arguments, 'alias', $alias);
+                $arguments += ['alias' => $alias];
             }
             if (isset($initialIdSite)) {
-                $arguments = Arr::add($arguments, 'initialIdSite', $initialIdSite);
+                $arguments += ['initialIdSite' => $initialIdSite];
             }
             $options = $this->getOptions($format)
                 ->useSiteId(false)

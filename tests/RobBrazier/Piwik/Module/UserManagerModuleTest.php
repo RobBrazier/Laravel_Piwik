@@ -31,7 +31,7 @@ class UsersManagerModuleTest extends TestCase
      */
     private $expectedResponse;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->prophet = new Prophet();
         $this->request = $this->prophet->prophesize(RequestRepository::class);
@@ -139,6 +139,29 @@ class UsersManagerModuleTest extends TestCase
             ->setMethod('UsersManager.addUser');
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->usersManager->addUser($userLogin, $password, $email, null, $initialIdSite);
+        $this->assertEquals($this->expectedResponse, $response);
+    }
+
+    public function testCreateAppSpecificTokenAuth()
+    {
+        $userLogin = 'user';
+        $password = 'password';
+        $description = 'description';
+        $expireDate = '2020-01-01';
+        $expireHours = 0;
+        $this->requestOptions
+            ->useSiteId(false)
+            ->usePeriod(false)
+            ->setArguments([
+                'userLogin' => $userLogin,
+                'passwordConfirmation' => $password,
+                'description' => $description,
+                'expireDate' => $expireDate,
+                'expireHours' => $expireHours
+            ])
+            ->setMethod('UsersManager.createAppSpecificTokenAuth');
+        $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
+        $response = $this->usersManager->createAppSpecificTokenAuth($userLogin, $password, $description, $expireDate, $expireHours);
         $this->assertEquals($this->expectedResponse, $response);
     }
 }

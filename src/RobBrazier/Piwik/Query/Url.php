@@ -3,10 +3,12 @@
 namespace RobBrazier\Piwik\Query;
 
 use RobBrazier\Piwik\Exception\PiwikException;
-use Illuminate\Support\Arr;
+use RobBrazier\Piwik\Traits\ArrayAccessTrait;
 
 class Url
 {
+    use ArrayAccessTrait;
+
     /**
      * @var string
      */
@@ -53,7 +55,7 @@ class Url
      */
     private function getPart($parts, $part, $default = '')
     {
-        return Arr::get($parts, $part, $default);
+        return $this->safeGetArrayEntry($parts, $part, $default);
     }
 
     /**

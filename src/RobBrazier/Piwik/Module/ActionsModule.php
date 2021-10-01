@@ -2,7 +2,6 @@
 
 namespace RobBrazier\Piwik\Module;
 
-use Illuminate\Support\Arr;
 
 /**
  * Class ActionsModule.
@@ -96,7 +95,7 @@ class ActionsModule extends Module
      */
     public function getPageUrl($pageUrl, $arguments = [], $format = null)
     {
-        $arguments = Arr::add($arguments, 'pageUrl', $pageUrl);
+        $arguments += ['pageUrl' => $pageUrl];
         $options = $this->getOptions($format)->setArguments($arguments);
 
         return $this->request->send($options);
@@ -150,7 +149,7 @@ class ActionsModule extends Module
      */
     public function getPageTitle($pageName, $arguments = [], $format = null)
     {
-        $arguments = Arr::add($arguments, 'pageName', $pageName);
+        $arguments += ['pageName' => $pageName];
         $options = $this->getOptions($format)->setArguments($arguments);
 
         return $this->request->send($options);
@@ -178,7 +177,7 @@ class ActionsModule extends Module
      */
     public function getDownload($downloadUrl, $arguments = [], $format = null)
     {
-        $arguments = Arr::add($arguments, 'downloadUrl', $downloadUrl);
+        $arguments += ['downloadUrl' => $downloadUrl];
         $options = $this->getOptions($format)->setArguments($arguments);
 
         return $this->request->send($options);
@@ -206,7 +205,7 @@ class ActionsModule extends Module
      */
     public function getOutlink($outlinkUrl, $arguments = [], $format = null)
     {
-        $arguments = Arr::add($arguments, 'outlinkUrl', $outlinkUrl);
+        $arguments += ['outlinkUrl' => $outlinkUrl];
         $options = $this->getOptions($format)->setArguments($arguments);
 
         return $this->request->send($options);

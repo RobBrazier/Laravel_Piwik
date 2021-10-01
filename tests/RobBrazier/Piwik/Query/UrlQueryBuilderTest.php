@@ -14,7 +14,7 @@ class UrlQueryBuilderTest extends TestCase
 
     public function testBuild()
     {
-        $date = QueryDates::getInstance()->get('yesterday');
+        $date = (new QueryDates())->get('yesterday');
         $builder = new UrlQueryBuilder();
         $builder->setModule(self::MODULE);
         $builder->setMethod(self::METHOD);
