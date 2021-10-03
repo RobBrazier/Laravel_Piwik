@@ -1,5 +1,6 @@
 site_name: Laravel_Piwik
 site_description: An Interface to Piwik's Analytics API for Laravel
+site_url: https://docs.robbrazier.com/laravel-piwik/
 theme: 
   name: material
   custom_dir: docs/theme/overrides
