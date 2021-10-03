@@ -23,14 +23,13 @@ blocks:
   - name: Build Docs
     task:
       jobs:
-        - name: Build Daux
+        - name: Build MkDocs
           commands:
             - checkout
-            - CACHE_KEY="daux-$SEMAPHORE_GIT_SHA"
+            - CACHE_KEY="mkdocs-$SEMAPHORE_GIT_SHA"
             - if cache has_key $CACHE_KEY; then exit 0; fi
-            - composer global require daux/daux.io
-            - phpbrew -d ext install iconv
-            - daux generate --format html --source docs --destination build
+            - pip3 install -r docs/requirements.txt
+            - python3 -m mkdocs build
             - cache store $CACHE_KEY build/
         - name: Build Doctum
           commands:
