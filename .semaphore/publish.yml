@@ -51,7 +51,7 @@ blocks:
         - name: Deploy
           commands:
             - checkout
-            - cache restore daux-$SEMAPHORE_GIT_SHA
+            - cache restore mkdocs-$SEMAPHORE_GIT_SHA
             - cache restore doctum-$SEMAPHORE_GIT_SHA
             - bash .semaphore/deploy_docs.sh
   
