@@ -23,14 +23,13 @@ blocks:
   - name: Build Docs
     task:
       jobs:
-        - name: Build Daux
+        - name: Build MkDocs
           commands:
             - checkout
-            - CACHE_KEY="daux-$SEMAPHORE_GIT_SHA"
+            - CACHE_KEY="mkdocs-$SEMAPHORE_GIT_SHA"
             - if cache has_key $CACHE_KEY; then exit 0; fi
-            - composer global require daux/daux.io
-            - phpbrew -d ext install iconv
-            - daux generate --format html --source docs --destination build
+            - pip install -r docs/requirements.txt
+            - mkdocs build
             - cache store $CACHE_KEY build/
         - name: Build Doctum
           commands:
@@ -44,23 +43,24 @@ blocks:
             - mv ../docs/api ./build/api
             - cache store $CACHE_KEY build/api/
   
-  - name: Publish to GitHub
+  - name: Publish Docs
     task:
       secrets:
-        - name: gh-sshkey
-      prologue:
-        commands:
-          - chmod 0600 ~/.keys/*
-          - ssh-add ~/.keys/*  
-          - sudo apt install tree -y
-          - sem-version node 12
+        - name: laravel-piwik-bunnycdn-ftp
       jobs:
-        - name: Publish to GitHub
+        - name: Deploy
           commands:
             - checkout
             - cache restore daux-$SEMAPHORE_GIT_SHA
             - cache restore doctum-$SEMAPHORE_GIT_SHA
-            - git config --global user.name "Semaphore Runner"
-            - git config --global user.email "$(whoami)@$(hostname).dev"
-            - tree build/api -H '.' -T "Laravel-Piwik API Docs" -L 1 --noreport -I index.html --charset utf-8 > build/api/index.html
-            - npx gh-pages@3.0.0 -d build -m "[skip ci]  Updates"
+            - bash .semaphore/deploy_docs.sh
+  
+  - name: "Clear Cache"
+    task:
+      secrets:
+        - name: bunnycdn-api-key
+      jobs:
+      - name: Clear Cache
+        commands:
+          - curl -X POST -H 'Content-Length:0' -H "AccessKey:$BUNNY_API_KEY" "https://bunnycdn.com/api/pullzone/571491/purgeCache" --verbose
+          - curl -X POST -H 'Content-Length:0' -H "AccessKey:$BUNNY_API_KEY" "https://bunnycdn.com/api/pullzone/571493/purgeCache" --verbose

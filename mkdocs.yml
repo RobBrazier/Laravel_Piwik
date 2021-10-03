@@ -39,3 +39,4 @@ plugins:
   - redirects:
       redirect_maps:
         'old.md': 'https://laravel-piwik.readthedocs.io/en/2.1.3/'
+site_dir: build

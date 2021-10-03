@@ -75,3 +75,4 @@ promotions:
       - result: passed
         branch:
             - master
+            - docs
