@@ -1,9 +1,11 @@
+# Laravel 4
+
 ## Installation
 
 Add RobBrazier/Piwik to composer.json:
 
 ```bash
-composer require "robbrazier/piwik=~2.1"
+composer require "robbrazier/piwik=~2.0"
 ```
 
 ## Setup Service Provider
@@ -12,15 +14,15 @@ composer require "robbrazier/piwik=~2.1"
 // app/config/app.php
 'providers' = array(
     //...
-    RobBrazier\Piwik\PiwikServiceProvider::class,
+    'RobBrazier\Piwik\PiwikServiceProvider',
     //...
-);
+),
 
 'aliases' = array(
     //...
-    'Piwik' => RobBrazier\Piwik\Facades\Piwik::class,
+    'Piwik' => 'RobBrazier\Piwik\Facades\Piwik',
     //...
-);
+),
 ```
 
 ## Publish Configuration File
@@ -28,5 +30,6 @@ composer require "robbrazier/piwik=~2.1"
 This will create a `piwik.php` config file in `config/`
 
 ```bash
-php artisan vendor:publish --provider="RobBrazier\Piwik\PiwikServiceProvider" --tag="config"
+php artisan vendor:publish --provider="RobBrazier\Piwik\PiwikServiceProvider"
 ```
+
