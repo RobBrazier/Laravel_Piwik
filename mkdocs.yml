@@ -1,0 +1,41 @@
+site_name: Laravel_Piwik
+site_description: An Interface to Piwik's Analytics API for Laravel
+theme: 
+  name: material
+  custom_dir: docs/theme/overrides
+  features:
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+extra:
+  analytics:
+    provider: fathom
+    # domain: minnow.robbrazier.com
+    key: IIYGRYKU
+  social:
+    - icon: fontawesome/solid/globe
+      link: https://robbrazier.com
+      name: robbrazier.com
+extra_css:
+  - theme/css/prism.css
+extra_javascript:
+  - theme/js/prism.js
+repo_url: https://github.com/RobBrazier/Laravel_Piwik
+repo_name: RobBrazier/Laravel_Piwik
+edit_uri: tree/master/docs
+use_directory_urls: false
+plugins:
+  - redirects:
+      redirect_maps:
+        'old.md': 'https://laravel-piwik.readthedocs.io/en/2.1.3/'

@@ -44,8 +44,8 @@ $actionsModule->getPageTitle($pageName);
 
 #### Parameters
 
-* arguments \([optional](actionsmodule.md#module-usage)\)
-* format \([optional](actionsmodule.md#module-usage)\)
+* arguments \([optional](#module-usage)\)
+* format \([optional](#module-usage)\)
 
 #### Verbose Example
 
@@ -73,8 +73,8 @@ $actions = Piwik::getActions()->get($arguments, $format);
 
 #### Parameters
 
-* arguments \([optional](actionsmodule.md#module-usage)\)
-* format \([optional](actionsmodule.md#module-usage)\)
+* arguments \([optional](#module-usage)\)
+* format \([optional](#module-usage)\)
 
 #### Verbose Example
 
@@ -105,8 +105,8 @@ $pageUrls = Piwik::getActions()->getPageUrls($arguments, $format);
 
 #### Parameters
 
-* arguments \([optional](actionsmodule.md#module-usage)\)
-* format \([optional](actionsmodule.md#module-usage)\)
+* arguments \([optional](#module-usage)\)
+* format \([optional](#module-usage)\)
 
 #### Verbose Example
 
@@ -135,8 +135,8 @@ $pageUrls = Piwik::getActions()->getPageUrlsFollowingSiteSearch($arguments, $for
 
 #### Parameters
 
-* arguments \([optional](actionsmodule.md#module-usage)\)
-* format \([optional](actionsmodule.md#module-usage)\)
+* arguments \([optional](#module-usage)\)
+* format \([optional](#module-usage)\)
 
 #### Verbose Example
 
@@ -165,8 +165,8 @@ $pageTitles = Piwik::getActions()->getPageTitlesFollowingSiteSearch($arguments, 
 
 #### Parameters
 
-* arguments \([optional](actionsmodule.md#module-usage)\)
-* format \([optional](actionsmodule.md#module-usage)\)
+* arguments \([optional](#module-usage)\)
+* format \([optional](#module-usage)\)
 
 #### Verbose Example
 
@@ -196,8 +196,8 @@ $entryPageUrls = Piwik::getActions()->getEntryPageUrls($arguments, $format);
 
 #### Parameters
 
-* arguments \([optional](actionsmodule.md#module-usage)\)
-* format \([optional](actionsmodule.md#module-usage)\)
+* arguments \([optional](#module-usage)\)
+* format \([optional](#module-usage)\)
 
 #### Verbose Example
 
@@ -228,8 +228,8 @@ $exitPageUrls = Piwik::getActions()->getExitPageUrls($arguments, $format);
 #### Parameters
 
 * pageUrl \(**required**\)
-* arguments \([optional](actionsmodule.md#module-usage)\)
-* format \([optional](actionsmodule.md#module-usage)\)
+* arguments \([optional](#module-usage)\)
+* format \([optional](#module-usage)\)
 
 #### Verbose Example
 
@@ -258,8 +258,8 @@ $pageUrl = Piwik::getActions()->getPageUrl($pageUrl, $arguments, $format);
 
 #### Parameters
 
-* arguments \([optional](actionsmodule.md#module-usage)\)
-* format \([optional](actionsmodule.md#module-usage)\)
+* arguments \([optional](#module-usage)\)
+* format \([optional](#module-usage)\)
 
 #### Verbose Example
 
@@ -289,8 +289,8 @@ $pageTitles = Piwik::getActions()->getPageTitles($arguments, $format);
 
 #### Parameters
 
-* arguments \([optional](actionsmodule.md#module-usage)\)
-* format \([optional](actionsmodule.md#module-usage)\)
+* arguments \([optional](#module-usage)\)
+* format \([optional](#module-usage)\)
 
 #### Verbose Example
 
@@ -320,8 +320,8 @@ $entryPageTitles = Piwik::getActions()->getEntryPageTitles($arguments, $format);
 
 #### Parameters
 
-* arguments \([optional](actionsmodule.md#module-usage)\)
-* format \([optional](actionsmodule.md#module-usage)\)
+* arguments \([optional](#module-usage)\)
+* format \([optional](#module-usage)\)
 
 #### Verbose Example
 
@@ -352,8 +352,8 @@ $exitPageTitles = Piwik::getActions()->getExitPageTitles($arguments, $format);
 #### Parameters
 
 * pageName \(**required**\)
-* arguments \([optional](actionsmodule.md#module-usage)\)
-* format \([optional](actionsmodule.md#module-usage)\)
+* arguments \([optional](#module-usage)\)
+* format \([optional](#module-usage)\)
 
 #### Verbose Example
 
@@ -382,8 +382,8 @@ $pageTitle = Piwik::getActions()->getPageTitle($pageName, $arguments, $format);
 
 #### Parameters
 
-* arguments \([optional](actionsmodule.md#module-usage)\)
-* format \([optional](actionsmodule.md#module-usage)\)
+* arguments \([optional](#module-usage)\)
+* format \([optional](#module-usage)\)
 
 #### Verbose Example
 
@@ -414,8 +414,8 @@ $downloads = Piwik::getActions()->getDownloads($arguments, $format);
 #### Parameters
 
 * downloadUrl \(**required**\)
-* arguments \([optional](actionsmodule.md#module-usage)\)
-* format \([optional](actionsmodule.md#module-usage)\)
+* arguments \([optional](#module-usage)\)
+* format \([optional](#module-usage)\)
 
 #### Verbose Example
 
@@ -444,8 +444,8 @@ $download = Piwik::getActions()->getDownload($downloadUrl, $arguments, $format);
 
 #### Parameters
 
-* arguments \([optional](actionsmodule.md#module-usage)\)
-* format \([optional](actionsmodule.md#module-usage)\)
+* arguments \([optional](#module-usage)\)
+* format \([optional](#module-usage)\)
 
 #### Verbose Example
 
@@ -476,8 +476,8 @@ $outlinks = Piwik::getActions()->getOutlinks($arguments, $format);
 #### Parameters
 
 * outlinkUrl \(**required**\)
-* arguments \([optional](actionsmodule.md#module-usage)\)
-* format \([optional](actionsmodule.md#module-usage)\)
+* arguments \([optional](#module-usage)\)
+* format \([optional](#module-usage)\)
 
 #### Verbose Example
 
@@ -506,8 +506,8 @@ $outlink = Piwik::getActions()->getOutlink($outlinkUrl, $arguments, $format);
 
 #### Parameters
 
-* arguments \([optional](actionsmodule.md#module-usage)\)
-* format \([optional](actionsmodule.md#module-usage)\)
+* arguments \([optional](#module-usage)\)
+* format \([optional](#module-usage)\)
 
 #### Verbose Example
 
@@ -534,8 +534,8 @@ $siteSearchKeywords = Piwik::getActions()->getSiteSearchKeywords($arguments, $fo
 
 #### Parameters
 
-* arguments \([optional](actionsmodule.md#module-usage)\)
-* format \([optional](actionsmodule.md#module-usage)\)
+* arguments \([optional](#module-usage)\)
+* format \([optional](#module-usage)\)
 
 #### Verbose Example
 
@@ -562,8 +562,8 @@ $siteSearchNoResultKeywords = Piwik::getActions()->getSiteSearchNoResultKeywords
 
 #### Parameters
 
-* arguments \([optional](actionsmodule.md#module-usage)\)
-* format \([optional](actionsmodule.md#module-usage)\)
+* arguments \([optional](#module-usage)\)
+* format \([optional](#module-usage)\)
 
 #### Verbose Example
 
