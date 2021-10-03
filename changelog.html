@@ -1,0 +1,1306 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An Interface to Piwik's Analytics API for Laravel">
+      
+      
+      
+      
+        <link rel="canonical" href="https://docs.robbrazier.com/Laravel_Piwik/changelog.html">
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.1">
+    
+    
+      
+        <title>Changelog - Laravel_Piwik</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.1c75ef36.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="theme/css/prism.css">
+    
+    
+      
+
+  
+
+
+  <!-- Determine analytics property -->
+
+  
+  
+
+
+<script src="https://minnow.robbrazier.com/script.js" data-site="IIYGRYKU" defer></script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL(".",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#changelog" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Laravel_Piwik" class="md-header__button md-logo" aria-label="Laravel_Piwik" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Laravel_Piwik
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Changelog
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/RobBrazier/Laravel_Piwik/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    RobBrazier/Laravel_Piwik
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Laravel_Piwik" class="md-nav__button md-logo" aria-label="Laravel_Piwik" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Laravel_Piwik
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/RobBrazier/Laravel_Piwik/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    RobBrazier/Laravel_Piwik
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="API_Docs.html" class="md-nav__link">
+        API Documentation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Usage.html" class="md-nav__link">
+        Usage
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Changelog
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="changelog.html" class="md-nav__link md-nav__link--active">
+        Changelog
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#410" class="md-nav__link">
+    4.1.0
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#commits" class="md-nav__link">
+    Commits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#400-2020-09-21" class="md-nav__link">
+    4.0.0 - 2020-09-21
+  </a>
+  
+    <nav class="md-nav" aria-label="4.0.0 - 2020-09-21">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#commits_1" class="md-nav__link">
+    Commits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#331-2019-10-01" class="md-nav__link">
+    3.3.1 - 2019-10-01
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3.1 - 2019-10-01">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#commits_2" class="md-nav__link">
+    Commits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#330-2019-08-24" class="md-nav__link">
+    3.3.0 - 2019-08-24
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3.0 - 2019-08-24">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#merged" class="md-nav__link">
+    Merged
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commits_3" class="md-nav__link">
+    Commits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#320-2018-07-17" class="md-nav__link">
+    3.2.0 - 2018-07-17
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2.0 - 2018-07-17">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#commits_4" class="md-nav__link">
+    Commits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="old.html" class="md-nav__link">
+        Old Documentation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Installation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Installation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Installation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="installation/laravel-4.html" class="md-nav__link">
+        Laravel 4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="installation/laravel-5%2B.html" class="md-nav__link">
+        Laravel 5 and above
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="supported-modules/index.html">Supported modules</a>
+          <label for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        </div>
+      
+      <nav class="md-nav" aria-label="Supported modules" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Supported modules
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="supported-modules/APIModule.html" class="md-nav__link">
+        APIModule
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="supported-modules/ActionsModule.html" class="md-nav__link">
+        ActionsModule
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="supported-modules/ContentsModule.html" class="md-nav__link">
+        ContentsModule
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="supported-modules/EventsModule.html" class="md-nav__link">
+        EventsModule
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="supported-modules/LiveModule.html" class="md-nav__link">
+        LiveModule
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="supported-modules/ProviderModule.html" class="md-nav__link">
+        ProviderModule
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="supported-modules/ReferrersModule.html" class="md-nav__link">
+        ReferrersModule
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="supported-modules/SEOModule.html" class="md-nav__link">
+        SEOModule
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="supported-modules/SitesManagerModule.html" class="md-nav__link">
+        SitesManagerModule
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="supported-modules/UsersManagerModule.html" class="md-nav__link">
+        UsersManagerModule
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="supported-modules/VisitorInterestModule.html" class="md-nav__link">
+        VisitorInterestModule
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="supported-modules/VisitsSummaryModule.html" class="md-nav__link">
+        VisitsSummaryModule
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#410" class="md-nav__link">
+    4.1.0
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#commits" class="md-nav__link">
+    Commits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#400-2020-09-21" class="md-nav__link">
+    4.0.0 - 2020-09-21
+  </a>
+  
+    <nav class="md-nav" aria-label="4.0.0 - 2020-09-21">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#commits_1" class="md-nav__link">
+    Commits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#331-2019-10-01" class="md-nav__link">
+    3.3.1 - 2019-10-01
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3.1 - 2019-10-01">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#commits_2" class="md-nav__link">
+    Commits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#330-2019-08-24" class="md-nav__link">
+    3.3.0 - 2019-08-24
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3.0 - 2019-08-24">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#merged" class="md-nav__link">
+    Merged
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commits_3" class="md-nav__link">
+    Commits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#320-2018-07-17" class="md-nav__link">
+    3.2.0 - 2018-07-17
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2.0 - 2018-07-17">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#commits_4" class="md-nav__link">
+    Commits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/RobBrazier/Laravel_Piwik/tree/master/docs/changelog.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="changelog">Changelog</h1>
+<p>All notable changes to this project will be documented in this file.</p>
+<p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>
+and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
+<p>Generated by <a href="https://github.com/CookPete/auto-changelog"><code>auto-changelog</code></a>.</p>
+<h2 id="410"><a href="https://github.com/RobBrazier/Laravel_Piwik/compare/4.0.0...4.1.0">4.1.0</a></h2>
+<h3 id="commits">Commits</h3>
+<ul>
+<li>Upgrade dependencies and fix linting issues <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/c99f6cb166898e0f415ffb4605213f5d93fc99d5"><code>c99f6cb</code></a></li>
+<li>
+<ul>
+<li>Added new AuthToken function for Matomos V4 api, which is allowing multiple auth tokens per user. <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/a101e276331ccaf9dd683c703f60e9d02203e05b"><code>a101e27</code></a></li>
+</ul>
+</li>
+<li>fix integration tests <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/b569cf6a7384f5254744a0599c8785e8bd1dbe92"><code>b569cf6</code></a></li>
+</ul>
+<h2 id="400-2020-09-21"><a href="https://github.com/RobBrazier/Laravel_Piwik/compare/3.3.1...4.0.0">4.0.0</a> - 2020-09-21</h2>
+<h3 id="commits_1">Commits</h3>
+<ul>
+<li>Remove checks for unsupported PHP versions (5.6, 7.0 and 7.1) <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/03b54a73cfe8aac0b902f9d8c1dfc9a29aae6c3a"><code>03b54a7</code></a></li>
+<li>Add extra to composer.json for Laravel 8 support <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/8b6b52d968aa329c2c00dbd08946ebf063bcc2ac"><code>8b6b52d</code></a></li>
+<li>Add php 7.4 checks <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/5882f187b9a7a1c2bed1012d7f8fbba6fa80bf3f"><code>5882f18</code></a></li>
+<li>Add laravel 7 and 8 CI checks <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/2a349b0345e63247924b86e998093572b6d88343"><code>2a349b0</code></a></li>
+<li>guzzle7 <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/136ce58729029f6a7d3ebb328508c9b02075e08a"><code>136ce58</code></a></li>
+</ul>
+<h2 id="331-2019-10-01"><a href="https://github.com/RobBrazier/Laravel_Piwik/compare/3.3.0...3.3.1">3.3.1</a> - 2019-10-01</h2>
+<h3 id="commits_2">Commits</h3>
+<ul>
+<li>use Illuminate\Support\Arr instead of helper methods <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/2e98e25b344394efe3dd77979572a74adb9628ec"><code>2e98e25</code></a></li>
+<li>add generated api docs index.html <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/ba4836c91c727c6a16e0edf75436915911652593"><code>ba4836c</code></a></li>
+<li>add phpdoc block to getUsersManager() in Piwik.php <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/2ea7f4546c2bbea9943fbf934ee2d1c19eb130f2"><code>2ea7f45</code></a></li>
+<li>update versions <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/e6d97cfa366d70c52f44229c8aee514d4b1748d6"><code>e6d97cf</code></a></li>
+<li>update versions in README.md <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/a4f394da6b9e7fffb02a87594c70dbe6a7eab546"><code>a4f394d</code></a></li>
+<li>fix missed array_dot -&gt; Arr::dot change <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/e952c2e7e7eafc8101fc4d640db210eac8dcaafa"><code>e952c2e</code></a></li>
+</ul>
+<h2 id="330-2019-08-24"><a href="https://github.com/RobBrazier/Laravel_Piwik/compare/3.2.0...3.3.0">3.3.0</a> - 2019-08-24</h2>
+<h3 id="merged">Merged</h3>
+<ul>
+<li>Complete Semaphore CI v2 configuration <a href="https://github.com/RobBrazier/Laravel_Piwik/pull/88"><code>#88</code></a></li>
+</ul>
+<h3 id="commits_3">Commits</h3>
+<ul>
+<li>add unit tests and phpdocs to UsersManagerModule <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/f98c8848e6e991cf3cd252108e017607cb487cab"><code>f98c884</code></a></li>
+<li>added usermanager <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/e3c116ec845d997044d54048f23cb8a35f33556c"><code>e3c116e</code></a></li>
+<li>reorder publish steps <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/b8946f58d264b01e3734012e469720b06e79d56c"><code>b8946f5</code></a></li>
+<li>add github release script <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/d9d976554d86456defc29cc323860d92bd80b62f"><code>d9d9765</code></a></li>
+<li>fix some codeclimate issues and skip gh-pages branch <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/b28a4237ddc01430421dfdcc62c4fc817f6091cb"><code>b28a423</code></a></li>
+<li>Update README.md <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/e4625ffbaba0240fe307fabfa5ba9e3c9fdc8478"><code>e4625ff</code></a></li>
+<li>Update 02_API_Docs.md <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/5d40ff1ca143b1d363eb3542c678aa2a7f7e61de"><code>5d40ff1</code></a></li>
+<li>Remove absolute urls to API Docs from docs <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/76549908783c6dfcff08437073d9ac4089bfa03b"><code>7654990</code></a></li>
+<li>skip building gh-pages branch <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/56de7b65745808de416b419a1cc00dbd4d625519"><code>56de7b6</code></a></li>
+<li>Update README.md <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/97ca225c74db7342ccaa8c389fbe65fb77dc745c"><code>97ca225</code></a></li>
+<li>add more tags to sami api docs generation <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/3ce630a6abc7e4dff5d4496159b5bc5461b7f253"><code>3ce630a</code></a></li>
+<li>Removed CI and Waffle from README <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/afc2dcb2d00724c3cdb57d0039e6c6b3ba4da704"><code>afc2dcb</code></a></li>
+<li>force sami to return successfully <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/59aaed3492da606f78257fdecec63b3789ec37fc"><code>59aaed3</code></a></li>
+<li>change composer.json <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/b502ab50c91ed4f86a0fcc1f9dca912b214b0c08"><code>b502ab5</code></a></li>
+<li>create build directory for api docs to copy to <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/81b15354d64e24c1d437faed693cc1989f414f5f"><code>81b1535</code></a></li>
+</ul>
+<h2 id="320-2018-07-17"><a href="https://github.com/RobBrazier/Laravel_Piwik/compare/3.1.0...3.2.0">3.2.0</a> - 2018-07-17</h2>
+<h3 id="commits_4">Commits</h3>
+<ul>
+<li>
+<h1 id="85-add-contentsmodule-981f470">85 add ContentsModule <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/981f470d6aa0822ae0814a53ad9dafa1bcdf9c27"><code>981f470</code></a></h1>
+</li>
+<li>Update version in README.md <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/7bbfe11f2545cf38c41ffb4d76bd33f5304abc0a"><code>7bbfe11</code></a></li>
+<li>update email <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/af955a0e07be41896f3b36470fb5298c2ca271ba"><code>af955a0</code></a></li>
+<li>Fix Contents phpdocs <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/8c3712b1cc5529af1f3d3ab9a1100c2d46256f00"><code>8c3712b</code></a></li>
+<li>Add link to 3.2.0 API Docs <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/e21aac206cecf7137c71bc2299d0dd38f110ae9d"><code>e21aac2</code></a></li>
+<li>update version in composer.json <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/227a97ee9b255b12655474b7c7fbba259de5f241"><code>227a97e</code></a></li>
+<li>fix api docs link for 3.1.0 <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/44ff948b21f91a4c732d5f20e7e3d88c06070279"><code>44ff948</code></a></li>
+</ul>
+<h2 id="310-2018-03-09"><a href="https://github.com/RobBrazier/Laravel_Piwik/compare/3.0.1...3.1.0">3.1.0</a> - 2018-03-09</h2>
+<h3 id="merged_1">Merged</h3>
+<ul>
+<li>Feature/jenkins <a href="https://github.com/RobBrazier/Laravel_Piwik/pull/56"><code>#56</code></a></li>
+<li>switch to jenkins <a href="https://github.com/RobBrazier/Laravel_Piwik/pull/55"><code>#55</code></a></li>
+</ul>
+<h3 id="commits_5">Commits</h3>
+<ul>
+<li>switch to go-task as runner and format for PSR2 <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/b5e9e62f99a2467f14d382664bc77b323fcecfb2"><code>b5e9e62</code></a></li>
+<li>Apply fixes from StyleCI <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/27dd691c73a34b322bf9e3045df62b1c8613752e"><code>27dd691</code></a></li>
+<li>use common scripts and update README <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/945500a24a7b5aa03e698a9e92025bfc8587aae6"><code>945500a</code></a></li>
+<li>
+<h1 id="80-add-sitesmanageraddsite-and-fix-some-documentation-21a9612">80 add SitesManager.addSite and fix some documentation <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/21a96120ca63c736868da6187396214205bbca69"><code>21a9612</code></a></h1>
+</li>
+<li>fix code style <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/0d28721dc40d2a323abc5154ff970003919c4346"><code>0d28721</code></a></li>
+<li>clean up scripts <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/bd9be80529348b370714d76aa313528a403b9b17"><code>bd9be80</code></a></li>
+<li>Remove jenkinsfile <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/acaa698f650808de97424a8c0ce1eb9a8d661031"><code>acaa698</code></a></li>
+<li>ditch sonarqube due to unreliability of sonarcloud.io <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/533b8409e49e1b60c699ed9b7e6b3ef663a2eeef"><code>533b840</code></a></li>
+<li>fix some codeclimate stuff <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/31dbd36bd4867067ff98ff4339c10f5126afd2ea"><code>31dbd36</code></a></li>
+<li>remove duplication from Taskfile.yml <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/04de8a3893b168de6c6d361d1a4553f93e88f5aa"><code>04de8a3</code></a></li>
+<li>add netlify deployment task to publish_docs <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/934ff5048da1020979675fd9b26226133b128fd2"><code>934ff50</code></a></li>
+<li>exclude some checks <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/ca3eef54a71d6af2f12edafd7b21d047bbf27245"><code>ca3eef5</code></a></li>
+<li>add contributing guidelines <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/8cab7c78cf2ff0990074a7a31b98e3f07aa0caec"><code>8cab7c7</code></a></li>
+<li>calculate pull request number <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/4b91a2e957cfb93206a73f721a06e633e621b23c"><code>4b91a2e</code></a></li>
+<li>add codeclimate qa script <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/15352957c994265fce16bfea079314071978b5dc"><code>1535295</code></a></li>
+<li>fix chown not working with integration <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/cad37973c00d6784a96b1d258dd9c0cf4d029c60"><code>cad3797</code></a></li>
+<li>restore file owner after scripts run <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/b1388c739118c5627ce3d35dbbf8918b65001517"><code>b1388c7</code></a></li>
+<li>fix deploy permissions when publishing documentation <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/47b8244ac058615d134c023dfedd14786e24d7fc"><code>47b8244</code></a></li>
+<li>apply more code style fixes <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/d2a22f97be19f68119bd540adb0d61e39fc85e71"><code>d2a22f9</code></a></li>
+<li>ci fixes <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/2a9406df3b079841aff90dffc366af889203c604"><code>2a9406d</code></a></li>
+<li>update sonar scripts <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/b734c580b06db1e9e8333190b20e5e38fada8b6e"><code>b734c58</code></a></li>
+<li>update phpdocs for new method <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/3c17ed7403d60cf2a301dd1d4f96dfbd2ec9da62"><code>3c17ed7</code></a></li>
+<li>fix group not being retrieved <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/bba7d08e965f21be757169ab99c7b1b7bac36141"><code>bba7d08</code></a></li>
+<li>set -x fixes <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/b544a4465ae9f3ed8789e9f4f29048ea4bedadc6"><code>b544a44</code></a></li>
+<li>move auth tokens to properties <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/d4656607a879effbd9cef3b9c3fb5b39652f8d4d"><code>d465660</code></a></li>
+<li>widen sami api docs generation tag criteria <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/bfe51db2334c917c56c25caaa5f0c5c38888febc"><code>bfe51db</code></a></li>
+<li>code style fixes <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/2043b33b5d44fea8fa2d5016adedcd19ce58c1eb"><code>2043b33</code></a></li>
+<li>add develop branch to sami <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/aee895ac909a7130c903f1066a619a2e417fbcc5"><code>aee895a</code></a></li>
+<li>increment version and update docs <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/5e696cef6df921c42cf6c49769f57e1be47c9e7b"><code>5e696ce</code></a></li>
+<li>add redirect to old documentation <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/40033110573b5e087a8f1509f1f5202bee606b5c"><code>4003311</code></a></li>
+<li>update Jenkinsfile to add netlify credentials <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/ba9d8dfe874bdd46cd059e407ce7f4d55ff71420"><code>ba9d8df</code></a></li>
+<li>move .ci-env removal to docstasks <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/10c0043e9cf85a9271a4471e4b75b459c215b12f"><code>10c0043</code></a></li>
+<li>fix env vars for semaphore <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/0baa316658dbd560c1243e3fcd52825d7b477a30"><code>0baa316</code></a></li>
+<li>update README.md <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/5daa3ddd6ade56434d132b29124413c508ac2929"><code>5daa3dd</code></a></li>
+<li>add missing semicolon to .sami.php <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/bc9e97bfff869a0ae9efb5cc817d9f22910e6b6c"><code>bc9e97b</code></a></li>
+<li>code style fixes <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/4b92fd1eb852a97868dbab66c24812c03f4102db"><code>4b92fd1</code></a></li>
+<li>remove unused env vars from setup.sh <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/46af637f46745fc7cac9d9cde0d868edd00d8aa0"><code>46af637</code></a></li>
+<li>update ci scripts submodule <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/9cd8c2405875960b9f68c641079978ce0aa0716e"><code>9cd8c24</code></a></li>
+<li>fix sonar command substitution <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/6e42829f4f9f2227e826a83ae836cb389d912a40"><code>6e42829</code></a></li>
+<li>replace env vars in sonar-project.properties <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/a11724d4fd14e83489046c2b5e779e62e411156e"><code>a11724d</code></a></li>
+<li>get repo slug <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/c2b53393a1d3eda60a1ba8e6fc296524063887bc"><code>c2b5339</code></a></li>
+<li>print environment variables <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/789f33c94893c1e64aee45f4187c38ca7c83b9eb"><code>789f33c</code></a></li>
+<li>remove develop branch from .sami.php <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/b7459b2d0363d054ae17719403d782f85b6274e0"><code>b7459b2</code></a></li>
+<li>styleci fixes <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/e34cb28d3c15e80155410291a171fafc5d80e1f8"><code>e34cb28</code></a></li>
+<li>add install to unit tests <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/5ed1d0b68354877fddfe79f08d080d823741c805"><code>5ed1d0b</code></a></li>
+<li>view env for qa step <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/05080c8ea0fd30597f0566f18eed42d5552c5dbe"><code>05080c8</code></a></li>
+<li>print environment variables <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/579660d7d7929579412c5b05eb31796ade17b8ec"><code>579660d</code></a></li>
+</ul>
+<h2 id="301-2017-08-17"><a href="https://github.com/RobBrazier/Laravel_Piwik/compare/3.0.0...3.0.1">3.0.1</a> - 2017-08-17</h2>
+<h3 id="merged_2">Merged</h3>
+<ul>
+<li>optimise dockerfiles <a href="https://github.com/RobBrazier/Laravel_Piwik/pull/48"><code>#48</code></a></li>
+</ul>
+<h3 id="commits_6">Commits</h3>
+<ul>
+<li>fix sonar issues <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/330aa7cfcce331ceadd847355e24a29d5f258713"><code>330aa7c</code></a></li>
+<li>rename curl_timeout to http_timeout <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/45065e250fca0c1ae9adb7cc42a10af37384ec81"><code>45065e2</code></a></li>
+<li>increment version <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/46f4e468f8b68df09d738dc89290aeeb0afa19ba"><code>46f4e46</code></a></li>
+<li>add sonar badges <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/2836ffb59714eeb42f354e599de1ac9439289d99"><code>2836ffb</code></a></li>
+<li>update site id for integration test <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/888040f7b534754657d39496b8b3526eb831bca4"><code>888040f</code></a></li>
+<li>update phpunit.xml <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/dea76ef45a12915e746e595a250e7c82c6810d63"><code>dea76ef</code></a></li>
+<li>update readme to use codacy badges <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/62daf28cacd43a33a3ea67a2f223a278ab2c3346"><code>62daf28</code></a></li>
+<li>remove unnecessary whitespace <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/f99a7e4f11d24cf9f26c5e01458ec6930e5500a4"><code>f99a7e4</code></a></li>
+<li>remove serialised php coverage report <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/bfa64852929d8825332cbbc1ddb557d5ca088884"><code>bfa6485</code></a></li>
+<li>add license badge <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/6aab8d9b7498c378522a4587d46ad985b38fb471"><code>6aab8d9</code></a></li>
+</ul>
+<h2 id="300-2017-05-19"><a href="https://github.com/RobBrazier/Laravel_Piwik/compare/2.1.3...3.0.0">3.0.0</a> - 2017-05-19</h2>
+<h3 id="merged_3">Merged</h3>
+<ul>
+<li>35 increase phpdoc detail <a href="https://github.com/RobBrazier/Laravel_Piwik/pull/37"><code>#37</code></a></li>
+<li>33 update documentation <a href="https://github.com/RobBrazier/Laravel_Piwik/pull/34"><code>#34</code></a></li>
+</ul>
+<h3 id="commits_7">Commits</h3>
+<ul>
+<li>initial draft of v3.0.0 <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/6704d795b81995bcf6a5b40f4e1859736524b0ab"><code>6704d79</code></a></li>
+<li>correctly configure config tag and use orchestra phpunit testcase <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/eb3043b09438f7036a3372365edf7cc084ecc95b"><code>eb3043b</code></a></li>
+<li>improve test coverage and start Piwik class refactoring <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/9d83c828e3bae8efb460e8b25045bcce512c180a"><code>9d83c82</code></a></li>
+<li>stabilise tests <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/421e568a32bc11f8afa9b0873544fbb5d06d1748"><code>421e568</code></a></li>
+<li>add xml parsing support <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/4ff82aad16a7ff3d72883d5dd4df29362cfed89c"><code>4ff82aa</code></a></li>
+<li>improve unit test coverage and remove service provider from scope <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/49d2b160bc5df54cc1cdee785ad187283d5fcea9"><code>49d2b16</code></a></li>
+<li>add more unit tests <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/08b5e6e920045ef9cf51971cda672e662414e1ec"><code>08b5e6e</code></a></li>
+<li>increase module test coverage <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/4fd9a2190b04c42ed009c090f3aa4fb49833272d"><code>4fd9a21</code></a></li>
+<li>increase module test coverage <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/a951e488b3924717a7e81f04c9b59f20c8b5210a"><code>a951e48</code></a></li>
+<li>add tests to cover actions and api modules <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/3718201daaffddd34c478097f09c990ef265917d"><code>3718201</code></a></li>
+<li>Scrutinizer Auto-Fixes <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/f6b837c6c99969378efffb1fdcd9088865069927"><code>f6b837c</code></a></li>
+<li>update composer.lock <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/911fa2a22481bb87ea86179ccdfce19f4f3b7e42"><code>911fa2a</code></a></li>
+<li>add phpdoc comments <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/9f0777b9763cbabf308490d6948e1a25d94efdf0"><code>9f0777b</code></a></li>
+<li>Scrutinizer Auto-Fixes <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/1fecb944a5c15295d6adee5182098fbfc161e48b"><code>1fecb94</code></a></li>
+<li>remove xml parser <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/d3fd28d917e1e74bfc653c22138f31ee9b986b71"><code>d3fd28d</code></a></li>
+<li>remove username and password <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/fed3270f2a4734ac955c3f8864ae90ef7b22348b"><code>fed3270</code></a></li>
+<li>fix phpunit file loading errors <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/182a555f976cb86715fdd92b3c5671e99623a397"><code>182a555</code></a></li>
+<li>fix scrutinizer issues <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/88e2c1f5d917c26a30792c14cdcb1d4a736bdb9f"><code>88e2c1f</code></a></li>
+<li>remove composer console bloat and fix readme formatting <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/0a64270049fbcc62f290324e178f02c411aafad1"><code>0a64270</code></a></li>
+<li>update ci scripts and integration config <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/3e0161be01c513ac96b8eb09625e0d47b500da10"><code>3e0161b</code></a></li>
+<li>fix new issues <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/49e6a3f55058c99e49c9d26984c935a40d0f895a"><code>49e6a3f</code></a></li>
+<li>fix concatenation issues and add another testcase to Url <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/86fb17417e210fbcdf8186a6a69f12eb09616610"><code>86fb174</code></a></li>
+<li>switch xml dependency from require-dev <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/7d20945a8ea2cbabaa5cab6046886e4fa6998cec"><code>7d20945</code></a></li>
+<li>rename short variable <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/fb8c1959ae4b10285370102d1b839e810eeaee45"><code>fb8c195</code></a></li>
+<li>fix loose comparison of format <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/e1cea88d45db5335cb6bb50fbd7c9fac0a5e1138"><code>e1cea88</code></a></li>
+<li>phpunit debugging on ci <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/d23ed180faa7a49821560deb7220a68da9276a5e"><code>d23ed18</code></a></li>
+<li>phpunit debugging on ci <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/18f446914acfe7ca5fad37a2c14c47fade34b71d"><code>18f4469</code></a></li>
+<li>move prestissimo install location <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/63fff4134b3d54cb4def906896d861594923dec8"><code>63fff41</code></a></li>
+<li>cut integration by 8 seconds and remove git dependency <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/ab5354db171a8dc1d7c317ea1eeb88c1371790ef"><code>ab5354d</code></a></li>
+<li>move coverage.xml location <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/f9ed8af53c78fa1839cabbdb86a3d2e227451cfc"><code>f9ed8af</code></a></li>
+<li>remove dev dependencies for integration <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/5ad5323e319117d05f90b02af3a53fce7ecb35c7"><code>5ad5323</code></a></li>
+<li>remove xml parser <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/3720e23517d9b08e79b668381190e3eeb37506a5"><code>3720e23</code></a></li>
+<li>use correct scrutinizer image <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/a86cb23107cde81f5fa6d06c4479a0378edf5833"><code>a86cb23</code></a></li>
+<li>switch from scrutinizer to codacy <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/d840d60492b2e92d5612ced96e72d88d6ecb9c60"><code>d840d60</code></a></li>
+<li>switch back to phpunit <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/0151eca2288afe61901f8771e33534b355a841a6"><code>0151eca</code></a></li>
+<li>fix codacy issue <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/e7036998979a027ce3e43c719db204c3b6dfad6f"><code>e703699</code></a></li>
+<li>switch to codecov.io coverage <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/cb6a38b42972b0af42d87216f0e63c07bfefe6ae"><code>cb6a38b</code></a></li>
+<li>remove dev dependencies for integration <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/907788b74af27ea4bf6bb2abb34bb765d36efc8e"><code>907788b</code></a></li>
+<li>remove dev dependencies for integration <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/fb0b262d8e172bee05d337d214d59262032f043a"><code>fb0b262</code></a></li>
+<li>composer prefer dist <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/713a6929c96cd4d51b5fb587b7b562acefdf7f30"><code>713a692</code></a></li>
+<li>update semaphore project <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/ac2fa5c25eecf6a1733e67b95d194fa2314c1f43"><code>ac2fa5c</code></a></li>
+<li>update sami config <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/f20dccc79f9c1e721de8ca6c9714b05560d1e07b"><code>f20dccc</code></a></li>
+<li>phpunit debugging on ci <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/8bbfdb9400ef0910bb27f2d76dc802817cc6f990"><code>8bbfdb9</code></a></li>
+<li>re-run ci <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/e7c2471d4d194481105ab487e5dcd601291a275b"><code>e7c2471</code></a></li>
+<li>remove dev dependencies for integration <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/bb8bcca63f36176b70bef4e7f8f35e6d26824c4e"><code>bb8bcca</code></a></li>
+<li>update sami config <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/b6a20afb0ce0a62b36d399dd775b2f4930f58107"><code>b6a20af</code></a></li>
+<li>update sami config <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/c5f748721b11052de345a3418f4cfe61766e6e74"><code>c5f7487</code></a></li>
+<li>update sami config <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/ea21c5f1a1316af79515be34617010309757957d"><code>ea21c5f</code></a></li>
+<li>update sami config <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/070aadbe931f4b23f12827e701b5d04b36518d8d"><code>070aadb</code></a></li>
+<li>update sami config to include current branch <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/d7fb461ec604fb672188bf4e5418cb54f410fff9"><code>d7fb461</code></a></li>
+<li>add prestissimo for faster composer installs <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/a7bdee58be50fd2004c252d32b331932715287a1"><code>a7bdee5</code></a></li>
+</ul>
+<h2 id="213-2017-04-22"><a href="https://github.com/RobBrazier/Laravel_Piwik/compare/2.1.2...2.1.3">2.1.3</a> - 2017-04-22</h2>
+<h3 id="commits_8">Commits</h3>
+<ul>
+<li>add dockerfiles <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/8cbb05a7df122c938797ffbd79c2b31fbcb327d1"><code>8cbb05a</code></a></li>
+<li>use guzzle instead of curl and use scrutinizer-ci <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/b9474da0a50602de6dcaffc27f7f1e50eb5a82ab"><code>b9474da</code></a></li>
+<li>improve dependency stability <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/efc010abc7b1f510991850d6333d7d5260869569"><code>efc010a</code></a></li>
+<li>add docker integration tests <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/3332d643e89bba60c93a9b1482819eb16518e436"><code>3332d64</code></a></li>
+<li>increase debugging on integration and increase test timeout <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/2081dfb28d94a8eeb080017169829369fc7a786f"><code>2081dfb</code></a></li>
+<li>use local plugin source <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/76fbe6401f43cc22938b2d6340df8959d491c0e4"><code>76fbe64</code></a></li>
+<li>docker script updates <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/3eed8a2286a98ff6f7fb67f7226fdd0a26e9d2f7"><code>3eed8a2</code></a></li>
+<li>remove extra phpunit binary <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/b2ae140de86b7772af86b3b29243b61e1e3962f0"><code>b2ae140</code></a></li>
+<li>add integration check <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/02b8843a060dd9720e18daf851926b3280d7c0b0"><code>02b8843</code></a></li>
+<li>revert to guzzle 5 to allow php 5.4 support <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/1bf300d30bc540047276c62815e92fd3a036165e"><code>1bf300d</code></a></li>
+<li>use non-flat badges for consistency <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/b899c68fcb3913fd7047ce6bdc32c0039350f132"><code>b899c68</code></a></li>
+<li>update guzzle client <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/a194e02063c5be6f0c2c026779b046c9b8fe960f"><code>a194e02</code></a></li>
+<li>run update before requiring local package <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/fbcce5f225f3ef125b80d76fb250fcbc25be64a9"><code>fbcce5f</code></a></li>
+<li>revert php 5.4 changes and remove php 5.4 support (laravel 5.1 onwards only supports 5.5+ anyway) <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/762508614f46c2af33cca3b50f89a5f6c1adb562"><code>7625086</code></a></li>
+<li>use semaphore build badge <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/13f2a4578de4790e3d6c49929895b551fe78a72c"><code>13f2a45</code></a></li>
+<li>phpunit older version to support php 5.4 <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/539ec5c8d1b1bac7be94647ec3409ce79747200d"><code>539ec5c</code></a></li>
+<li>update piwik site id <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/867710adf9b70ae50805dd36e44206de2b2da5f2"><code>867710a</code></a></li>
+<li>restrict illuminate support version further <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/4f5381a8c20582964a7664fbfa1090f2fb2a4acc"><code>4f5381a</code></a></li>
+<li>add waffle.io badge <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/f4188682cd8d5270918fae872aedf9057fa36e69"><code>f418868</code></a></li>
+</ul>
+<h2 id="212-2016-08-20"><a href="https://github.com/RobBrazier/Laravel_Piwik/compare/2.1.1...2.1.2">2.1.2</a> - 2016-08-20</h2>
+<h3 id="commits_9">Commits</h3>
+<ul>
+<li>
+<h1 id="11-add-custom-date-ranges-and-refactor-a-bit-6890ca2">11 - add custom date ranges and refactor a bit <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/6890ca2e65a7c144d910e5cca5a187611389e341"><code>6890ca2</code></a></h1>
+</li>
+<li>
+<h1 id="11-update-configphp-to-include-format-of-custom-range-f1e1717">11 - update config.php to include format of custom range <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/f1e17176a8039d730c53388b6d4066f6caee22c0"><code>f1e1717</code></a></h1>
+</li>
+<li>
+<h1 id="11-update-readmemd-0608206">11 - update readme.md <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/060820618960246489081725ebb575888989d523"><code>0608206</code></a></h1>
+</li>
+</ul>
+<h2 id="211-2015-12-09"><a href="https://github.com/RobBrazier/Laravel_Piwik/compare/2.1.0...2.1.1">2.1.1</a> - 2015-12-09</h2>
+<h3 id="commits_10">Commits</h3>
+<ul>
+<li>update tests <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/9c3674d0bcbca20c91614bcb6a371373493daf1d"><code>9c3674d</code></a></li>
+<li>fix domnodelist error <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/05cee23aded188f5537441e6f7cbfda6c59f6bee"><code>05cee23</code></a></li>
+<li>increment version <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/827850e8dcae9ec8b73cbde877ab0c1511c31c17"><code>827850e</code></a></li>
+<li>Revert "changed name" <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/931523257774f5edc9139877b17b384051003b86"><code>9315232</code></a></li>
+<li>changed name <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/97310a896cc84d14d3b7996f3c0edd0b4a7f10bf"><code>97310a8</code></a></li>
+<li>In case of "search", there's no page_title <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/42b1efa87199a942d550a977bc0517e85818fae8"><code>42b1efa</code></a></li>
+<li>updated packagist description <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/97502d63ac99d072bdaa0912315ae6bcc7412e2e"><code>97502d6</code></a></li>
+</ul>
+<h2 id="210-2015-04-10"><a href="https://github.com/RobBrazier/Laravel_Piwik/compare/2.0.1...2.1.0">2.1.0</a> - 2015-04-10</h2>
+<h3 id="commits_11">Commits</h3>
+<ul>
+<li>Laravel 5 Package <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/2b271dc5b671b07995bd5aa0743ccfcbc0417f57"><code>2b271dc</code></a></li>
+<li>moved laravel 5 version to 2.1 <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/ea912fdf140fe59958e0a2681ba0c0b03b7a6412"><code>ea912fd</code></a></li>
+<li>updated documentation <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/92b13db0bcc547e1d7df0c8b16c7e82bdea1ad9d"><code>92b13db</code></a></li>
+<li>removed coveralls as code coverage doesn't work particularly well <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/6f39c36f38e6ccb33b0555f3520c0dfa7c424f20"><code>6f39c36</code></a></li>
+<li>Add coveralls after-script to travis-ci <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/c284b4f7751928ac362e84de1ccb5fb3315b4fe0"><code>c284b4f</code></a></li>
+<li>Switch from coveralls to codeclimate <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/1d97c934df7eb453cd8f2ec554feb49d0932a8e4"><code>1d97c93</code></a></li>
+<li>fix after_script <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/5a8ee16b554a9282e06fbe6d0b5f66642d751774"><code>5a8ee16</code></a></li>
+<li>re-read coveralls documentation and switched to php-coveralls composer package implementation <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/7b276a21d97b5466b5d8c0b3c1c213840c758b38"><code>7b276a2</code></a></li>
+<li>updated documentation <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/5e69e1421c7d7f0479255565b97a93493f34336c"><code>5e69e14</code></a></li>
+<li>updated documentation <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/d985803c74701d1504e10cdf6b14095ab363fbe3"><code>d985803</code></a></li>
+<li>removed coveralls as code coverage doesn't work particularly well <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/501e9ea3b4a1ffba8130cfa599aedeca6469b440"><code>501e9ea</code></a></li>
+<li>Added coveralls and travis status images to readme <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/eca109d25572d0c64ddfee927585a4f7971fb6dc"><code>eca109d</code></a></li>
+<li>Added Gemfile and test_helper.rb to try and get coveralls working <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/33506a15bec87ee04d1b7c760c695a198392abce"><code>33506a1</code></a></li>
+<li>moved laravel 5 version to 2.1 <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/9e6e9ff06a38c42f4b00a4c0f22f9fc89b1f238b"><code>9e6e9ff</code></a></li>
+<li>Add coveralls to help fixing test coverage <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/e98cdedfeb44548e3b70cfa8f427144da25d3a1b"><code>e98cded</code></a></li>
+<li>updated documentation <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/fb91125a712a2a6ea88b7696c1d25900c72d7527"><code>fb91125</code></a></li>
+<li>updated documentation <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/19226770128e591fb630a80792881216bb00a409"><code>1922677</code></a></li>
+</ul>
+<h2 id="201-2014-04-22">2.0.1 - 2014-04-22</h2>
+<h3 id="commits_12">Commits</h3>
+<ul>
+<li>First Commit <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/de342f6ec2d6c6ee824a754ff7cca0417357f83a"><code>de342f6</code></a></li>
+<li>started docs <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/3f1000cb4e1fd5317c6a46aa41f38b67137f6af5"><code>3f1000c</code></a></li>
+<li>added the rest of the documentation <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/19c0f79aeca3cd59accda8dca96a9e3eab3e5a6a"><code>19c0f79</code></a></li>
+<li>Completed tests and did a bit of cleaning up <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/a9138f1e78730658e5e23fa3aee312947991f532"><code>a9138f1</code></a></li>
+<li>Added Travis-CI and started tests <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/9468ca6972a0c09c024358304ad4e3b0c4acce88"><code>9468ca6</code></a></li>
+<li>still attempting to fix documentation <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/43caf82773d555428054e53c89ec4e56ac634120"><code>43caf82</code></a></li>
+<li>Composer updates <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/c1595098ec69f658a44191d054540be04647f674"><code>c159509</code></a></li>
+<li>added documentation pages for methods <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/235986d9cd451266ef1d2e97ce315da174b485d5"><code>235986d</code></a></li>
+<li>Docs: added actions &amp; downloads - checking styling <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/364f5ec497f64c60ad0e75a1c92941cf2828beef"><code>364f5ec</code></a></li>
+<li>attempt to fix code examples <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/ea636d7d2462dbc1e47cefd1f88744764e898062"><code>ea636d7</code></a></li>
+<li>Documentation installation instructions <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/9b91678185cc4088979abf2b4e19042c2902d19f"><code>9b91678</code></a></li>
+<li>Documentation installation formatting <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/4eb4a9187d0350dc1d3726972eec8900d776eadb"><code>4eb4a91</code></a></li>
+<li>Docs: re-added laravel 3 installation <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/353e337c216f3cab3049597f77c55ca4e0cf84e1"><code>353e337</code></a></li>
+<li>removed installation for Laravel 3 to debug <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/4205355bd1fce7096c19bec4ad462649322e1100"><code>4205355</code></a></li>
+<li>added Laravel 3 Installation <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/6e86939645f68151df28ebe7e845a2d0a3b01416"><code>6e86939</code></a></li>
+<li>README Update <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/65ac072eea25fc2d9de74a9d39caa1e0c31a2fe7"><code>65ac072</code></a></li>
+<li>Docs: fixed the custom code block <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/afb653d321fa68190966c6b17478b7447bade1da"><code>afb653d</code></a></li>
+<li>Docs: Final code block edits <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/80f056dcc16335099d08bddf5bdae6e2b0e297e2"><code>80f056d</code></a></li>
+<li>Docs: Index ToC tree <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/c2022cfb2b9fec770fb202be2023872256071551"><code>c2022cf</code></a></li>
+<li>Docs: index modifications &amp; description <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/3dea0a5105633ba10fadf95376a800eed4abd30a"><code>3dea0a5</code></a></li>
+<li>README update <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/2b3f3d7d5c72e945702a7b55a0ef3138871df8e8"><code>2b3f3d7</code></a></li>
+<li>fixed composer fail for travis and incremented version number to 2.0.1 <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/c50e6a589f1276ac46c6a1d2883afa5313076a86"><code>c50e6a5</code></a></li>
+<li>removed unnecessary phpunit script and re-added hhvm <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/9f1791eaf525fa3bf740354234f7fe65541509c1"><code>9f1791e</code></a></li>
+<li>removed mockery from dependencies, as it isn't used anymore <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/ea4c80f132b74d35733f86f063b61f7aefb3ad4d"><code>ea4c80f</code></a></li>
+<li>DOCS - I give up with the syntax highlighting... just leave it as default <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/645629c4148ec289281f909c9eec016cbf614330"><code>645629c</code></a></li>
+<li>code blocks try #5 (this doesn't work locally) <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/b88f369c45cfe67af68f714108688aafdd126f47"><code>b88f369</code></a></li>
+<li>still working on code blocks ... <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/044f5661161d0a803605b739f90b2b681ddeeb12"><code>044f566</code></a></li>
+<li>BUGFIX: Parameter $period not works in method Piwik::custom. <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/74ee8abb54ff4b5cb5b7d865ad083a4fccb8b34f"><code>74ee8ab</code></a></li>
+<li>I give up... hhvm gone again <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/3de659358a2b859e0cb6c28f801020cf9f52f28b"><code>3de6593</code></a></li>
+<li>Fixed use statement <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/94114e4b2d7b4f5321cf6392c2b8be64a284048f"><code>94114e4</code></a></li>
+<li>Fix slash in composer.json <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/54b79ade21f2cdd09b3a5cbc386cd8e1ae0543fa"><code>54b79ad</code></a></li>
+<li>Updated composer.json support to 4.1 <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/ef1f2c04b5005f4bda9894a959eea900ae6d8ed7"><code>ef1f2c0</code></a></li>
+<li>Docs: modified links to be more correct <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/e0777cdf30bd9d8f9a1d616bf37f64c476a85b83"><code>e0777cd</code></a></li>
+<li>fix get_apikey() method <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/247931608676444e44399fcedbfb1e69b3b68bbc"><code>2479316</code></a></li>
+<li>Fix typo in README.md <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/9b9ef2b5e05d77df659edd54117de1acba627556"><code>9b9ef2b</code></a></li>
+<li>README edits <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/69992ed7de5e2d5752b6bbd28ae6056731186e76"><code>69992ed</code></a></li>
+<li>API Key bug fix <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/2ed76fc9bdc8114b93ede35753e05af9ace0d4e9"><code>2ed76fc</code></a></li>
+<li>Initial commit <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/90ec95b6b6706da1889a47cb9c44deb646c620d1"><code>90ec95b</code></a></li>
+<li>change requires to php 5.4+ <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/488e9204f6715e6ed5271ce969788c22bd26af05"><code>488e920</code></a></li>
+<li>removed hhvm for the meantime due to timeouts in travis <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/496c17b10d55a77b16fdd0498c2156df871527dd"><code>496c17b</code></a></li>
+<li>Added php 5.5 and HHVM <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/aab20c0b9a75a1b410e321c0fa5ede930397a36b"><code>aab20c0</code></a></li>
+<li>README edits <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/9bb3f5cd841f1cc4dad827a95a2174fc711b8f78"><code>9bb3f5c</code></a></li>
+<li>README update <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/d1b400ad323658d84247877191aea100c164ace2"><code>d1b400a</code></a></li>
+<li>README updates <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/4769df75f1b0afb91a71524a372515d6d19e2ac7"><code>4769df7</code></a></li>
+<li>README update <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/06dddc6ee7b65ccb7bc1bb7d14984810e3226858"><code>06dddc6</code></a></li>
+<li>removed unnecessary phpunit script and re-added hhvm + php 5.6 <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/cda0681ef2f969741172315589e4980c62bdf31d"><code>cda0681</code></a></li>
+<li>added Laravel 3 Installation to index <a href="https://github.com/RobBrazier/Laravel_Piwik/commit/1c186eddeefd5094ae932b7b5379f1547f4927d4"><code>1c186ed</code></a></li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="Usage.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Usage" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Usage
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="old.html" class="md-footer__link md-footer__link--next" aria-label="Next: Old Documentation" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Old Documentation
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="https://robbrazier.com" target="_blank" rel="noopener" title="robbrazier.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M336.5 160C322 70.7 287.8 8 248 8s-74 62.7-88.5 152h177zM152 256c0 22.2 1.2 43.5 3.3 64h185.3c2.1-20.5 3.3-41.8 3.3-64s-1.2-43.5-3.3-64H155.3c-2.1 20.5-3.3 41.8-3.3 64zm324.7-96c-28.6-67.9-86.5-120.4-158-141.6 24.4 33.8 41.2 84.7 50 141.6h108zM177.2 18.4C105.8 39.6 47.8 92.1 19.3 160h108c8.7-56.9 25.5-107.8 49.9-141.6zM487.4 192H372.7c2.1 21 3.3 42.5 3.3 64s-1.2 43-3.3 64h114.6c5.5-20.5 8.6-41.8 8.6-64s-3.1-43.5-8.5-64zM120 256c0-21.5 1.2-43 3.3-64H8.6C3.2 212.5 0 233.8 0 256s3.2 43.5 8.6 64h114.6c-2-21-3.2-42.5-3.2-64zm39.5 96c14.5 89.3 48.7 152 88.5 152s74-62.7 88.5-152h-177zm159.3 141.6c71.4-21.2 129.4-73.7 158-141.6h-108c-8.8 56.9-25.6 107.8-50 141.6zM19.3 352c28.6 67.9 86.5 120.4 158 141.6-24.4-33.8-41.2-84.7-50-141.6h-108z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.e99e714c.min.js", "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.c7d1b464.min.js"></script>
+      
+        <script src="theme/js/prism.js"></script>
+      
+    
+  </body>
+</html>
