@@ -1,5 +1,5 @@
 #!/bin/bash
-set -exo pipefail
+set -o pipefail
 
 ftp_url="ftp://$BUNNYCDN_USERNAME:$BUNNYCDN_PASSWORD@storage.bunnycdn.com"
 
