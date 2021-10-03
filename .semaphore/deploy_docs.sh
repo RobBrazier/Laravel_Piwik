@@ -1,12 +1,12 @@
 #!/bin/bash
 set -o pipefail
+shopt -s extglob
 
 ftp_url="ftp://$BUNNYCDN_USERNAME:$BUNNYCDN_PASSWORD@storage.bunnycdn.com"
 
+mkdir -p build/laravel-piwik
 cd build
-
-mkdir -p bunnycdn_errors
-mv 404.html bunnycdn_errors/
+mv !(laravel-piwik) laravel-piwik
 
 ftp_options="--reverse --no-perms --transfer-all --overwrite"
 
