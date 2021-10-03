@@ -32,14 +32,14 @@ blocks:
             - phpbrew -d ext install iconv
             - daux generate --format html --source docs --destination build
             - cache store $CACHE_KEY build/
-        - name: Build Sami
+        - name: Build Doctum
           commands:
             - checkout
-            - CACHE_KEY="sami-$SEMAPHORE_GIT_SHA"
+            - CACHE_KEY="doctum-$SEMAPHORE_GIT_SHA"
             - if cache has_key $CACHE_KEY; then exit 0; fi
-            - composer global require "sami/sami:4.0.*"
+            - composer global require "code-lts/doctum"
             - git pull --tags
-            - sami.php update .sami.php || true
+            - doctum update .doctum.php || true
             - mkdir -p build
             - mv ../docs/api ./build/api
             - cache store $CACHE_KEY build/api/
@@ -59,7 +59,7 @@ blocks:
           commands:
             - checkout
             - cache restore daux-$SEMAPHORE_GIT_SHA
-            - cache restore sami-$SEMAPHORE_GIT_SHA
+            - cache restore doctum-$SEMAPHORE_GIT_SHA
             - git config --global user.name "Semaphore Runner"
             - git config --global user.email "$(whoami)@$(hostname).dev"
             - tree build/api -H '.' -T "Laravel-Piwik API Docs" -L 1 --noreport -I index.html --charset utf-8 > build/api/index.html
