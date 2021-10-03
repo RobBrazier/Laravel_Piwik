@@ -7,24 +7,24 @@
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
-        <link rel="stylesheet" type="text/css" href="../../../css/sami.css">
-        <script src="../../../js/jquery-1.11.1.min.js"></script>
-        <script src="../../../js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
         <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../sami.js"></script>
+        <script src="../../../doctum.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-    
-    
+
     </head>
 
     <body id="class" data-name="class:RobBrazier_Piwik_Module_ReferrersModule" data-root-path="../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                    <form action="#" method="GET">
-                <select id="version-switcher" name="version">
+                    <form action="#">
+                <select  class="form-control" id="version-switcher" name="version">
                                             <option value="../../../../2.0.1/index.html" data-version="2.0.1">2.0.1</option>
                                             <option value="../../../../2.1.0/index.html" data-version="2.1.0">2.1.0</option>
                                             <option value="../../../../2.1.1/index.html" data-version="2.1.1">2.1.1</option>
@@ -41,11 +41,8 @@
                                             <option value="../../../../master/index.html" data-version="master">master branch</option>
                                     </select>
             </form>
-                <script>
-            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
-        </script>
-        <form id="search-form" action="../../../search.html" method="GET">
-            <span class="glyphicon glyphicon-search"></span>
+                <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
             <input name="search"
                    class="typeahead form-control"
                    type="search"
@@ -71,8 +68,8 @@
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
                     <li><a href="../../../classes.html">Classes</a></li>
-                                            <li><a href="../../../namespaces.html">Namespaces</a></li>
-                                        <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
                     <li><a href="../../../traits.html">Traits</a></li>
                     <li><a href="../../../doc-index.html">Index</a></li>
                     <li><a href="../../../search.html">Search</a></li>
@@ -88,25 +85,24 @@
             </ol>
         </div>
                 <div id="page-content">
-                
     <div class="page-header">
-        <h1>
-            ReferrersModule
-                
-        </h1>
+        <h1>ReferrersModule    
+            </h1>
     </div>
 
-    <p>    class
-    <strong>ReferrersModule</strong>        extends <a href="../../../RobBrazier/Piwik/Module/Module.html"><abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a>        (<a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1src/RobBrazier/Piwik/Module/ReferrersModulephp">View source</a>)
+    
+    <p>        class
+    <strong>ReferrersModule</strong>        extends <a href="../../../RobBrazier/Piwik/Module/Module.html"><abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a>        (<a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1/src/RobBrazier/Piwik/Module/ReferrersModulephp">View source</a>)
 </p>
 
         
     
+        
 
             <div class="description">
-            <p>Class ReferrersModule.</p>                                </div>
-    
-    
+            <p><p>Class ReferrersModule.</p></p>                    </div>
+            
+        
     
             <h2>Properties</h2>
 
@@ -114,10 +110,12 @@
                     <tr>
                 <td class="type" id="property_request">
                                         protected                                        <a href="../../../RobBrazier/Piwik/Repository/RequestRepository.html"><abbr title="RobBrazier\Piwik\Repository\RequestRepository">RequestRepository</abbr></a>
-                </td>
+                                                                                
+                                    </td>
                 <td>$request</td>
                 <td class="last"></td>
-                <td><small>from&nbsp;<a href="../../../RobBrazier/Piwik/Module/Module.html#property_request"><abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a></small></td>
+                <td><small>from&nbsp;<a href="../../../RobBrazier/Piwik/Module/Module.html#property_request">
+<abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a></small></td>
             </tr>
             </table>
 
@@ -129,29 +127,31 @@
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method___construct">__construct</a>(<a href="../../../RobBrazier/Piwik/Repository/RequestRepository.html"><abbr title="RobBrazier\Piwik\Repository\RequestRepository">RequestRepository</abbr></a> $request)
         
-                                            <p>Module constructor.</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../RobBrazier/Piwik/Module/Module.html#method___construct"><abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a></small></div>
+                                            <p><p>Module constructor.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../RobBrazier/Piwik/Module/Module.html#method___construct">
+<abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     <a href="../../../RobBrazier/Piwik/Request/RequestOptions.html"><abbr title="RobBrazier\Piwik\Request\RequestOptions">RequestOptions</abbr></a>
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getOptions">getOptions</a>(string $format)
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../RobBrazier/Piwik/Module/Module.html#method_getOptions"><abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../RobBrazier/Piwik/Module/Module.html#method_getOptions">
+<abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getReferrerType">getReferrerType</a>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+                <div class="col-md-8">
+                    <a href="#method_getReferrerType">getReferrerType</a>($arguments = [], string $format = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -161,8 +161,8 @@
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getAll">getAll</a>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+                <div class="col-md-8">
+                    <a href="#method_getAll">getAll</a>($arguments = [], string $format = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -172,8 +172,8 @@
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getKeywords">getKeywords</a>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+                <div class="col-md-8">
+                    <a href="#method_getKeywords">getKeywords</a>($arguments = [], string $format = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -183,8 +183,8 @@
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getKeywordsForPageUrl">getKeywordsForPageUrl</a>(string $pageUrl, <abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+                <div class="col-md-8">
+                    <a href="#method_getKeywordsForPageUrl">getKeywordsForPageUrl</a>(string $pageUrl, $arguments = [], string $format = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -194,8 +194,8 @@
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getKeywordsForPageTitle">getKeywordsForPageTitle</a>(string $pageTitle, <abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+                <div class="col-md-8">
+                    <a href="#method_getKeywordsForPageTitle">getKeywordsForPageTitle</a>(string $pageTitle, $arguments = [], string $format = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -205,8 +205,8 @@
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getSearchEnginesFromKeywordId">getSearchEnginesFromKeywordId</a>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+                <div class="col-md-8">
+                    <a href="#method_getSearchEnginesFromKeywordId">getSearchEnginesFromKeywordId</a>($arguments = [], string $format = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -216,8 +216,8 @@
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getSearchEngines">getSearchEngines</a>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+                <div class="col-md-8">
+                    <a href="#method_getSearchEngines">getSearchEngines</a>($arguments = [], string $format = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -227,8 +227,8 @@
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getKeywordsFromSearchEngineId">getKeywordsFromSearchEngineId</a>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+                <div class="col-md-8">
+                    <a href="#method_getKeywordsFromSearchEngineId">getKeywordsFromSearchEngineId</a>($arguments = [], string $format = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -238,8 +238,8 @@
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getCampaigns">getCampaigns</a>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+                <div class="col-md-8">
+                    <a href="#method_getCampaigns">getCampaigns</a>($arguments = [], string $format = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -249,8 +249,8 @@
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getKeywordsFromCampaignId">getKeywordsFromCampaignId</a>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+                <div class="col-md-8">
+                    <a href="#method_getKeywordsFromCampaignId">getKeywordsFromCampaignId</a>($arguments = [], string $format = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -260,8 +260,8 @@
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getWebsites">getWebsites</a>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+                <div class="col-md-8">
+                    <a href="#method_getWebsites">getWebsites</a>($arguments = [], string $format = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -271,8 +271,8 @@
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getUrlsFromWebsiteId">getUrlsFromWebsiteId</a>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+                <div class="col-md-8">
+                    <a href="#method_getUrlsFromWebsiteId">getUrlsFromWebsiteId</a>($arguments = [], string $format = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -282,8 +282,8 @@
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getSocials">getSocials</a>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+                <div class="col-md-8">
+                    <a href="#method_getSocials">getSocials</a>($arguments = [], string $format = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -293,8 +293,8 @@
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getUrlsForSocial">getUrlsForSocial</a>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+                <div class="col-md-8">
+                    <a href="#method_getUrlsForSocial">getUrlsForSocial</a>($arguments = [], string $format = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -304,8 +304,8 @@
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getNumberOfDistinctSearchEngines">getNumberOfDistinctSearchEngines</a>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+                <div class="col-md-8">
+                    <a href="#method_getNumberOfDistinctSearchEngines">getNumberOfDistinctSearchEngines</a>($arguments = [], string $format = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -315,8 +315,8 @@
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getNumberOfDistinctKeywords">getNumberOfDistinctKeywords</a>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+                <div class="col-md-8">
+                    <a href="#method_getNumberOfDistinctKeywords">getNumberOfDistinctKeywords</a>($arguments = [], string $format = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -326,8 +326,8 @@
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getNumberOfDistinctCampaigns">getNumberOfDistinctCampaigns</a>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+                <div class="col-md-8">
+                    <a href="#method_getNumberOfDistinctCampaigns">getNumberOfDistinctCampaigns</a>($arguments = [], string $format = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -337,8 +337,8 @@
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getNumberOfDistinctWebsites">getNumberOfDistinctWebsites</a>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+                <div class="col-md-8">
+                    <a href="#method_getNumberOfDistinctWebsites">getNumberOfDistinctWebsites</a>($arguments = [], string $format = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -348,8 +348,8 @@
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getNumberOfDistinctWebsitesUrls">getNumberOfDistinctWebsitesUrls</a>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+                <div class="col-md-8">
+                    <a href="#method_getNumberOfDistinctWebsitesUrls">getNumberOfDistinctWebsitesUrls</a>($arguments = [], string $format = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -363,18 +363,20 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">in <a href="../../../RobBrazier/Piwik/Module/Module.html#method___construct"><abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a> at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1src/RobBrazier/Piwik/Module/Modulephp#L20">line 20</a></div>
+        <div class="location">in <a href="../../../RobBrazier/Piwik/Module/Module.html#method___construct">
+<abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a> <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1/src/RobBrazier/Piwik/Module/Modulephp#L20">at line 20</a></div>
         <code>                    
     <strong>__construct</strong>(<a href="../../../RobBrazier/Piwik/Repository/RequestRepository.html"><abbr title="RobBrazier\Piwik\Repository\RequestRepository">RequestRepository</abbr></a> $request)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Module constructor.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Module constructor.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -388,29 +390,35 @@
             
             
             
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_getOptions">
-        <div class="location">in <a href="../../../RobBrazier/Piwik/Module/Module.html#method_getOptions"><abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a> at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1src/RobBrazier/Piwik/Module/Modulephp#L30">line 30</a></div>
+        <div class="location">in <a href="../../../RobBrazier/Piwik/Module/Module.html#method_getOptions">
+<abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a> <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1/src/RobBrazier/Piwik/Module/Modulephp#L30">at line 30</a></div>
         <code>            protected        <a href="../../../RobBrazier/Piwik/Request/RequestOptions.html"><abbr title="RobBrazier\Piwik\Request\RequestOptions">RequestOptions</abbr></a>
     <strong>getOptions</strong>(string $format)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>response format</td>
+                <td><p>response format</p></td>
             </tr>
             </table>
 
@@ -426,34 +434,39 @@
 
             
             
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_getReferrerType">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1src/RobBrazier/Piwik/Module/ReferrersModulephp#L20">line 20</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1/src/RobBrazier/Piwik/Module/ReferrersModulephp#L20">at line 20</a></div>
         <code>                    mixed
-    <strong>getReferrerType</strong>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+    <strong>getReferrerType</strong>($arguments = [], string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr></td>
+                <td></td>
                 <td>$arguments</td>
-                <td>extra arguments to be passed to the api call</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
@@ -467,6 +480,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -475,28 +489,32 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getAll">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1src/RobBrazier/Piwik/Module/ReferrersModulephp#L33">line 33</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1/src/RobBrazier/Piwik/Module/ReferrersModulephp#L33">at line 33</a></div>
         <code>                    mixed
-    <strong>getAll</strong>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+    <strong>getAll</strong>($arguments = [], string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr></td>
+                <td></td>
                 <td>$arguments</td>
-                <td>extra arguments to be passed to the api call</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
@@ -510,6 +528,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -518,28 +537,32 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getKeywords">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1src/RobBrazier/Piwik/Module/ReferrersModulephp#L46">line 46</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1/src/RobBrazier/Piwik/Module/ReferrersModulephp#L46">at line 46</a></div>
         <code>                    mixed
-    <strong>getKeywords</strong>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+    <strong>getKeywords</strong>($arguments = [], string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr></td>
+                <td></td>
                 <td>$arguments</td>
-                <td>extra arguments to be passed to the api call</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
@@ -553,6 +576,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -561,33 +585,37 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getKeywordsForPageUrl">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1src/RobBrazier/Piwik/Module/ReferrersModulephp#L60">line 60</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1/src/RobBrazier/Piwik/Module/ReferrersModulephp#L60">at line 60</a></div>
         <code>                    mixed
-    <strong>getKeywordsForPageUrl</strong>(string $pageUrl, <abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+    <strong>getKeywordsForPageUrl</strong>(string $pageUrl, $arguments = [], string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$pageUrl</td>
-                <td>page url to get keywords for</td>
+                <td><p>page url to get keywords for</p></td>
             </tr>
                     <tr>
-                <td><abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr></td>
+                <td></td>
                 <td>$arguments</td>
-                <td>extra arguments to be passed to the api call</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
@@ -601,6 +629,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -609,33 +638,37 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getKeywordsForPageTitle">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1src/RobBrazier/Piwik/Module/ReferrersModulephp#L75">line 75</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1/src/RobBrazier/Piwik/Module/ReferrersModulephp#L75">at line 75</a></div>
         <code>                    mixed
-    <strong>getKeywordsForPageTitle</strong>(string $pageTitle, <abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+    <strong>getKeywordsForPageTitle</strong>(string $pageTitle, $arguments = [], string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$pageTitle</td>
-                <td>page title to get keywords for</td>
+                <td><p>page title to get keywords for</p></td>
             </tr>
                     <tr>
-                <td><abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr></td>
+                <td></td>
                 <td>$arguments</td>
-                <td>extra arguments to be passed to the api call</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
@@ -649,6 +682,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -657,28 +691,32 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getSearchEnginesFromKeywordId">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1src/RobBrazier/Piwik/Module/ReferrersModulephp#L89">line 89</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1/src/RobBrazier/Piwik/Module/ReferrersModulephp#L89">at line 89</a></div>
         <code>                    mixed
-    <strong>getSearchEnginesFromKeywordId</strong>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+    <strong>getSearchEnginesFromKeywordId</strong>($arguments = [], string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr></td>
+                <td></td>
                 <td>$arguments</td>
-                <td>extra arguments to be passed to the api call</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
@@ -692,6 +730,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -700,28 +739,32 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getSearchEngines">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1src/RobBrazier/Piwik/Module/ReferrersModulephp#L102">line 102</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1/src/RobBrazier/Piwik/Module/ReferrersModulephp#L102">at line 102</a></div>
         <code>                    mixed
-    <strong>getSearchEngines</strong>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+    <strong>getSearchEngines</strong>($arguments = [], string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr></td>
+                <td></td>
                 <td>$arguments</td>
-                <td>extra arguments to be passed to the api call</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
@@ -735,6 +778,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -743,28 +787,32 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getKeywordsFromSearchEngineId">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1src/RobBrazier/Piwik/Module/ReferrersModulephp#L115">line 115</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1/src/RobBrazier/Piwik/Module/ReferrersModulephp#L115">at line 115</a></div>
         <code>                    mixed
-    <strong>getKeywordsFromSearchEngineId</strong>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+    <strong>getKeywordsFromSearchEngineId</strong>($arguments = [], string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr></td>
+                <td></td>
                 <td>$arguments</td>
-                <td>extra arguments to be passed to the api call</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
@@ -778,6 +826,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -786,28 +835,32 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getCampaigns">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1src/RobBrazier/Piwik/Module/ReferrersModulephp#L128">line 128</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1/src/RobBrazier/Piwik/Module/ReferrersModulephp#L128">at line 128</a></div>
         <code>                    mixed
-    <strong>getCampaigns</strong>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+    <strong>getCampaigns</strong>($arguments = [], string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr></td>
+                <td></td>
                 <td>$arguments</td>
-                <td>extra arguments to be passed to the api call</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
@@ -821,6 +874,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -829,28 +883,32 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getKeywordsFromCampaignId">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1src/RobBrazier/Piwik/Module/ReferrersModulephp#L141">line 141</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1/src/RobBrazier/Piwik/Module/ReferrersModulephp#L141">at line 141</a></div>
         <code>                    mixed
-    <strong>getKeywordsFromCampaignId</strong>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+    <strong>getKeywordsFromCampaignId</strong>($arguments = [], string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr></td>
+                <td></td>
                 <td>$arguments</td>
-                <td>extra arguments to be passed to the api call</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
@@ -864,6 +922,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -872,28 +931,32 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getWebsites">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1src/RobBrazier/Piwik/Module/ReferrersModulephp#L154">line 154</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1/src/RobBrazier/Piwik/Module/ReferrersModulephp#L154">at line 154</a></div>
         <code>                    mixed
-    <strong>getWebsites</strong>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+    <strong>getWebsites</strong>($arguments = [], string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr></td>
+                <td></td>
                 <td>$arguments</td>
-                <td>extra arguments to be passed to the api call</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
@@ -907,6 +970,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -915,28 +979,32 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getUrlsFromWebsiteId">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1src/RobBrazier/Piwik/Module/ReferrersModulephp#L167">line 167</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1/src/RobBrazier/Piwik/Module/ReferrersModulephp#L167">at line 167</a></div>
         <code>                    mixed
-    <strong>getUrlsFromWebsiteId</strong>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+    <strong>getUrlsFromWebsiteId</strong>($arguments = [], string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr></td>
+                <td></td>
                 <td>$arguments</td>
-                <td>extra arguments to be passed to the api call</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
@@ -950,6 +1018,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -958,28 +1027,32 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getSocials">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1src/RobBrazier/Piwik/Module/ReferrersModulephp#L180">line 180</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1/src/RobBrazier/Piwik/Module/ReferrersModulephp#L180">at line 180</a></div>
         <code>                    mixed
-    <strong>getSocials</strong>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+    <strong>getSocials</strong>($arguments = [], string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr></td>
+                <td></td>
                 <td>$arguments</td>
-                <td>extra arguments to be passed to the api call</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
@@ -993,6 +1066,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -1001,28 +1075,32 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getUrlsForSocial">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1src/RobBrazier/Piwik/Module/ReferrersModulephp#L193">line 193</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1/src/RobBrazier/Piwik/Module/ReferrersModulephp#L193">at line 193</a></div>
         <code>                    mixed
-    <strong>getUrlsForSocial</strong>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+    <strong>getUrlsForSocial</strong>($arguments = [], string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr></td>
+                <td></td>
                 <td>$arguments</td>
-                <td>extra arguments to be passed to the api call</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
@@ -1036,6 +1114,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -1044,28 +1123,32 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getNumberOfDistinctSearchEngines">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1src/RobBrazier/Piwik/Module/ReferrersModulephp#L206">line 206</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1/src/RobBrazier/Piwik/Module/ReferrersModulephp#L206">at line 206</a></div>
         <code>                    mixed
-    <strong>getNumberOfDistinctSearchEngines</strong>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+    <strong>getNumberOfDistinctSearchEngines</strong>($arguments = [], string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr></td>
+                <td></td>
                 <td>$arguments</td>
-                <td>extra arguments to be passed to the api call</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
@@ -1079,6 +1162,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -1087,28 +1171,32 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getNumberOfDistinctKeywords">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1src/RobBrazier/Piwik/Module/ReferrersModulephp#L219">line 219</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1/src/RobBrazier/Piwik/Module/ReferrersModulephp#L219">at line 219</a></div>
         <code>                    mixed
-    <strong>getNumberOfDistinctKeywords</strong>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+    <strong>getNumberOfDistinctKeywords</strong>($arguments = [], string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr></td>
+                <td></td>
                 <td>$arguments</td>
-                <td>extra arguments to be passed to the api call</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
@@ -1122,6 +1210,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -1130,28 +1219,32 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getNumberOfDistinctCampaigns">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1src/RobBrazier/Piwik/Module/ReferrersModulephp#L232">line 232</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1/src/RobBrazier/Piwik/Module/ReferrersModulephp#L232">at line 232</a></div>
         <code>                    mixed
-    <strong>getNumberOfDistinctCampaigns</strong>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+    <strong>getNumberOfDistinctCampaigns</strong>($arguments = [], string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr></td>
+                <td></td>
                 <td>$arguments</td>
-                <td>extra arguments to be passed to the api call</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
@@ -1165,6 +1258,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -1173,28 +1267,32 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getNumberOfDistinctWebsites">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1src/RobBrazier/Piwik/Module/ReferrersModulephp#L245">line 245</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1/src/RobBrazier/Piwik/Module/ReferrersModulephp#L245">at line 245</a></div>
         <code>                    mixed
-    <strong>getNumberOfDistinctWebsites</strong>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+    <strong>getNumberOfDistinctWebsites</strong>($arguments = [], string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr></td>
+                <td></td>
                 <td>$arguments</td>
-                <td>extra arguments to be passed to the api call</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
@@ -1208,6 +1306,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -1216,28 +1315,32 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getNumberOfDistinctWebsitesUrls">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1src/RobBrazier/Piwik/Module/ReferrersModulephp#L258">line 258</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1/src/RobBrazier/Piwik/Module/ReferrersModulephp#L258">at line 258</a></div>
         <code>                    mixed
-    <strong>getNumberOfDistinctWebsitesUrls</strong>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+    <strong>getNumberOfDistinctWebsitesUrls</strong>($arguments = [], string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr></td>
+                <td></td>
                 <td>$arguments</td>
-                <td>extra arguments to be passed to the api call</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
@@ -1253,6 +1356,7 @@
 
             
             
+            
                     </div>
     </div>
 
@@ -1260,12 +1364,8 @@
             </div>
 
     
-            </div>
-                <div id="footer">
-        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
-    </div>
-
-        </div>
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
     </div>
     </body>
 

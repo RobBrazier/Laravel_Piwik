@@ -7,24 +7,24 @@
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
-        <link rel="stylesheet" type="text/css" href="../../css/sami.css">
-        <script src="../../js/jquery-1.11.1.min.js"></script>
-        <script src="../../js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../fonts/doctum-font.css">
+        <script src="../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../js/bootstrap.min.js"></script>
         <script src="../../js/typeahead.min.js"></script>
-        <script src="../../sami.js"></script>
+        <script src="../../doctum.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-    
-    
+
     </head>
 
     <body id="class" data-name="class:RobBrazier_Piwik_Piwik" data-root-path="../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                    <form action="#" method="GET">
-                <select id="version-switcher" name="version">
+                    <form action="#">
+                <select  class="form-control" id="version-switcher" name="version">
                                             <option value="../../../2.0.1/index.html" data-version="2.0.1">2.0.1</option>
                                             <option value="../../../2.1.0/index.html" data-version="2.1.0">2.1.0</option>
                                             <option value="../../../2.1.1/index.html" data-version="2.1.1">2.1.1</option>
@@ -41,11 +41,8 @@
                                             <option value="../../../master/index.html" data-version="master">master branch</option>
                                     </select>
             </form>
-                <script>
-            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
-        </script>
-        <form id="search-form" action="../../search.html" method="GET">
-            <span class="glyphicon glyphicon-search"></span>
+                <form id="search-form" action="../../search.html">
+            <span class="icon icon-search"></span>
             <input name="search"
                    class="typeahead form-control"
                    type="search"
@@ -71,8 +68,8 @@
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
                     <li><a href="../../classes.html">Classes</a></li>
-                                            <li><a href="../../namespaces.html">Namespaces</a></li>
-                                        <li><a href="../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../interfaces.html">Interfaces</a></li>
                     <li><a href="../../traits.html">Traits</a></li>
                     <li><a href="../../doc-index.html">Index</a></li>
                     <li><a href="../../search.html">Search</a></li>
@@ -88,36 +85,31 @@
             </ol>
         </div>
                 <div id="page-content">
-                
     <div class="page-header">
-        <h1>
-            Piwik
-                
-        </h1>
+        <h1>Piwik    
+            </h1>
     </div>
 
-    <p>    class
-    <strong>Piwik</strong>        (<a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Piwikphp">View source</a>)
+    
+    <p>        class
+    <strong>Piwik</strong>        (<a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Piwikphp">View source</a>)
 </p>
 
         
     
+        
 
             <div class="description">
-            <p>Class Piwik.</p>                                </div>
-    
-            <h2>Traits</h2>
+            <p><p>Class Piwik.</p></p>                    </div>
+            
+                <h2>Traits</h2>
 
         
     <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-6">
-                                            <a href="../../RobBrazier/Piwik/Traits/ConfigTrait.html"><abbr title="RobBrazier\Piwik\Traits\ConfigTrait">ConfigTrait</abbr></a>
-                                            
-                </div>
-                <div class="col-md-6">
-                    
-                </div>
+                    <a href="../../RobBrazier/Piwik/Traits/ConfigTrait.html"><abbr title="RobBrazier\Piwik\Traits\ConfigTrait">ConfigTrait</abbr></a>    </div>
+                <div class="col-md-6"></div>
             </div>
             </div>
     
@@ -128,10 +120,12 @@
                     <tr>
                 <td class="type" id="property_config">
                                         protected                                        <a href="../../RobBrazier/Piwik/Repository/ConfigRepository.html"><abbr title="RobBrazier\Piwik\Repository\ConfigRepository">ConfigRepository</abbr></a>
-                </td>
+                                                                                
+                                    </td>
                 <td>$config</td>
                 <td class="last"></td>
-                <td><small>from&nbsp;<a href="../../RobBrazier/Piwik/Traits/ConfigTrait.html#property_config"><abbr title="RobBrazier\Piwik\Traits\ConfigTrait">ConfigTrait</abbr></a></small></td>
+                <td><small>from&nbsp;<a href="../../RobBrazier/Piwik/Traits/ConfigTrait.html#property_config">
+<abbr title="RobBrazier\Piwik\Traits\ConfigTrait">ConfigTrait</abbr></a></small></td>
             </tr>
             </table>
 
@@ -143,322 +137,324 @@
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method___construct">__construct</a>(<a href="../../RobBrazier/Piwik/Repository/ConfigRepository.html"><abbr title="RobBrazier\Piwik\Repository\ConfigRepository">ConfigRepository</abbr></a> $config, <a href="../../RobBrazier/Piwik/Repository/RequestRepository.html"><abbr title="RobBrazier\Piwik\Repository\RequestRepository">RequestRepository</abbr></a> $request)
         
-                                            <p>Piwik constructor.</p>                </div>
+                                            <p><p>Piwik constructor.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     string
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getSiteId">getSiteId</a>()
         
-                                            <p>Retrieve Site ID from configuration.</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../RobBrazier/Piwik/Traits/ConfigTrait.html#method_getSiteId"><abbr title="RobBrazier\Piwik\Traits\ConfigTrait">ConfigTrait</abbr></a></small></div>
+                                            <p><p>Retrieve Site ID from configuration.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../RobBrazier/Piwik/Traits/ConfigTrait.html#method_getSiteId">
+<abbr title="RobBrazier\Piwik\Traits\ConfigTrait">ConfigTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     string
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getPiwikUrl">getPiwikUrl</a>()
         
-                                            <p>Retrieve Piwik URL from configuration.</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../RobBrazier/Piwik/Traits/ConfigTrait.html#method_getPiwikUrl"><abbr title="RobBrazier\Piwik\Traits\ConfigTrait">ConfigTrait</abbr></a></small></div>
+                                            <p><p>Retrieve Piwik URL from configuration.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../RobBrazier/Piwik/Traits/ConfigTrait.html#method_getPiwikUrl">
+<abbr title="RobBrazier\Piwik\Traits\ConfigTrait">ConfigTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     string
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_convertUrl">convertUrl</a>(string $url, bool $https)
         
-                                            <p>Convert URL from HTTP to HTTPS and vice versa.</p>                </div>
+                                            <p><p>Convert URL from HTTP to HTTPS and vice versa.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     <a href="../../RobBrazier/Piwik/Module/ActionsModule.html"><abbr title="RobBrazier\Piwik\Module\ActionsModule">ActionsModule</abbr></a>
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getActions">getActions</a>()
         
-                                            <p>Initialise the Actions module.</p>                </div>
+                                            <p><p>Initialise the Actions module.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     <a href="../../RobBrazier/Piwik/Module/APIModule.html"><abbr title="RobBrazier\Piwik\Module\APIModule">APIModule</abbr></a>
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getAPI">getAPI</a>()
         
-                                            <p>Initialise the API Module.</p>                </div>
+                                            <p><p>Initialise the API Module.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     <a href="../../RobBrazier/Piwik/Module/ContentsModule.html"><abbr title="RobBrazier\Piwik\Module\ContentsModule">ContentsModule</abbr></a>
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getContents">getContents</a>()
         
-                                            <p>Initialise the Contents Module.</p>                </div>
+                                            <p><p>Initialise the Contents Module.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     <a href="../../RobBrazier/Piwik/Module/EventsModule.html"><abbr title="RobBrazier\Piwik\Module\EventsModule">EventsModule</abbr></a>
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getEvents">getEvents</a>()
         
-                                            <p>Initialise the Events Module.</p>                </div>
+                                            <p><p>Initialise the Events Module.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     <a href="../../RobBrazier/Piwik/Module/LiveModule.html"><abbr title="RobBrazier\Piwik\Module\LiveModule">LiveModule</abbr></a>
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getLive">getLive</a>()
         
-                                            <p>Initialise the Live Module.</p>                </div>
+                                            <p><p>Initialise the Live Module.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     <a href="../../RobBrazier/Piwik/Module/ProviderModule.html"><abbr title="RobBrazier\Piwik\Module\ProviderModule">ProviderModule</abbr></a>
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getProvider">getProvider</a>()
         
-                                            <p>Initialise the Provider Module.</p>                </div>
+                                            <p><p>Initialise the Provider Module.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     <a href="../../RobBrazier/Piwik/Module/ReferrersModule.html"><abbr title="RobBrazier\Piwik\Module\ReferrersModule">ReferrersModule</abbr></a>
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getReferrers">getReferrers</a>()
         
-                                            <p>Initialise the Referrers Module.</p>                </div>
+                                            <p><p>Initialise the Referrers Module.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     <a href="../../RobBrazier/Piwik/Module/SEOModule.html"><abbr title="RobBrazier\Piwik\Module\SEOModule">SEOModule</abbr></a>
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getSEO">getSEO</a>()
         
-                                            <p>Initialise the SEO Module.</p>                </div>
+                                            <p><p>Initialise the SEO Module.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     <a href="../../RobBrazier/Piwik/Module/SitesManagerModule.html"><abbr title="RobBrazier\Piwik\Module\SitesManagerModule">SitesManagerModule</abbr></a>
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getSitesManager">getSitesManager</a>()
         
-                                            <p>Initialise the SitesManager Module.</p>                </div>
+                                            <p><p>Initialise the SitesManager Module.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     <a href="../../RobBrazier/Piwik/Module/UsersManagerModule.html"><abbr title="RobBrazier\Piwik\Module\UsersManagerModule">UsersManagerModule</abbr></a>
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getUsersManager">getUsersManager</a>()
         
-                                            <p>Initialise the UsersManager Module.</p>                </div>
+                                            <p><p>Initialise the UsersManager Module.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     <a href="../../RobBrazier/Piwik/Module/VisitorInterestModule.html"><abbr title="RobBrazier\Piwik\Module\VisitorInterestModule">VisitorInterestModule</abbr></a>
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getVisitorInterest">getVisitorInterest</a>()
         
-                                            <p>Initialise the VisitorInterest Module.</p>                </div>
+                                            <p><p>Initialise the VisitorInterest Module.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     <a href="../../RobBrazier/Piwik/Module/VisitsSummaryModule.html"><abbr title="RobBrazier\Piwik\Module\VisitsSummaryModule">VisitsSummaryModule</abbr></a>
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getVisitsSummary">getVisitsSummary</a>()
         
-                                            <p>Initialise the VisitsSummary Module.</p>                </div>
+                                            <p><p>Initialise the VisitsSummary Module.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     string
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getTag">getTag</a>()
         
-                                            <p>Get javascript tag for use in tracking the website.</p>                </div>
+                                            <p><p>Get javascript tag for use in tracking the website.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getCustom">getCustom</a>(<a href="../../RobBrazier/Piwik/Request/RequestOptions.html"><abbr title="RobBrazier\Piwik\Request\RequestOptions">RequestOptions</abbr></a> $requestOptions)
         
-                                            <p>Create a custom request
-N.B. It is safer to raise a GitHub issue to request another API method.</p>                </div>
+                                            <p><p>Create a custom request
+N.B. It is safer to raise a GitHub issue to request another API method.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_actions">actions</a>(string $format = null)
-        <small><sup><span class="label label-danger">deprecated</span></sup></small>
-                                            <p>Get actions (hits) for the specific time period.</p>                </div>
+        <small><span class="label label-danger">deprecated</span></small>
+                                            <p><p>Get actions (hits) for the specific time period.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_downloads">downloads</a>(string $format = null)
-        <small><sup><span class="label label-danger">deprecated</span></sup></small>
-                                            <p>Get file downloads for the specific time period.</p>                </div>
+        <small><span class="label label-danger">deprecated</span></small>
+                                            <p><p>Get file downloads for the specific time period.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_keywords">keywords</a>(string $format = null)
-        <small><sup><span class="label label-danger">deprecated</span></sup></small>
-                                            <p>Get search keywords for the specific time period.</p>                </div>
+        <small><span class="label label-danger">deprecated</span></small>
+                                            <p><p>Get search keywords for the specific time period.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_last_visits">last_visits</a>(int $count, string $format = null)
-        <small><sup><span class="label label-danger">deprecated</span></sup></small>
-                                            <p>Get information about last 10 visits (ip, time, country, pages, etc.).</p>                </div>
+        <small><span class="label label-danger">deprecated</span></small>
+                                            <p><p>Get information about last 10 visits (ip, time, country, pages, etc.).</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_last_visits_parsed">last_visits_parsed</a>(int $count, string $format = null)
-        <small><sup><span class="label label-danger">deprecated</span></sup></small>
-                                            <p>Get information about last 10 visits (ip, time, country, pages, etc.)
-in a formatted array with GeoIP information if enabled.</p>                </div>
+        <small><span class="label label-danger">deprecated</span></small>
+                                            <p><p>Get information about last 10 visits (ip, time, country, pages, etc.)
+in a formatted array with GeoIP information if enabled.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_outlinks">outlinks</a>(string $format = null)
-        <small><sup><span class="label label-danger">deprecated</span></sup></small>
-                                            <p>Get outlinks for the specific time period.</p>                </div>
+        <small><span class="label label-danger">deprecated</span></small>
+                                            <p><p>Get outlinks for the specific time period.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_page_titles">page_titles</a>(string $format = null)
-        <small><sup><span class="label label-danger">deprecated</span></sup></small>
-                                            <p>Get page visit information for the specific time period.</p>                </div>
+        <small><span class="label label-danger">deprecated</span></small>
+                                            <p><p>Get page visit information for the specific time period.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_search_engines">search_engines</a>(string $format = null)
-        <small><sup><span class="label label-danger">deprecated</span></sup></small>
-                                            <p>Get search engine referer information for the specific time period.</p>                </div>
+        <small><span class="label label-danger">deprecated</span></small>
+                                            <p><p>Get search engine referer information for the specific time period.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_unique_visitors">unique_visitors</a>(string $format = null)
-        <small><sup><span class="label label-danger">deprecated</span></sup></small>
-                                            <p>Get unique visitors for the specific time period.</p>                </div>
+        <small><span class="label label-danger">deprecated</span></small>
+                                            <p><p>Get unique visitors for the specific time period.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_visits">visits</a>(string $format = null)
-        <small><sup><span class="label label-danger">deprecated</span></sup></small>
-                                            <p>Get all visits for the specific time period.</p>                </div>
+        <small><span class="label label-danger">deprecated</span></small>
+                                            <p><p>Get all visits for the specific time period.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_websites">websites</a>(string $format = null)
-        <small><sup><span class="label label-danger">deprecated</span></sup></small>
-                                            <p>Get referring websites (traffic sources) for the specific time period.</p>                </div>
+        <small><span class="label label-danger">deprecated</span></small>
+                                            <p><p>Get referring websites (traffic sources) for the specific time period.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_seo_rank">seo_rank</a>(int $siteId, string $format = null)
-        <small><sup><span class="label label-danger">deprecated</span></sup></small>
-                                            <p>Get SEO Rank for the website.</p>                </div>
+        <small><span class="label label-danger">deprecated</span></small>
+                                            <p><p>Get SEO Rank for the website.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     string
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_tag">tag</a>()
-        <small><sup><span class="label label-danger">deprecated</span></sup></small>
-                                            <p>Get javascript tag for use in tracking the website.</p>                </div>
+        <small><span class="label label-danger">deprecated</span></small>
+                                            <p><p>Get javascript tag for use in tracking the website.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_version">version</a>(string $format = null)
-        <small><sup><span class="label label-danger">deprecated</span></sup></small>
-                                            <p>Get Version of the Piwik Server.</p>                </div>
+        <small><span class="label label-danger">deprecated</span></small>
+                                            <p><p>Get Version of the Piwik Server.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -469,18 +465,19 @@ in a formatted array with GeoIP information if enabled.</p>                </div
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Piwikphp#L43">line 43</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Piwikphp#L43">at line 43</a></div>
         <code>                    
     <strong>__construct</strong>(<a href="../../RobBrazier/Piwik/Repository/ConfigRepository.html"><abbr title="RobBrazier\Piwik\Repository\ConfigRepository">ConfigRepository</abbr></a> $config, <a href="../../RobBrazier/Piwik/Repository/RequestRepository.html"><abbr title="RobBrazier\Piwik\Repository\RequestRepository">RequestRepository</abbr></a> $request)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Piwik constructor.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Piwik constructor.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -499,34 +496,38 @@ in a formatted array with GeoIP information if enabled.</p>                </div
             
             
             
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_getSiteId">
-        <div class="location">in <a href="../../RobBrazier/Piwik/Traits/ConfigTrait.html#method_getSiteId"><abbr title="RobBrazier\Piwik\Traits\ConfigTrait">ConfigTrait</abbr></a> at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Traits/ConfigTraitphp#L30">line 30</a></div>
+        <div class="location">in <a href="../../RobBrazier/Piwik/Traits/ConfigTrait.html#method_getSiteId">
+<abbr title="RobBrazier\Piwik\Traits\ConfigTrait">ConfigTrait</abbr></a> <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Traits/ConfigTraitphp#L30">at line 30</a></div>
         <code>                    string
     <strong>getSiteId</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Retrieve Site ID from configuration.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Retrieve Site ID from configuration.</p></p>                        
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
             <td>string</td>
-            <td>site id retrieved from configuration</td>
+            <td><p>site id retrieved from configuration</p></td>
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -535,28 +536,31 @@ in a formatted array with GeoIP information if enabled.</p>                </div
             </div>
                     <div class="method-item">
                     <h3 id="method_getPiwikUrl">
-        <div class="location">in <a href="../../RobBrazier/Piwik/Traits/ConfigTrait.html#method_getPiwikUrl"><abbr title="RobBrazier\Piwik\Traits\ConfigTrait">ConfigTrait</abbr></a> at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Traits/ConfigTraitphp#L40">line 40</a></div>
+        <div class="location">in <a href="../../RobBrazier/Piwik/Traits/ConfigTrait.html#method_getPiwikUrl">
+<abbr title="RobBrazier\Piwik\Traits\ConfigTrait">ConfigTrait</abbr></a> <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Traits/ConfigTraitphp#L40">at line 40</a></div>
         <code>                    string
     <strong>getPiwikUrl</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Retrieve Piwik URL from configuration.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Retrieve Piwik URL from configuration.</p></p>                        
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
             <td>string</td>
-            <td>piwik url retrieved from configuration</td>
+            <td><p>piwik url retrieved from configuration</p></td>
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -565,18 +569,19 @@ in a formatted array with GeoIP information if enabled.</p>                </div
             </div>
                     <div class="method-item">
                     <h3 id="method_convertUrl">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Piwikphp#L57">line 57</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Piwikphp#L57">at line 57</a></div>
         <code>            protected        string
     <strong>convertUrl</strong>(string $url, bool $https)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Convert URL from HTTP to HTTPS and vice versa.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Convert URL from HTTP to HTTPS and vice versa.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -604,24 +609,26 @@ in a formatted array with GeoIP information if enabled.</p>                </div
 
             
             
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_getActions">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Piwikphp#L73">line 73</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Piwikphp#L73">at line 73</a></div>
         <code>                    <a href="../../RobBrazier/Piwik/Module/ActionsModule.html"><abbr title="RobBrazier\Piwik\Module\ActionsModule">ActionsModule</abbr></a>
     <strong>getActions</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Initialise the Actions module.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Initialise the Actions module.</p></p>                        
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -645,24 +652,26 @@ in a formatted array with GeoIP information if enabled.</p>                </div
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_getAPI">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Piwikphp#L85">line 85</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Piwikphp#L85">at line 85</a></div>
         <code>                    <a href="../../RobBrazier/Piwik/Module/APIModule.html"><abbr title="RobBrazier\Piwik\Module\APIModule">APIModule</abbr></a>
     <strong>getAPI</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Initialise the API Module.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Initialise the API Module.</p></p>                        
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -686,24 +695,26 @@ in a formatted array with GeoIP information if enabled.</p>                </div
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_getContents">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Piwikphp#L97">line 97</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Piwikphp#L97">at line 97</a></div>
         <code>                    <a href="../../RobBrazier/Piwik/Module/ContentsModule.html"><abbr title="RobBrazier\Piwik\Module\ContentsModule">ContentsModule</abbr></a>
     <strong>getContents</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Initialise the Contents Module.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Initialise the Contents Module.</p></p>                        
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -727,24 +738,26 @@ in a formatted array with GeoIP information if enabled.</p>                </div
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_getEvents">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Piwikphp#L109">line 109</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Piwikphp#L109">at line 109</a></div>
         <code>                    <a href="../../RobBrazier/Piwik/Module/EventsModule.html"><abbr title="RobBrazier\Piwik\Module\EventsModule">EventsModule</abbr></a>
     <strong>getEvents</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Initialise the Events Module.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Initialise the Events Module.</p></p>                        
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -768,24 +781,26 @@ in a formatted array with GeoIP information if enabled.</p>                </div
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_getLive">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Piwikphp#L121">line 121</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Piwikphp#L121">at line 121</a></div>
         <code>                    <a href="../../RobBrazier/Piwik/Module/LiveModule.html"><abbr title="RobBrazier\Piwik\Module\LiveModule">LiveModule</abbr></a>
     <strong>getLive</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Initialise the Live Module.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Initialise the Live Module.</p></p>                        
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -809,24 +824,26 @@ in a formatted array with GeoIP information if enabled.</p>                </div
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_getProvider">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Piwikphp#L133">line 133</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Piwikphp#L133">at line 133</a></div>
         <code>                    <a href="../../RobBrazier/Piwik/Module/ProviderModule.html"><abbr title="RobBrazier\Piwik\Module\ProviderModule">ProviderModule</abbr></a>
     <strong>getProvider</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Initialise the Provider Module.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Initialise the Provider Module.</p></p>                        
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -850,24 +867,26 @@ in a formatted array with GeoIP information if enabled.</p>                </div
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_getReferrers">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Piwikphp#L145">line 145</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Piwikphp#L145">at line 145</a></div>
         <code>                    <a href="../../RobBrazier/Piwik/Module/ReferrersModule.html"><abbr title="RobBrazier\Piwik\Module\ReferrersModule">ReferrersModule</abbr></a>
     <strong>getReferrers</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Initialise the Referrers Module.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Initialise the Referrers Module.</p></p>                        
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -891,24 +910,26 @@ in a formatted array with GeoIP information if enabled.</p>                </div
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_getSEO">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Piwikphp#L157">line 157</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Piwikphp#L157">at line 157</a></div>
         <code>                    <a href="../../RobBrazier/Piwik/Module/SEOModule.html"><abbr title="RobBrazier\Piwik\Module\SEOModule">SEOModule</abbr></a>
     <strong>getSEO</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Initialise the SEO Module.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Initialise the SEO Module.</p></p>                        
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -932,24 +953,26 @@ in a formatted array with GeoIP information if enabled.</p>                </div
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_getSitesManager">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Piwikphp#L169">line 169</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Piwikphp#L169">at line 169</a></div>
         <code>                    <a href="../../RobBrazier/Piwik/Module/SitesManagerModule.html"><abbr title="RobBrazier\Piwik\Module\SitesManagerModule">SitesManagerModule</abbr></a>
     <strong>getSitesManager</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Initialise the SitesManager Module.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Initialise the SitesManager Module.</p></p>                        
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -973,24 +996,26 @@ in a formatted array with GeoIP information if enabled.</p>                </div
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_getUsersManager">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Piwikphp#L181">line 181</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Piwikphp#L181">at line 181</a></div>
         <code>                    <a href="../../RobBrazier/Piwik/Module/UsersManagerModule.html"><abbr title="RobBrazier\Piwik\Module\UsersManagerModule">UsersManagerModule</abbr></a>
     <strong>getUsersManager</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Initialise the UsersManager Module.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Initialise the UsersManager Module.</p></p>                        
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -1014,24 +1039,26 @@ in a formatted array with GeoIP information if enabled.</p>                </div
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_getVisitorInterest">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Piwikphp#L193">line 193</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Piwikphp#L193">at line 193</a></div>
         <code>                    <a href="../../RobBrazier/Piwik/Module/VisitorInterestModule.html"><abbr title="RobBrazier\Piwik\Module\VisitorInterestModule">VisitorInterestModule</abbr></a>
     <strong>getVisitorInterest</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Initialise the VisitorInterest Module.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Initialise the VisitorInterest Module.</p></p>                        
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -1055,24 +1082,26 @@ in a formatted array with GeoIP information if enabled.</p>                </div
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_getVisitsSummary">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Piwikphp#L205">line 205</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Piwikphp#L205">at line 205</a></div>
         <code>                    <a href="../../RobBrazier/Piwik/Module/VisitsSummaryModule.html"><abbr title="RobBrazier\Piwik\Module\VisitsSummaryModule">VisitsSummaryModule</abbr></a>
     <strong>getVisitsSummary</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Initialise the VisitsSummary Module.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Initialise the VisitsSummary Module.</p></p>                        
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -1096,24 +1125,26 @@ in a formatted array with GeoIP information if enabled.</p>                </div
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_getTag">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Piwikphp#L215">line 215</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Piwikphp#L215">at line 215</a></div>
         <code>                    string
     <strong>getTag</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Get javascript tag for use in tracking the website.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Get javascript tag for use in tracking the website.</p></p>                        
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -1126,25 +1157,27 @@ in a formatted array with GeoIP information if enabled.</p>                </div
 
             
             
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_getCustom">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Piwikphp#L251">line 251</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Piwikphp#L251">at line 251</a></div>
         <code>                    mixed
     <strong>getCustom</strong>(<a href="../../RobBrazier/Piwik/Request/RequestOptions.html"><abbr title="RobBrazier\Piwik\Request\RequestOptions">RequestOptions</abbr></a> $requestOptions)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Create a custom request
-N.B. It is safer to raise a GitHub issue to request another API method.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Create a custom request
+N.B. It is safer to raise a GitHub issue to request another API method.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -1178,38 +1211,40 @@ N.B. It is safer to raise a GitHub issue to request another API method.</p>     
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_actions">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Piwikphp#L266">line 266</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Piwikphp#L266">at line 266</a></div>
         <code>                    mixed
     <strong>actions</strong>(string $format = null)
-        <small><sup><span class="label label-danger">deprecated</span></sup></small></code>
+        <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
             <p>
-                <small><sup><span class="label label-danger">deprecated</span></sup></small>
+                <small><span class="label label-danger">deprecated</span></small>
                             <tr>
                     <td></td>
                     <td></td>
                 </tr>
                     </p>
     
+            
 
-                    <div class="method-description">
-                                    <p>Get actions (hits) for the specific time period.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Get actions (hits) for the specific time period.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>Override string for the format of the API Query to be returned as</td>
+                <td><p>Override string for the format of the API Query to be returned as</p></td>
             </tr>
             </table>
 
@@ -1230,44 +1265,47 @@ N.B. It is safer to raise a GitHub issue to request another API method.</p>     
                     <table class="table table-condensed">
                     <tr>
                 <td>
-                                            <a href="../../RobBrazier/Piwik/Module/VisitsSummaryModule.html#method_getActions"><abbr title="RobBrazier\Piwik\Module\VisitsSummaryModule">VisitsSummaryModule</abbr>::getActions</a>
+                                            <a href="../../RobBrazier/Piwik/Module/VisitsSummaryModule.html#method_getActions">
+<abbr title="RobBrazier\Piwik\Module\VisitsSummaryModule">VisitsSummaryModule</abbr>::getActions</a>
                                     </td>
                 <td></td>
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_downloads">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Piwikphp#L281">line 281</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Piwikphp#L281">at line 281</a></div>
         <code>                    mixed
     <strong>downloads</strong>(string $format = null)
-        <small><sup><span class="label label-danger">deprecated</span></sup></small></code>
+        <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
             <p>
-                <small><sup><span class="label label-danger">deprecated</span></sup></small>
+                <small><span class="label label-danger">deprecated</span></small>
                             <tr>
                     <td></td>
                     <td></td>
                 </tr>
                     </p>
     
+            
 
-                    <div class="method-description">
-                                    <p>Get file downloads for the specific time period.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Get file downloads for the specific time period.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>Override string for the format of the API Query to be returned as</td>
+                <td><p>Override string for the format of the API Query to be returned as</p></td>
             </tr>
             </table>
 
@@ -1288,44 +1326,47 @@ N.B. It is safer to raise a GitHub issue to request another API method.</p>     
                     <table class="table table-condensed">
                     <tr>
                 <td>
-                                            <a href="../../RobBrazier/Piwik/Module/ActionsModule.html#method_getDownloads"><abbr title="RobBrazier\Piwik\Module\ActionsModule">ActionsModule</abbr>::getDownloads</a>
+                                            <a href="../../RobBrazier/Piwik/Module/ActionsModule.html#method_getDownloads">
+<abbr title="RobBrazier\Piwik\Module\ActionsModule">ActionsModule</abbr>::getDownloads</a>
                                     </td>
                 <td></td>
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_keywords">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Piwikphp#L296">line 296</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Piwikphp#L296">at line 296</a></div>
         <code>                    mixed
     <strong>keywords</strong>(string $format = null)
-        <small><sup><span class="label label-danger">deprecated</span></sup></small></code>
+        <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
             <p>
-                <small><sup><span class="label label-danger">deprecated</span></sup></small>
+                <small><span class="label label-danger">deprecated</span></small>
                             <tr>
                     <td></td>
                     <td></td>
                 </tr>
                     </p>
     
+            
 
-                    <div class="method-description">
-                                    <p>Get search keywords for the specific time period.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Get search keywords for the specific time period.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>Override string for the format of the API Query to be returned as</td>
+                <td><p>Override string for the format of the API Query to be returned as</p></td>
             </tr>
             </table>
 
@@ -1346,49 +1387,52 @@ N.B. It is safer to raise a GitHub issue to request another API method.</p>     
                     <table class="table table-condensed">
                     <tr>
                 <td>
-                                            <a href="../../RobBrazier/Piwik/Module/ReferrersModule.html#method_getKeywords"><abbr title="RobBrazier\Piwik\Module\ReferrersModule">ReferrersModule</abbr>::getKeywords</a>
+                                            <a href="../../RobBrazier/Piwik/Module/ReferrersModule.html#method_getKeywords">
+<abbr title="RobBrazier\Piwik\Module\ReferrersModule">ReferrersModule</abbr>::getKeywords</a>
                                     </td>
                 <td></td>
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_last_visits">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Piwikphp#L312">line 312</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Piwikphp#L312">at line 312</a></div>
         <code>                    mixed
     <strong>last_visits</strong>(int $count, string $format = null)
-        <small><sup><span class="label label-danger">deprecated</span></sup></small></code>
+        <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
             <p>
-                <small><sup><span class="label label-danger">deprecated</span></sup></small>
+                <small><span class="label label-danger">deprecated</span></small>
                             <tr>
                     <td></td>
                     <td></td>
                 </tr>
                     </p>
     
+            
 
-                    <div class="method-description">
-                                    <p>Get information about last 10 visits (ip, time, country, pages, etc.).</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Get information about last 10 visits (ip, time, country, pages, etc.).</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>int</td>
                 <td>$count</td>
-                <td>Limit the number of visits returned by $count</td>
+                <td><p>Limit the number of visits returned by $count</p></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>Override string for the format of the API Query to be returned as</td>
+                <td><p>Override string for the format of the API Query to be returned as</p></td>
             </tr>
             </table>
 
@@ -1409,50 +1453,53 @@ N.B. It is safer to raise a GitHub issue to request another API method.</p>     
                     <table class="table table-condensed">
                     <tr>
                 <td>
-                                            <a href="../../RobBrazier/Piwik/Module/LiveModule.html#method_getLastVisitsDetails"><abbr title="RobBrazier\Piwik\Module\LiveModule">LiveModule</abbr>::getLastVisitsDetails</a>
+                                            <a href="../../RobBrazier/Piwik/Module/LiveModule.html#method_getLastVisitsDetails">
+<abbr title="RobBrazier\Piwik\Module\LiveModule">LiveModule</abbr>::getLastVisitsDetails</a>
                                     </td>
                 <td></td>
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_last_visits_parsed">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Piwikphp#L328">line 328</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Piwikphp#L328">at line 328</a></div>
         <code>                    mixed
     <strong>last_visits_parsed</strong>(int $count, string $format = null)
-        <small><sup><span class="label label-danger">deprecated</span></sup></small></code>
+        <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
             <p>
-                <small><sup><span class="label label-danger">deprecated</span></sup></small>
+                <small><span class="label label-danger">deprecated</span></small>
                             <tr>
                     <td></td>
                     <td></td>
                 </tr>
                     </p>
     
+            
 
-                    <div class="method-description">
-                                    <p>Get information about last 10 visits (ip, time, country, pages, etc.)
-in a formatted array with GeoIP information if enabled.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Get information about last 10 visits (ip, time, country, pages, etc.)
+in a formatted array with GeoIP information if enabled.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>int</td>
                 <td>$count</td>
-                <td>Limit the number of visits returned by $count</td>
+                <td><p>Limit the number of visits returned by $count</p></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>Override string for the format of the API Query to be returned as</td>
+                <td><p>Override string for the format of the API Query to be returned as</p></td>
             </tr>
             </table>
 
@@ -1466,6 +1513,7 @@ in a formatted array with GeoIP information if enabled.</p>                     
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -1474,32 +1522,33 @@ in a formatted array with GeoIP information if enabled.</p>                     
             </div>
                     <div class="method-item">
                     <h3 id="method_outlinks">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Piwikphp#L343">line 343</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Piwikphp#L343">at line 343</a></div>
         <code>                    mixed
     <strong>outlinks</strong>(string $format = null)
-        <small><sup><span class="label label-danger">deprecated</span></sup></small></code>
+        <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
             <p>
-                <small><sup><span class="label label-danger">deprecated</span></sup></small>
+                <small><span class="label label-danger">deprecated</span></small>
                             <tr>
                     <td></td>
                     <td></td>
                 </tr>
                     </p>
     
+            
 
-                    <div class="method-description">
-                                    <p>Get outlinks for the specific time period.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Get outlinks for the specific time period.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>Override string for the format of the API Query to be returned as</td>
+                <td><p>Override string for the format of the API Query to be returned as</p></td>
             </tr>
             </table>
 
@@ -1520,44 +1569,47 @@ in a formatted array with GeoIP information if enabled.</p>                     
                     <table class="table table-condensed">
                     <tr>
                 <td>
-                                            <a href="../../RobBrazier/Piwik/Module/ActionsModule.html#method_getOutlinks"><abbr title="RobBrazier\Piwik\Module\ActionsModule">ActionsModule</abbr>::getOutlinks</a>
+                                            <a href="../../RobBrazier/Piwik/Module/ActionsModule.html#method_getOutlinks">
+<abbr title="RobBrazier\Piwik\Module\ActionsModule">ActionsModule</abbr>::getOutlinks</a>
                                     </td>
                 <td></td>
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_page_titles">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Piwikphp#L358">line 358</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Piwikphp#L358">at line 358</a></div>
         <code>                    mixed
     <strong>page_titles</strong>(string $format = null)
-        <small><sup><span class="label label-danger">deprecated</span></sup></small></code>
+        <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
             <p>
-                <small><sup><span class="label label-danger">deprecated</span></sup></small>
+                <small><span class="label label-danger">deprecated</span></small>
                             <tr>
                     <td></td>
                     <td></td>
                 </tr>
                     </p>
     
+            
 
-                    <div class="method-description">
-                                    <p>Get page visit information for the specific time period.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Get page visit information for the specific time period.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>Override string for the format of the API Query to be returned as</td>
+                <td><p>Override string for the format of the API Query to be returned as</p></td>
             </tr>
             </table>
 
@@ -1578,44 +1630,47 @@ in a formatted array with GeoIP information if enabled.</p>                     
                     <table class="table table-condensed">
                     <tr>
                 <td>
-                                            <a href="../../RobBrazier/Piwik/Module/ActionsModule.html#method_getPageTitles"><abbr title="RobBrazier\Piwik\Module\ActionsModule">ActionsModule</abbr>::getPageTitles</a>
+                                            <a href="../../RobBrazier/Piwik/Module/ActionsModule.html#method_getPageTitles">
+<abbr title="RobBrazier\Piwik\Module\ActionsModule">ActionsModule</abbr>::getPageTitles</a>
                                     </td>
                 <td></td>
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_search_engines">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Piwikphp#L373">line 373</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Piwikphp#L373">at line 373</a></div>
         <code>                    mixed
     <strong>search_engines</strong>(string $format = null)
-        <small><sup><span class="label label-danger">deprecated</span></sup></small></code>
+        <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
             <p>
-                <small><sup><span class="label label-danger">deprecated</span></sup></small>
+                <small><span class="label label-danger">deprecated</span></small>
                             <tr>
                     <td></td>
                     <td></td>
                 </tr>
                     </p>
     
+            
 
-                    <div class="method-description">
-                                    <p>Get search engine referer information for the specific time period.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Get search engine referer information for the specific time period.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>Override string for the format of the API Query to be returned as</td>
+                <td><p>Override string for the format of the API Query to be returned as</p></td>
             </tr>
             </table>
 
@@ -1636,44 +1691,47 @@ in a formatted array with GeoIP information if enabled.</p>                     
                     <table class="table table-condensed">
                     <tr>
                 <td>
-                                            <a href="../../RobBrazier/Piwik/Module/ReferrersModule.html#method_getSearchEngines"><abbr title="RobBrazier\Piwik\Module\ReferrersModule">ReferrersModule</abbr>::getSearchEngines</a>
+                                            <a href="../../RobBrazier/Piwik/Module/ReferrersModule.html#method_getSearchEngines">
+<abbr title="RobBrazier\Piwik\Module\ReferrersModule">ReferrersModule</abbr>::getSearchEngines</a>
                                     </td>
                 <td></td>
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_unique_visitors">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Piwikphp#L388">line 388</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Piwikphp#L388">at line 388</a></div>
         <code>                    mixed
     <strong>unique_visitors</strong>(string $format = null)
-        <small><sup><span class="label label-danger">deprecated</span></sup></small></code>
+        <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
             <p>
-                <small><sup><span class="label label-danger">deprecated</span></sup></small>
+                <small><span class="label label-danger">deprecated</span></small>
                             <tr>
                     <td></td>
                     <td></td>
                 </tr>
                     </p>
     
+            
 
-                    <div class="method-description">
-                                    <p>Get unique visitors for the specific time period.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Get unique visitors for the specific time period.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>Override string for the format of the API Query to be returned as</td>
+                <td><p>Override string for the format of the API Query to be returned as</p></td>
             </tr>
             </table>
 
@@ -1694,44 +1752,47 @@ in a formatted array with GeoIP information if enabled.</p>                     
                     <table class="table table-condensed">
                     <tr>
                 <td>
-                                            <a href="../../RobBrazier/Piwik/Module/VisitsSummaryModule.html#method_getUniqueVisitors"><abbr title="RobBrazier\Piwik\Module\VisitsSummaryModule">VisitsSummaryModule</abbr>::getUniqueVisitors</a>
+                                            <a href="../../RobBrazier/Piwik/Module/VisitsSummaryModule.html#method_getUniqueVisitors">
+<abbr title="RobBrazier\Piwik\Module\VisitsSummaryModule">VisitsSummaryModule</abbr>::getUniqueVisitors</a>
                                     </td>
                 <td></td>
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_visits">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Piwikphp#L403">line 403</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Piwikphp#L403">at line 403</a></div>
         <code>                    mixed
     <strong>visits</strong>(string $format = null)
-        <small><sup><span class="label label-danger">deprecated</span></sup></small></code>
+        <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
             <p>
-                <small><sup><span class="label label-danger">deprecated</span></sup></small>
+                <small><span class="label label-danger">deprecated</span></small>
                             <tr>
                     <td></td>
                     <td></td>
                 </tr>
                     </p>
     
+            
 
-                    <div class="method-description">
-                                    <p>Get all visits for the specific time period.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Get all visits for the specific time period.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>Override string for the format of the API Query to be returned as</td>
+                <td><p>Override string for the format of the API Query to be returned as</p></td>
             </tr>
             </table>
 
@@ -1752,44 +1813,47 @@ in a formatted array with GeoIP information if enabled.</p>                     
                     <table class="table table-condensed">
                     <tr>
                 <td>
-                                            <a href="../../RobBrazier/Piwik/Module/VisitsSummaryModule.html#method_getVisits"><abbr title="RobBrazier\Piwik\Module\VisitsSummaryModule">VisitsSummaryModule</abbr>::getVisits</a>
+                                            <a href="../../RobBrazier/Piwik/Module/VisitsSummaryModule.html#method_getVisits">
+<abbr title="RobBrazier\Piwik\Module\VisitsSummaryModule">VisitsSummaryModule</abbr>::getVisits</a>
                                     </td>
                 <td></td>
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_websites">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Piwikphp#L418">line 418</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Piwikphp#L418">at line 418</a></div>
         <code>                    mixed
     <strong>websites</strong>(string $format = null)
-        <small><sup><span class="label label-danger">deprecated</span></sup></small></code>
+        <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
             <p>
-                <small><sup><span class="label label-danger">deprecated</span></sup></small>
+                <small><span class="label label-danger">deprecated</span></small>
                             <tr>
                     <td></td>
                     <td></td>
                 </tr>
                     </p>
     
+            
 
-                    <div class="method-description">
-                                    <p>Get referring websites (traffic sources) for the specific time period.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Get referring websites (traffic sources) for the specific time period.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>Override string for the format of the API Query to be returned as</td>
+                <td><p>Override string for the format of the API Query to be returned as</p></td>
             </tr>
             </table>
 
@@ -1810,49 +1874,52 @@ in a formatted array with GeoIP information if enabled.</p>                     
                     <table class="table table-condensed">
                     <tr>
                 <td>
-                                            <a href="../../RobBrazier/Piwik/Module/ReferrersModule.html#method_getWebsites"><abbr title="RobBrazier\Piwik\Module\ReferrersModule">ReferrersModule</abbr>::getWebsites</a>
+                                            <a href="../../RobBrazier/Piwik/Module/ReferrersModule.html#method_getWebsites">
+<abbr title="RobBrazier\Piwik\Module\ReferrersModule">ReferrersModule</abbr>::getWebsites</a>
                                     </td>
                 <td></td>
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_seo_rank">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Piwikphp#L434">line 434</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Piwikphp#L434">at line 434</a></div>
         <code>                    mixed
     <strong>seo_rank</strong>(int $siteId, string $format = null)
-        <small><sup><span class="label label-danger">deprecated</span></sup></small></code>
+        <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
             <p>
-                <small><sup><span class="label label-danger">deprecated</span></sup></small>
+                <small><span class="label label-danger">deprecated</span></small>
                             <tr>
                     <td></td>
                     <td></td>
                 </tr>
                     </p>
     
+            
 
-                    <div class="method-description">
-                                    <p>Get SEO Rank for the website.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Get SEO Rank for the website.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>int</td>
                 <td>$siteId</td>
-                <td>Override for ID, so you can specify one rather than fetching it from config</td>
+                <td><p>Override for ID, so you can specify one rather than fetching it from config</p></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>Override string for the format of the API Query to be returned as</td>
+                <td><p>Override string for the format of the API Query to be returned as</p></td>
             </tr>
             </table>
 
@@ -1873,37 +1940,40 @@ in a formatted array with GeoIP information if enabled.</p>                     
                     <table class="table table-condensed">
                     <tr>
                 <td>
-                                            <a href="../../RobBrazier/Piwik/Module/SEOModule.html#method_getRankFromSiteId"><abbr title="RobBrazier\Piwik\Module\SEOModule">SEOModule</abbr>::getRankFromSiteId</a>
+                                            <a href="../../RobBrazier/Piwik/Module/SEOModule.html#method_getRankFromSiteId">
+<abbr title="RobBrazier\Piwik\Module\SEOModule">SEOModule</abbr>::getRankFromSiteId</a>
                                     </td>
                 <td></td>
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_tag">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Piwikphp#L447">line 447</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Piwikphp#L447">at line 447</a></div>
         <code>                    string
     <strong>tag</strong>()
-        <small><sup><span class="label label-danger">deprecated</span></sup></small></code>
+        <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
             <p>
-                <small><sup><span class="label label-danger">deprecated</span></sup></small>
+                <small><span class="label label-danger">deprecated</span></small>
                             <tr>
                     <td></td>
                     <td></td>
                 </tr>
                     </p>
     
+            
 
-                    <div class="method-description">
-                                    <p>Get javascript tag for use in tracking the website.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Get javascript tag for use in tracking the website.</p></p>                        
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -1921,44 +1991,47 @@ in a formatted array with GeoIP information if enabled.</p>                     
                     <table class="table table-condensed">
                     <tr>
                 <td>
-                                            <a href="../../RobBrazier/Piwik/Piwik.html#method_getTag"><abbr title="RobBrazier\Piwik\Piwik">Piwik</abbr>::getTag</a>
+                                            <a href="../../RobBrazier/Piwik/Piwik.html#method_getTag">
+<abbr title="RobBrazier\Piwik\Piwik">Piwik</abbr>::getTag</a>
                                     </td>
                 <td></td>
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_version">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0src/RobBrazier/Piwik/Piwikphp#L462">line 462</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.0.0/src/RobBrazier/Piwik/Piwikphp#L462">at line 462</a></div>
         <code>                    mixed
     <strong>version</strong>(string $format = null)
-        <small><sup><span class="label label-danger">deprecated</span></sup></small></code>
+        <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
             <p>
-                <small><sup><span class="label label-danger">deprecated</span></sup></small>
+                <small><span class="label label-danger">deprecated</span></small>
                             <tr>
                     <td></td>
                     <td></td>
                 </tr>
                     </p>
     
+            
 
-                    <div class="method-description">
-                                    <p>Get Version of the Piwik Server.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Get Version of the Piwik Server.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>Override string for the format of the API Query to be returned as</td>
+                <td><p>Override string for the format of the API Query to be returned as</p></td>
             </tr>
             </table>
 
@@ -1979,12 +2052,14 @@ in a formatted array with GeoIP information if enabled.</p>                     
                     <table class="table table-condensed">
                     <tr>
                 <td>
-                                            <a href="../../RobBrazier/Piwik/Module/APIModule.html#method_getPiwikVersion"><abbr title="RobBrazier\Piwik\Module\APIModule">APIModule</abbr>::getPiwikVersion</a>
+                                            <a href="../../RobBrazier/Piwik/Module/APIModule.html#method_getPiwikVersion">
+<abbr title="RobBrazier\Piwik\Module\APIModule">APIModule</abbr>::getPiwikVersion</a>
                                     </td>
                 <td></td>
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
@@ -1992,12 +2067,8 @@ in a formatted array with GeoIP information if enabled.</p>                     
             </div>
 
     
-            </div>
-                <div id="footer">
-        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
-    </div>
-
-        </div>
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
     </div>
     </body>
 

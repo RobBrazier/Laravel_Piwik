@@ -7,24 +7,24 @@
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
-        <link rel="stylesheet" type="text/css" href="../../../css/sami.css">
-        <script src="../../../js/jquery-1.11.1.min.js"></script>
-        <script src="../../../js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
         <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../sami.js"></script>
+        <script src="../../../doctum.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-    
-    
+
     </head>
 
     <body id="class" data-name="class:RobBrazier_Piwik_Module_UsersManagerModule" data-root-path="../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                    <form action="#" method="GET">
-                <select id="version-switcher" name="version">
+                    <form action="#">
+                <select  class="form-control" id="version-switcher" name="version">
                                             <option value="../../../../2.0.1/index.html" data-version="2.0.1">2.0.1</option>
                                             <option value="../../../../2.1.0/index.html" data-version="2.1.0">2.1.0</option>
                                             <option value="../../../../2.1.1/index.html" data-version="2.1.1">2.1.1</option>
@@ -41,11 +41,8 @@
                                             <option value="../../../../master/index.html" data-version="master">master branch</option>
                                     </select>
             </form>
-                <script>
-            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
-        </script>
-        <form id="search-form" action="../../../search.html" method="GET">
-            <span class="glyphicon glyphicon-search"></span>
+                <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
             <input name="search"
                    class="typeahead form-control"
                    type="search"
@@ -71,8 +68,8 @@
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
                     <li><a href="../../../classes.html">Classes</a></li>
-                                            <li><a href="../../../namespaces.html">Namespaces</a></li>
-                                        <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
                     <li><a href="../../../traits.html">Traits</a></li>
                     <li><a href="../../../doc-index.html">Index</a></li>
                     <li><a href="../../../search.html">Search</a></li>
@@ -88,25 +85,24 @@
             </ol>
         </div>
                 <div id="page-content">
-                
     <div class="page-header">
-        <h1>
-            UsersManagerModule
-                
-        </h1>
+        <h1>UsersManagerModule    
+            </h1>
     </div>
 
-    <p>    class
-    <strong>UsersManagerModule</strong>        extends <a href="../../../RobBrazier/Piwik/Module/Module.html"><abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a>        (<a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1src/RobBrazier/Piwik/Module/UsersManagerModulephp">View source</a>)
+    
+    <p>        class
+    <strong>UsersManagerModule</strong>        extends <a href="../../../RobBrazier/Piwik/Module/Module.html"><abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a>        (<a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1/src/RobBrazier/Piwik/Module/UsersManagerModulephp">View source</a>)
 </p>
 
         
     
+        
 
             <div class="description">
-            <p>Class UsersManagerModule.</p>                                </div>
-    
-    
+            <p><p>Class UsersManagerModule.</p></p>                    </div>
+            
+        
     
             <h2>Properties</h2>
 
@@ -114,10 +110,12 @@
                     <tr>
                 <td class="type" id="property_request">
                                         protected                                        <a href="../../../RobBrazier/Piwik/Repository/RequestRepository.html"><abbr title="RobBrazier\Piwik\Repository\RequestRepository">RequestRepository</abbr></a>
-                </td>
+                                                                                
+                                    </td>
                 <td>$request</td>
                 <td class="last"></td>
-                <td><small>from&nbsp;<a href="../../../RobBrazier/Piwik/Module/Module.html#property_request"><abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a></small></td>
+                <td><small>from&nbsp;<a href="../../../RobBrazier/Piwik/Module/Module.html#property_request">
+<abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a></small></td>
             </tr>
             </table>
 
@@ -129,51 +127,53 @@
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method___construct">__construct</a>(<a href="../../../RobBrazier/Piwik/Repository/RequestRepository.html"><abbr title="RobBrazier\Piwik\Repository\RequestRepository">RequestRepository</abbr></a> $request)
         
-                                            <p>Module constructor.</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../RobBrazier/Piwik/Module/Module.html#method___construct"><abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a></small></div>
+                                            <p><p>Module constructor.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../RobBrazier/Piwik/Module/Module.html#method___construct">
+<abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     <a href="../../../RobBrazier/Piwik/Request/RequestOptions.html"><abbr title="RobBrazier\Piwik\Request\RequestOptions">RequestOptions</abbr></a>
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getOptions">getOptions</a>(string $format)
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../RobBrazier/Piwik/Module/Module.html#method_getOptions"><abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../RobBrazier/Piwik/Module/Module.html#method_getOptions">
+<abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getTokenAuth">getTokenAuth</a>(string $userLogin, string $md5Password, string $format = null)
         
-                                            <p>Gets the user's Authentication Token</p>                </div>
+                                            <p><p>Gets the user's Authentication Token</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_setUserAccess">setUserAccess</a>(string $userLogin, string $access, array $idSites, string $format = null)
         
-                                            <p>Assign an access role to a specified user for one or many site ids</p>                </div>
+                                            <p><p>Assign an access role to a specified user for one or many site ids</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_addUser">addUser</a>(string $userLogin, string $password, string $email, string $alias = null, string $initialIdSite = null, string $format = null)
         
-                                            <p>Create a user</p>                </div>
+                                            <p><p>Create a user</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -184,18 +184,20 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">in <a href="../../../RobBrazier/Piwik/Module/Module.html#method___construct"><abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a> at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1src/RobBrazier/Piwik/Module/Modulephp#L20">line 20</a></div>
+        <div class="location">in <a href="../../../RobBrazier/Piwik/Module/Module.html#method___construct">
+<abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a> <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1/src/RobBrazier/Piwik/Module/Modulephp#L20">at line 20</a></div>
         <code>                    
     <strong>__construct</strong>(<a href="../../../RobBrazier/Piwik/Repository/RequestRepository.html"><abbr title="RobBrazier\Piwik\Repository\RequestRepository">RequestRepository</abbr></a> $request)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Module constructor.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Module constructor.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -209,29 +211,35 @@
             
             
             
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_getOptions">
-        <div class="location">in <a href="../../../RobBrazier/Piwik/Module/Module.html#method_getOptions"><abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a> at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1src/RobBrazier/Piwik/Module/Modulephp#L30">line 30</a></div>
+        <div class="location">in <a href="../../../RobBrazier/Piwik/Module/Module.html#method_getOptions">
+<abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a> <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1/src/RobBrazier/Piwik/Module/Modulephp#L30">at line 30</a></div>
         <code>            protected        <a href="../../../RobBrazier/Piwik/Request/RequestOptions.html"><abbr title="RobBrazier\Piwik\Request\RequestOptions">RequestOptions</abbr></a>
     <strong>getOptions</strong>(string $format)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>response format</td>
+                <td><p>response format</p></td>
             </tr>
             </table>
 
@@ -247,41 +255,43 @@
 
             
             
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_getTokenAuth">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1src/RobBrazier/Piwik/Module/UsersManagerModulephp#L23">line 23</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1/src/RobBrazier/Piwik/Module/UsersManagerModulephp#L23">at line 23</a></div>
         <code>                    mixed
     <strong>getTokenAuth</strong>(string $userLogin, string $md5Password, string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Gets the user's Authentication Token</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Gets the user's Authentication Token</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$userLogin</td>
-                <td>user login</td>
+                <td><p>user login</p></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$md5Password</td>
-                <td>md5 hashed password</td>
+                <td><p>md5 hashed password</p></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
@@ -297,49 +307,52 @@
 
             
             
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_setUserAccess">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1src/RobBrazier/Piwik/Module/UsersManagerModulephp#L45">line 45</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1/src/RobBrazier/Piwik/Module/UsersManagerModulephp#L45">at line 45</a></div>
         <code>                    
     <strong>setUserAccess</strong>(string $userLogin, string $access, array $idSites, string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Assign an access role to a specified user for one or many site ids</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Assign an access role to a specified user for one or many site ids</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$userLogin</td>
-                <td>user login</td>
+                <td><p>user login</p></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$access</td>
-                <td>user access role ({see https://matomo.org/docs/manage-users/#advanced-user-management})</td>
+                <td><p>user access role ({<a href="https://matomo.org/docs/manage-users/#advanced-user-management">https://matomo.org/docs/manage-users/#advanced-user-management</a>})</p></td>
             </tr>
                     <tr>
                 <td>array</td>
                 <td>$idSites</td>
-                <td>site ids to give the user access to</td>
+                <td><p>site ids to give the user access to</p></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
+            
             
             
             
@@ -349,53 +362,55 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_addUser">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1src/RobBrazier/Piwik/Module/UsersManagerModulephp#L73">line 73</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.3.1/src/RobBrazier/Piwik/Module/UsersManagerModulephp#L73">at line 73</a></div>
         <code>                    
     <strong>addUser</strong>(string $userLogin, string $password, string $email, string $alias = null, string $initialIdSite = null, string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Create a user</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Create a user</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$userLogin</td>
-                <td>user login</td>
+                <td><p>user login</p></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$password</td>
-                <td>user password</td>
+                <td><p>user password</p></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$email</td>
-                <td>user email</td>
+                <td><p>user email</p></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$alias</td>
-                <td>user alias (optional)</td>
+                <td><p>user alias (optional)</p></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$initialIdSite</td>
-                <td>initial site id to give access to</td>
+                <td><p>initial site id to give access to</p></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
+            
             
             
             
@@ -406,12 +421,8 @@
             </div>
 
     
-            </div>
-                <div id="footer">
-        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
-    </div>
-
-        </div>
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
     </div>
     </body>
 

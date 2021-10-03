@@ -7,24 +7,24 @@
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
-        <link rel="stylesheet" type="text/css" href="../../css/sami.css">
-        <script src="../../js/jquery-1.11.1.min.js"></script>
-        <script src="../../js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../fonts/doctum-font.css">
+        <script src="../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../js/bootstrap.min.js"></script>
         <script src="../../js/typeahead.min.js"></script>
-        <script src="../../sami.js"></script>
+        <script src="../../doctum.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-    
-    
+
     </head>
 
     <body id="class" data-name="class:RobBrazier_Piwik_Piwik" data-root-path="../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                    <form action="#" method="GET">
-                <select id="version-switcher" name="version">
+                    <form action="#">
+                <select  class="form-control" id="version-switcher" name="version">
                                             <option value="../../../2.0.1/index.html" data-version="2.0.1">2.0.1</option>
                                             <option value="../../../2.1.0/index.html" data-version="2.1.0">2.1.0</option>
                                             <option value="../../../2.1.1/index.html" data-version="2.1.1">2.1.1</option>
@@ -41,11 +41,8 @@
                                             <option value="../../../master/index.html" data-version="master">master branch</option>
                                     </select>
             </form>
-                <script>
-            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
-        </script>
-        <form id="search-form" action="../../search.html" method="GET">
-            <span class="glyphicon glyphicon-search"></span>
+                <form id="search-form" action="../../search.html">
+            <span class="icon icon-search"></span>
             <input name="search"
                    class="typeahead form-control"
                    type="search"
@@ -71,8 +68,8 @@
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
                     <li><a href="../../classes.html">Classes</a></li>
-                                            <li><a href="../../namespaces.html">Namespaces</a></li>
-                                        <li><a href="../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../interfaces.html">Interfaces</a></li>
                     <li><a href="../../traits.html">Traits</a></li>
                     <li><a href="../../doc-index.html">Index</a></li>
                     <li><a href="../../search.html">Search</a></li>
@@ -88,25 +85,24 @@
             </ol>
         </div>
                 <div id="page-content">
-                
     <div class="page-header">
-        <h1>
-            Piwik
-                
-        </h1>
+        <h1>Piwik    
+            </h1>
     </div>
 
-    <p>    class
-    <strong>Piwik</strong>        (<a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3src/RobBrazier/Piwik/Piwikphp">View source</a>)
+    
+    <p>        class
+    <strong>Piwik</strong>        (<a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3/src/RobBrazier/Piwik/Piwikphp">View source</a>)
 </p>
 
         
     
+        
 
             <div class="description">
-            <p>Class Piwik</p>                                </div>
-    
-    
+            <p><p>Class Piwik</p></p>                    </div>
+            
+        
     
     
             <h2>Methods</h2>
@@ -116,7 +112,7 @@
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method___construct">__construct</a>(array $args = array())
         
                                             <p class="no-description">No description</p>
@@ -127,161 +123,161 @@
                 <div class="col-md-2 type">
                     object
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_actions">actions</a>($format = null)
         
-                                            <p>actions
-Get actions (hits) for the specific time period</p>                </div>
+                                            <p><p>actions
+Get actions (hits) for the specific time period</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     array
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_downloads">downloads</a>($format = null)
         
-                                            <p>downloads
-Get file downloads for the specific time period</p>                </div>
+                                            <p><p>downloads
+Get file downloads for the specific time period</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     array
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_keywords">keywords</a>($format = null)
         
-                                            <p>keywords
-Get search keywords for the specific time period</p>                </div>
+                                            <p><p>keywords
+Get search keywords for the specific time period</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     array
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_last_visits">last_visits</a>($count, $format = null)
         
-                                            <p>last_visits
-Get information about last 10 visits (ip, time, country, pages, etc.)</p>                </div>
+                                            <p><p>last_visits
+Get information about last 10 visits (ip, time, country, pages, etc.)</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     array
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_last_visits_parsed">last_visits_parsed</a>($count, $format = null)
         
-                                            <p>last_visits_parsed
-Get information about last 10 visits (ip, time, country, pages, etc.) in a formatted array with GeoIP information if enabled</p>                </div>
+                                            <p><p>last_visits_parsed
+Get information about last 10 visits (ip, time, country, pages, etc.) in a formatted array with GeoIP information if enabled</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     array
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_outlinks">outlinks</a>($format = null)
         
-                                            <p>actions
-Get outlinks for the specific time period</p>                </div>
+                                            <p><p>actions
+Get outlinks for the specific time period</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     array
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_page_titles">page_titles</a>($format = null)
         
-                                            <p>page_titles
-Get page visit information for the specific time period</p>                </div>
+                                            <p><p>page_titles
+Get page visit information for the specific time period</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     array
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_search_engines">search_engines</a>($format = null)
         
-                                            <p>search_engines
-Get search engine referer information for the specific time period</p>                </div>
+                                            <p><p>search_engines
+Get search engine referer information for the specific time period</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     array
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_unique_visitors">unique_visitors</a>($format = null)
         
-                                            <p>unique_visitors
-Get unique visitors for the specific time period</p>                </div>
+                                            <p><p>unique_visitors
+Get unique visitors for the specific time period</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     array
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_visits">visits</a>($format = null)
         
-                                            <p>visits
-Get all visits for the specific time period</p>                </div>
+                                            <p><p>visits
+Get all visits for the specific time period</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     array
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_websites">websites</a>($format = null)
         
-                                            <p>websites
-Get refering websites (traffic sources) for the specific time period</p>                </div>
+                                            <p><p>websites
+Get refering websites (traffic sources) for the specific time period</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     string
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_tag">tag</a>()
         
-                                            <p>tag
-Get javascript tag for use in tracking the website</p>                </div>
+                                            <p><p>tag
+Get javascript tag for use in tracking the website</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     array
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_seo_rank">seo_rank</a>($id, $format = &#039;json&#039;)
         
-                                            <p>seo_rank
-Get SEO Rank for the website</p>                </div>
+                                            <p><p>seo_rank
+Get SEO Rank for the website</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_version">version</a>($format = null)
         
-                                            <p>version
-Get Version of the Piwik Server</p>                </div>
+                                            <p><p>version
+Get Version of the Piwik Server</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_custom">custom</a>($method, $arguments, $id = false, $period = false, $format = null)
         
                                             <p class="no-description">No description</p>
@@ -296,16 +292,20 @@ Get Version of the Piwik Server</p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3src/RobBrazier/Piwik/Piwikphp#L86">line 86</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3/src/RobBrazier/Piwik/Piwikphp#L86">at line 86</a></div>
         <code>                    
     <strong>__construct</strong>(array $args = array())
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -319,32 +319,34 @@ Get Version of the Piwik Server</p>                </div>
             
             
             
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_actions">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3src/RobBrazier/Piwik/Piwikphp#L355">line 355</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3/src/RobBrazier/Piwik/Piwikphp#L355">at line 355</a></div>
         <code>                    object
     <strong>actions</strong>($format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>actions
-Get actions (hits) for the specific time period</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>actions
+Get actions (hits) for the specific time period</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td></td>
                 <td>$format</td>
-                <td>string      Override string for the format of the API Query to be returned as</td>
+                <td><p>string      Override string for the format of the API Query to be returned as</p></td>
             </tr>
             </table>
 
@@ -360,32 +362,34 @@ Get actions (hits) for the specific time period</p>                             
 
             
             
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_downloads">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3src/RobBrazier/Piwik/Piwikphp#L367">line 367</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3/src/RobBrazier/Piwik/Piwikphp#L367">at line 367</a></div>
         <code>                    array
     <strong>downloads</strong>($format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>downloads
-Get file downloads for the specific time period</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>downloads
+Get file downloads for the specific time period</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td></td>
                 <td>$format</td>
-                <td>string           Override string for the format of the API Query to be returned as</td>
+                <td><p>string           Override string for the format of the API Query to be returned as</p></td>
             </tr>
             </table>
 
@@ -399,6 +403,7 @@ Get file downloads for the specific time period</p>                             
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -407,26 +412,27 @@ Get file downloads for the specific time period</p>                             
             </div>
                     <div class="method-item">
                     <h3 id="method_keywords">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3src/RobBrazier/Piwik/Piwikphp#L379">line 379</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3/src/RobBrazier/Piwik/Piwikphp#L379">at line 379</a></div>
         <code>                    array
     <strong>keywords</strong>($format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>keywords
-Get search keywords for the specific time period</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>keywords
+Get search keywords for the specific time period</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td></td>
                 <td>$format</td>
-                <td>string           Override string for the format of the API Query to be returned as</td>
+                <td><p>string           Override string for the format of the API Query to be returned as</p></td>
             </tr>
             </table>
 
@@ -440,6 +446,7 @@ Get search keywords for the specific time period</p>                            
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -448,31 +455,32 @@ Get search keywords for the specific time period</p>                            
             </div>
                     <div class="method-item">
                     <h3 id="method_last_visits">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3src/RobBrazier/Piwik/Piwikphp#L392">line 392</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3/src/RobBrazier/Piwik/Piwikphp#L392">at line 392</a></div>
         <code>                    array
     <strong>last_visits</strong>($count, $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>last_visits
-Get information about last 10 visits (ip, time, country, pages, etc.)</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>last_visits
+Get information about last 10 visits (ip, time, country, pages, etc.)</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td></td>
                 <td>$count</td>
-                <td>int          Limit the number of visits returned by $count</td>
+                <td><p>int          Limit the number of visits returned by $count</p></td>
             </tr>
                     <tr>
                 <td></td>
                 <td>$format</td>
-                <td>string      Override string for the format of the API Query to be returned as</td>
+                <td><p>string      Override string for the format of the API Query to be returned as</p></td>
             </tr>
             </table>
 
@@ -486,6 +494,7 @@ Get information about last 10 visits (ip, time, country, pages, etc.)</p>       
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -494,31 +503,32 @@ Get information about last 10 visits (ip, time, country, pages, etc.)</p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_last_visits_parsed">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3src/RobBrazier/Piwik/Piwikphp#L406">line 406</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3/src/RobBrazier/Piwik/Piwikphp#L406">at line 406</a></div>
         <code>                    array
     <strong>last_visits_parsed</strong>($count, $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>last_visits_parsed
-Get information about last 10 visits (ip, time, country, pages, etc.) in a formatted array with GeoIP information if enabled</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>last_visits_parsed
+Get information about last 10 visits (ip, time, country, pages, etc.) in a formatted array with GeoIP information if enabled</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td></td>
                 <td>$count</td>
-                <td>int          Limit the number of visits returned by $count</td>
+                <td><p>int          Limit the number of visits returned by $count</p></td>
             </tr>
                     <tr>
                 <td></td>
                 <td>$format</td>
-                <td>string      Override string for the format of the API Query to be returned as</td>
+                <td><p>string      Override string for the format of the API Query to be returned as</p></td>
             </tr>
             </table>
 
@@ -532,6 +542,7 @@ Get information about last 10 visits (ip, time, country, pages, etc.) in a forma
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -540,26 +551,27 @@ Get information about last 10 visits (ip, time, country, pages, etc.) in a forma
             </div>
                     <div class="method-item">
                     <h3 id="method_outlinks">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3src/RobBrazier/Piwik/Piwikphp#L519">line 519</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3/src/RobBrazier/Piwik/Piwikphp#L519">at line 519</a></div>
         <code>                    array
     <strong>outlinks</strong>($format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>actions
-Get outlinks for the specific time period</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>actions
+Get outlinks for the specific time period</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td></td>
                 <td>$format</td>
-                <td>string      Override string for the format of the API Query to be returned as</td>
+                <td><p>string      Override string for the format of the API Query to be returned as</p></td>
             </tr>
             </table>
 
@@ -573,6 +585,7 @@ Get outlinks for the specific time period</p>                                   
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -581,26 +594,27 @@ Get outlinks for the specific time period</p>                                   
             </div>
                     <div class="method-item">
                     <h3 id="method_page_titles">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3src/RobBrazier/Piwik/Piwikphp#L531">line 531</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3/src/RobBrazier/Piwik/Piwikphp#L531">at line 531</a></div>
         <code>                    array
     <strong>page_titles</strong>($format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>page_titles
-Get page visit information for the specific time period</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>page_titles
+Get page visit information for the specific time period</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td></td>
                 <td>$format</td>
-                <td>string      Override string for the format of the API Query to be returned as</td>
+                <td><p>string      Override string for the format of the API Query to be returned as</p></td>
             </tr>
             </table>
 
@@ -614,6 +628,7 @@ Get page visit information for the specific time period</p>                     
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -622,26 +637,27 @@ Get page visit information for the specific time period</p>                     
             </div>
                     <div class="method-item">
                     <h3 id="method_search_engines">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3src/RobBrazier/Piwik/Piwikphp#L543">line 543</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3/src/RobBrazier/Piwik/Piwikphp#L543">at line 543</a></div>
         <code>                    array
     <strong>search_engines</strong>($format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>search_engines
-Get search engine referer information for the specific time period</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>search_engines
+Get search engine referer information for the specific time period</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td></td>
                 <td>$format</td>
-                <td>string         Override string for the format of the API Query to be returned as</td>
+                <td><p>string         Override string for the format of the API Query to be returned as</p></td>
             </tr>
             </table>
 
@@ -655,6 +671,7 @@ Get search engine referer information for the specific time period</p>          
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -663,26 +680,27 @@ Get search engine referer information for the specific time period</p>          
             </div>
                     <div class="method-item">
                     <h3 id="method_unique_visitors">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3src/RobBrazier/Piwik/Piwikphp#L555">line 555</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3/src/RobBrazier/Piwik/Piwikphp#L555">at line 555</a></div>
         <code>                    array
     <strong>unique_visitors</strong>($format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>unique_visitors
-Get unique visitors for the specific time period</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>unique_visitors
+Get unique visitors for the specific time period</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td></td>
                 <td>$format</td>
-                <td>string      Override string for the format of the API Query to be returned as</td>
+                <td><p>string      Override string for the format of the API Query to be returned as</p></td>
             </tr>
             </table>
 
@@ -696,6 +714,7 @@ Get unique visitors for the specific time period</p>                            
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -704,26 +723,27 @@ Get unique visitors for the specific time period</p>                            
             </div>
                     <div class="method-item">
                     <h3 id="method_visits">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3src/RobBrazier/Piwik/Piwikphp#L567">line 567</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3/src/RobBrazier/Piwik/Piwikphp#L567">at line 567</a></div>
         <code>                    array
     <strong>visits</strong>($format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>visits
-Get all visits for the specific time period</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>visits
+Get all visits for the specific time period</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td></td>
                 <td>$format</td>
-                <td>string      Override string for the format of the API Query to be returned as</td>
+                <td><p>string      Override string for the format of the API Query to be returned as</p></td>
             </tr>
             </table>
 
@@ -737,6 +757,7 @@ Get all visits for the specific time period</p>                                 
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -745,26 +766,27 @@ Get all visits for the specific time period</p>                                 
             </div>
                     <div class="method-item">
                     <h3 id="method_websites">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3src/RobBrazier/Piwik/Piwikphp#L579">line 579</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3/src/RobBrazier/Piwik/Piwikphp#L579">at line 579</a></div>
         <code>                    array
     <strong>websites</strong>($format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>websites
-Get refering websites (traffic sources) for the specific time period</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>websites
+Get refering websites (traffic sources) for the specific time period</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td></td>
                 <td>$format</td>
-                <td>string      Override string for the format of the API Query to be returned as</td>
+                <td><p>string      Override string for the format of the API Query to be returned as</p></td>
             </tr>
             </table>
 
@@ -780,25 +802,27 @@ Get refering websites (traffic sources) for the specific time period</p>        
 
             
             
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_tag">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3src/RobBrazier/Piwik/Piwikphp#L593">line 593</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3/src/RobBrazier/Piwik/Piwikphp#L593">at line 593</a></div>
         <code>                    string
     <strong>tag</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>tag
-Get javascript tag for use in tracking the website</p>                    <p>Note: Works best when using PHP as the format</p>                            </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>tag
+Get javascript tag for use in tracking the website</p></p>                <p><p>Note: Works best when using PHP as the format</p></p>        
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -811,37 +835,39 @@ Get javascript tag for use in tracking the website</p>                    <p>Not
 
             
             
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_seo_rank">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3src/RobBrazier/Piwik/Piwikphp#L621">line 621</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3/src/RobBrazier/Piwik/Piwikphp#L621">at line 621</a></div>
         <code>                    array
     <strong>seo_rank</strong>($id, $format = &#039;json&#039;)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>seo_rank
-Get SEO Rank for the website</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>seo_rank
+Get SEO Rank for the website</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td></td>
                 <td>$id</td>
-                <td>string          Override for ID, so you can specify one rather than fetching it from config</td>
+                <td><p>string          Override for ID, so you can specify one rather than fetching it from config</p></td>
             </tr>
                     <tr>
                 <td></td>
                 <td>$format</td>
-                <td>string      Override string for the format of the API Query to be returned as</td>
+                <td><p>string      Override string for the format of the API Query to be returned as</p></td>
             </tr>
             </table>
 
@@ -857,32 +883,34 @@ Get SEO Rank for the website</p>                                                
 
             
             
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_version">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3src/RobBrazier/Piwik/Piwikphp#L636">line 636</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3/src/RobBrazier/Piwik/Piwikphp#L636">at line 636</a></div>
         <code>                    mixed
     <strong>version</strong>($format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>version
-Get Version of the Piwik Server</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>version
+Get Version of the Piwik Server</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td></td>
                 <td>$format</td>
-                <td>string      Override string for the format of the API Query to be returned as</td>
+                <td><p>string      Override string for the format of the API Query to be returned as</p></td>
             </tr>
             </table>
 
@@ -896,6 +924,7 @@ Get Version of the Piwik Server</p>                                             
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -904,43 +933,47 @@ Get Version of the Piwik Server</p>                                             
             </div>
                     <div class="method-item">
                     <h3 id="method_custom">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3src/RobBrazier/Piwik/Piwikphp#L648">line 648</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/2.1.3/src/RobBrazier/Piwik/Piwikphp#L648">at line 648</a></div>
         <code>                    mixed
     <strong>custom</strong>($method, $arguments, $id = false, $period = false, $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td></td>
                 <td>$method</td>
-                <td>string        The API method, as found in the Piwik API documentation</td>
+                <td><p>string        The API method, as found in the Piwik API documentation</p></td>
             </tr>
                     <tr>
                 <td></td>
                 <td>$arguments</td>
-                <td>array|null A multidimensional map of key => value for custom data to be added onto the url, e.g. ["test" => "foo"] ===> &amp;test=foo</td>
+                <td><p>array|null A multidimensional map of key =&gt; value for custom data to be added onto the url, e.g. [&quot;test&quot; =&gt; &quot;foo&quot;] ===&gt; &amp;test=foo</p></td>
             </tr>
                     <tr>
                 <td></td>
                 <td>$id</td>
-                <td>mixed             values can be true/false to add the default site id, or you can specify the id here</td>
+                <td><p>mixed             values can be true/false to add the default site id, or you can specify the id here</p></td>
             </tr>
                     <tr>
                 <td></td>
                 <td>$period</td>
-                <td>bool          boolean value to determine whether the time period is appended to the API url</td>
+                <td><p>bool          boolean value to determine whether the time period is appended to the API url</p></td>
             </tr>
                     <tr>
                 <td></td>
                 <td>$format</td>
-                <td>string        Override string for the format of the API Query to be returned as</td>
+                <td><p>string        Override string for the format of the API Query to be returned as</p></td>
             </tr>
             </table>
 
@@ -956,6 +989,7 @@ Get Version of the Piwik Server</p>                                             
 
             
             
+            
                     </div>
     </div>
 
@@ -963,12 +997,8 @@ Get Version of the Piwik Server</p>                                             
             </div>
 
     
-            </div>
-                <div id="footer">
-        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
-    </div>
-
-        </div>
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
     </div>
     </body>
 

@@ -7,24 +7,24 @@
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
-        <link rel="stylesheet" type="text/css" href="../../../css/sami.css">
-        <script src="../../../js/jquery-1.11.1.min.js"></script>
-        <script src="../../../js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
         <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../sami.js"></script>
+        <script src="../../../doctum.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-    
-    
+
     </head>
 
     <body id="class" data-name="class:RobBrazier_Piwik_Module_APIModule" data-root-path="../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                    <form action="#" method="GET">
-                <select id="version-switcher" name="version">
+                    <form action="#">
+                <select  class="form-control" id="version-switcher" name="version">
                                             <option value="../../../../2.0.1/index.html" data-version="2.0.1">2.0.1</option>
                                             <option value="../../../../2.1.0/index.html" data-version="2.1.0">2.1.0</option>
                                             <option value="../../../../2.1.1/index.html" data-version="2.1.1">2.1.1</option>
@@ -41,11 +41,8 @@
                                             <option value="../../../../master/index.html" data-version="master">master branch</option>
                                     </select>
             </form>
-                <script>
-            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
-        </script>
-        <form id="search-form" action="../../../search.html" method="GET">
-            <span class="glyphicon glyphicon-search"></span>
+                <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
             <input name="search"
                    class="typeahead form-control"
                    type="search"
@@ -71,8 +68,8 @@
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
                     <li><a href="../../../classes.html">Classes</a></li>
-                                            <li><a href="../../../namespaces.html">Namespaces</a></li>
-                                        <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
                     <li><a href="../../../traits.html">Traits</a></li>
                     <li><a href="../../../doc-index.html">Index</a></li>
                     <li><a href="../../../search.html">Search</a></li>
@@ -88,25 +85,24 @@
             </ol>
         </div>
                 <div id="page-content">
-                
     <div class="page-header">
-        <h1>
-            APIModule
-                
-        </h1>
+        <h1>APIModule    
+            </h1>
     </div>
 
-    <p>    class
-    <strong>APIModule</strong>        extends <a href="../../../RobBrazier/Piwik/Module/Module.html"><abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a>        (<a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1src/RobBrazier/Piwik/Module/APIModulephp">View source</a>)
+    
+    <p>        class
+    <strong>APIModule</strong>        extends <a href="../../../RobBrazier/Piwik/Module/Module.html"><abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a>        (<a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1/src/RobBrazier/Piwik/Module/APIModulephp">View source</a>)
 </p>
 
         
     
+        
 
             <div class="description">
-            <p>Class APIModule</p>                                </div>
-    
-    
+            <p><p>Class APIModule</p></p>                    </div>
+            
+        
     
             <h2>Properties</h2>
 
@@ -114,10 +110,12 @@
                     <tr>
                 <td class="type" id="property_request">
                                         protected                                        <a href="../../../RobBrazier/Piwik/Repository/RequestRepository.html"><abbr title="RobBrazier\Piwik\Repository\RequestRepository">RequestRepository</abbr></a>
-                </td>
+                                                                                
+                                    </td>
                 <td>$request</td>
                 <td class="last"></td>
-                <td><small>from&nbsp;<a href="../../../RobBrazier/Piwik/Module/Module.html#property_request"><abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a></small></td>
+                <td><small>from&nbsp;<a href="../../../RobBrazier/Piwik/Module/Module.html#property_request">
+<abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a></small></td>
             </tr>
             </table>
 
@@ -129,28 +127,30 @@
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method___construct">__construct</a>(<a href="../../../RobBrazier/Piwik/Repository/RequestRepository.html"><abbr title="RobBrazier\Piwik\Repository\RequestRepository">RequestRepository</abbr></a> $request)
         
-                                            <p>Module constructor.</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../RobBrazier/Piwik/Module/Module.html#method___construct"><abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a></small></div>
+                                            <p><p>Module constructor.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../RobBrazier/Piwik/Module/Module.html#method___construct">
+<abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     <a href="../../../RobBrazier/Piwik/Request/RequestOptions.html"><abbr title="RobBrazier\Piwik\Request\RequestOptions">RequestOptions</abbr></a>
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getOptions">getOptions</a>(string $format)
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../RobBrazier/Piwik/Module/Module.html#method_getOptions"><abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../RobBrazier/Piwik/Module/Module.html#method_getOptions">
+<abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getPiwikVersion">getPiwikVersion</a>(string $format = null)
         
                                             <p class="no-description">No description</p>
@@ -161,7 +161,7 @@
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getIpFromHeader">getIpFromHeader</a>(string $format = null)
         
                                             <p class="no-description">No description</p>
@@ -172,7 +172,7 @@
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getSettings">getSettings</a>(string $format = null)
         
                                             <p class="no-description">No description</p>
@@ -183,7 +183,7 @@
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getSegmentsMetadata">getSegmentsMetadata</a>(string[] $siteIds, string $format = null)
         
                                             <p class="no-description">No description</p>
@@ -194,8 +194,8 @@
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getMetadata">getMetadata</a>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+                <div class="col-md-8">
+                    <a href="#method_getMetadata">getMetadata</a>($arguments = [], string $format = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -205,8 +205,8 @@
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getReportMetadata">getReportMetadata</a>(string[] $siteIds, <abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+                <div class="col-md-8">
+                    <a href="#method_getReportMetadata">getReportMetadata</a>(string[] $siteIds, $arguments = [], string $format = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -216,8 +216,8 @@
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getProcessedReport">getProcessedReport</a>(string $apiModule, string $apiAction, <abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+                <div class="col-md-8">
+                    <a href="#method_getProcessedReport">getProcessedReport</a>(string $apiModule, string $apiAction, $arguments = [], string $format = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -227,7 +227,7 @@
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getReportPagesMetadata">getReportPagesMetadata</a>(string $format = null)
         
                                             <p class="no-description">No description</p>
@@ -238,7 +238,7 @@
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getWidgetMetadata">getWidgetMetadata</a>(string $format = null)
         
                                             <p class="no-description">No description</p>
@@ -249,8 +249,8 @@
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_get">get</a>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+                <div class="col-md-8">
+                    <a href="#method_get">get</a>($arguments = [], string $format = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -260,8 +260,8 @@
                 <div class="col-md-2 type">
                     mixed
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getRowEvolution">getRowEvolution</a>(string $apiModule, string $apiAction, <abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+                <div class="col-md-8">
+                    <a href="#method_getRowEvolution">getRowEvolution</a>(string $apiModule, string $apiAction, $arguments = [], string $format = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -275,18 +275,20 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">in <a href="../../../RobBrazier/Piwik/Module/Module.html#method___construct"><abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a> at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1src/RobBrazier/Piwik/Module/Modulephp#L19">line 19</a></div>
+        <div class="location">in <a href="../../../RobBrazier/Piwik/Module/Module.html#method___construct">
+<abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a> <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1/src/RobBrazier/Piwik/Module/Modulephp#L19">at line 19</a></div>
         <code>                    
     <strong>__construct</strong>(<a href="../../../RobBrazier/Piwik/Repository/RequestRepository.html"><abbr title="RobBrazier\Piwik\Repository\RequestRepository">RequestRepository</abbr></a> $request)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Module constructor.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Module constructor.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -300,29 +302,35 @@
             
             
             
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_getOptions">
-        <div class="location">in <a href="../../../RobBrazier/Piwik/Module/Module.html#method_getOptions"><abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a> at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1src/RobBrazier/Piwik/Module/Modulephp#L28">line 28</a></div>
+        <div class="location">in <a href="../../../RobBrazier/Piwik/Module/Module.html#method_getOptions">
+<abbr title="RobBrazier\Piwik\Module\Module">Module</abbr></a> <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1/src/RobBrazier/Piwik/Module/Modulephp#L28">at line 28</a></div>
         <code>            protected        <a href="../../../RobBrazier/Piwik/Request/RequestOptions.html"><abbr title="RobBrazier\Piwik\Request\RequestOptions">RequestOptions</abbr></a>
     <strong>getOptions</strong>(string $format)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>response format</td>
+                <td><p>response format</p></td>
             </tr>
             </table>
 
@@ -338,29 +346,34 @@
 
             
             
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_getPiwikVersion">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1src/RobBrazier/Piwik/Module/APIModulephp#L16">line 16</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1/src/RobBrazier/Piwik/Module/APIModulephp#L16">at line 16</a></div>
         <code>                    mixed
     <strong>getPiwikVersion</strong>(string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
@@ -374,6 +387,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -382,23 +396,27 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getIpFromHeader">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1src/RobBrazier/Piwik/Module/APIModulephp#L27">line 27</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1/src/RobBrazier/Piwik/Module/APIModulephp#L27">at line 27</a></div>
         <code>                    mixed
     <strong>getIpFromHeader</strong>(string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)* @param string $format</td>
+                <td><p>override format (defaults to one specified in config file)* @param string $format</p></td>
             </tr>
             </table>
 
@@ -412,6 +430,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -420,23 +439,27 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getSettings">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1src/RobBrazier/Piwik/Module/APIModulephp#L38">line 38</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1/src/RobBrazier/Piwik/Module/APIModulephp#L38">at line 38</a></div>
         <code>                    mixed
     <strong>getSettings</strong>(string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
@@ -450,6 +473,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -458,28 +482,32 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getSegmentsMetadata">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1src/RobBrazier/Piwik/Module/APIModulephp#L50">line 50</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1/src/RobBrazier/Piwik/Module/APIModulephp#L50">at line 50</a></div>
         <code>                    mixed
     <strong>getSegmentsMetadata</strong>(string[] $siteIds, string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string[]</td>
                 <td>$siteIds</td>
-                <td>list of site ids to get segment metadata for</td>
+                <td><p>list of site ids to get segment metadata for</p></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
@@ -493,6 +521,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -501,28 +530,32 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getMetadata">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1src/RobBrazier/Piwik/Module/APIModulephp#L67">line 67</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1/src/RobBrazier/Piwik/Module/APIModulephp#L67">at line 67</a></div>
         <code>                    mixed
-    <strong>getMetadata</strong>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+    <strong>getMetadata</strong>($arguments = [], string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr></td>
+                <td></td>
                 <td>$arguments</td>
-                <td>extra arguments to be passed to the api call</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
@@ -536,6 +569,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -544,33 +578,37 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getReportMetadata">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1src/RobBrazier/Piwik/Module/APIModulephp#L78">line 78</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1/src/RobBrazier/Piwik/Module/APIModulephp#L78">at line 78</a></div>
         <code>                    mixed
-    <strong>getReportMetadata</strong>(string[] $siteIds, <abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+    <strong>getReportMetadata</strong>(string[] $siteIds, $arguments = [], string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string[]</td>
                 <td>$siteIds</td>
-                <td>list of site ids to get report metadata for</td>
+                <td><p>list of site ids to get report metadata for</p></td>
             </tr>
                     <tr>
-                <td><abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr></td>
+                <td></td>
                 <td>$arguments</td>
-                <td>extra arguments to be passed to the api call</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
@@ -584,6 +622,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -592,38 +631,42 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getProcessedReport">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1src/RobBrazier/Piwik/Module/APIModulephp#L95">line 95</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1/src/RobBrazier/Piwik/Module/APIModulephp#L95">at line 95</a></div>
         <code>                    mixed
-    <strong>getProcessedReport</strong>(string $apiModule, string $apiAction, <abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+    <strong>getProcessedReport</strong>(string $apiModule, string $apiAction, $arguments = [], string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$apiModule</td>
-                <td>api module to get report for</td>
+                <td><p>api module to get report for</p></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$apiAction</td>
-                <td>api action/method to get report for</td>
+                <td><p>api action/method to get report for</p></td>
             </tr>
                     <tr>
-                <td><abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr></td>
+                <td></td>
                 <td>$arguments</td>
-                <td>extra arguments to be passed to the api call</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
@@ -637,6 +680,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -645,23 +689,27 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getReportPagesMetadata">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1src/RobBrazier/Piwik/Module/APIModulephp#L106">line 106</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1/src/RobBrazier/Piwik/Module/APIModulephp#L106">at line 106</a></div>
         <code>                    mixed
     <strong>getReportPagesMetadata</strong>(string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
@@ -675,6 +723,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -683,23 +732,27 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getWidgetMetadata">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1src/RobBrazier/Piwik/Module/APIModulephp#L116">line 116</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1/src/RobBrazier/Piwik/Module/APIModulephp#L116">at line 116</a></div>
         <code>                    mixed
     <strong>getWidgetMetadata</strong>(string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
@@ -713,6 +766,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -721,28 +775,32 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_get">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1src/RobBrazier/Piwik/Module/APIModulephp#L127">line 127</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1/src/RobBrazier/Piwik/Module/APIModulephp#L127">at line 127</a></div>
         <code>                    mixed
-    <strong>get</strong>(<abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+    <strong>get</strong>($arguments = [], string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr></td>
+                <td></td>
                 <td>$arguments</td>
-                <td>extra arguments to be passed to the api call</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
@@ -756,6 +814,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -764,38 +823,42 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getRowEvolution">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1src/RobBrazier/Piwik/Module/APIModulephp#L139">line 139</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1/src/RobBrazier/Piwik/Module/APIModulephp#L139">at line 139</a></div>
         <code>                    mixed
-    <strong>getRowEvolution</strong>(string $apiModule, string $apiAction, <abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr> $arguments = [], string $format = null)
+    <strong>getRowEvolution</strong>(string $apiModule, string $apiAction, $arguments = [], string $format = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$apiModule</td>
-                <td>api module to get report for</td>
+                <td><p>api module to get report for</p></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$apiAction</td>
-                <td>api action/method to get report for</td>
+                <td><p>api action/method to get report for</p></td>
             </tr>
                     <tr>
-                <td><abbr title="RobBrazier\Piwik\Module\array[string]mixed">array[string]mixed</abbr></td>
+                <td></td>
                 <td>$arguments</td>
-                <td>extra arguments to be passed to the api call</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>override format (defaults to one specified in config file)</td>
+                <td><p>override format (defaults to one specified in config file)</p></td>
             </tr>
             </table>
 
@@ -811,6 +874,7 @@
 
             
             
+            
                     </div>
     </div>
 
@@ -818,12 +882,8 @@
             </div>
 
     
-            </div>
-                <div id="footer">
-        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
-    </div>
-
-        </div>
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
     </div>
     </body>
 

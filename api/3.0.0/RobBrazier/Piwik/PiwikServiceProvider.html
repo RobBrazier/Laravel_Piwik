@@ -7,24 +7,24 @@
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
-        <link rel="stylesheet" type="text/css" href="../../css/sami.css">
-        <script src="../../js/jquery-1.11.1.min.js"></script>
-        <script src="../../js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../fonts/doctum-font.css">
+        <script src="../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../js/bootstrap.min.js"></script>
         <script src="../../js/typeahead.min.js"></script>
-        <script src="../../sami.js"></script>
+        <script src="../../doctum.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-    
-    
+
     </head>
 
     <body id="class" data-name="class:RobBrazier_Piwik_PiwikServiceProvider" data-root-path="../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                    <form action="#" method="GET">
-                <select id="version-switcher" name="version">
+                    <form action="#">
+                <select  class="form-control" id="version-switcher" name="version">
                                             <option value="../../../2.0.1/index.html" data-version="2.0.1">2.0.1</option>
                                             <option value="../../../2.1.0/index.html" data-version="2.1.0">2.1.0</option>
                                             <option value="../../../2.1.1/index.html" data-version="2.1.1">2.1.1</option>
@@ -41,11 +41,8 @@
                                             <option value="../../../master/index.html" data-version="master">master branch</option>
                                     </select>
             </form>
-                <script>
-            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
-        </script>
-        <form id="search-form" action="../../search.html" method="GET">
-            <span class="glyphicon glyphicon-search"></span>
+                <form id="search-form" action="../../search.html">
+            <span class="icon icon-search"></span>
             <input name="search"
                    class="typeahead form-control"
                    type="search"
@@ -71,8 +68,8 @@
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
                     <li><a href="../../classes.html">Classes</a></li>
-                                            <li><a href="../../namespaces.html">Namespaces</a></li>
-                                        <li><a href="../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../interfaces.html">Interfaces</a></li>
                     <li><a href="../../traits.html">Traits</a></li>
                     <li><a href="../../doc-index.html">Index</a></li>
                     <li><a href="../../search.html">Search</a></li>
@@ -88,23 +85,22 @@
             </ol>
         </div>
                 <div id="page-content">
-                
     <div class="page-header">
-        <h1>
-            PiwikServiceProvider
-                
-        </h1>
+        <h1>PiwikServiceProvider    
+            </h1>
     </div>
 
-    <p>    class
-    <strong>PiwikServiceProvider</strong>        extends <abbr title="Illuminate\Support\ServiceProvider">ServiceProvider</abbr>        (<a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.0src/RobBrazier/Piwik/PiwikServiceProviderphp">View source</a>)
+    
+    <p>        class
+    <strong>PiwikServiceProvider</strong>        extends <abbr title="Illuminate\Support\ServiceProvider">ServiceProvider</abbr>        (<a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.0/src/RobBrazier/Piwik/PiwikServiceProviderphp">View source</a>)
 </p>
 
         
     
+        
 
-    
-    
+            
+        
     
             <h2>Properties</h2>
 
@@ -112,9 +108,10 @@
                     <tr>
                 <td class="type" id="property_defer">
                                         protected                                        bool
-                </td>
+                                                                                
+                                    </td>
                 <td>$defer</td>
-                <td class="last">Indicates if loading of the provider is deferred.</td>
+                <td class="last"><p>Indicates if loading of the provider is deferred.</p></td>
                 <td></td>
             </tr>
             </table>
@@ -127,30 +124,30 @@
                 <div class="col-md-2 type">
                     void
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_boot">boot</a>()
         
-                                            <p>Bootstrap the application events.</p>                </div>
+                                            <p><p>Bootstrap the application events.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     void
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_register">register</a>()
         
-                                            <p>Register the service provider.</p>                </div>
+                                            <p><p>Register the service provider.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     string[]
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_provides">provides</a>()
         
-                                            <p>Get the services provided by the provider.</p>                </div>
+                                            <p><p>Get the services provided by the provider.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -161,18 +158,19 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_boot">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.0src/RobBrazier/Piwik/PiwikServiceProviderphp#L22">line 22</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.0/src/RobBrazier/Piwik/PiwikServiceProviderphp#L22">at line 22</a></div>
         <code>                    void
     <strong>boot</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Bootstrap the application events.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Bootstrap the application events.</p></p>                        
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -183,6 +181,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -191,18 +190,19 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_register">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.0src/RobBrazier/Piwik/PiwikServiceProviderphp#L33">line 33</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.0/src/RobBrazier/Piwik/PiwikServiceProviderphp#L33">at line 33</a></div>
         <code>                    void
     <strong>register</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Register the service provider.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Register the service provider.</p></p>                        
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -215,24 +215,26 @@
 
             
             
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_provides">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.0src/RobBrazier/Piwik/PiwikServiceProviderphp#L55">line 55</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.0/src/RobBrazier/Piwik/PiwikServiceProviderphp#L55">at line 55</a></div>
         <code>                    string[]
     <strong>provides</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Get the services provided by the provider.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Get the services provided by the provider.</p></p>                        
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -245,6 +247,7 @@
 
             
             
+            
                     </div>
     </div>
 
@@ -252,12 +255,8 @@
             </div>
 
     
-            </div>
-                <div id="footer">
-        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
-    </div>
-
-        </div>
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
     </div>
     </body>
 

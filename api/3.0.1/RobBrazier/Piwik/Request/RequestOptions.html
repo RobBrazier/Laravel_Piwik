@@ -7,24 +7,24 @@
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
-        <link rel="stylesheet" type="text/css" href="../../../css/sami.css">
-        <script src="../../../js/jquery-1.11.1.min.js"></script>
-        <script src="../../../js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
         <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../sami.js"></script>
+        <script src="../../../doctum.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-    
-    
+
     </head>
 
     <body id="class" data-name="class:RobBrazier_Piwik_Request_RequestOptions" data-root-path="../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                    <form action="#" method="GET">
-                <select id="version-switcher" name="version">
+                    <form action="#">
+                <select  class="form-control" id="version-switcher" name="version">
                                             <option value="../../../../2.0.1/index.html" data-version="2.0.1">2.0.1</option>
                                             <option value="../../../../2.1.0/index.html" data-version="2.1.0">2.1.0</option>
                                             <option value="../../../../2.1.1/index.html" data-version="2.1.1">2.1.1</option>
@@ -41,11 +41,8 @@
                                             <option value="../../../../master/index.html" data-version="master">master branch</option>
                                     </select>
             </form>
-                <script>
-            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
-        </script>
-        <form id="search-form" action="../../../search.html" method="GET">
-            <span class="glyphicon glyphicon-search"></span>
+                <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
             <input name="search"
                    class="typeahead form-control"
                    type="search"
@@ -71,8 +68,8 @@
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
                     <li><a href="../../../classes.html">Classes</a></li>
-                                            <li><a href="../../../namespaces.html">Namespaces</a></li>
-                                        <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
                     <li><a href="../../../traits.html">Traits</a></li>
                     <li><a href="../../../doc-index.html">Index</a></li>
                     <li><a href="../../../search.html">Search</a></li>
@@ -88,43 +85,34 @@
             </ol>
         </div>
                 <div id="page-content">
-                
     <div class="page-header">
-        <h1>
-            RequestOptions
-                
-        </h1>
+        <h1>RequestOptions    
+            </h1>
     </div>
 
-    <p>    class
-    <strong>RequestOptions</strong>        (<a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1src/RobBrazier/Piwik/Request/RequestOptionsphp">View source</a>)
+    
+    <p>        class
+    <strong>RequestOptions</strong>        (<a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1/src/RobBrazier/Piwik/Request/RequestOptionsphp">View source</a>)
 </p>
 
         
     
+        
 
-    
-            <h2>Traits</h2>
+            
+                <h2>Traits</h2>
 
         
     <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-6">
-                                            <a href="../../../RobBrazier/Piwik/Traits/DateTrait.html"><abbr title="RobBrazier\Piwik\Traits\DateTrait">DateTrait</abbr></a>
-                                            
-                </div>
-                <div class="col-md-6">
-                    
-                </div>
+                    <a href="../../../RobBrazier/Piwik/Traits/DateTrait.html"><abbr title="RobBrazier\Piwik\Traits\DateTrait">DateTrait</abbr></a>    </div>
+                <div class="col-md-6"></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <a href="../../../RobBrazier/Piwik/Traits/FormatTrait.html"><abbr title="RobBrazier\Piwik\Traits\FormatTrait">FormatTrait</abbr></a>
-                                            
-                </div>
-                <div class="col-md-6">
-                    
-                </div>
+                    <a href="../../../RobBrazier/Piwik/Traits/FormatTrait.html"><abbr title="RobBrazier\Piwik\Traits\FormatTrait">FormatTrait</abbr></a>    </div>
+                <div class="col-md-6"></div>
             </div>
             </div>
     
@@ -137,27 +125,29 @@
                 <div class="col-md-2 type">
                     <a href="../../../RobBrazier/Piwik/Query/QueryDate.html"><abbr title="RobBrazier\Piwik\Query\QueryDate">QueryDate</abbr></a>
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getDate">getDate</a>(string $period)
         
-                                            <p>Get QueryDate object from period name</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../RobBrazier/Piwik/Traits/DateTrait.html#method_getDate"><abbr title="RobBrazier\Piwik\Traits\DateTrait">DateTrait</abbr></a></small></div>
+                                            <p><p>Get QueryDate object from period name</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../RobBrazier/Piwik/Traits/DateTrait.html#method_getDate">
+<abbr title="RobBrazier\Piwik\Traits\DateTrait">DateTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     string
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_validateFormat">validateFormat</a>(string $format)
         
-                                            <p>Check format against allowed values</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../RobBrazier/Piwik/Traits/FormatTrait.html#method_validateFormat"><abbr title="RobBrazier\Piwik\Traits\FormatTrait">FormatTrait</abbr></a></small></div>
+                                            <p><p>Check format against allowed values</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../RobBrazier/Piwik/Traits/FormatTrait.html#method_validateFormat">
+<abbr title="RobBrazier\Piwik\Traits\FormatTrait">FormatTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     <a href="../../../RobBrazier/Piwik/Request/RequestOptions.html"><abbr title="RobBrazier\Piwik\Request\RequestOptions">RequestOptions</abbr></a>
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_setMethod">setMethod</a>(string $method)
         
                                             <p class="no-description">No description</p>
@@ -168,7 +158,7 @@
                 <div class="col-md-2 type">
                     <a href="../../../RobBrazier/Piwik/Request/RequestOptions.html"><abbr title="RobBrazier\Piwik\Request\RequestOptions">RequestOptions</abbr></a>
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_usePeriod">usePeriod</a>(bool $period)
         
                                             <p class="no-description">No description</p>
@@ -179,7 +169,7 @@
                 <div class="col-md-2 type">
                     <a href="../../../RobBrazier/Piwik/Request/RequestOptions.html"><abbr title="RobBrazier\Piwik\Request\RequestOptions">RequestOptions</abbr></a>
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_setSiteId">setSiteId</a>(string $siteId)
         
                                             <p class="no-description">No description</p>
@@ -190,7 +180,7 @@
                 <div class="col-md-2 type">
                     <a href="../../../RobBrazier/Piwik/Request/RequestOptions.html"><abbr title="RobBrazier\Piwik\Request\RequestOptions">RequestOptions</abbr></a>
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_useSiteId">useSiteId</a>(bool $siteId)
         
                                             <p class="no-description">No description</p>
@@ -201,7 +191,7 @@
                 <div class="col-md-2 type">
                     <a href="../../../RobBrazier/Piwik/Request/RequestOptions.html"><abbr title="RobBrazier\Piwik\Request\RequestOptions">RequestOptions</abbr></a>
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_setFormat">setFormat</a>(string $format)
         
                                             <p class="no-description">No description</p>
@@ -212,7 +202,7 @@
                 <div class="col-md-2 type">
                     <a href="../../../RobBrazier/Piwik/Request/RequestOptions.html"><abbr title="RobBrazier\Piwik\Request\RequestOptions">RequestOptions</abbr></a>
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_useFormat">useFormat</a>(bool $format)
         
                                             <p class="no-description">No description</p>
@@ -223,7 +213,7 @@
                 <div class="col-md-2 type">
                     string
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getFormat">getFormat</a>(<a href="../../../RobBrazier/Piwik/Repository/ConfigRepository.html"><abbr title="RobBrazier\Piwik\Repository\ConfigRepository">ConfigRepository</abbr></a> $config)
         
                                             <p class="no-description">No description</p>
@@ -234,7 +224,7 @@
                 <div class="col-md-2 type">
                     <a href="../../../RobBrazier/Piwik/Request/RequestOptions.html"><abbr title="RobBrazier\Piwik\Request\RequestOptions">RequestOptions</abbr></a>
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_useTokenAuth">useTokenAuth</a>(bool $tokenAuth)
         
                                             <p class="no-description">No description</p>
@@ -245,8 +235,8 @@
                 <div class="col-md-2 type">
                     <a href="../../../RobBrazier/Piwik/Request/RequestOptions.html"><abbr title="RobBrazier\Piwik\Request\RequestOptions">RequestOptions</abbr></a>
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setArguments">setArguments</a>(<abbr title="RobBrazier\Piwik\Request\array[string]mixed">array[string]mixed</abbr> $arguments)
+                <div class="col-md-8">
+                    <a href="#method_setArguments">setArguments</a>($arguments)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -256,7 +246,7 @@
                 <div class="col-md-2 type">
                     string
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_build">build</a>(<a href="../../../RobBrazier/Piwik/Repository/ConfigRepository.html"><abbr title="RobBrazier\Piwik\Repository\ConfigRepository">ConfigRepository</abbr></a> $config)
         
                                             <p class="no-description">No description</p>
@@ -271,18 +261,20 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_getDate">
-        <div class="location">in <a href="../../../RobBrazier/Piwik/Traits/DateTrait.html#method_getDate"><abbr title="RobBrazier\Piwik\Traits\DateTrait">DateTrait</abbr></a> at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1src/RobBrazier/Piwik/Traits/DateTraitphp#L18">line 18</a></div>
+        <div class="location">in <a href="../../../RobBrazier/Piwik/Traits/DateTrait.html#method_getDate">
+<abbr title="RobBrazier\Piwik\Traits\DateTrait">DateTrait</abbr></a> <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1/src/RobBrazier/Piwik/Traits/DateTraitphp#L18">at line 18</a></div>
         <code>                    <a href="../../../RobBrazier/Piwik/Query/QueryDate.html"><abbr title="RobBrazier\Piwik\Query\QueryDate">QueryDate</abbr></a>
     <strong>getDate</strong>(string $period)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Get QueryDate object from period name</p>                    <p>e.g. "yesterday" => QueryDate(period = "day", date = "yesterday")</p>                            </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Get QueryDate object from period name</p></p>                <p><p>e.g. &quot;yesterday&quot; =&gt; QueryDate(period = &quot;day&quot;, date = &quot;yesterday&quot;)</p></p>        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -305,31 +297,34 @@
 
             
             
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_validateFormat">
-        <div class="location">in <a href="../../../RobBrazier/Piwik/Traits/FormatTrait.html#method_validateFormat"><abbr title="RobBrazier\Piwik\Traits\FormatTrait">FormatTrait</abbr></a> at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1src/RobBrazier/Piwik/Traits/FormatTraitphp#L19">line 19</a></div>
+        <div class="location">in <a href="../../../RobBrazier/Piwik/Traits/FormatTrait.html#method_validateFormat">
+<abbr title="RobBrazier\Piwik\Traits\FormatTrait">FormatTrait</abbr></a> <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1/src/RobBrazier/Piwik/Traits/FormatTraitphp#L19">at line 19</a></div>
         <code>                    string
     <strong>validateFormat</strong>(string $format)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Check format against allowed values</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Check format against allowed values</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td>format to validate</td>
+                <td><p>format to validate</p></td>
             </tr>
             </table>
 
@@ -339,7 +334,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>string</td>
-            <td>the format if it has passed validation</td>
+            <td><p>the format if it has passed validation</p></td>
         </tr>
     </table>
 
@@ -349,10 +344,11 @@
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../../../RobBrazier/Piwik/Exception/PiwikException.html"><abbr title="RobBrazier\Piwik\Exception\PiwikException">PiwikException</abbr></a></td>
-                <td>exception thrown if invalid format is passed</td>
+                <td><p>exception thrown if invalid format is passed</p></td>
             </tr>
             </table>
 
+            
             
                     </div>
     </div>
@@ -360,16 +356,20 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setMethod">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1src/RobBrazier/Piwik/Request/RequestOptionsphp#L66">line 66</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1/src/RobBrazier/Piwik/Request/RequestOptionsphp#L66">at line 66</a></div>
         <code>                    <a href="../../../RobBrazier/Piwik/Request/RequestOptions.html"><abbr title="RobBrazier\Piwik\Request\RequestOptions">RequestOptions</abbr></a>
     <strong>setMethod</strong>(string $method)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -392,22 +392,27 @@
 
             
             
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_usePeriod">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1src/RobBrazier/Piwik/Request/RequestOptionsphp#L75">line 75</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1/src/RobBrazier/Piwik/Request/RequestOptionsphp#L75">at line 75</a></div>
         <code>                    <a href="../../../RobBrazier/Piwik/Request/RequestOptions.html"><abbr title="RobBrazier\Piwik\Request\RequestOptions">RequestOptions</abbr></a>
     <strong>usePeriod</strong>(bool $period)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -430,22 +435,27 @@
 
             
             
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_setSiteId">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1src/RobBrazier/Piwik/Request/RequestOptionsphp#L84">line 84</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1/src/RobBrazier/Piwik/Request/RequestOptionsphp#L84">at line 84</a></div>
         <code>                    <a href="../../../RobBrazier/Piwik/Request/RequestOptions.html"><abbr title="RobBrazier\Piwik\Request\RequestOptions">RequestOptions</abbr></a>
     <strong>setSiteId</strong>(string $siteId)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -466,6 +476,7 @@
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -474,16 +485,20 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_useSiteId">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1src/RobBrazier/Piwik/Request/RequestOptionsphp#L94">line 94</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1/src/RobBrazier/Piwik/Request/RequestOptionsphp#L94">at line 94</a></div>
         <code>                    <a href="../../../RobBrazier/Piwik/Request/RequestOptions.html"><abbr title="RobBrazier\Piwik\Request\RequestOptions">RequestOptions</abbr></a>
     <strong>useSiteId</strong>(bool $siteId)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -506,22 +521,27 @@
 
             
             
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_setFormat">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1src/RobBrazier/Piwik/Request/RequestOptionsphp#L115">line 115</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1/src/RobBrazier/Piwik/Request/RequestOptionsphp#L115">at line 115</a></div>
         <code>                    <a href="../../../RobBrazier/Piwik/Request/RequestOptions.html"><abbr title="RobBrazier\Piwik\Request\RequestOptions">RequestOptions</abbr></a>
     <strong>setFormat</strong>(string $format)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -544,22 +564,27 @@
 
             
             
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_useFormat">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1src/RobBrazier/Piwik/Request/RequestOptionsphp#L127">line 127</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1/src/RobBrazier/Piwik/Request/RequestOptionsphp#L127">at line 127</a></div>
         <code>                    <a href="../../../RobBrazier/Piwik/Request/RequestOptions.html"><abbr title="RobBrazier\Piwik\Request\RequestOptions">RequestOptions</abbr></a>
     <strong>useFormat</strong>(bool $format)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -582,22 +607,27 @@
 
             
             
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_getFormat">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1src/RobBrazier/Piwik/Request/RequestOptionsphp#L136">line 136</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1/src/RobBrazier/Piwik/Request/RequestOptionsphp#L136">at line 136</a></div>
         <code>                    string
     <strong>getFormat</strong>(<a href="../../../RobBrazier/Piwik/Repository/ConfigRepository.html"><abbr title="RobBrazier\Piwik\Repository\ConfigRepository">ConfigRepository</abbr></a> $config)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -620,22 +650,27 @@
 
             
             
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_useTokenAuth">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1src/RobBrazier/Piwik/Request/RequestOptionsphp#L148">line 148</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1/src/RobBrazier/Piwik/Request/RequestOptionsphp#L148">at line 148</a></div>
         <code>                    <a href="../../../RobBrazier/Piwik/Request/RequestOptions.html"><abbr title="RobBrazier\Piwik\Request\RequestOptions">RequestOptions</abbr></a>
     <strong>useTokenAuth</strong>(bool $tokenAuth)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -658,27 +693,32 @@
 
             
             
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_setArguments">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1src/RobBrazier/Piwik/Request/RequestOptionsphp#L169">line 169</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1/src/RobBrazier/Piwik/Request/RequestOptionsphp#L169">at line 169</a></div>
         <code>                    <a href="../../../RobBrazier/Piwik/Request/RequestOptions.html"><abbr title="RobBrazier\Piwik\Request\RequestOptions">RequestOptions</abbr></a>
-    <strong>setArguments</strong>(<abbr title="RobBrazier\Piwik\Request\array[string]mixed">array[string]mixed</abbr> $arguments)
+    <strong>setArguments</strong>($arguments)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="RobBrazier\Piwik\Request\array[string]mixed">array[string]mixed</abbr></td>
+                <td></td>
                 <td>$arguments</td>
                 <td></td>
             </tr>
@@ -696,22 +736,27 @@
 
             
             
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_build">
-        <div class="location">at         <a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1src/RobBrazier/Piwik/Request/RequestOptionsphp#L181">line 181</a></div>
+        <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/3.0.1/src/RobBrazier/Piwik/Request/RequestOptionsphp#L181">at line 181</a></div>
         <code>                    string
     <strong>build</strong>(<a href="../../../RobBrazier/Piwik/Repository/ConfigRepository.html"><abbr title="RobBrazier\Piwik\Repository\ConfigRepository">ConfigRepository</abbr></a> $config)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -734,6 +779,7 @@
 
             
             
+            
                     </div>
     </div>
 
@@ -741,12 +787,8 @@
             </div>
 
     
-            </div>
-                <div id="footer">
-        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
-    </div>
-
-        </div>
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
     </div>
     </body>
 
