@@ -53,6 +53,7 @@ blocks:
             - checkout
             - cache restore mkdocs-$SEMAPHORE_GIT_SHA
             - cache restore doctum-$SEMAPHORE_GIT_SHA
+            - tree build/api -H '.' -T "Laravel-Piwik API Docs" -L 1 --noreport -I index.html --charset utf-8 > build/api/index.html
             - bash .semaphore/deploy_docs.sh
   
   - name: "Clear Cache"
