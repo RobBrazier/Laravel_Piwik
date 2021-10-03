@@ -10,16 +10,16 @@ global_job_config:
       - export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 
 blocks:
-  # - name: Create new GitHub Release
-  #   task:
-  #     secrets:
-  #       - name: gh-token
-  #     jobs:
-  #       - name: Create Release
-  #         commands:
-  #           - checkout
-  #           - sem-version node 12
-  #           - bash .semaphore/release
+  - name: Create new GitHub Release
+    task:
+      secrets:
+        - name: gh-token
+      jobs:
+        - name: Create Release
+          commands:
+            - checkout
+            - sem-version node 12
+            - bash .semaphore/release
   - name: Build Docs
     task:
       jobs:
@@ -43,25 +43,23 @@ blocks:
             - mv ../docs/api ./build/api
             - cache store $CACHE_KEY build/api/
   
-  - name: Publish Docs
+  - name: Publish to GitHub
     task:
       secrets:
-        - name: laravel-piwik-bunnycdn-ftp
+        - name: gh-sshkey
+      prologue:
+        commands:
+          - chmod 0600 ~/.keys/*
+          - ssh-add ~/.keys/*  
+          - sudo apt install tree -y
+          - sem-version node 12
       jobs:
-        - name: Deploy
+        - name: Publish to GitHub
           commands:
             - checkout
-            - cache restore mkdocs-$SEMAPHORE_GIT_SHA
+            - cache restore daux-$SEMAPHORE_GIT_SHA
             - cache restore doctum-$SEMAPHORE_GIT_SHA
+            - git config --global user.name "Semaphore Runner"
+            - git config --global user.email "$(whoami)@$(hostname).dev"
             - tree build/api -H '.' -T "Laravel-Piwik API Docs" -L 1 --noreport -I index.html --charset utf-8 > build/api/index.html
-            - bash .semaphore/deploy_docs.sh
-  
-  - name: "Clear Cache"
-    task:
-      secrets:
-        - name: bunnycdn-api-key
-      jobs:
-      - name: Clear Cache
-        commands:
-          - curl -X POST -H 'Content-Length:0' -H "AccessKey:$BUNNY_API_KEY" "https://bunnycdn.com/api/pullzone/571491/purgeCache" --verbose
-          - curl -X POST -H 'Content-Length:0' -H "AccessKey:$BUNNY_API_KEY" "https://bunnycdn.com/api/pullzone/571493/purgeCache" --verbose
+            - npx gh-pages@3.0.0 -d build -m "[skip ci]  Updates"

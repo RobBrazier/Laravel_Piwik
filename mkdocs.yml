@@ -1,6 +1,6 @@
 site_name: Laravel_Piwik
 site_description: An Interface to Piwik's Analytics API for Laravel
-site_url: https://docs.robbrazier.com/laravel-piwik/
+site_url: https://docs.robbrazier.com/Laravel_Piwik/
 theme: 
   name: material
   custom_dir: docs/theme/overrides
@@ -22,7 +22,7 @@ theme:
 extra:
   analytics:
     provider: fathom
-    # domain: minnow.robbrazier.com
+    domain: minnow.robbrazier.com
     key: IIYGRYKU
   social:
     - icon: fontawesome/solid/globe
@@ -40,4 +40,6 @@ plugins:
   - redirects:
       redirect_maps:
         'old.md': 'https://laravel-piwik.readthedocs.io/en/2.1.3/'
+        'API_Docs.md': 'https://docs.robbrazier.com/Laravel_Piwik/api/'
+        'index.md': 'Usage.md'
 site_dir: build

@@ -16,13 +16,13 @@ composer require "robbrazier/piwik=~2.0"
     //...
     'RobBrazier\Piwik\PiwikServiceProvider',
     //...
-);
+),
 
 'aliases' = array(
     //...
     'Piwik' => 'RobBrazier\Piwik\Facades\Piwik',
     //...
-);
+),
 ```
 
 ## Publish Configuration File

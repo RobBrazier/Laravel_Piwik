@@ -1,6 +1,9 @@
 # Usage
 
-There are two ways of using the Piwik Library; 1\) Using the Laravel Facade 2\) Using the app container
+There are two ways of using the Piwik Library;
+
+1. Using the Laravel Facade 
+2. Using the app container
 
 ## Facade
 

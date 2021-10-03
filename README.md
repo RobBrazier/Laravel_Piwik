@@ -30,19 +30,19 @@ Add `'RobBrazier\Piwik\PiwikServiceProvider'` and `'Piwik' => 'RobBrazier\Piwik\
 to `app/config/app.php`
 
 ```php
-'providers' = array(
+'providers' = [
     ...
     RobBrazier\Piwik\PiwikServiceProvider::class,
     ...
-);
+],
 
 [...]
 
-'aliases' = array(
+'aliases' = [
     ...
     'Piwik' => RobBrazier\Piwik\Facades\Piwik::class,
     ...
-);
+],
 ```
 
 ### For Laravel 5.5 and above, no app.php changes are required as the autoloader will pick up the required configuration
@@ -61,8 +61,8 @@ apikey, siteid etc.
 
 ## Documentation
 
-Usage Documentation is located at <https://robbrazier.github.io/Laravel_Piwik/Usage.html>
-API Documentation is located at <https://robbrazier.github.io/Laravel_Piwik/API_Docs.html>
+Usage Documentation is located at <https://docs.robbrazier.com/Laravel_Piwik/Usage.html>
+API Documentation is located at <https://docs.robbrazier.com/Laravel_Piwik/API_Docs.html>
 
 ## Contributing
 

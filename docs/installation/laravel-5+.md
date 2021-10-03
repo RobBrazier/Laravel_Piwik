@@ -5,31 +5,40 @@
 Add RobBrazier/Piwik to composer.json:
 
 ```bash
-composer require "robbrazier/piwik=~4.0"
+composer require "robbrazier/piwik=~4.1"
 ```
 
-## Setup Service Provider
+### For Laravel 5.4 and below
+
+Add `'RobBrazier\Piwik\PiwikServiceProvider'` and `'Piwik' => 'RobBrazier\Piwik\Facades\Piwik'`
+to `app/config/app.php`
 
 ```php
-// app/config/app.php
-'providers' = array(
-    //...
+'providers' = [
+    ...
     RobBrazier\Piwik\PiwikServiceProvider::class,
-    //...
-);
+    ...
+],
 
-'aliases' = array(
-    //...
+[...]
+
+'aliases' = [
+    ...
     'Piwik' => RobBrazier\Piwik\Facades\Piwik::class,
-    //...
-);
+    ...
+],
 ```
 
-## Publish Configuration File
+### For Laravel 5.5 and above, no app.php changes are required as the autoloader will pick up the required configuration
 
-This will create a `piwik.php` config file in `config/`
+Then move the config file out of the package, so that it doesn't get replaced
+when you update, by running:
 
 ```bash
 php artisan vendor:publish --provider="RobBrazier\Piwik\PiwikServiceProvider" --tag="config"
 ```
 
+Update your packages with `composer update` or install with `composer install`.
+
+Then go to `config/piwik.php` and add your config settings such as server,
+apikey, siteid etc.

@@ -5,5 +5,3 @@ if git rev-parse "$version" >/dev/null 2>&1; then
 else
     npx auto-changelog -v "$version"
 fi
-
-cp CHANGELOG.md docs/changelog.md
