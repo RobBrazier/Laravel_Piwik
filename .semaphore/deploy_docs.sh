@@ -8,7 +8,7 @@ mkdir -p build/laravel-piwik
 cd build
 mv !(laravel-piwik) laravel-piwik
 
-ftp_options="--reverse --no-perms --transfer-all --overwrite"
+ftp_options="--reverse --no-perms --transfer-all --overwrite --ignore-time"
 
 lftp "$ftp_url" -e "mirror --dry-run $ftp_options --delete; bye" > ../to-delete.txt
 
