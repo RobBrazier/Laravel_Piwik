@@ -39,7 +39,7 @@ blocks:
             - if cache has_key $CACHE_KEY; then exit 0; fi
             - composer global require "code-lts/doctum"
             - git pull --tags
-            - doctum update .doctum.php || true
+            - doctum.php update .doctum.php || true
             - mkdir -p build
             - mv ../docs/api ./build/api
             - cache store $CACHE_KEY build/api/
