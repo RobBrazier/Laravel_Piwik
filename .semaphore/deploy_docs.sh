@@ -3,7 +3,7 @@ set -exo pipefail
 
 ftp_url="ftp://$BUNNYCDN_USERNAME:$BUNNYCDN_PASSWORD@storage.bunnycdn.com"
 
-cd public
+cd build
 
 mkdir -p bunnycdn_errors
 mv 404.html bunnycdn_errors/
