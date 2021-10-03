@@ -57,7 +57,7 @@ blocks:
         - name: Publish to GitHub
           commands:
             - checkout
-            - cache restore daux-$SEMAPHORE_GIT_SHA
+            - cache restore mkdocs-$SEMAPHORE_GIT_SHA
             - cache restore doctum-$SEMAPHORE_GIT_SHA
             - git config --global user.name "Semaphore Runner"
             - git config --global user.email "$(whoami)@$(hostname).dev"
