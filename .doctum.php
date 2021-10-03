@@ -1,8 +1,8 @@
 <?php
 
-use Sami\RemoteRepository\GitHubRemoteRepository;
-use Sami\Sami;
-use Sami\Version\GitVersionCollection;
+use Doctum\RemoteRepository\GitHubRemoteRepository;
+use Doctum\Doctum;
+use Doctum\Version\GitVersionCollection;
 use Symfony\Component\Finder\Finder;
 
 $iterator = Finder::create()
@@ -17,7 +17,7 @@ $versions = GitVersionCollection::create($dir)
     ->addFromTags('4.*')
     ->add('master', 'master branch');
 
-return new Sami($iterator, [
+return new Doctum($iterator, [
     'title'                => 'Laravel_Piwik',
     'versions'             => $versions,
     'build_dir'            => __DIR__.'/../docs/api/%version%',
