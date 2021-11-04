@@ -22,7 +22,7 @@ theme:
 extra:
   analytics:
     provider: fathom
-    domain: minnow.robbrazier.com
+    domain: lights-fine.b-cdn.net
     key: IIYGRYKU
   social:
     - icon: fontawesome/solid/globe
