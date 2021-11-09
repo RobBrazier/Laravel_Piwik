@@ -22,7 +22,7 @@ theme:
 extra:
   analytics:
     provider: fathom
-    domain: lights-fine.b-cdn.net
+    domain: elegant-blue.robbrazier.com
     key: IIYGRYKU
   social:
     - icon: fontawesome/solid/globe
