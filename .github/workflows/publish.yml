@@ -1,0 +1,43 @@
+name: Publish Docs
+
+on:
+  workflow_call:
+
+jobs:
+  publish_docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Setup PHP environment
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+
+      - name: Setup Python
+        uses: actions/setup-python@v3.0.0
+        with:
+          python-version: 3.9
+
+      - name: Build MkDocs
+        run: |
+          pip3 install -r docs/requirements.txt
+          python3 -m mkdocs build
+
+      - name: Build Doctum
+        run: |
+          composer global require "code-lts/doctum"
+          git pull --tags
+          doctum.php update .doctum.php || true
+          mv ../docs/api ./build/api
+
+      - name: Add API Index
+        run: |
+          tree build/api -H '.' -T "Laravel-Piwik API Docs" -L 1 --noreport -I index.html --charset utf-8 > build/api/index.html
+
+      - name: Publish to GitHub
+        uses: JamesIves/github-pages-deploy-action@v4.2.5
+        with:
+          branch: gh-pages
+          folder: build
