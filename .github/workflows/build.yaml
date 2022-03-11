@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: ["7.3", "7.4", "8.0"]
+        php: ["7.4", "8.0"]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -103,5 +103,5 @@ jobs:
 
   publish:
     needs: integration_test
-    if: github.repository == 'RobBrazier/Laravel_Piwik' && (github.ref_name == 'master' || github.ref_name == 'sonarqube')
+    if: github.repository == 'RobBrazier/Laravel_Piwik' && (github.ref_name == 'master')
     uses: ./.github/workflows/publish.yml
