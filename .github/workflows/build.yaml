@@ -1,8 +1,10 @@
 name: Build and Test
 
 on:
-  - push
-  - pull_request
+  push:
+    branches:
+      - '*'
+  pull_request:
 
 jobs:
   unit_tests:
@@ -104,4 +106,4 @@ jobs:
   publish:
     needs: integration_test
     if: github.repository == 'RobBrazier/Laravel_Piwik' && (github.ref_name == 'master')
-    uses: ./.github/workflows/publish.yml
+    uses: ./.github/workflows/publish.yaml
