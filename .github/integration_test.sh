@@ -7,10 +7,10 @@ composer create-project --prefer-dist laravel/laravel "$INTEGRATION_DIR" "$LARAV
 
 cd "$INTEGRATION_DIR"
 
-contents="$(jq ".repositories = [{\"repo.packagist.org\": false}, {\"type\": \"path\", \"url\": \"$GITHUB_WORKSPACE\"}, {\"type\": \"composer\", \"url\": \"https://repo.packagist.org\"}]" < composer.json)"
+contents="$(jq ".repositories = [{\"packagist.org\": false}, {\"type\": \"path\", \"url\": \"$GITHUB_WORKSPACE\"}, {\"type\": \"composer\", \"url\": \"https://packagist.org\"}]" < composer.json)"
 echo "$contents" > composer.json
 
-composer require robbrazier/piwik:* --no-progress --update-no-dev
+composer require robbrazier/piwik:* --no-progress
 
 if [ "${LARAVEL_VERSION}" = "5.1" ] || [ "${LARAVEL_VERSION}" = "5.2" ] || [ "${LARAVEL_VERSION}" = "5.3" ] || [ "${LARAVEL_VERSION}" = "5.4" ]; then
     app_config="config/app.php"
