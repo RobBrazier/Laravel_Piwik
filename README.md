@@ -1,11 +1,11 @@
 # Laravel-Piwik v4.1.0
 
-[![Semaphore CI](https://robbrazier.semaphoreci.com/badges/Laravel_Piwik.svg)](https://robbrazier.semaphoreci.com/projects/Laravel_Piwik)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/6e05c91a199a4ffbb2723cec35e57019)](https://www.codacy.com/gh/RobBrazier/Laravel_Piwik/dashboard)
-[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/6e05c91a199a4ffbb2723cec35e57019)](https://www.codacy.com/gh/RobBrazier/Laravel_Piwik/dashboard)
-[![Minimum PHP Version](https://badgen.net/badge/PHP/>=7.3/8892BF)](https://php.net/)
-[![Packagist Version](https://badgen.net/packagist/v/robbrazier/piwik)](https://packagist.org/packages/robbrazier/piwik)
-[![Packagist Total Downloads](https://badgen.net/packagist/dt/robbrazier/piwik)](https://packagist.org/packages/robbrazier/piwik)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/RobBrazier/Laravel_Piwik/Build%20and%20Test?style=flat-square)](https://github.com/RobBrazier/Laravel_Piwik/actions)
+[![Sonar Quality Gate](https://img.shields.io/sonar/quality_gate/RobBrazier_Laravel_Piwik?server=https%3A%2F%2Fsonarcloud.io&style=flat-square)](https://sonarcloud.io/summary/overall?id=RobBrazier_Laravel_Piwik)
+[![Sonar Coverage](https://img.shields.io/sonar/coverage/RobBrazier_Laravel_Piwik?server=https%3A%2F%2Fsonarcloud.io&style=flat-square)](https://sonarcloud.io/summary/overall?id=RobBrazier_Laravel_Piwik)
+[![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/robbrazier/piwik?color=8892BF&style=flat-square)](https://php.net/)
+[![Packagist Version](https://img.shields.io/packagist/v/robbrazier/piwik?style=flat-square)](https://packagist.org/packages/robbrazier/piwik)
+[![Packagist Downloads](https://img.shields.io/packagist/dt/robbrazier/piwik?style=flat-square)](https://packagist.org/packages/robbrazier/piwik)
 
 An Interface to Piwik's Analytics API for Laravel (Composer Package)
 

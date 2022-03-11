@@ -2,7 +2,6 @@
     "name": "robbrazier/piwik",
     "description": "Piwik Package for Laravel",
     "license": "MIT",
-    "version": "4.1.0",
     "keywords": ["laravel","piwik"],
     "authors": [
         {
@@ -29,10 +28,10 @@
     "scripts": {
         "test": "phpunit",
         "coverage": "phpdbg -qrr ./vendor/bin/phpunit --coverage-clover reports/coverage.xml --coverage-html reports/html",
-        "changelog": "sh .semaphore/changelog",
-        "version:major": "bash .semaphore/increment-version major | .semaphore/update-versions",
-        "version:minor": "bash .semaphore/increment-version minor | .semaphore/update-versions",
-        "version:patch": "bash .semaphore/increment-version patch | .semaphore/update-versions"
+        "changelog": "sh .github/changelog",
+        "version:major": "bash .github/increment-version major | .github/update-versions",
+        "version:minor": "bash .github/increment-version minor | .github/update-versions",
+        "version:patch": "bash .github/increment-version patch | .github/update-versions"
     },
     "autoload": {
         "psr-0": {

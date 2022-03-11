@@ -44,8 +44,13 @@ blocks:
       env_vars:
         - name: PHP_VERSION
           value: "7.4"
+#        - name: SONAR_SCANNER_VERSION
+#          value: "4.7.0.2747"
+#        - name: SONAR_SCANNER_OPTS
+#          value: "-server"
       secrets:
         - name: codacy-laravel-piwik
+#        - name: sonarcloud-token
       jobs:
         - name: Codacy Test Coverage
           commands:
@@ -54,6 +59,15 @@ blocks:
             - exitCode=$?
             - cp reports/coverage.xml clover.xml
             - bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r clover.xml
+#        - name: SonarCloud Scan
+#          commands:
+#            - export SONAR_SCANNER_HOME="$HOME/.sonar/sonar-scanner-$SONAR_SCANNER_VERSION-linux"
+#            - cache restore composer-semaphore-$COMPOSER_HASH-$PHP_VERSION
+#            - composer run-script coverage
+#            - exitCode=$?
+#            - curl --create-dirs -sSLo $HOME/.sonar/sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SONAR_SCANNER_VERSION-linux.zip
+#            - unzip -o $HOME/.sonar/sonar-scanner.zip -d $HOME/.sonar/
+#            - $SONAR_SCANNER_HOME/bin/sonar-scanner -Dsonar.organization=robbrazier -Dsonar.projectKey=RobBrazier_Laravel_Piwik -Dsonar.sources=src -Dsonar.tests=./tests -Dsonar.host.url=https://sonarcloud.io -Dsonar.php.coverage.reportPaths=reports/coverage.xml
 
   - name: "Integration Tests"
     task:
