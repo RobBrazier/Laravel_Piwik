@@ -28,9 +28,9 @@
     "scripts": {
         "test": "phpunit",
         "coverage": "phpdbg -qrr ./vendor/bin/phpunit --coverage-clover reports/coverage.xml --coverage-html reports/html",
-        "version:major": "npx release-it major",
-        "version:minor": "npx release-it minor",
-        "version:patch": "npx release-it patch"
+        "version:major": "npx release-it major --ci",
+        "version:minor": "npx release-it minor --ci",
+        "version:patch": "npx release-it patch --ci"
     },
     "autoload": {
         "psr-0": {
