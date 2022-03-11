@@ -8,7 +8,7 @@ composer create-project --prefer-dist laravel/laravel "$INTEGRATION_DIR" "$LARAV
 cd "$INTEGRATION_DIR"
 updates='{"repositories": [{"packagist.org": false}, {"type": "path", "url": "'$GITHUB_WORKSPACE'"}, {"type": "composer", "url": "https://packagist.org"}], "prefer-stable": true, "minimum-stability": "dev"}'
 echo $updates > updates.json
-contents="$(jq ".[0] * .[1]" composer.json updates.json)"
+contents="$(jq -s ".[0] * .[1]" composer.json updates.json)"
 echo "$contents" > composer.json
 
 composer require robbrazier/piwik:* --no-progress
