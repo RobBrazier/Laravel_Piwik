@@ -1,6 +1,0 @@
-#!/bin/bash
-
-release_version="$(npx release-it $1 --release-version)"
-npx release-it $1
-
-echo "$release_version"

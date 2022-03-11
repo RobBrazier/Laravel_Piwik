@@ -28,10 +28,9 @@
     "scripts": {
         "test": "phpunit",
         "coverage": "phpdbg -qrr ./vendor/bin/phpunit --coverage-clover reports/coverage.xml --coverage-html reports/html",
-        "changelog": "sh .github/changelog",
-        "version:major": "bash .github/increment-version major | .github/update-versions",
-        "version:minor": "bash .github/increment-version minor | .github/update-versions",
-        "version:patch": "bash .github/increment-version patch | .github/update-versions"
+        "version:major": "npx release-it major",
+        "version:minor": "npx release-it minor",
+        "version:patch": "npx release-it patch"
     },
     "autoload": {
         "psr-0": {

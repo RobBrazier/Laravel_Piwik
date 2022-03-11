@@ -1,7 +1,0 @@
-#!/bin/sh
-version="$(jq -r .version composer.json)"
-if git rev-parse "$version" >/dev/null 2>&1; then
-    npx auto-changelog
-else
-    npx auto-changelog -v "$version"
-fi
