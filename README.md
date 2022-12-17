@@ -1,6 +1,6 @@
 # Laravel-Piwik v4.1.1
 
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/RobBrazier/Laravel_Piwik/Build%20and%20Test?style=flat-square)](https://github.com/RobBrazier/Laravel_Piwik/actions)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/RobBrazier/Laravel_Piwik/build.yaml?style=flat-square&branch=master)](https://github.com/RobBrazier/Laravel_Piwik/actions)
 [![Sonar Quality Gate](https://img.shields.io/sonar/quality_gate/RobBrazier_Laravel_Piwik?server=https%3A%2F%2Fsonarcloud.io&style=flat-square)](https://sonarcloud.io/summary/overall?id=RobBrazier_Laravel_Piwik)
 [![Sonar Coverage](https://img.shields.io/sonar/coverage/RobBrazier_Laravel_Piwik?server=https%3A%2F%2Fsonarcloud.io&style=flat-square)](https://sonarcloud.io/summary/overall?id=RobBrazier_Laravel_Piwik)
 [![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/robbrazier/piwik?color=8892BF&style=flat-square)](https://php.net/)
