@@ -11,6 +11,7 @@ use RobBrazier\Piwik\Module\ProviderModule;
 use RobBrazier\Piwik\Module\ReferrersModule;
 use RobBrazier\Piwik\Module\SEOModule;
 use RobBrazier\Piwik\Module\SitesManagerModule;
+use RobBrazier\Piwik\Module\UserCountryModule;
 use RobBrazier\Piwik\Module\VisitorInterestModule;
 use RobBrazier\Piwik\Module\VisitsSummaryModule;
 use RobBrazier\Piwik\Module\UsersManagerModule;
@@ -205,6 +206,18 @@ class Piwik
     public function getVisitsSummary()
     {
         return new VisitsSummaryModule($this->request);
+    }
+
+    /**
+     * Initialise the UserCountryModule Module.
+     *
+     * @see https://developer.matomo.org/api-reference/reporting-api#UserCountry for arguments
+     *
+     * @return UserCountryModule
+     */
+    public function getUserCountry()
+    {
+        return new UserCountryModule($this->request);
     }
 
     /**
