@@ -5,6 +5,7 @@ namespace RobBrazier\Piwik;
 use RobBrazier\Piwik\Module\ActionsModule;
 use RobBrazier\Piwik\Module\APIModule;
 use RobBrazier\Piwik\Module\ContentsModule;
+use RobBrazier\Piwik\Module\DevicesDetectionModule;
 use RobBrazier\Piwik\Module\EventsModule;
 use RobBrazier\Piwik\Module\LiveModule;
 use RobBrazier\Piwik\Module\ProviderModule;
@@ -218,6 +219,18 @@ class Piwik
     public function getUserCountry()
     {
         return new UserCountryModule($this->request);
+    }
+
+    /**
+     * Initialise the DevicesDetection Module.
+     *
+     * @see https://developer.matomo.org/api-reference/reporting-api#DevicesDetection for arguments
+     *
+     * @return DevicesDetectionModule
+     */
+    public function getDevicesDetection()
+    {
+        return new DevicesDetectionModule($this->request);
     }
 
     /**

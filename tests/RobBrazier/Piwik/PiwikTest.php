@@ -8,6 +8,7 @@ use RobBrazier\Piwik\Config\Option;
 use RobBrazier\Piwik\Module\ActionsModule;
 use RobBrazier\Piwik\Module\APIModule;
 use RobBrazier\Piwik\Module\ContentsModule;
+use RobBrazier\Piwik\Module\DevicesDetectionModule;
 use RobBrazier\Piwik\Module\EventsModule;
 use RobBrazier\Piwik\Module\LiveModule;
 use RobBrazier\Piwik\Module\ProviderModule;
@@ -134,6 +135,12 @@ class PiwikTest extends TestCase
     {
         $userCountry = $this->piwik->getUserCountry();
         $this->assertInstanceOf(UserCountryModule::class, $userCountry);
+    }
+
+    public function testGetDevicesDetection()
+    {
+        $devicesDetection = $this->piwik->getDevicesDetection();
+        $this->assertInstanceOf(DevicesDetectionModule::class, $devicesDetection);
     }
 
     public function testGetTag()
