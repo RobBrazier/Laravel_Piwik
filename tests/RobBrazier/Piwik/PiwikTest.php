@@ -14,6 +14,7 @@ use RobBrazier\Piwik\Module\ProviderModule;
 use RobBrazier\Piwik\Module\ReferrersModule;
 use RobBrazier\Piwik\Module\SEOModule;
 use RobBrazier\Piwik\Module\SitesManagerModule;
+use RobBrazier\Piwik\Module\UserCountryModule;
 use RobBrazier\Piwik\Module\VisitorInterestModule;
 use RobBrazier\Piwik\Module\VisitsSummaryModule;
 use RobBrazier\Piwik\Repository\ConfigRepository;
@@ -127,6 +128,12 @@ class PiwikTest extends TestCase
     {
         $visitsSummary = $this->piwik->getVisitsSummary();
         $this->assertInstanceOf(VisitsSummaryModule::class, $visitsSummary);
+    }
+
+    public function testGetUserCountry()
+    {
+        $userCountry = $this->piwik->getUserCountry();
+        $this->assertInstanceOf(UserCountryModule::class, $userCountry);
     }
 
     public function testGetTag()
