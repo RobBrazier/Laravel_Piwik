@@ -5,12 +5,14 @@ namespace RobBrazier\Piwik;
 use RobBrazier\Piwik\Module\ActionsModule;
 use RobBrazier\Piwik\Module\APIModule;
 use RobBrazier\Piwik\Module\ContentsModule;
+use RobBrazier\Piwik\Module\DevicesDetectionModule;
 use RobBrazier\Piwik\Module\EventsModule;
 use RobBrazier\Piwik\Module\LiveModule;
 use RobBrazier\Piwik\Module\ProviderModule;
 use RobBrazier\Piwik\Module\ReferrersModule;
 use RobBrazier\Piwik\Module\SEOModule;
 use RobBrazier\Piwik\Module\SitesManagerModule;
+use RobBrazier\Piwik\Module\UserCountryModule;
 use RobBrazier\Piwik\Module\VisitorInterestModule;
 use RobBrazier\Piwik\Module\VisitsSummaryModule;
 use RobBrazier\Piwik\Module\UsersManagerModule;
@@ -205,6 +207,30 @@ class Piwik
     public function getVisitsSummary()
     {
         return new VisitsSummaryModule($this->request);
+    }
+
+    /**
+     * Initialise the UserCountryModule Module.
+     *
+     * @see https://developer.matomo.org/api-reference/reporting-api#UserCountry for arguments
+     *
+     * @return UserCountryModule
+     */
+    public function getUserCountry()
+    {
+        return new UserCountryModule($this->request);
+    }
+
+    /**
+     * Initialise the DevicesDetection Module.
+     *
+     * @see https://developer.matomo.org/api-reference/reporting-api#DevicesDetection for arguments
+     *
+     * @return DevicesDetectionModule
+     */
+    public function getDevicesDetection()
+    {
+        return new DevicesDetectionModule($this->request);
     }
 
     /**
