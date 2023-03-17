@@ -5,7 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [4.1.1](https://github.com/RobBrazier/Laravel_Piwik/compare/4.1.0...4.1.1)
+## [4.2.0](https://github.com/RobBrazier/Laravel_Piwik/compare/4.1.1...4.2.0)
+
+### Commits
+
+- Add DevicesDetection Module [`064d08e`](https://github.com/RobBrazier/Laravel_Piwik/commit/064d08e87118611f7e6974f05083cf7174ff4775)
+- Add UserCountry Module [`2eaaf33`](https://github.com/RobBrazier/Laravel_Piwik/commit/2eaaf33b5aefb727a6d20f1a222e58b0882037e2)
+- Update DevicesDetection and UserCountryModule to add link to docs + remove idSite/period from methods that don't support it [`bc78d84`](https://github.com/RobBrazier/Laravel_Piwik/commit/bc78d84874f3102374f0bebfeac6032ae5395457)
+- Add test for getUserCountry [`51023b8`](https://github.com/RobBrazier/Laravel_Piwik/commit/51023b895ebd9648ab20ac9e1699a1efee8a01a2)
+- Update docs dependencies [`8229f2b`](https://github.com/RobBrazier/Laravel_Piwik/commit/8229f2bc19f6fa13f745ff601ae389d3e1814c53)
+
+## [4.1.1](https://github.com/RobBrazier/Laravel_Piwik/compare/4.1.0...4.1.1) - 2022-03-11
 
 ### Merged
 

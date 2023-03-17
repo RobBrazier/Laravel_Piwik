@@ -5,7 +5,7 @@
 Add RobBrazier/Piwik to composer.json:
 
 ```bash
-composer require "robbrazier/piwik=~4.1"
+composer require "robbrazier/piwik=~4.2"
 ```
 
 ### For Laravel 5.4 and below
