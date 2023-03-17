@@ -84,7 +84,9 @@ class UserCountryModuleTest extends TestCase
     public function testGetCountryCodeMapping()
     {
         $this->requestOptions
-            ->setMethod('UserCountry.getCountryCodeMapping');
+            ->setMethod('UserCountry.getCountryCodeMapping')
+            ->usePeriod(false)
+            ->useSiteId(false);
         $this->request->send($this->requestOptions)->willReturn($this->expectedResponse);
         $response = $this->userCountry->getCountryCodeMapping();
         $this->assertEquals($this->expectedResponse, $response);
@@ -95,6 +97,8 @@ class UserCountryModuleTest extends TestCase
         $ip = 'ip';
         $this->requestOptions
             ->setMethod('UserCountry.getLocationFromIP')
+            ->useSiteId(false)
+            ->usePeriod(false)
             ->setArguments([
                 'ip' => $ip,
             ]);

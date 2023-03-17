@@ -2,6 +2,11 @@
 
 namespace RobBrazier\Piwik\Module;
 
+/**
+ * Class UserCountryModule.
+ *
+ * @see https://developer.matomo.org/api-reference/reporting-api#UserCountry for arguments
+ */
 class UserCountryModule extends Module
 {
     /**
@@ -63,7 +68,9 @@ class UserCountryModule extends Module
      */
     public function getCountryCodeMapping($format = null)
     {
-        $options = $this->getOptions($format)->setArguments([]);
+        $options = $this->getOptions($format)
+            ->useSiteId(false)
+            ->usePeriod(false);
 
         return $this->request->send($options);
     }
@@ -78,7 +85,10 @@ class UserCountryModule extends Module
     public function getLocationFromIP($ip, $arguments = [], $format = null)
     {
         $arguments += ['ip' => $ip];
-        $options = $this->getOptions($format)->setArguments($arguments);
+        $options = $this->getOptions($format)
+            ->useSiteId(false)
+            ->usePeriod(false)
+            ->setArguments($arguments);
 
         return $this->request->send($options);
     }

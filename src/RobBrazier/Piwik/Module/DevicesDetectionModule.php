@@ -2,6 +2,11 @@
 
 namespace RobBrazier\Piwik\Module;
 
+/**
+ * Class DevicesDetectionModule.
+ *
+ * @see https://developer.matomo.org/api-reference/reporting-api#DevicesDetection for arguments
+ */
 class DevicesDetectionModule extends Module
 {
     /**
