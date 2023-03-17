@@ -3,22 +3,27 @@ set -euxo pipefail
 
 INTEGRATION_DIR="$RUNNER_TEMP/$(uuidgen)"
 
-composer create-project --prefer-dist laravel/laravel "$INTEGRATION_DIR" "$LARAVEL_VERSION.*" --no-progress --no-dev --no-interaction
+composer create-project --prefer-dist laravel/laravel "$INTEGRATION_DIR" "$LARAVEL_VERSION.*" --no-progress --no-dev --no-interaction --no-install --no-scripts
 
 cd "$INTEGRATION_DIR"
+
+composer config --no-plugins allow-plugins.kylekatarnls/update-helper true
+composer config --no-plugins allow-plugins.symfony/thanks true
 updates='{"repositories": [{"packagist.org": false}, {"type": "path", "url": "'$GITHUB_WORKSPACE'"}, {"type": "composer", "url": "https://packagist.org"}], "prefer-stable": true, "minimum-stability": "dev"}'
 echo $updates > updates.json
 contents="$(jq -s ".[0] * .[1]" composer.json updates.json)"
 echo "$contents" > composer.json
+composer update --no-dev --no-progress --no-interaction --no-scripts 
+composer run-script post-root-package-install
+composer run-script post-create-project-cmd
+composer require robbrazier/piwik:* --no-progress --no-scripts
 
-composer require robbrazier/piwik:* --no-progress
-
-if [ "${LARAVEL_VERSION}" = "5.1" ] || [ "${LARAVEL_VERSION}" = "5.2" ] || [ "${LARAVEL_VERSION}" = "5.3" ] || [ "${LARAVEL_VERSION}" = "5.4" ]; then
+#if [ "${LARAVEL_VERSION}" = "5.1" ] || [ "${LARAVEL_VERSION}" = "5.2" ] || [ "${LARAVEL_VERSION}" = "5.3" ] || [ "${LARAVEL_VERSION}" = "5.4" ] || [ "${LARAVEL_VERSION}" = "5.5" ]; then
     app_config="config/app.php"
     sed -r -e 's/([[:space:]]+?)(App\\Providers\\RouteServiceProvider::class,)/\1\2\n\1RobBrazier\\Piwik\\PiwikServiceProvider::class/g' \
         -e 's/([[:space:]]+?)(.*Illuminate\\Support\\Facades\\View::class,)/\1\2\n\1"Piwik" => RobBrazier\\Piwik\\Facades\\Piwik::class/g' \
         -i $app_config
-fi
+#fi
 
 # Create routes
 routes_config="routes/web.php"
