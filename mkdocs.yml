@@ -21,9 +21,8 @@ theme:
         name: Switch to light mode
 extra:
   analytics:
-    provider: fathom
-    domain: elegant-blue.robbrazier.com
-    key: IIYGRYKU
+    provider: plausible
+    site: docs.robbrazier.com
   social:
     - icon: fontawesome/solid/globe
       link: https://robbrazier.com

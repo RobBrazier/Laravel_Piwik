@@ -1,0 +1,7 @@
+<!-- Determine analytics property -->
+{% if config.extra.analytics %}
+  {% set key = config.extra.analytics.site | d("", true) %}
+  {% set domain = config.extra.analytics.domain | d("plausible.io", true) %}
+{% endif %}
+ 
+<script async data-domain="{{ key }}" src="https://{{ domain }}/js/script.js"></script>
