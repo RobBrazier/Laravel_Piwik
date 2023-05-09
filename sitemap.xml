@@ -2,102 +2,102 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://docs.robbrazier.com/Laravel_Piwik/index.html</loc>
-         <lastmod>2023-03-17</lastmod>
+         <lastmod>2023-05-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.robbrazier.com/Laravel_Piwik/API_Docs.html</loc>
-         <lastmod>2023-03-17</lastmod>
+         <lastmod>2023-05-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.robbrazier.com/Laravel_Piwik/Usage.html</loc>
-         <lastmod>2023-03-17</lastmod>
+         <lastmod>2023-05-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.robbrazier.com/Laravel_Piwik/changelog.html</loc>
-         <lastmod>2023-03-17</lastmod>
+         <lastmod>2023-05-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.robbrazier.com/Laravel_Piwik/old.html</loc>
-         <lastmod>2023-03-17</lastmod>
+         <lastmod>2023-05-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.robbrazier.com/Laravel_Piwik/installation/laravel-4.html</loc>
-         <lastmod>2023-03-17</lastmod>
+         <lastmod>2023-05-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.robbrazier.com/Laravel_Piwik/installation/laravel-5%2B.html</loc>
-         <lastmod>2023-03-17</lastmod>
+         <lastmod>2023-05-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.robbrazier.com/Laravel_Piwik/supported-modules/index.html</loc>
-         <lastmod>2023-03-17</lastmod>
+         <lastmod>2023-05-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.robbrazier.com/Laravel_Piwik/supported-modules/APIModule.html</loc>
-         <lastmod>2023-03-17</lastmod>
+         <lastmod>2023-05-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.robbrazier.com/Laravel_Piwik/supported-modules/ActionsModule.html</loc>
-         <lastmod>2023-03-17</lastmod>
+         <lastmod>2023-05-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.robbrazier.com/Laravel_Piwik/supported-modules/ContentsModule.html</loc>
-         <lastmod>2023-03-17</lastmod>
+         <lastmod>2023-05-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.robbrazier.com/Laravel_Piwik/supported-modules/EventsModule.html</loc>
-         <lastmod>2023-03-17</lastmod>
+         <lastmod>2023-05-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.robbrazier.com/Laravel_Piwik/supported-modules/LiveModule.html</loc>
-         <lastmod>2023-03-17</lastmod>
+         <lastmod>2023-05-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.robbrazier.com/Laravel_Piwik/supported-modules/ProviderModule.html</loc>
-         <lastmod>2023-03-17</lastmod>
+         <lastmod>2023-05-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.robbrazier.com/Laravel_Piwik/supported-modules/ReferrersModule.html</loc>
-         <lastmod>2023-03-17</lastmod>
+         <lastmod>2023-05-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.robbrazier.com/Laravel_Piwik/supported-modules/SEOModule.html</loc>
-         <lastmod>2023-03-17</lastmod>
+         <lastmod>2023-05-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.robbrazier.com/Laravel_Piwik/supported-modules/SitesManagerModule.html</loc>
-         <lastmod>2023-03-17</lastmod>
+         <lastmod>2023-05-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.robbrazier.com/Laravel_Piwik/supported-modules/UsersManagerModule.html</loc>
-         <lastmod>2023-03-17</lastmod>
+         <lastmod>2023-05-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.robbrazier.com/Laravel_Piwik/supported-modules/VisitorInterestModule.html</loc>
-         <lastmod>2023-03-17</lastmod>
+         <lastmod>2023-05-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.robbrazier.com/Laravel_Piwik/supported-modules/VisitsSummaryModule.html</loc>
-         <lastmod>2023-03-17</lastmod>
+         <lastmod>2023-05-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
