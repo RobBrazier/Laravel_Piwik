@@ -3,7 +3,7 @@ name: Build and Test
 on:
   push:
     branches:
-      - '*'
+      - "*"
   pull_request:
 
 jobs:
@@ -47,7 +47,7 @@ jobs:
       - name: Setup PHP with Xdebug
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.0'
+          php-version: "8.0"
           coverage: xdebug
 
       - name: Cache Composer packages
@@ -68,24 +68,30 @@ jobs:
       - name: Fix code coverage paths
         run: sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' reports/coverage.xml
 
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@v1.9
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: Run codacy-coverage-reporter
+        uses: codacy/codacy-coverage-reporter-action@v1
         with:
-          args: >
-            -Dsonar.organization=robbrazier
-            -Dsonar.projectKey=RobBrazier_Laravel_Piwik
-            -Dsonar.sources=src
-            -Dsonar.tests=tests
-            -Dsonar.php.coverage.reportPaths=reports/coverage.xml
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          coverage-reports: reports/coverage.xml
 
   integration_test:
     strategy:
       fail-fast: true
       matrix:
-        laravel: [ "5.1", "5.2", "5.3", "5.4", "5.5", "5.6", "5.7", "5.8", "6.0", "7.0", "8.0" ]
+        laravel:
+          [
+            "5.1",
+            "5.2",
+            "5.3",
+            "5.4",
+            "5.5",
+            "5.6",
+            "5.7",
+            "5.8",
+            "6.0",
+            "7.0",
+            "8.0",
+          ]
     runs-on: ubuntu-latest
     needs: [unit_tests, coverage]
     steps:
