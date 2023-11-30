@@ -15,7 +15,7 @@ jobs:
         run: echo ::set-output name=version::${GITHUB_REF#refs/tags/}
 
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Parse Changelog Entry
         id: changelog

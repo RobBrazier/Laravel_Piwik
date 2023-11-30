@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup PHP environment
         uses: shivammathur/setup-php@v2
@@ -42,7 +42,7 @@ jobs:
     needs: unit_tests
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup PHP with Xdebug
         uses: shivammathur/setup-php@v2
@@ -96,7 +96,7 @@ jobs:
     needs: [unit_tests, coverage]
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup PHP environment
         uses: shivammathur/setup-php@v2
