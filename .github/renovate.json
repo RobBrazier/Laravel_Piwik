@@ -4,6 +4,9 @@
   "packageRules": [
     {
       "matchManagers": ["pip_requirements"],
+      "groupName": "docs"
+    },
+    {
       "matchDepNames": ["actions/setup-python"],
       "groupName": "docs"
     }
