@@ -1,8 +1,8 @@
 # Laravel-Piwik v4.2.0
 
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/RobBrazier/Laravel_Piwik/build.yaml?style=flat-square&branch=master)](https://github.com/RobBrazier/Laravel_Piwik/actions)
-[![Sonar Quality Gate](https://img.shields.io/sonar/quality_gate/RobBrazier_Laravel_Piwik?server=https%3A%2F%2Fsonarcloud.io&style=flat-square)](https://sonarcloud.io/summary/overall?id=RobBrazier_Laravel_Piwik)
-[![Sonar Coverage](https://img.shields.io/sonar/coverage/RobBrazier_Laravel_Piwik?server=https%3A%2F%2Fsonarcloud.io&style=flat-square)](https://sonarcloud.io/summary/overall?id=RobBrazier_Laravel_Piwik)
+[![Codacy grade](https://img.shields.io/codacy/grade/6e05c91a199a4ffbb2723cec35e57019?style=flat-square)](https://app.codacy.com/gh/RobBrazier/Laravel_Piwik)
+[![Codacy coverage](https://img.shields.io/codacy/coverage/6e05c91a199a4ffbb2723cec35e57019?style=flat-square)](hhttps://app.codacy.com/gh/RobBrazier/Laravel_Piwik)
 [![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/robbrazier/piwik?color=8892BF&style=flat-square)](https://php.net/)
 [![Packagist Version](https://img.shields.io/packagist/v/robbrazier/piwik?style=flat-square)](https://packagist.org/packages/robbrazier/piwik)
 [![Packagist Downloads](https://img.shields.io/packagist/dt/robbrazier/piwik?style=flat-square)](https://packagist.org/packages/robbrazier/piwik)
@@ -19,11 +19,12 @@ Add `RobBrazier/Piwik` to `composer.json`:
 
 ```json
 {
-    "require": {
-        "robbrazier/piwik": "~4.2"
-    }
+  "require": {
+    "robbrazier/piwik": "~4.2"
+  }
 }
 ```
+
 ### For Laravel 5.4 and below
 
 Add `'RobBrazier\Piwik\PiwikServiceProvider'` and `'Piwik' => 'RobBrazier\Piwik\Facades\Piwik'`
