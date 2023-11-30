@@ -246,7 +246,7 @@
                     mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getCounters">getCounters</a>(int $lastMinutes, mixed $arguments = [], string $format = null)
+                    <a href="#method_getCounters">getCounters</a>(int $lastMinutes, $arguments = [], string $format = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -257,7 +257,7 @@
                     mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getLastVisitsDetails">getLastVisitsDetails</a>(int $count, mixed $arguments = [], string $format = null)
+                    <a href="#method_getLastVisitsDetails">getLastVisitsDetails</a>(int $count, $arguments = [], string $format = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -280,7 +280,7 @@ with GeoIP information if enabled.</p></p>                </div>
                     mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getVisitorProfile">getVisitorProfile</a>(string $visitorId, mixed $arguments = [], string $format = null)
+                    <a href="#method_getVisitorProfile">getVisitorProfile</a>(string $visitorId, $arguments = [], string $format = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -291,7 +291,7 @@ with GeoIP information if enabled.</p></p>                </div>
                     mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getMostRecentVisitorId">getMostRecentVisitorId</a>(mixed $arguments = [], string $format = null)
+                    <a href="#method_getMostRecentVisitorId">getMostRecentVisitorId</a>($arguments = [], string $format = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -437,7 +437,7 @@ with GeoIP information if enabled.</p></p>                </div>
                     <h3 id="method_getCounters">
         <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.1.1/src/RobBrazier/Piwik/Module/LiveModulephp#L26">at line 26</a></div>
         <code>                    mixed
-    <strong>getCounters</strong>(int $lastMinutes, mixed $arguments = [], string $format = null)
+    <strong>getCounters</strong>(int $lastMinutes, $arguments = [], string $format = null)
         </code>
     </h3>
     <div class="details">    
@@ -458,9 +458,9 @@ with GeoIP information if enabled.</p></p>                </div>
                 <td><p>number of minutes to filter counters by (e.g. get counters for the last 30 minutes)</p></td>
             </tr>
                     <tr>
-                <td>mixed</td>
+                <td></td>
                 <td>$arguments</td>
-                <td><p>extra arguments to be passed to the api call</p></td>
+                <td></td>
             </tr>
                     <tr>
                 <td>string</td>
@@ -490,7 +490,7 @@ with GeoIP information if enabled.</p></p>                </div>
                     <h3 id="method_getLastVisitsDetails">
         <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.1.1/src/RobBrazier/Piwik/Module/LiveModulephp#L41">at line 41</a></div>
         <code>                    mixed
-    <strong>getLastVisitsDetails</strong>(int $count, mixed $arguments = [], string $format = null)
+    <strong>getLastVisitsDetails</strong>(int $count, $arguments = [], string $format = null)
         </code>
     </h3>
     <div class="details">    
@@ -511,9 +511,9 @@ with GeoIP information if enabled.</p></p>                </div>
                 <td><p>number of last visits to get (if set to <code>0</code>, retrieves all results)</p></td>
             </tr>
                     <tr>
-                <td>mixed</td>
+                <td></td>
                 <td>$arguments</td>
-                <td><p>extra arguments to be passed to the api call</p></td>
+                <td></td>
             </tr>
                     <tr>
                 <td>string</td>
@@ -592,7 +592,7 @@ with GeoIP information if enabled.</p></p>
                     <h3 id="method_getVisitorProfile">
         <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.1.1/src/RobBrazier/Piwik/Module/LiveModulephp#L139">at line 139</a></div>
         <code>                    mixed
-    <strong>getVisitorProfile</strong>(string $visitorId, mixed $arguments = [], string $format = null)
+    <strong>getVisitorProfile</strong>(string $visitorId, $arguments = [], string $format = null)
         </code>
     </h3>
     <div class="details">    
@@ -613,9 +613,9 @@ with GeoIP information if enabled.</p></p>
                 <td><p>visitor id to search for</p></td>
             </tr>
                     <tr>
-                <td>mixed</td>
+                <td></td>
                 <td>$arguments</td>
-                <td><p>extra arguments to be passed to the api call</p></td>
+                <td></td>
             </tr>
                     <tr>
                 <td>string</td>
@@ -645,7 +645,7 @@ with GeoIP information if enabled.</p></p>
                     <h3 id="method_getMostRecentVisitorId">
         <div class="location"><a href="https://github.com/RobBrazier/Laravel_Piwik/blob/4.1.1/src/RobBrazier/Piwik/Module/LiveModulephp#L153">at line 153</a></div>
         <code>                    mixed
-    <strong>getMostRecentVisitorId</strong>(mixed $arguments = [], string $format = null)
+    <strong>getMostRecentVisitorId</strong>($arguments = [], string $format = null)
         </code>
     </h3>
     <div class="details">    
@@ -661,9 +661,9 @@ with GeoIP information if enabled.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>mixed</td>
+                <td></td>
                 <td>$arguments</td>
-                <td><p>extra arguments to be passed to the api call</p></td>
+                <td></td>
             </tr>
                     <tr>
                 <td>string</td>
