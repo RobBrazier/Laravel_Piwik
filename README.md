@@ -72,6 +72,8 @@ to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
 
+[![Contributors](https://contrib.rocks/image?repo=robbrazier/Laravel_Piwik)](https://github.com/RobBrazier/Laravel_Piwik/graphs/contributors)
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
