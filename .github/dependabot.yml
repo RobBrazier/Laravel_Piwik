@@ -12,7 +12,7 @@ updates:
     groups:
       dev-dependencies:
         dependency-type: "development"
-    assignees:
+    reviewers:
       - "RobBrazier"
   - package-ecosystem: "pip" # See documentation for possible values
     directory: "/docs" # Location of package manifests
@@ -22,7 +22,7 @@ updates:
       docs:
         patterns: 
           - "*"
-    assignees:
+    reviewers:
       - "RobBrazier"
   - package-ecosystem: "github-actions" # See documentation for possible values
     directory: "/" # Location of package manifests
@@ -32,5 +32,5 @@ updates:
       github-actions:
         patterns: 
           - "*"
-    assignees:
+    reviewers:
       - "RobBrazier"
