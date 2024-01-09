@@ -20,7 +20,8 @@ updates:
       interval: "weekly"
     groups:
       docs:
-        patterns: "*"
+        patterns: 
+          - "*"
     assignees:
       - "RobBrazier"
   - package-ecosystem: "github-actions" # See documentation for possible values
@@ -29,6 +30,7 @@ updates:
       interval: "weekly"
     groups:
       github-actions:
-        patterns: "*"
+        patterns: 
+          - "*"
     assignees:
       - "RobBrazier"
