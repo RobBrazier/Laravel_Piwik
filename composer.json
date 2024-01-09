@@ -14,9 +14,9 @@
         "illuminate/support": ">=5.0"
     },
     "require-dev": {
-        "orchestra/testbench": "^6.19",
-        "phpunit/phpunit": "^9.5",
-        "phpunit/phpcov": "^8.2",
+        "orchestra/testbench": "^8.0",
+        "phpunit/phpunit": "^10.0",
+        "phpunit/phpcov": "^9.0",
         "phpspec/prophecy": "^1.13",
         "ext-json": "*",
         "ext-simplexml": "*"
