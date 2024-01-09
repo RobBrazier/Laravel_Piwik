@@ -40,6 +40,7 @@ jobs:
   coverage:
     runs-on: ubuntu-latest
     needs: unit_tests
+    if: github.actor != 'dependabot[bot]'
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
