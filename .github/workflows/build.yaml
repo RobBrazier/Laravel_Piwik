@@ -94,7 +94,7 @@ jobs:
             "8.0",
           ]
     runs-on: ubuntu-latest
-    needs: [unit_tests, coverage]
+    needs: [unit_tests]
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
