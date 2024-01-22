@@ -137,16 +137,16 @@
         },
         {
             "name": "doctrine/inflector",
-            "version": "2.0.8",
+            "version": "2.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/inflector.git",
-                "reference": "f9301a5b2fb1216b2b08f02ba04dc45423db6bff"
+                "reference": "2930cd5ef353871c821d5c43ed030d39ac8cfe65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/f9301a5b2fb1216b2b08f02ba04dc45423db6bff",
-                "reference": "f9301a5b2fb1216b2b08f02ba04dc45423db6bff",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/2930cd5ef353871c821d5c43ed030d39ac8cfe65",
+                "reference": "2930cd5ef353871c821d5c43ed030d39ac8cfe65",
                 "shasum": ""
             },
             "require": {
@@ -208,7 +208,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/inflector/issues",
-                "source": "https://github.com/doctrine/inflector/tree/2.0.8"
+                "source": "https://github.com/doctrine/inflector/tree/2.0.9"
             },
             "funding": [
                 {
@@ -224,7 +224,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-06-16T13:40:37+00:00"
+            "time": "2024-01-15T18:05:13+00:00"
         },
         {
             "name": "doctrine/lexer",
@@ -5210,22 +5210,22 @@
         },
         {
             "name": "orchestra/testbench",
-            "version": "v6.41.0",
+            "version": "v6.42.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench.git",
-                "reference": "cca72a23ac93bfab1c88be3ad7590ef8a8c4766a"
+                "reference": "09317186750c2bf31eb2e3bde319f360e33f5882"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench/zipball/cca72a23ac93bfab1c88be3ad7590ef8a8c4766a",
-                "reference": "cca72a23ac93bfab1c88be3ad7590ef8a8c4766a",
+                "url": "https://api.github.com/repos/orchestral/testbench/zipball/09317186750c2bf31eb2e3bde319f360e33f5882",
+                "reference": "09317186750c2bf31eb2e3bde319f360e33f5882",
                 "shasum": ""
             },
             "require": {
                 "laravel/framework": "^8.83.27",
                 "mockery/mockery": "^1.4.4",
-                "orchestra/testbench-core": "^6.45",
+                "orchestra/testbench-core": "^6.47.1",
                 "php": "^7.3 || ^8.0",
                 "phpunit/phpunit": "^8.5.21 || ^9.5.10",
                 "spatie/laravel-ray": "^1.29.7"
@@ -5259,22 +5259,22 @@
             ],
             "support": {
                 "issues": "https://github.com/orchestral/testbench/issues",
-                "source": "https://github.com/orchestral/testbench/tree/v6.41.0"
+                "source": "https://github.com/orchestral/testbench/tree/v6.42.1"
             },
-            "time": "2023-12-19T00:51:23+00:00"
+            "time": "2024-01-22T02:20:24+00:00"
         },
         {
             "name": "orchestra/testbench-core",
-            "version": "v6.45.0",
+            "version": "v6.47.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench-core.git",
-                "reference": "b409d050a2366ea2131f919f37c6c0619ccf6395"
+                "reference": "df273267a0eabe475e87937c5d511cae23e3a4e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/b409d050a2366ea2131f919f37c6c0619ccf6395",
-                "reference": "b409d050a2366ea2131f919f37c6c0619ccf6395",
+                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/df273267a0eabe475e87937c5d511cae23e3a4e2",
+                "reference": "df273267a0eabe475e87937c5d511cae23e3a4e2",
                 "shasum": ""
             },
             "require": {
@@ -5287,6 +5287,7 @@
                 "brianium/paratest": "<6.4.0 || >=7.0.0",
                 "laravel/framework": "<8.83.27 || >=9.0.0",
                 "nunomaduro/collision": "<5.0.0 || >=6.0.0",
+                "orchestra/testbench-dusk": "<6.43.0 || >=7.0.0",
                 "phpunit/phpunit": "<8.5.21 || >=9.0.0 <9.5.10 || >=10.0.0"
             },
             "require-dev": {
@@ -5304,7 +5305,8 @@
                 "nunomaduro/collision": "Allow using Laravel style tests output and parallel testing (^5.0).",
                 "orchestra/testbench-browser-kit": "Allow using legacy Laravel BrowserKit for testing (^6.0).",
                 "orchestra/testbench-dusk": "Allow using Laravel Dusk for testing (^6.0).",
-                "phpunit/phpunit": "Allow using PHPUnit for testing (^8.5.21|^9.5.10|^10.0)."
+                "phpunit/phpunit": "Allow using PHPUnit for testing (^8.5.21|^9.5.10|^10.0).",
+                "symfony/process": "Required to use Orchestra\\Testbench\\remote function (^5.0)."
             },
             "bin": [
                 "testbench"
@@ -5317,7 +5319,7 @@
             },
             "autoload": {
                 "files": [
-                    "src/helpers.php"
+                    "src/functions.php"
                 ],
                 "psr-4": {
                     "Orchestra\\Testbench\\": "src/"
@@ -5348,7 +5350,7 @@
                 "issues": "https://github.com/orchestral/testbench/issues",
                 "source": "https://github.com/orchestral/testbench-core"
             },
-            "time": "2023-12-19T00:23:23+00:00"
+            "time": "2024-01-22T00:54:20+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -6073,16 +6075,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.6.15",
+            "version": "9.6.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "05017b80304e0eb3f31d90194a563fd53a6021f1"
+                "reference": "3767b2c56ce02d01e3491046f33466a1ae60a37f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/05017b80304e0eb3f31d90194a563fd53a6021f1",
-                "reference": "05017b80304e0eb3f31d90194a563fd53a6021f1",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3767b2c56ce02d01e3491046f33466a1ae60a37f",
+                "reference": "3767b2c56ce02d01e3491046f33466a1ae60a37f",
                 "shasum": ""
             },
             "require": {
@@ -6156,7 +6158,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.15"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.16"
             },
             "funding": [
                 {
@@ -6172,7 +6174,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-12-01T16:55:19+00:00"
+            "time": "2024-01-19T07:03:14+00:00"
         },
         {
             "name": "pimple/pimple",
