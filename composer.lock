@@ -5029,16 +5029,16 @@
         },
         {
             "name": "mockery/mockery",
-            "version": "1.6.9",
+            "version": "1.6.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mockery/mockery.git",
-                "reference": "0cc058854b3195ba21dc6b1f7b1f60f4ef3a9c06"
+                "reference": "81a161d0b135df89951abd52296adf97deb0723d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mockery/mockery/zipball/0cc058854b3195ba21dc6b1f7b1f60f4ef3a9c06",
-                "reference": "0cc058854b3195ba21dc6b1f7b1f60f4ef3a9c06",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/81a161d0b135df89951abd52296adf97deb0723d",
+                "reference": "81a161d0b135df89951abd52296adf97deb0723d",
                 "shasum": ""
             },
             "require": {
@@ -5050,8 +5050,8 @@
                 "phpunit/phpunit": "<8.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^8.5 || ^9.6.10",
-                "symplify/easy-coding-standard": "^12.0.8"
+                "phpunit/phpunit": "^8.5 || ^9.6.17",
+                "symplify/easy-coding-standard": "^12.1.14"
             },
             "type": "library",
             "autoload": {
@@ -5108,7 +5108,7 @@
                 "security": "https://github.com/mockery/mockery/security/advisories",
                 "source": "https://github.com/mockery/mockery"
             },
-            "time": "2023-12-10T02:24:34+00:00"
+            "time": "2024-03-21T18:34:15+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -5227,22 +5227,22 @@
         },
         {
             "name": "orchestra/testbench",
-            "version": "v6.43.0",
+            "version": "v6.43.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench.git",
-                "reference": "d5ff70205f256b8b45ca399da9add138a909aac4"
+                "reference": "2578c6c4cf302c66d911291d522d030b5f7010a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench/zipball/d5ff70205f256b8b45ca399da9add138a909aac4",
-                "reference": "d5ff70205f256b8b45ca399da9add138a909aac4",
+                "url": "https://api.github.com/repos/orchestral/testbench/zipball/2578c6c4cf302c66d911291d522d030b5f7010a3",
+                "reference": "2578c6c4cf302c66d911291d522d030b5f7010a3",
                 "shasum": ""
             },
             "require": {
                 "laravel/framework": "^8.83.27",
                 "mockery/mockery": "^1.4.4",
-                "orchestra/testbench-core": "^6.49",
+                "orchestra/testbench-core": "^6.49.4",
                 "php": "^7.3 || ^8.0",
                 "phpunit/phpunit": "^8.5.21 || ^9.5.10",
                 "spatie/laravel-ray": "^1.29.7"
@@ -5276,22 +5276,22 @@
             ],
             "support": {
                 "issues": "https://github.com/orchestral/testbench/issues",
-                "source": "https://github.com/orchestral/testbench/tree/v6.43.0"
+                "source": "https://github.com/orchestral/testbench/tree/v6.43.1"
             },
-            "time": "2024-03-13T06:31:43+00:00"
+            "time": "2024-03-19T12:50:31+00:00"
         },
         {
             "name": "orchestra/testbench-core",
-            "version": "v6.49.2",
+            "version": "v6.49.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench-core.git",
-                "reference": "7dcc34504a96c6323a9d646b2f0f0ac31e39ccbf"
+                "reference": "45418b85d24a146f5a2f5caeff3f85e481d65b6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/7dcc34504a96c6323a9d646b2f0f0ac31e39ccbf",
-                "reference": "7dcc34504a96c6323a9d646b2f0f0ac31e39ccbf",
+                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/45418b85d24a146f5a2f5caeff3f85e481d65b6c",
+                "reference": "45418b85d24a146f5a2f5caeff3f85e481d65b6c",
                 "shasum": ""
             },
             "require": {
@@ -5367,7 +5367,7 @@
                 "issues": "https://github.com/orchestral/testbench/issues",
                 "source": "https://github.com/orchestral/testbench-core"
             },
-            "time": "2024-03-18T12:06:27+00:00"
+            "time": "2024-03-25T04:15:06+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -5726,16 +5726,16 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.26.0",
+            "version": "1.27.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "231e3186624c03d7e7c890ec662b81e6b0405227"
+                "reference": "86e4d5a4b036f8f0be1464522f4c6b584c452757"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/231e3186624c03d7e7c890ec662b81e6b0405227",
-                "reference": "231e3186624c03d7e7c890ec662b81e6b0405227",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/86e4d5a4b036f8f0be1464522f4c6b584c452757",
+                "reference": "86e4d5a4b036f8f0be1464522f4c6b584c452757",
                 "shasum": ""
             },
             "require": {
@@ -5767,9 +5767,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.26.0"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.27.0"
             },
-            "time": "2024-02-23T16:05:55+00:00"
+            "time": "2024-03-21T13:14:53+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -6154,16 +6154,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.6.17",
+            "version": "9.6.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "1a156980d78a6666721b7e8e8502fe210b587fcd"
+                "reference": "32c2c2d6580b1d8ab3c10b1e9e4dc263cc69bb04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/1a156980d78a6666721b7e8e8502fe210b587fcd",
-                "reference": "1a156980d78a6666721b7e8e8502fe210b587fcd",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/32c2c2d6580b1d8ab3c10b1e9e4dc263cc69bb04",
+                "reference": "32c2c2d6580b1d8ab3c10b1e9e4dc263cc69bb04",
                 "shasum": ""
             },
             "require": {
@@ -6237,7 +6237,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.17"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.18"
             },
             "funding": [
                 {
@@ -6253,7 +6253,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-23T13:14:51+00:00"
+            "time": "2024-03-21T12:07:32+00:00"
         },
         {
             "name": "pimple/pimple",
