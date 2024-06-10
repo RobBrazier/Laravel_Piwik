@@ -5229,22 +5229,22 @@
         },
         {
             "name": "orchestra/testbench",
-            "version": "v6.44.1",
+            "version": "v6.44.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench.git",
-                "reference": "4054c284b0628ca18592af597e3abfa3750bebe0"
+                "reference": "e6be53cdcc650d625c566e4db15e7add2486f809"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench/zipball/4054c284b0628ca18592af597e3abfa3750bebe0",
-                "reference": "4054c284b0628ca18592af597e3abfa3750bebe0",
+                "url": "https://api.github.com/repos/orchestral/testbench/zipball/e6be53cdcc650d625c566e4db15e7add2486f809",
+                "reference": "e6be53cdcc650d625c566e4db15e7add2486f809",
                 "shasum": ""
             },
             "require": {
                 "laravel/framework": "^8.83.27",
                 "mockery/mockery": "^1.4.4",
-                "orchestra/testbench-core": "^6.50.1",
+                "orchestra/testbench-core": "^6.50.2",
                 "php": "^7.3 || ^8.0",
                 "phpunit/phpunit": "^8.5.21 || ^9.5.10",
                 "spatie/laravel-ray": "^1.29.7"
@@ -5273,22 +5273,22 @@
             ],
             "support": {
                 "issues": "https://github.com/orchestral/testbench/issues",
-                "source": "https://github.com/orchestral/testbench/tree/v6.44.1"
+                "source": "https://github.com/orchestral/testbench/tree/v6.44.2"
             },
-            "time": "2024-06-01T09:57:38+00:00"
+            "time": "2024-06-04T12:12:01+00:00"
         },
         {
             "name": "orchestra/testbench-core",
-            "version": "v6.50.1",
+            "version": "v6.50.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench-core.git",
-                "reference": "e2f995addf1afc57dea618d0460151dea3a7ad45"
+                "reference": "5460274d1f85a4880892389ba6e4d0697d4ee7ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/e2f995addf1afc57dea618d0460151dea3a7ad45",
-                "reference": "e2f995addf1afc57dea618d0460151dea3a7ad45",
+                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/5460274d1f85a4880892389ba6e4d0697d4ee7ed",
+                "reference": "5460274d1f85a4880892389ba6e4d0697d4ee7ed",
                 "shasum": ""
             },
             "require": {
@@ -5364,7 +5364,7 @@
                 "issues": "https://github.com/orchestral/testbench/issues",
                 "source": "https://github.com/orchestral/testbench-core"
             },
-            "time": "2024-06-01T09:13:34+00:00"
+            "time": "2024-06-04T04:49:13+00:00"
         },
         {
             "name": "phar-io/manifest",
